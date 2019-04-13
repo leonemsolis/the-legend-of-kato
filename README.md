@@ -16,8 +16,8 @@
 
 
 #### To Implement:
-• Character's voice using ROLI(string sound)
-• Bone animation
+• Character's voice using ROLI(string sound)<br/>
+• Bone animation<br/>
 
 
 
