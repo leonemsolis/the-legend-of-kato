@@ -9,10 +9,16 @@
 3. Card types
     a. Offensive
     b. Defensive
-    c. Mixed
+    c. Equipment
 4. Hand + deck cards
 5. Limited hand size
 6. Energy usage
+
+
+#### To Implement:
+• Character's voice using ROLI(string sound)
+• Bone animation
+
 
 
 #### Map mockup
