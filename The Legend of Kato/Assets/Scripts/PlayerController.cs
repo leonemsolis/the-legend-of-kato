@@ -149,4 +149,9 @@ public class PlayerController : MonoBehaviour
     {
         FindObjectOfType<Health>().TakeDamage();
     }
+
+    public bool IsFacingRight()
+    {
+        return facingRight;
+    }
 }

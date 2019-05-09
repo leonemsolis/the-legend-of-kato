@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6847731583723704826}
   - component: {fileID: 6847731583723704823}
   - component: {fileID: 6847731583723704827}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Sword
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.24904537, y: 0}
+  m_Offset: {x: -0.25029802, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50190926, y: 1}
+  m_Size: {x: 0.36912918, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6847731583723704823
 MonoBehaviour:

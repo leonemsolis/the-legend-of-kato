@@ -6,6 +6,7 @@ public class SharkController : MonoBehaviour
 {
     [SerializeField] Sprite leftSprite;
     [SerializeField] Sprite rightSprite;
+    [SerializeField] EnemyHitBox myHitBox;
 
     Rigidbody2D rb;
     PlayerController player;
@@ -22,6 +23,9 @@ public class SharkController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        myHitBox = Instantiate(myHitBox);
+        myHitBox.SetEnemy(gameObject.transform);
+        myHitBox.SetFacingRight(facingRight);
     }
 
     private void Update()
@@ -57,17 +61,6 @@ public class SharkController : MonoBehaviour
     {
         facingRight = !facingRight;
         spriteRenderer.sprite = facingRight ? rightSprite : leftSprite;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            player.TakeDamage();
-        }
-        if (collision.gameObject.tag == "Sword")
-        {
-            Destroy(gameObject);
-        }
+        myHitBox.SetFacingRight(facingRight);
     }
 }

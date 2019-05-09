@@ -27,8 +27,15 @@ public class SwordController : MonoBehaviour
 
     private void Update()
     {
-        transform.position = player.transform.position + playerOffset;
-        if(changeRequest == ChangeRequest.RIGHT)
+        if(player != null)
+        {
+            transform.position = player.transform.position + playerOffset;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        if (changeRequest == ChangeRequest.RIGHT)
         {
             changeRequest = ChangeRequest.DONE;
             spriteRenderer.sprite = rightSprite;

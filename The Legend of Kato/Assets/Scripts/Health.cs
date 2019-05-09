@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -20,9 +21,10 @@ public class Health : MonoBehaviour
     {
         currentHealth--;
         transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = Color.white;
-        if(currentHealth == 0)
+        if (currentHealth == 0)
         {
             Destroy(FindObjectOfType<PlayerController>().gameObject);
+            SceneManager.LoadScene(0);
         }
     }
 }
