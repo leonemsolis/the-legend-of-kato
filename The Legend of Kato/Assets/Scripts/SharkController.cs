@@ -35,7 +35,16 @@ public class SharkController : MonoBehaviour
         float distance = .6f;
         LayerMask collisionMask = 1 << LayerMask.NameToLayer("Wall");
         RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
-        if(hitWall)
+        //Debug.DrawLine(origin, origin + direction * distance, Color.green);
+
+        Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (.7f) : (-.7f)), transform.position.y);
+        direction = Vector2.down;
+        collisionMask = 1 << LayerMask.NameToLayer("Ground");
+        RaycastHit2D hitGround = Physics2D.Raycast(forwardEdge, direction, distance, collisionMask);
+        distance = .7f;
+        //Debug.DrawLine(forwardEdge, forwardEdge + direction * distance, Color.red);
+
+        if (hitWall || !hitGround)
         {
             ChangeDirection();
         }
