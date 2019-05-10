@@ -37,15 +37,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    MoveLeft();
-        //}
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    MoveRight();
-        //}
         if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeDirection();
@@ -54,19 +45,6 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
-
-        Vector2 originLeft = new Vector2(transform.position.x - legDistance, transform.position.y);
-        Vector2 originRight = new Vector2(transform.position.x + legDistance, transform.position.y);
-        Vector2 direction = Vector2.down;
-        float distance = .6f;
-        LayerMask collisionMask = 1<<LayerMask.NameToLayer("Ground");
-
-        RaycastHit2D leftHit = Physics2D.Raycast(originLeft, direction, distance, collisionMask);
-        RaycastHit2D rightHit = Physics2D.Raycast(originRight, direction, distance, collisionMask);
-
-        grounded = leftHit || rightHit;
-        Debug.DrawLine(originLeft, originLeft + (direction * distance), Color.red);
-        Debug.DrawLine(originRight, originRight + (direction * distance), Color.red);
     }
 
     private void FixedUpdate()
@@ -89,6 +67,19 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
+
+
+
+        Vector2 originLeft = new Vector2(transform.position.x - legDistance, transform.position.y);
+        Vector2 originRight = new Vector2(transform.position.x + legDistance, transform.position.y);
+        Vector2 direction = Vector2.down;
+        float distance = .6f;
+        LayerMask collisionMask = 1 << LayerMask.NameToLayer("Ground");
+
+        RaycastHit2D leftHit = Physics2D.Raycast(originLeft, direction, distance, collisionMask);
+        RaycastHit2D rightHit = Physics2D.Raycast(originRight, direction, distance, collisionMask);
+
+        grounded = leftHit || rightHit;
     }
 
     private void MoveLeft()
