@@ -11,8 +11,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
     // TODO: change color switching of the buttons in the button scripts
-    SpriteRenderer leftButtonSpriteRenderer;
-    SpriteRenderer rightButtonSpriteRenderer;
+    SpriteRenderer moveButtonSpriteRenderer;
     SpriteRenderer activeButtonSpriteRenderer;
 
 
@@ -30,8 +29,7 @@ public class PlayerController : MonoBehaviour
         sword = FindObjectOfType<SwordController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        leftButtonSpriteRenderer = FindObjectOfType<ButtonLeft>().GetComponent<SpriteRenderer>();
-        rightButtonSpriteRenderer = FindObjectOfType<ButtonRight>().GetComponent<SpriteRenderer>();
+        moveButtonSpriteRenderer = FindObjectOfType<ButtonMove>().GetComponent<SpriteRenderer>();
         activeButtonSpriteRenderer = FindObjectOfType<ButtonActive>().GetComponent<SpriteRenderer>();
         //Time.timeScale = .1f;
     }
@@ -40,19 +38,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            MoveLeft();
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            MoveRight();
-        }
-        if (Input.GetKeyDown(KeyCode.S))
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    MoveLeft();
+        //}
+        //if (Input.GetKey(KeyCode.D))
+        //{
+        //    MoveRight();
+        //}
+        if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeDirection();
         }
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetKeyDown(KeyCode.L) && grounded)
         {
             Jump();
         }
@@ -93,24 +91,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void MoveLeft()
+    private void MoveLeft()
     {
         if(facingRight)
         {
-            leftButtonSpriteRenderer.color = Color.gray;
-            rightButtonSpriteRenderer.color = Color.white;
             facingRight = false;
             spriteRenderer.sprite = leftSprite;
             sword.TurnLeft();
         }
     }
 
-    public void MoveRight()
+    private void MoveRight()
     {
         if(!facingRight)
         {
-            rightButtonSpriteRenderer.color = Color.gray;
-            leftButtonSpriteRenderer.color = Color.white;
             facingRight = true;
             spriteRenderer.sprite = rightSprite;
             sword.TurnRight();
@@ -119,7 +113,9 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeDirection()
     {
-        if(facingRight)
+        moveButtonSpriteRenderer.color = Color.gray;
+        StartCoroutine(ResetButtonColor(moveButtonSpriteRenderer));
+        if (facingRight)
         {
             MoveLeft();
         }
@@ -134,15 +130,15 @@ public class PlayerController : MonoBehaviour
         if(grounded)
         {
             activeButtonSpriteRenderer.color = Color.gray;
-            StartCoroutine(ChangeActiveButtonColor());
+            StartCoroutine(ResetButtonColor(activeButtonSpriteRenderer));
             jump = true;
         }
     }
 
-    private IEnumerator ChangeActiveButtonColor()
+    private IEnumerator ResetButtonColor(SpriteRenderer buttonSpriteRenderer)
     {
         yield return new WaitForSeconds(.1f);
-        activeButtonSpriteRenderer.color = Color.white;
+        buttonSpriteRenderer.color = Color.black;
     }
 
     public void TakeDamage()

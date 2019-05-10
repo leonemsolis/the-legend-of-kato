@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonRight : MonoBehaviour
+public class ButtonMove : MonoBehaviour
 {
     PlayerController player;
 
@@ -13,6 +13,6 @@ public class ButtonRight : MonoBehaviour
 
     private void OnMouseDown()
     {
-        player.MoveRight();
+        player.ChangeDirection();
     }
 }
