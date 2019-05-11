@@ -10,9 +10,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
-    // TODO: change color switching of the buttons in the button scripts
-    SpriteRenderer moveButtonSpriteRenderer;
-    SpriteRenderer activeButtonSpriteRenderer;
 
 
     const float legDistance = .25f;
@@ -29,8 +26,6 @@ public class PlayerController : MonoBehaviour
         sword = FindObjectOfType<SwordController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        moveButtonSpriteRenderer = FindObjectOfType<ButtonMove>().GetComponent<SpriteRenderer>();
-        activeButtonSpriteRenderer = FindObjectOfType<ButtonActive>().GetComponent<SpriteRenderer>();
         //Time.timeScale = .1f;
     }
 
@@ -40,10 +35,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeDirection();
+            FindObjectOfType<ButtonMove>().Blink();
         }
         if (Input.GetKeyDown(KeyCode.L) && grounded)
         {
             Jump();
+            FindObjectOfType<ButtonActive>().Blink();
         }
     }
 
@@ -104,8 +101,6 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeDirection()
     {
-        moveButtonSpriteRenderer.color = Color.gray;
-        StartCoroutine(ResetButtonColor(moveButtonSpriteRenderer));
         if (facingRight)
         {
             MoveLeft();
@@ -120,8 +115,6 @@ public class PlayerController : MonoBehaviour
     {
         if(grounded)
         {
-            activeButtonSpriteRenderer.color = Color.gray;
-            StartCoroutine(ResetButtonColor(activeButtonSpriteRenderer));
             jump = true;
         }
     }
@@ -134,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        FindObjectOfType<Health>().TakeDamage();
+        //FindObjectOfType<Health>().TakeDamage();
     }
 
     public bool IsFacingRight()

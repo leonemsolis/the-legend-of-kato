@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFollower : MonoBehaviour
+public class CameraSmoothFollow : MonoBehaviour
 {
-    public Transform player;
-    [SerializeField] float dampTime = .15f;
-    [SerializeField] float velocityY = 100f;
+    Transform player;
+
+    float dampTime = .3f;
     Vector3 velocity;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>().gameObject.transform;
-        velocity = new Vector3(0f, velocityY, 0f);
+        velocity = new Vector3(0f, 100f, 0f);
     }
 
     private void Update()

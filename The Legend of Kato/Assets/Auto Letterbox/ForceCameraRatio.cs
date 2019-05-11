@@ -32,7 +32,7 @@ namespace LetterboxCamera
         [Tooltip("The Camera assigned to have an automatically calculated Viewport Ratio")]
         public Camera camera;
         [Tooltip("When a Camera Viewport is shrunk to fit a ratio, it will anchor the new Viewport Rectangle at the given point (relative to the original, unshrunk Viewport)")]
-        public CameraAnchor anchor = CameraAnchor.Center;
+        public CameraAnchor anchor = CameraAnchor.Bottom;
 
         [HideInInspector]
         public Vector2 vectorAnchor;
