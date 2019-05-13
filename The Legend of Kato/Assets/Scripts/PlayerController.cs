@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeDirection();
-            FindObjectOfType<ButtonMove>().Blink();
+            //FindObjectOfType<ButtonMove>().Blink();
         }
         if (Input.GetKeyDown(KeyCode.L) && grounded)
         {
             Jump();
-            FindObjectOfType<ButtonActive>().Blink();
+            //FindObjectOfType<ButtonActive>().Blink();
         }
     }
 
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if(grounded)
+        if (grounded)
         {
             jump = true;
         }
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage()
     {
-        //FindObjectOfType<Health>().TakeDamage();
+        FindObjectOfType<Health>().TakeDamage();
     }
 
     public bool IsFacingRight()

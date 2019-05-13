@@ -63,6 +63,6 @@ public class ButtonMove : MonoBehaviour
     private IEnumerator ResetColor()
     {
         yield return new WaitForSeconds(.1f);
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = new Color(1f, 1f, 1f, 0.5882353f);
     }
 }
