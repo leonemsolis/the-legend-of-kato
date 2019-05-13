@@ -12,12 +12,13 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D boxCollider;
 
 
-    const float legDistance = .25f;
     bool facingRight = true;
     bool jump = false;
-    float moveForce = 365f;
-    float maxSpeed = 1f;
-    float jumpForce = 1500f;
+
+    const float legDistance = .25f;
+    const float moveForce = 365f;
+    const float maxSpeed = 1f;
+    const float jumpForce = 1200f;
     bool grounded = false;
 
     private void Awake()
@@ -35,12 +36,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             ChangeDirection();
-            //FindObjectOfType<ButtonMove>().Blink();
+            FindObjectOfType<ButtonMove>().Blink();
         }
         if (Input.GetKeyDown(KeyCode.L) && grounded)
         {
             Jump();
-            //FindObjectOfType<ButtonActive>().Blink();
+            FindObjectOfType<ButtonActive>().Blink();
         }
     }
 

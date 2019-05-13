@@ -24,6 +24,7 @@ public class EnemyHitBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Sword")
         {
+            FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
             Destroy(enemyTransform.gameObject);
             Destroy(gameObject);
         }

@@ -46,34 +46,33 @@ public class LevelGenerator : MonoBehaviour
 
     private void Generate()
     {
-        for(int i = 0; i < 6; ++i)
+        for(int i = 0; i < 5; ++i)
         {
             Instantiate(wall, new Vector3(leftWallX, lowestY - 1f- i, 0f), Quaternion.identity);
             Instantiate(wall, new Vector3(rightWallX, lowestY - 1f - i, 0f), Quaternion.identity);
         }
 
+        UpdateLowestY();
 
-        if(left)
+        if (left)
         {
-            for (int i = 0; i < 5; ++i)
+            for (int i = 0; i < 6; ++i)
             {
-                Instantiate(platform, new Vector3(leftWallX + 1f + i, lowestY - 4f, 0f), Quaternion.identity);
+                Instantiate(platform, new Vector3(leftWallX + 1f + i, lowestY, 0f), Quaternion.identity);
             }
-            Instantiate(shark, new Vector3(leftWallX + 2f, lowestY - 2f, 0f), Quaternion.identity);
+            Instantiate(shark, new Vector3(leftWallX + 2f, lowestY + 2f, 0f), Quaternion.identity);
         }
         else
         {
-            for (int i = 0; i < 5; ++i)
+            for (int i = 0; i < 6; ++i)
             {
-                Instantiate(platform, new Vector3(rightWallX - 1f - i, lowestY - 4f, 0f), Quaternion.identity);
+                Instantiate(platform, new Vector3(rightWallX - 1f - i, lowestY, 0f), Quaternion.identity);
             }
-            Instantiate(shark, new Vector3(rightWallX - 2f, lowestY - 2f, 0f), Quaternion.identity);
+            Instantiate(shark, new Vector3(rightWallX - 2f, lowestY + 2f, 0f), Quaternion.identity);
         }
 
 
 
         left = !left;
-
-        UpdateLowestY();
     }
 }

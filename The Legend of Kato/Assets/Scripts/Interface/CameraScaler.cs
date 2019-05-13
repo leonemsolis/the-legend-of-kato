@@ -14,6 +14,5 @@ public class CameraScaler : MonoBehaviour
         float cameraHeight = Screen.height / unitPhysicPixelSize;
         float cameraSize = cameraHeight / 2f;
         Camera.main.orthographicSize = cameraSize;
-        Debug.Log(cameraSize);
     }
 }
