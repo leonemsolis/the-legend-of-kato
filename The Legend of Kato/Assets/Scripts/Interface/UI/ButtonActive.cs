@@ -54,7 +54,7 @@ public class ButtonActive : MonoBehaviour
         Vector2 touchPos = new Vector2(wp.x, wp.y);
         Collider2D hit = Physics2D.OverlapPoint(touchPos);
 
-        if (hit)
+        if (hit == gameObject.GetComponent<Collider2D>())
         {
             if (down)
             {
