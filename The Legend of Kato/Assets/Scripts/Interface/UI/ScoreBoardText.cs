@@ -15,7 +15,7 @@ public class ScoreBoardText : MonoBehaviour
 
     public void AddScore(int value)
     {
-        if(score + value <= 9999)
+        if(score + value <= 999999)
         {
             score+=value;
             textField.text = score.ToString();

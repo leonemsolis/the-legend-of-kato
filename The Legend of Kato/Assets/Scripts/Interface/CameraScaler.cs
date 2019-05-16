@@ -6,10 +6,6 @@ public class CameraScaler : MonoBehaviour
 {
     void Awake()
     {
-    }
-
-    private void Update()
-    {
         float unitPhysicPixelSize = Screen.width / 10f;
         float cameraHeight = Screen.height / unitPhysicPixelSize;
         float cameraSize = cameraHeight / 2f;

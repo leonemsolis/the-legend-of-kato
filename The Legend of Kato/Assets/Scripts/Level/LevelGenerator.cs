@@ -11,8 +11,8 @@ public class LevelGenerator : MonoBehaviour
     PlayerController player;
     float lowestY;
     const float generatorThreshold = 15f;
-    const float leftWallX = 0f;
-    const float rightWallX = 10f;
+    const float leftWallX = -5f;
+    const float rightWallX = 5f;
 
     //TODO: delete
     bool left = false;

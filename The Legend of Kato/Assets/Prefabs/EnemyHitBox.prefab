@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1923367987875660393}
   - component: {fileID: 1923367987875660392}
   - component: {fileID: 1923367987875660395}
+  - component: {fileID: 2211496645878789262}
   m_Layer: 12
-  m_Name: HitBox
+  m_Name: EnemyHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,3 +71,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42aa66abf53e64257a00f8a2a1431398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &2211496645878789262
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923367987875660406}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 2
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 0

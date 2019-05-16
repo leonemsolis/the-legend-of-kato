@@ -2,24 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum JumpState {GROUNDED, JUMPING, FALLING};
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Sprite rightSprite;
     [SerializeField] Sprite leftSprite;
+
     SwordController sword;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
 
+    JumpState jumpState = JumpState.FALLING;
+    public static readonly float maxHoverDuration = 1f;
+    float hoverTime = 0f;
+    const float jumpForce = 25f;
+    const float hoverForce = 3f;
+
 
     bool facingRight = true;
-    bool jump = false;
 
     const float legDistance = .25f;
-    const float moveForce = 365f;
-    const float maxSpeed = 1f;
-    const float jumpForce = 1200f;
-    bool grounded = false;
+    const float minJumpAllowDistance = .3f;
+    const float moveForce = 292f;
+    const float maxSpeed = .8f;
 
     private void Awake()
     {
@@ -38,10 +45,15 @@ public class PlayerController : MonoBehaviour
             ChangeDirection();
             FindObjectOfType<ButtonMove>().Blink();
         }
-        if (Input.GetKeyDown(KeyCode.L) && grounded)
+        if (Input.GetKey(KeyCode.L))
         {
             Jump();
-            FindObjectOfType<ButtonActive>().Blink();
+            FindObjectOfType<ButtonActive>().SetButtonActiveColor(true);
+        }
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            Jump();
+            FindObjectOfType<ButtonActive>().SetButtonActiveColor(false);
         }
     }
 
@@ -60,24 +72,28 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
         }
 
-        if(jump)
-        {
-            rb.AddForce(new Vector2(0f, jumpForce));
-            jump = false;
-        }
 
 
-
-        Vector2 originLeft = new Vector2(transform.position.x - legDistance, transform.position.y);
-        Vector2 originRight = new Vector2(transform.position.x + legDistance, transform.position.y);
+        Vector2 originLeft = new Vector2(transform.position.x - legDistance, transform.position.y - .5f);
+        Vector2 originRight = new Vector2(transform.position.x + legDistance, transform.position.y - .5f);
         Vector2 direction = Vector2.down;
-        float distance = .6f;
         LayerMask collisionMask = 1 << LayerMask.NameToLayer("Ground");
 
-        RaycastHit2D leftHit = Physics2D.Raycast(originLeft, direction, distance, collisionMask);
-        RaycastHit2D rightHit = Physics2D.Raycast(originRight, direction, distance, collisionMask);
+        RaycastHit2D leftHit = Physics2D.Raycast(originLeft, direction, minJumpAllowDistance, collisionMask);
+        RaycastHit2D rightHit = Physics2D.Raycast(originRight, direction, minJumpAllowDistance, collisionMask);
+        //Debug.DrawLine(originLeft, originLeft + direction * minJumpAllowDistance);
+        //Debug.DrawLine(originRight, originRight + direction * minJumpAllowDistance);
 
-        grounded = leftHit || rightHit;
+        if(leftHit || rightHit)
+        {
+            jumpState = JumpState.GROUNDED;
+            hoverTime = maxHoverDuration;
+        }
+
+        if(rb.velocity.y < -1f)
+        {
+            jumpState = JumpState.FALLING;
+        }
     }
 
     private void MoveLeft()
@@ -114,9 +130,21 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (grounded)
+        if (jumpState == JumpState.GROUNDED)
         {
-            jump = true;
+            jumpState = JumpState.JUMPING;
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        }
+        else
+        {
+            if(jumpState == JumpState.FALLING)
+            {
+                if(hoverTime > 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, hoverForce);
+                    hoverTime -= Time.deltaTime;
+                }
+            }
         }
     }
 
@@ -134,5 +162,12 @@ public class PlayerController : MonoBehaviour
     public bool IsFacingRight()
     {
         return facingRight;
+    }
+
+    public float GetRemainHoverTime()
+    {
+        float oneSegment = maxHoverDuration / 4f;
+        int segmented = (int)(Mathf.Ceil(hoverTime / oneSegment));
+        return segmented / 4f;
     }
 }

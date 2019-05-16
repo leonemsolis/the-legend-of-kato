@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
             StartCoroutine(ResetInvulnerable());
             if (currentHealth == 0)
             {
-                Destroy(FindObjectOfType<PlayerController>().gameObject);
+                //Destroy(FindObjectOfType<PlayerController>().gameObject);
                 SceneManager.LoadScene(0);
             }
         } 

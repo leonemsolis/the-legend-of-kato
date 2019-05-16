@@ -7,6 +7,7 @@ public class ButtonActive : MonoBehaviour
     PlayerController player;
     readonly RuntimePlatform platform = Application.platform;
     SpriteRenderer spriteRenderer;
+    bool pressed = false;
 
     private void Start()
     {
@@ -16,53 +17,63 @@ public class ButtonActive : MonoBehaviour
 
     void Update()
     {
+        if (pressed){spriteRenderer.color = Color.gray;}
+        else{spriteRenderer.color = new Color(1f, 1f, 1f, 0.8941177f);}
+
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
         {
             for(int i = 0; i < Input.touchCount; ++i)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Began)
+                if(Input.GetTouch(i).phase == TouchPhase.Ended || Input.GetTouch(i).phase == TouchPhase.Canceled)
                 {
-                    CheckTouch(Input.GetTouch(i).position);
+                    CheckTouch(Input.GetTouch(i).position, false);
+                }
+                else
+                {
+                    CheckTouch(Input.GetTouch(i).position, true);
                 }
             }
         }
         else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
-                CheckTouch(Input.mousePosition);
+                CheckTouch(Input.mousePosition, true);
+            }
+            if(Input.GetMouseButtonUp(0))
+            {
+                CheckTouch(Input.mousePosition, false);
             }
         }
 
     }
 
-    private void CheckTouch(Vector3 pos)
+    private void CheckTouch(Vector3 pos, bool down)
     {
         Vector3 wp = Camera.main.ScreenToWorldPoint(pos);
         Vector2 touchPos = new Vector2(wp.x, wp.y);
         Collider2D hit = Physics2D.OverlapPoint(touchPos);
 
-        if (hit && hit == gameObject.GetComponent<Collider2D>())
+        if (hit)
         {
-            TouchButton();
+            if (down)
+            {
+                player.Jump();
+                pressed = true;
+            }
+            else
+            {
+                pressed = false;
+            }
+        }
+        else
+        {
+            pressed = false;
         }
     }
 
-    private void TouchButton()
+    public void SetButtonActiveColor(bool val)
     {
-        player.Jump();
-        Blink();
-    }
-
-    public void Blink()
-    {
-        spriteRenderer.color = Color.gray;
-        StartCoroutine(ResetColor());
-    }
-
-    private IEnumerator ResetColor()
-    {
-        yield return new WaitForSeconds(.1f);
-        spriteRenderer.color = new Color(1f, 1f, 1f, 0.8941177f);
+        pressed = val;
     }
 }
