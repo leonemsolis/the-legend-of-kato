@@ -50,6 +50,8 @@ public class ButtonActive : MonoBehaviour
 
     private void CheckTouch(Vector3 pos, bool down)
     {
+        pressed = false;
+
         Vector3 wp = Camera.main.ScreenToWorldPoint(pos);
         Vector2 touchPos = new Vector2(wp.x, wp.y);
         Collider2D hit = Physics2D.OverlapPoint(touchPos);
@@ -65,10 +67,6 @@ public class ButtonActive : MonoBehaviour
             {
                 pressed = false;
             }
-        }
-        else
-        {
-            pressed = false;
         }
     }
 
