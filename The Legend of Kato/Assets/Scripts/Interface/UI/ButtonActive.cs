@@ -17,57 +17,52 @@ public class ButtonActive : MonoBehaviour
 
     void Update()
     {
-        if (pressed){spriteRenderer.color = Color.gray;}
+        if (pressed){ player.Jump(); spriteRenderer.color = Color.gray;}
         else{spriteRenderer.color = new Color(1f, 1f, 1f, 0.8941177f);}
+
 
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
         {
-            for(int i = 0; i < Input.touchCount; ++i)
+            bool checkPressed = false;
+            for (int i = 0; i < Input.touchCount; ++i)
             {
-                if(Input.GetTouch(i).phase == TouchPhase.Ended || Input.GetTouch(i).phase == TouchPhase.Canceled)
+                if(Input.GetTouch(i).phase != TouchPhase.Ended && Input.GetTouch(i).phase != TouchPhase.Canceled)
                 {
-                    CheckTouch(Input.GetTouch(i).position, false);
-                }
-                else
-                {
-                    CheckTouch(Input.GetTouch(i).position, true);
+                    checkPressed = checkPressed || CheckTouch(Input.GetTouch(i).position);
                 }
             }
+            pressed = checkPressed;
         }
         else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)
         {
             if (Input.GetMouseButton(0))
             {
-                CheckTouch(Input.mousePosition, true);
+                if(CheckTouch(Input.mousePosition))
+                {
+                    pressed = true;
+                }
             }
             if(Input.GetMouseButtonUp(0))
             {
-                CheckTouch(Input.mousePosition, false);
+                if(CheckTouch(Input.mousePosition))
+                {
+                    pressed = false;
+                }
             }
         }
 
     }
 
-    private void CheckTouch(Vector3 pos, bool down)
+    private bool CheckTouch(Vector3 pos)
     {
-        pressed = false;
-
         Vector3 wp = Camera.main.ScreenToWorldPoint(pos);
         Vector2 touchPos = new Vector2(wp.x, wp.y);
         Collider2D hit = Physics2D.OverlapPoint(touchPos);
-
         if (hit == gameObject.GetComponent<Collider2D>())
         {
-            if (down)
-            {
-                player.Jump();
-                pressed = true;
-            }
-            else
-            {
-                pressed = false;
-            }
+            return true;
         }
+        return false;
     }
 
     public void SetButtonActiveColor(bool val)

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyHitBox : MonoBehaviour
 {
-    static int x = 1;
     BoxCollider2D boxCollider;
     PlayerController player;
     Transform enemyTransform;
