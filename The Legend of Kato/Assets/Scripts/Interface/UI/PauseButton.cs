@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonPause : MonoBehaviour
+public class PauseButton : MonoBehaviour
 {
     readonly RuntimePlatform platform = Application.platform;
     [SerializeField] Sprite pause;
     [SerializeField] Sprite cont;
     SpriteRenderer spriteRenderer;
-    bool running = true;
 
-    private void Start()
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
+    
     void Update()
     {
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
@@ -33,8 +32,11 @@ public class ButtonPause : MonoBehaviour
             {
                 CheckTouch(Input.mousePosition);
             }
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                TouchButton();
+            }
         }
-
     }
 
     private void CheckTouch(Vector3 pos)
@@ -51,17 +53,16 @@ public class ButtonPause : MonoBehaviour
 
     private void TouchButton()
     {
-        if(running)
+        if (GetComponent<Pause>().IsGameRunning())
         {
-            Time.timeScale = 0f;
             spriteRenderer.sprite = cont;
+            GetComponent<Pause>().PauseGame();
         }
         else
         {
-            Time.timeScale = 1f;
             spriteRenderer.sprite = pause;
+            GetComponent<Pause>().ResumeGame();
         }
-        running = !running;
     }
 
     private IEnumerator ResetColor()

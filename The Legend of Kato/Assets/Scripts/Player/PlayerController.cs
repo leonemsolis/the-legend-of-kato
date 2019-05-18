@@ -37,26 +37,6 @@ public class PlayerController : MonoBehaviour
         //Time.timeScale = .1f;
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            ChangeDirection();
-            FindObjectOfType<ButtonMove>().Blink();
-        }
-        if (Input.GetKey(KeyCode.L))
-        {
-            Jump();
-            FindObjectOfType<ButtonActive>().SetButtonActiveColor(true);
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            Jump();
-            FindObjectOfType<ButtonActive>().SetButtonActiveColor(false);
-        }
-    }
-
     private void FixedUpdate()
     {
         if (facingRight)
@@ -71,8 +51,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
         }
-
-
 
         Vector2 originLeft = new Vector2(transform.position.x - legDistance, transform.position.y - .5f);
         Vector2 originRight = new Vector2(transform.position.x + legDistance, transform.position.y - .5f);

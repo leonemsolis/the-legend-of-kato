@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonMove : MonoBehaviour
 {
+    Pause pause;
     PlayerController player;
     readonly RuntimePlatform platform = Application.platform;
     SpriteRenderer spriteRenderer;
@@ -11,6 +12,7 @@ public class ButtonMove : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        pause = FindObjectOfType<Pause>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -32,8 +34,11 @@ public class ButtonMove : MonoBehaviour
             {
                 CheckTouch(Input.mousePosition);
             }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                TouchButton();
+            }
         }
-
     }
 
     private void CheckTouch(Vector3 pos)
@@ -50,8 +55,15 @@ public class ButtonMove : MonoBehaviour
 
     private void TouchButton()
     {
-        player.ChangeDirection();
         Blink();
+        if (pause.IsGameRunning())
+        {
+            player.ChangeDirection();
+        }
+        else
+        {
+            FindObjectOfType<PausePanel>().SelectNextElement();
+        }
     }
 
     public void Blink()
