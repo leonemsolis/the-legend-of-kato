@@ -6,7 +6,7 @@ public class ButtonPanel : MonoBehaviour
 {
     private void Start()
     {
-        float y = Camera.main.transform.position.y - Camera.main.orthographicSize + 4f / 2f;
+        float y = Camera.main.transform.position.y - Camera.main.orthographicSize + 400f / 2f;
         transform.position = new Vector3(0f, y, transform.position.z);
     }
 }

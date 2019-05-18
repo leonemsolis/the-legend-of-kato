@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     const float delayTime = .2f;
-    public readonly static float unitsToBottom = 11f;
+    public readonly static float unitsToBottom = 1100f;
 
     PlayerController player;
     Vector3 v = Vector3.zero;

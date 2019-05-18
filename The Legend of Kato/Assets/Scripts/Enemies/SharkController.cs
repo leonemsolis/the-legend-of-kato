@@ -19,17 +19,19 @@ public class SharkController : MonoBehaviour
     float changeDirTimer = maxChangeDirTime;
 
     bool facingRight = true;
-    const float tauntRange = 5f;
-    const float tauntHeight = 1f;
+    const float tauntRange = 500f;
+    const float tauntHeight = 100f;
 
-    const float passiveMoveForce = 110f;
-    const float passiveMaxSpeed = .3f;
+    const float passiveMoveForce = 11000f;
+    const float passiveMaxSpeed = 30f;
 
-    const float activeMoveForce = 292f;
-    const float activeMaxSpeed = .8f;
+    const float activeMoveForce = 29200f;
+    const float activeMaxSpeed = 80f;
 
     float moveForce = passiveMoveForce;
     float maxSpeed = passiveMaxSpeed;
+
+    const float rayDistance = 70f;
 
 
     private void Start()
@@ -57,15 +59,15 @@ public class SharkController : MonoBehaviour
 
             Vector2 origin = transform.position;
             Vector2 direction = facingRight ? Vector2.right : Vector2.left;
-            float distance = .6f;
+            float distance = rayDistance;
             LayerMask collisionMask = 1 << LayerMask.NameToLayer("Wall");
             RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
 
-            Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (.7f) : (-.7f)), transform.position.y);
+            Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (rayDistance) : (-rayDistance)), transform.position.y);
             direction = Vector2.down;
             collisionMask = 1 << LayerMask.NameToLayer("Ground");
             RaycastHit2D hitGround = Physics2D.Raycast(forwardEdge, direction, distance, collisionMask);
-            distance = .7f;
+            distance = rayDistance;
 
             if (hitWall || !hitGround)
             {

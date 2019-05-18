@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edffa68d801164ac997dffe8e4436d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 8699578810086573042, guid: af2c80e4fc62a45b28cd603efcc6f40b, type: 3}
-  platform: {fileID: 3635873162162119759, guid: 24a5e4aa52231430d959e60c8ce84a65,
+  wall: {fileID: 6781305431247829087, guid: af2c80e4fc62a45b28cd603efcc6f40b, type: 3}
+  platform: {fileID: 2088299524304712168, guid: 24a5e4aa52231430d959e60c8ce84a65,
     type: 3}
-  shark: {fileID: 7122963749591401709, guid: 405a1b8ecbdf344bfa10bd8d0b994dcc, type: 3}
+  shark: {fileID: 1381242364259789211, guid: 405a1b8ecbdf344bfa10bd8d0b994dcc, type: 3}

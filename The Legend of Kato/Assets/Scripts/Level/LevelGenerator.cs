@@ -10,9 +10,11 @@ public class LevelGenerator : MonoBehaviour
 
     PlayerController player;
     float lowestY;
-    const float generatorThreshold = 15f;
-    const float leftWallX = -5f;
-    const float rightWallX = 5f;
+    const float unitSize = 100f;
+    const float generatorThreshold = 15f * unitSize;
+    const float leftWallX = -5.5f * unitSize;
+    const float rightWallX = 5.5f * unitSize;
+
 
     //TODO: delete
     bool left = false;
@@ -25,7 +27,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void UpdateLowestY()
     {
-        float lowest = 100f;
+        float lowest = 0f;
         foreach (GameObject g in GameObject.FindGameObjectsWithTag("Wall"))
         {
             if(g.transform.position.y < lowest)
@@ -48,8 +50,8 @@ public class LevelGenerator : MonoBehaviour
     {
         for(int i = 0; i < 5; ++i)
         {
-            Instantiate(wall, new Vector3(leftWallX, lowestY - 1f- i, 0f), Quaternion.identity);
-            Instantiate(wall, new Vector3(rightWallX, lowestY - 1f - i, 0f), Quaternion.identity);
+            Instantiate(wall, new Vector3(leftWallX, lowestY - (1f + i) * unitSize, 0f), Quaternion.identity);
+            Instantiate(wall, new Vector3(rightWallX, lowestY - (1f + i) * unitSize, 0f), Quaternion.identity);
         }
 
         UpdateLowestY();
@@ -58,17 +60,17 @@ public class LevelGenerator : MonoBehaviour
         {
             for (int i = 0; i < 6; ++i)
             {
-                Instantiate(platform, new Vector3(leftWallX + 1f + i, lowestY, 0f), Quaternion.identity);
+                Instantiate(platform, new Vector3(leftWallX + (1f + i) * unitSize, lowestY, 0f), Quaternion.identity);
             }
-            Instantiate(shark, new Vector3(leftWallX + 2f, lowestY + 2f, 0f), Quaternion.identity);
+            Instantiate(shark, new Vector3(leftWallX + 2f * unitSize, lowestY + 2f * unitSize, 0f), Quaternion.identity);
         }
         else
         {
             for (int i = 0; i < 6; ++i)
             {
-                Instantiate(platform, new Vector3(rightWallX - 1f - i, lowestY, 0f), Quaternion.identity);
+                Instantiate(platform, new Vector3(rightWallX - (1f + i) * unitSize, lowestY, 0f), Quaternion.identity);
             }
-            Instantiate(shark, new Vector3(rightWallX - 2f, lowestY + 2f, 0f), Quaternion.identity);
+            Instantiate(shark, new Vector3(rightWallX - 2f * unitSize, lowestY + 2f * unitSize, 0f), Quaternion.identity);
         }
 
 

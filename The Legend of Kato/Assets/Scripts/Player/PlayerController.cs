@@ -15,18 +15,18 @@ public class PlayerController : MonoBehaviour
     BoxCollider2D boxCollider;
 
     JumpState jumpState = JumpState.FALLING;
-    public static readonly float maxHoverDuration = 1f;
+    public static readonly float maxHoverDuration = 2f;
     float hoverTime = 0f;
-    const float jumpForce = 25f;
-    const float hoverForce = 3f;
+    const float jumpForce = 2000f;
+    const float hoverForce = 200f;
 
 
     bool facingRight = true;
 
-    const float legDistance = .25f;
-    const float minJumpAllowDistance = .3f;
-    const float moveForce = 292f;
-    const float maxSpeed = .8f;
+    const float legDistance = 25f;
+    const float minJumpAllowDistance = 60f;
+    const float moveForce = 29200f;
+    const float maxSpeed = 80f;
 
     private void Awake()
     {
@@ -81,8 +81,8 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D leftHit = Physics2D.Raycast(originLeft, direction, minJumpAllowDistance, collisionMask);
         RaycastHit2D rightHit = Physics2D.Raycast(originRight, direction, minJumpAllowDistance, collisionMask);
-        //Debug.DrawLine(originLeft, originLeft + direction * minJumpAllowDistance);
-        //Debug.DrawLine(originRight, originRight + direction * minJumpAllowDistance);
+        //Debug.DrawLine(originLeft, originLeft + direction * minJumpAllowDistance, Color.red);
+        //Debug.DrawLine(originRight, originRight + direction * minJumpAllowDistance, Color.red);
 
         if(leftHit || rightHit)
         {
@@ -168,6 +168,6 @@ public class PlayerController : MonoBehaviour
     {
         float oneSegment = maxHoverDuration / 4f;
         int segmented = (int)(Mathf.Ceil(hoverTime / oneSegment));
-        return segmented / 4f;
+        return segmented / maxHoverDuration;
     }
 }

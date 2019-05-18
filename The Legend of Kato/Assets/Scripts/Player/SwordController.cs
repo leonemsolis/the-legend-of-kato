@@ -8,10 +8,10 @@ public class SwordController : MonoBehaviour
     [SerializeField] Sprite leftSprite;
     [SerializeField] Sprite rightSprite;
 
-    const float boxColliderRightXOffset = -0.2518227f;
-    const float boxColliderLeftXOffset = 0.2518227f;
-    Vector3 rightPosition = new Vector3(1f, 0f, 0f);
-    Vector3 leftPosition = new Vector3(-1f, 0f, 0f);
+    const float boxColliderRightXOffset = -25.18227f;
+    const float boxColliderLeftXOffset = 25.18227f;
+    Vector3 rightPosition = new Vector3(100f, 0f, 0f);
+    Vector3 leftPosition = new Vector3(-100f, 0f, 0f);
 
     PlayerController player;
     BoxCollider2D boxCollider;

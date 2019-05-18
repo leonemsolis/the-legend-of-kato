@@ -6,7 +6,7 @@ public class HoverBar : MonoBehaviour
 {
     PlayerController player;
     const float maxWidth = 1f;
-    float max = PlayerController.maxHoverDuration;
+    readonly float maxHoverDuration = PlayerController.maxHoverDuration;
     float current = 0;
 
     void Start()
@@ -17,8 +17,8 @@ public class HoverBar : MonoBehaviour
 
     void Update()
     {
-        float currentWidth = maxWidth * player.GetRemainHoverTime() / max;
-        float positionX = currentWidth / 2f - maxWidth / 2f;
+        float currentWidth = maxWidth * player.GetRemainHoverTime() / maxHoverDuration;
+        float positionX = (currentWidth * 100f / 2f) - 50f;
         transform.localScale = new Vector3(currentWidth, .1f, 1f);
         transform.localPosition = new Vector3(positionX, transform.localPosition.y, transform.localPosition.z);
     }
