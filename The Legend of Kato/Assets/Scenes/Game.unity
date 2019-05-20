@@ -1711,17 +1711,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 292363503, guid: 43aefd14d1e0149e6a853d0746500f13, type: 3}
-      propertyPath: m_Color.r
-      value: 0.5849056
+    - target: {fileID: 2232663458379943916, guid: 43aefd14d1e0149e6a853d0746500f13,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 292363503, guid: 43aefd14d1e0149e6a853d0746500f13, type: 3}
-      propertyPath: m_Color.g
-      value: 0.08001069
+    - target: {fileID: 6019180983039469618, guid: 43aefd14d1e0149e6a853d0746500f13,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 292363503, guid: 43aefd14d1e0149e6a853d0746500f13, type: 3}
-      propertyPath: m_Color.b
-      value: 0.08001069
+    - target: {fileID: 1593161953273724201, guid: 43aefd14d1e0149e6a853d0746500f13,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 71699432007063557, guid: 43aefd14d1e0149e6a853d0746500f13,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43aefd14d1e0149e6a853d0746500f13, type: 3}

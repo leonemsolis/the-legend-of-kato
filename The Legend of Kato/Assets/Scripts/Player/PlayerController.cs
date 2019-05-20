@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
         sword = FindObjectOfType<SwordController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        //Time.timeScale = .1f;
     }
 
     private void FixedUpdate()

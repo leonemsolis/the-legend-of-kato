@@ -10,6 +10,9 @@ public class ButtonActive : MonoBehaviour
     SpriteRenderer spriteRenderer;
     bool pressed = false;
 
+    Color defaultColor = new Color(0.0627451f, 0.3686275f, 0.6941177f, 0.8941177f);
+    Color pressedColor = new Color(0.4627451f, 0.3686275f, 0.6941177f, 0.8941177f);
+
     private void Start()
     {
         pause = FindObjectOfType<Pause>();
@@ -31,8 +34,8 @@ public class ButtonActive : MonoBehaviour
 
     private void UpdateRunning()
     {
-        if (pressed) { player.Jump(); spriteRenderer.color = Color.gray; }
-        else { spriteRenderer.color = new Color(1f, 1f, 1f, 0.8941177f); }
+        if (pressed) { player.Jump(); spriteRenderer.color = pressedColor; }
+        else { spriteRenderer.color = defaultColor; }
 
 
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
@@ -84,7 +87,7 @@ public class ButtonActive : MonoBehaviour
                 {
                     if(CheckTouch(Input.GetTouch(i).position))
                     {
-                        FindObjectOfType<PausePanel>().ActivateSelectedElement();
+                        ClickInPause();
                     }
                 }
             }
@@ -93,11 +96,14 @@ public class ButtonActive : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                CheckTouch(Input.mousePosition);
+                if(CheckTouch(Input.mousePosition))
+                {
+                    ClickInPause();
+                }
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                FindObjectOfType<PausePanel>().ActivateSelectedElement();
+                ClickInPause();
             }
         }
     }
@@ -114,8 +120,18 @@ public class ButtonActive : MonoBehaviour
         return false;
     }
 
-    public void SetButtonActiveColor(bool val)
+
+
+    private void ClickInPause()
     {
-        pressed = val;
+        FindObjectOfType<PausePanel>().Activate();
+        spriteRenderer.color = pressedColor;
+        StartCoroutine(ResetColor());
+    }
+
+    private IEnumerator ResetColor()
+    {
+        yield return new WaitForSecondsRealtime(.1f);
+        spriteRenderer.color = defaultColor;
     }
 }

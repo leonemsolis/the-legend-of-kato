@@ -9,6 +9,9 @@ public class ButtonMove : MonoBehaviour
     readonly RuntimePlatform platform = Application.platform;
     SpriteRenderer spriteRenderer;
 
+    Color defaultColor = new Color(0.5686275f, 0.09411766f, 0.1215686f, 0.8941177f);
+    Color pressedColor = new Color(0.9686275f, 0.09411766f, 0.1215686f, 0.8941177f);
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -68,13 +71,13 @@ public class ButtonMove : MonoBehaviour
 
     public void Blink()
     {
-        spriteRenderer.color = Color.gray;
+        spriteRenderer.color = pressedColor;
         StartCoroutine(ResetColor());
     }
 
     private IEnumerator ResetColor()
     {
-        yield return new WaitForSeconds(.1f);
-        spriteRenderer.color = new Color(1f, 1f, 1f, 0.8941177f);
+        yield return new WaitForSecondsRealtime(.1f);
+        spriteRenderer.color = defaultColor;
     }
 }
