@@ -43,7 +43,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edffa68d801164ac997dffe8e4436d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 6781305431247829087, guid: af2c80e4fc62a45b28cd603efcc6f40b, type: 3}
-  platform: {fileID: 2088299524304712168, guid: 24a5e4aa52231430d959e60c8ce84a65,
-    type: 3}
-  shark: {fileID: 1381242364259789211, guid: 405a1b8ecbdf344bfa10bd8d0b994dcc, type: 3}
+  v_rooms:
+  - {fileID: 4252082576681226360, guid: 05db1ab9799ea4c2bb469fba97cd242a, type: 3}
+  - {fileID: 4252082576681226360, guid: 0f668dd03f78849b0a6a2e19c3051e90, type: 3}
+  h_rooms:
+  - {fileID: 3146606663619734917, guid: acc9cca0808154da1b3c28fdff7f70c9, type: 3}
+  - {fileID: 3146606663619734917, guid: bb0df4ce44b444dacbb36861dfd0c52a, type: 3}
+  vh_rooms:
+  - {fileID: 2248494792105872740, guid: a1d1f7c7cedf847f6b87ebbbdc29d6de, type: 3}
+  - {fileID: 2248494792105872740, guid: c168d929e46024335a0bb5a236f721f9, type: 3}
+  - {fileID: 2248494792105872740, guid: 30901454c2d2b4050b040c380b952234, type: 3}
+  hv_rooms:
+  - {fileID: 1765779739197966727, guid: d7a013d7265fd412a85315a9d6384dfb, type: 3}
+  - {fileID: 1765779739197966727, guid: 3aae70761c156491883103d9ec1fd8bb, type: 3}

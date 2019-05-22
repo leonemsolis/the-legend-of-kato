@@ -10,7 +10,7 @@ public class ButtonMove : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     Color defaultColor = new Color(0.5686275f, 0.09411766f, 0.1215686f, 0.8941177f);
-    Color pressedColor = new Color(0.9686275f, 0.09411766f, 0.1215686f, 0.8941177f);
+    Color pressedColor = new Color(0.3686275f, 0.09411766f, 0.1215686f, 0.8941177f);
 
     private void Start()
     {

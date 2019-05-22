@@ -5,14 +5,12 @@ using UnityEngine;
 public class EnemyHitBox : MonoBehaviour
 {
     BoxCollider2D boxCollider;
-    PlayerController player;
     Transform enemyTransform;
     bool facingRight = true;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        player = FindObjectOfType<PlayerController>();
     }
 
     private void FixedUpdate()
@@ -30,7 +28,7 @@ public class EnemyHitBox : MonoBehaviour
         }
         if (collision.gameObject.tag == "Player")
         {
-            player.TakeDamage();
+            FindObjectOfType<Health>().TakeDamage();
         }
     }
 

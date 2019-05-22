@@ -11,7 +11,7 @@ public class ButtonActive : MonoBehaviour
     bool pressed = false;
 
     Color defaultColor = new Color(0.0627451f, 0.3686275f, 0.6941177f, 0.8941177f);
-    Color pressedColor = new Color(0.4627451f, 0.3686275f, 0.6941177f, 0.8941177f);
+    Color pressedColor = new Color(0.0627451f, 0.3686275f, 0.4941177f, 0.8941177f);
 
     private void Start()
     {

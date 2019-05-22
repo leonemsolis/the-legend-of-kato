@@ -125,22 +125,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator ResetButtonColor(SpriteRenderer buttonSpriteRenderer)
-    {
-        yield return new WaitForSeconds(.1f);
-        buttonSpriteRenderer.color = Color.black;
-    }
-
-    public void TakeDamage()
-    {
-        FindObjectOfType<Health>().TakeDamage();
-    }
-
-    public bool IsFacingRight()
-    {
-        return facingRight;
-    }
-
     public float GetRemainHoverTime()
     {
         float oneSegment = maxHoverDuration / 4f;

@@ -74,11 +74,11 @@ public class PausePanel : MonoBehaviour
                 break;
         }
         selectedElementIndex = 0;
-        SetSelectorsPosition(top);
+        SetSelectorsPosition(top, false);
     }
 
 
-    private void SetSelectorsPosition(float posY)
+    private void SetSelectorsPosition(float posY, bool smooth)
     {
         Vector3 oldPos = transform.GetChild(selectorIndex).transform.localPosition;
         transform.GetChild(selectorIndex).transform.localPosition = new Vector3(oldPos.x, posY, oldPos.z);
@@ -205,6 +205,6 @@ public class PausePanel : MonoBehaviour
             selectedElementIndex++;
         }
 
-        SetSelectorsPosition(transform.GetChild(offset + selectedElementIndex).transform.localPosition.y);
+        SetSelectorsPosition(transform.GetChild(offset + selectedElementIndex).transform.localPosition.y, true);
     }
 }
