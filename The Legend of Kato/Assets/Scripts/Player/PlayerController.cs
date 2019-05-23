@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Sprite rightSprite;
     [SerializeField] Sprite leftSprite;
 
-    SwordController sword;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
@@ -31,7 +30,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        sword = FindObjectOfType<SwordController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
@@ -79,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             facingRight = false;
             spriteRenderer.sprite = leftSprite;
-            sword.TurnLeft();
         }
     }
 
@@ -89,7 +86,6 @@ public class PlayerController : MonoBehaviour
         {
             facingRight = true;
             spriteRenderer.sprite = rightSprite;
-            sword.TurnRight();
         }
     }
 
@@ -130,5 +126,10 @@ public class PlayerController : MonoBehaviour
         float oneSegment = maxHoverDuration / 4f;
         int segmented = (int)(Mathf.Ceil(hoverTime / oneSegment));
         return segmented / maxHoverDuration;
+    }
+
+    public bool IsFacingRight()
+    {
+        return facingRight;
     }
 }

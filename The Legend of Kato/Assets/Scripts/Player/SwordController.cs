@@ -8,16 +8,18 @@ public class SwordController : MonoBehaviour
     [SerializeField] Sprite leftSprite;
     [SerializeField] Sprite rightSprite;
 
-    const float boxColliderRightXOffset = -25.18227f;
-    const float boxColliderLeftXOffset = 25.18227f;
+    bool facingRight = true;
+
     Vector3 rightPosition = new Vector3(100f, 0f, 0f);
     Vector3 leftPosition = new Vector3(-100f, 0f, 0f);
+    Vector3 bottomPosition = new Vector3(0f, -100f, 0f);
+    Vector2 colliderRightOffset = new Vector2(-25.18227f, -15.7839f);
+    Vector2 colliderLeftOffset = new Vector2(25.18227f, -15.7839f);
+    Vector2 colliderBottomOffset = new Vector2(0f, 30f);
 
     PlayerController player;
     BoxCollider2D boxCollider;
     SpriteRenderer spriteRenderer;
-    enum ChangeRequest {LEFT, RIGHT, DONE};
-    ChangeRequest changeRequest = ChangeRequest.DONE;
 
     void Start()
     {
@@ -28,14 +30,13 @@ public class SwordController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (changeRequest == ChangeRequest.RIGHT)
+        if (player.IsFacingRight() && !facingRight)
         {
-            changeRequest = ChangeRequest.DONE;
-            spriteRenderer.sprite = rightSprite;
-        } else if(changeRequest == ChangeRequest.LEFT)
+            TurnRight();
+        }
+        if (!player.IsFacingRight() && facingRight)
         {
-            changeRequest = ChangeRequest.DONE;
-            spriteRenderer.sprite = leftSprite;
+            TurnLeft();
         }
     }
 
@@ -44,9 +45,10 @@ public class SwordController : MonoBehaviour
         spriteRenderer.sprite = null;
         boxCollider.enabled = false;
         transform.localPosition = leftPosition;
-        boxCollider.offset = new Vector2(boxColliderLeftXOffset, boxCollider.offset.y);
-        changeRequest = ChangeRequest.LEFT;
+        boxCollider.offset = colliderLeftOffset;
         boxCollider.enabled = true;
+        facingRight = false;
+        spriteRenderer.sprite = leftSprite;
     }
 
     public void TurnRight()
@@ -54,8 +56,9 @@ public class SwordController : MonoBehaviour
         spriteRenderer.sprite = null;
         boxCollider.enabled = false;
         transform.localPosition = rightPosition;
-        boxCollider.offset = new Vector2(boxColliderRightXOffset, boxCollider.offset.y);
-        changeRequest = ChangeRequest.RIGHT;
+        boxCollider.offset = colliderRightOffset;
         boxCollider.enabled = true;
+        facingRight = true;
+        spriteRenderer.sprite = rightSprite;
     }
 }
