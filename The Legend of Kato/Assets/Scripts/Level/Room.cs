@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RoomType { V, H, VH, HV };
+public enum RoomType { V, H, VH, HV, NONE };
 public enum Entrance { TOP, BOTTOM, LEFT, RIGHT };
 
 public class Room : MonoBehaviour
@@ -40,18 +40,29 @@ public class Room : MonoBehaviour
         }
     }
 
-    public void GenerateNext(LevelGenerator lg)
+    public bool GenerateNext(LevelGenerator lg, RoomType request)
     {
+        bool ans = false;
         if (!extended)
         {
-            GenerateLeftRoom(lg);
-            GenerateRightRoom(lg);
-            GenerateBottomRoom(lg);
+            if(GenerateLeftRoom(lg, request))
+            {
+                ans = true; 
+            }
+            if(GenerateRightRoom(lg, request))
+            {
+                ans = true;
+            }
+            if(GenerateBottomRoom(lg, request))
+            {
+                ans = true;
+            }
             extended = true;
         }
+        return ans;
     }
 
-    private void GenerateLeftRoom(LevelGenerator lg)
+    private bool GenerateLeftRoom(LevelGenerator lg, RoomType request)
     {
         if (!blockedLeft)
         {
@@ -60,15 +71,23 @@ public class Room : MonoBehaviour
                 Vector3 newPosition = new Vector3(transform.position.x - roomWidth, transform.position.y, transform.position.z);
                 // Generate H or HV
                 List<Room> candidates = new List<Room>();
-                candidates.AddRange(GetExtendCandidates(RoomType.H, Entrance.RIGHT, lg));
-                candidates.AddRange(GetExtendCandidates(RoomType.HV, Entrance.RIGHT, lg));
+                if (request == RoomType.V)
+                {
+                    candidates.AddRange(GetExtendCandidates(RoomType.HV, Entrance.RIGHT, lg));
+                }
+                if(request == RoomType.H)
+                {
+                    candidates.AddRange(GetExtendCandidates(RoomType.H, Entrance.RIGHT, lg));
+                }
                 Room r = Instantiate(candidates[Random.Range(0, candidates.Count)], newPosition, Quaternion.identity);
                 r.SetEntrance(Entrance.RIGHT);
+                return r.roomType == request;
             }
         }
+        return false;
     }
 
-    private void GenerateRightRoom(LevelGenerator lg)
+    private bool GenerateRightRoom(LevelGenerator lg, RoomType request)
     {
         if (!blockedRight)
         {
@@ -77,15 +96,23 @@ public class Room : MonoBehaviour
                 Vector3 newPosition = new Vector3(transform.position.x + roomWidth, transform.position.y, transform.position.z);
                 // Generate H or HV
                 List<Room> candidates = new List<Room>();
-                candidates.AddRange(GetExtendCandidates(RoomType.H, Entrance.LEFT, lg));
-                candidates.AddRange(GetExtendCandidates(RoomType.HV, Entrance.LEFT, lg));
+                if(request == RoomType.V)
+                {
+                    candidates.AddRange(GetExtendCandidates(RoomType.HV, Entrance.LEFT, lg));
+                }
+                if(request == RoomType.H)
+                {
+                    candidates.AddRange(GetExtendCandidates(RoomType.H, Entrance.LEFT, lg));
+                }
                 Room r = Instantiate(candidates[Random.Range(0, candidates.Count)], newPosition, Quaternion.identity);
                 r.SetEntrance(Entrance.LEFT);
+                return r.roomType == request;
             }
         }
+        return false;
     }
 
-    private void GenerateBottomRoom(LevelGenerator lg)
+    private bool GenerateBottomRoom(LevelGenerator lg, RoomType request)
     {
         if (!blockedBottom)
         {
@@ -94,12 +121,20 @@ public class Room : MonoBehaviour
                 Vector3 newPosition = new Vector3(transform.position.x, transform.position.y - roomHeight, transform.position.z);
                 // Generate V or VH
                 List<Room> candidates = new List<Room>();
-                candidates.AddRange(GetExtendCandidates(RoomType.V, Entrance.TOP, lg));
-                candidates.AddRange(GetExtendCandidates(RoomType.VH, Entrance.TOP, lg));
+                if (request == RoomType.V)
+                {
+                    candidates.AddRange(GetExtendCandidates(RoomType.V, Entrance.TOP, lg));
+                }
+                if(request == RoomType.H)
+                {
+                    candidates.AddRange(GetExtendCandidates(RoomType.VH, Entrance.TOP, lg));
+                }
                 Room r = Instantiate(candidates[Random.Range(0, candidates.Count)], newPosition, Quaternion.identity);
                 r.SetEntrance(Entrance.TOP);
+                return r.roomType == request;
             }
         }
+        return false;
     }
 
     public RoomType GetRoomType()

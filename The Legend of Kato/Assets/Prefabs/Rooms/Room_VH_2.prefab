@@ -2351,7 +2351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1101887696204450519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -550, y: -400, z: 0}
+  m_LocalPosition: {x: 550, y: -400, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2248494792105872741}
@@ -2479,7 +2479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857862085586653465}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -550, y: -600, z: 0}
+  m_LocalPosition: {x: 550, y: -600, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2248494792105872741}
@@ -2592,7 +2592,7 @@ GameObject:
   - component: {fileID: 2248494792105872740}
   - component: {fileID: 5745597786226934693}
   m_Layer: 0
-  m_Name: Room_VH_2
+  m_Name: Room_VH_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2674,14 +2674,14 @@ MonoBehaviour:
   roomID: 2
   blockedTop: 0
   blockedBottom: 1
-  blockedLeft: 1
-  blockedRight: 0
+  blockedLeft: 0
+  blockedRight: 1
   topGates:
   - {x: 0, y: 9}
   bottomGates: []
-  leftGates: []
-  rightGates:
+  leftGates:
   - {x: 1, y: 4}
+  rightGates: []
 --- !u!61 &5745597786226934693
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2735,7 +2735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3828023606100764294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -550, y: -500, z: 0}
+  m_LocalPosition: {x: 550, y: -500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2248494792105872741}
@@ -4655,7 +4655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5515879080957014956}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -550, y: -300, z: 0}
+  m_LocalPosition: {x: 550, y: -300, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2248494792105872741}

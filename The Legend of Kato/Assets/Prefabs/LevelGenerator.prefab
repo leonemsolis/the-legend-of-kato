@@ -50,7 +50,6 @@ MonoBehaviour:
   - {fileID: 3146606663619734917, guid: acc9cca0808154da1b3c28fdff7f70c9, type: 3}
   - {fileID: 3146606663619734917, guid: bb0df4ce44b444dacbb36861dfd0c52a, type: 3}
   vh_rooms:
-  - {fileID: 2248494792105872740, guid: a1d1f7c7cedf847f6b87ebbbdc29d6de, type: 3}
   - {fileID: 2248494792105872740, guid: c168d929e46024335a0bb5a236f721f9, type: 3}
   - {fileID: 2248494792105872740, guid: 30901454c2d2b4050b040c380b952234, type: 3}
   hv_rooms:

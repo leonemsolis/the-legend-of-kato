@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelEraser : MonoBehaviour
 {
     PlayerController player;
-    const float eraseDistance = 2000f;
+    const float eraseDistance = 3000f;
 
     private void Awake()
     {

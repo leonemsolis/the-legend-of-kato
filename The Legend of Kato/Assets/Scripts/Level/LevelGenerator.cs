@@ -9,6 +9,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] public List<Room> vh_rooms;
     [SerializeField] public List<Room> hv_rooms;
 
+    List<RoomType> requests = new List<RoomType>();
+    RoomType currentRequest = RoomType.NONE;
+
     PlayerRoomDetector player;
 
     const float unitSize = 100f;
@@ -20,11 +23,43 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerRoomDetector>();
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        GenerateNextRequest();
     }
 
     private void Update()
     {
-        player.GetCurrentRoom().GenerateNext(this);
+        if(player.GetCurrentRoom().GenerateNext(this, currentRequest))
+        {
+            GenerateNextRequest();
+        }
+    }
+
+    private void GenerateNextRequest()
+    {
+        if (requests.Count > 1)
+        {
+            if (currentRequest != RoomType.NONE)
+            {
+                requests.Remove(currentRequest);
+            }
+            currentRequest = requests[Random.Range(0, requests.Count)];
+        }
+        else
+        {
+            currentRequest = RoomType.V;
+        }
     }
 
 }

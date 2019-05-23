@@ -20,20 +20,27 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-
-        Vector3 destination = Vector3.zero;
-        switch(roomDetector.GetCurrentRoom().GetRoomType())
+        float camY = 0f;
+        switch (roomDetector.GetCurrentRoom().GetRoomType())
         {
             case RoomType.V:
-                float shiftedY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom;
-                destination = new Vector3(roomDetector.GetCurrentRoom().transform.position.x, shiftedY, transform.position.z);
+            case RoomType.HV:
+                camY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom;
                 break;
             case RoomType.H:
             case RoomType.VH:
-            case RoomType.HV:
-                destination = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+                if(player.transform.position.y - roomDetector.GetCurrentRoom().transform.position.y > 0)
+                {
+                    camY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom;
+                }
+                else
+                {
+                    camY = roomDetector.GetCurrentRoom().transform.position.y + Camera.main.orthographicSize - 750f - 400f;
+                }
                 break;
         }
+
+        Vector3 destination = new Vector3(roomDetector.GetCurrentRoom().transform.position.x, camY, transform.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, destination, ref v, delayTime);
     }
 }
