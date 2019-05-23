@@ -23,18 +23,7 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerRoomDetector>();
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
+        ResetRequests();
         GenerateNextRequest();
     }
 
@@ -48,18 +37,31 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateNextRequest()
     {
-        if (requests.Count > 1)
+        if (currentRequest != RoomType.NONE)
         {
-            if (currentRequest != RoomType.NONE)
-            {
-                requests.Remove(currentRequest);
-            }
-            currentRequest = requests[Random.Range(0, requests.Count)];
+            requests.Remove(currentRequest);
         }
-        else
+        currentRequest = requests[Random.Range(0, requests.Count)];
+        if (requests.Count == 1)
         {
-            currentRequest = RoomType.V;
+            ResetRequests();
         }
+    }
+
+    private void ResetRequests()
+    {
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
+        requests.Add(RoomType.V);
     }
 
 }

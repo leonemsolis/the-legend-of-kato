@@ -15,7 +15,10 @@ public class EnemyHitBox : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = enemyTransform.position;
+        if(enemyTransform != null)
+        {
+            transform.position = enemyTransform.position;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,6 +32,13 @@ public class EnemyHitBox : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             FindObjectOfType<Health>().TakeDamage();
+        }
+        if(collision.gameObject.tag == "Boots")
+        {
+            FindObjectOfType<PlayerController>().KillHop();
+            FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
+            Destroy(enemyTransform.gameObject);
+            Destroy(gameObject);
         }
     }
 

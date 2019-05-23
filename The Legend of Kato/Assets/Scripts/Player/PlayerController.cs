@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     float hoverTime = 0f;
     const float jumpForce = 2000f;
     const float hoverForce = 200f;
+    const float hopForce = 2000f;
 
 
     bool facingRight = true;
@@ -131,5 +132,11 @@ public class PlayerController : MonoBehaviour
     public bool IsFacingRight()
     {
         return facingRight;
+    }
+
+    public void KillHop()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, hopForce);
+        jumpState = JumpState.FALLING;
     }
 }
