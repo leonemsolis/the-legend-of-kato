@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2088299524304712173}
   - component: {fileID: 2088299524304712170}
   - component: {fileID: 2088299524304712169}
+  - component: {fileID: 87436672817044437}
   m_Layer: 10
   m_Name: Platform
   m_TagString: Platform
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2088299524304712168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -70,12 +71,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2e6e55f6da3e846adb4891486db7372b, type: 3}
-  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
+  m_Sprite: {fileID: 21300002, guid: 2b12d89f60b3e4b0997dab01d19077fd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 100, y: 100}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -115,16 +116,33 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 100, y: 100}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 100, y: 100}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100, y: 100}
+  m_Size: {x: 100, y: 50}
   m_EdgeRadius: 0
+--- !u!114 &87436672817044437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088299524304712168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f53d1312b7b4fbf9a35d2151688d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 2b12d89f60b3e4b0997dab01d19077fd, type: 3}
+  - {fileID: 21300002, guid: 2b12d89f60b3e4b0997dab01d19077fd, type: 3}
+  - {fileID: 21300004, guid: 2b12d89f60b3e4b0997dab01d19077fd, type: 3}
+  - {fileID: 21300006, guid: 2b12d89f60b3e4b0997dab01d19077fd, type: 3}

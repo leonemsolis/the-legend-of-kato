@@ -239,12 +239,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 4c3d64937500c46f8838d4e272e837c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 845f0cb0a8c2843bc9469c501fde57f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 100, y: 100}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -283,8 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864d701452dc04bdaa10cfd6a59d0bf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightSprite: {fileID: 21300000, guid: 4c3d64937500c46f8838d4e272e837c7, type: 3}
-  leftSprite: {fileID: 21300000, guid: 8ba23ceeb3c374e60b535e59ba04cd70, type: 3}
+  rightSprite: {fileID: 21300000, guid: 845f0cb0a8c2843bc9469c501fde57f9, type: 3}
+  leftSprite: {fileID: 21300000, guid: 809c1452b97d64ea5b535d428114b531, type: 3}
 --- !u!70 &5031170166555891309
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -298,8 +298,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -3.0360947}
-  m_Size: {x: 66.10623, y: 93.65181}
+  m_Offset: {x: 0, y: -1.4774437}
+  m_Size: {x: 66.10623, y: 96.7691}
   m_Direction: 0
 --- !u!114 &5031170165657836657
 MonoBehaviour:
@@ -359,8 +359,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.01}
-  m_Size: {x: 50, y: 90}
+  m_Offset: {x: -0.25978088, y: 2.3479576}
+  m_Size: {x: 56.75421, y: 95.71496}
   m_Direction: 0
 --- !u!50 &1263097308
 Rigidbody2D:

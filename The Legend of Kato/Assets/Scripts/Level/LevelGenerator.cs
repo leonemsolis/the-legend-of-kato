@@ -50,19 +50,10 @@ public class LevelGenerator : MonoBehaviour
 
     private void ResetRequests()
     {
-        //requests.Add(RoomType.H);
-        //requests.Add(RoomType.H);
-        //requests.Add(RoomType.H);
-        //requests.Add(RoomType.H);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-        //requests.Add(RoomType.V);
-
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
+        requests.Add(RoomType.H);
         requests.Add(RoomType.V);
         requests.Add(RoomType.V);
         requests.Add(RoomType.V);

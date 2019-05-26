@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6781305431247829082}
   - component: {fileID: 6781305431247829085}
   - component: {fileID: 6781305431247829084}
+  - component: {fileID: 3960088026757412073}
   m_Layer: 11
   m_Name: Wall
   m_TagString: Wall
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 2e6e55f6da3e846adb4891486db7372b, type: 3}
+  m_Sprite: {fileID: 21300002, guid: ddd471c6057344be49a36e24e899517d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,3 +129,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &3960088026757412073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781305431247829087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f53d1312b7b4fbf9a35d2151688d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: 21300002, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: 21300004, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: 21300006, guid: ddd471c6057344be49a36e24e899517d, type: 3}

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6805368227201684565}
   - component: {fileID: 2996100211186574635}
+  - component: {fileID: 7833863497921790485}
   m_Layer: 0
   m_Name: WallSprite
   m_TagString: Untagged
@@ -68,8 +69,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b32beaf4e609f40a8aad5e3943437e82, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.24313726}
+  m_Sprite: {fileID: 21300000, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.101960786}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -79,3 +80,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7833863497921790485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4790122279226358953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f53d1312b7b4fbf9a35d2151688d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: 21300002, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: 21300004, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: 21300006, guid: ddd471c6057344be49a36e24e899517d, type: 3}
