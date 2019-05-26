@@ -48,7 +48,7 @@ MonoBehaviour:
   - {fileID: 4252082576681226360, guid: 0f668dd03f78849b0a6a2e19c3051e90, type: 3}
   h_rooms:
   - {fileID: 3146606663619734917, guid: acc9cca0808154da1b3c28fdff7f70c9, type: 3}
-  - {fileID: 3146606663619734917, guid: bb0df4ce44b444dacbb36861dfd0c52a, type: 3}
+  - {fileID: 3146606663619734917, guid: 92f7e814d8d3b46518f90bfbca2a258d, type: 3}
   vh_rooms:
   - {fileID: 2248494792105872740, guid: c168d929e46024335a0bb5a236f721f9, type: 3}
   - {fileID: 2248494792105872740, guid: 30901454c2d2b4050b040c380b952234, type: 3}

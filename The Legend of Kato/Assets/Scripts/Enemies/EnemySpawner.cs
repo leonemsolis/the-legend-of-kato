@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject shark;
     SpriteRenderer spriteRenderer;
     bool spawning = false;
+    const float spawnDelay = 1f;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemyCoroutine()
     {
         spawning = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(spawnDelay);
         GameObject g = Instantiate(shark, transform.position, Quaternion.identity);
         g.transform.parent = transform;
         spawning = false;

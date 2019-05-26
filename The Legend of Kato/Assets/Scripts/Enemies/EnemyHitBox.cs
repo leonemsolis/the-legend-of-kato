@@ -7,6 +7,7 @@ public class EnemyHitBox : MonoBehaviour
     BoxCollider2D boxCollider;
     Transform enemyTransform;
     bool facingRight = true;
+    bool dead = false;
 
     private void Awake()
     {
@@ -23,23 +24,29 @@ public class EnemyHitBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Sword")
+        if(!dead)
         {
-            FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
-            Destroy(enemyTransform.gameObject);
-            Destroy(gameObject);
+            if (collision.gameObject.tag == "Sword")
+            {
+                Die();
+            }
+            if (collision.gameObject.tag == "Boots")
+            {
+                Die();
+            }
+            if (collision.gameObject.tag == "Body")
+            {
+                FindObjectOfType<Health>().TakeDamage();
+            }
         }
-        if (collision.gameObject.tag == "Player")
-        {
-            FindObjectOfType<Health>().TakeDamage();
-        }
-        if(collision.gameObject.tag == "Boots")
-        {
-            FindObjectOfType<PlayerController>().KillHop();
-            FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
-            Destroy(enemyTransform.gameObject);
-            Destroy(gameObject);
-        }
+    }
+
+    private void Die()
+    {
+        FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
+        dead = true;
+        Destroy(enemyTransform.gameObject);
+        Destroy(gameObject);
     }
 
     public void SetFacingRight(bool val)

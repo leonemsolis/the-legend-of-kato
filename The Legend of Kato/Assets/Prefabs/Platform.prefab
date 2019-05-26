@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2088299524304712172}
   - component: {fileID: 2088299524304712173}
   - component: {fileID: 2088299524304712170}
-  - component: {fileID: 5895443337195909376}
-  - component: {fileID: 6765826027885625541}
   - component: {fileID: 2088299524304712169}
   m_Layer: 10
   m_Name: Platform
@@ -30,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2088299524304712168}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,42 +102,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &5895443337195909376
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088299524304712168}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.5, y: -0.5}
-  - {x: -0.5, y: 0.47}
-  - {x: -0.4104175, y: 0.5}
-  - {x: 0.37317848, y: 0.5}
-  - {x: 0.5, y: 0.47}
-  - {x: 0.5, y: -0.5}
-  - {x: -0.5, y: -0.5}
---- !u!114 &6765826027885625541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088299524304712168}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7257fc5556ae94d6d928ddcc489c6867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingObject: 0
 --- !u!61 &2088299524304712169
 BoxCollider2D:
   m_ObjectHideFlags: 0

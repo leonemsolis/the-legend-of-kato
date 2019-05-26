@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum JumpState {GROUNDED, JUMPING, FALLING};
+enum JumpType { FIRST, SECOND, NONE };
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,13 +13,8 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
 
-    JumpState jumpState = JumpState.FALLING;
-    public static readonly float maxHoverDuration = 2f;
-    float hoverTime = 0f;
+    JumpType jumpType = JumpType.FIRST;
     const float jumpForce = 2000f;
-    const float hoverForce = 200f;
-    const float hopForce = 2000f;
-
 
     bool facingRight = true;
 
@@ -33,6 +28,7 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        //Time.timeScale = .2f;
     }
 
     private void FixedUpdate()
@@ -60,15 +56,9 @@ public class PlayerController : MonoBehaviour
         //Debug.DrawLine(originLeft, originLeft + direction * minJumpAllowDistance, Color.red);
         //Debug.DrawLine(originRight, originRight + direction * minJumpAllowDistance, Color.red);
 
-        if(leftHit || rightHit)
+        if((leftHit || rightHit) && rb.velocity.y <= 0)
         {
-            jumpState = JumpState.GROUNDED;
-            hoverTime = maxHoverDuration;
-        }
-
-        if(rb.velocity.y < -1f)
-        {
-            jumpState = JumpState.FALLING;
+            jumpType = JumpType.FIRST;
         }
     }
 
@@ -104,39 +94,23 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-        if (jumpState == JumpState.GROUNDED)
+        switch(jumpType)
         {
-            jumpState = JumpState.JUMPING;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            case JumpType.SECOND:
+                jumpType = JumpType.NONE;
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                break;
+            case JumpType.FIRST:
+                jumpType = JumpType.SECOND;
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                break;
+            case JumpType.NONE:
+                break;
         }
-        else
-        {
-            if(jumpState == JumpState.FALLING)
-            {
-                if(hoverTime > 0)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, hoverForce);
-                    hoverTime -= Time.deltaTime;
-                }
-            }
-        }
-    }
-
-    public float GetRemainHoverTime()
-    {
-        float oneSegment = maxHoverDuration / 4f;
-        int segmented = (int)(Mathf.Ceil(hoverTime / oneSegment));
-        return segmented / maxHoverDuration;
     }
 
     public bool IsFacingRight()
     {
         return facingRight;
-    }
-
-    public void KillHop()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, hopForce);
-        jumpState = JumpState.FALLING;
     }
 }

@@ -8,7 +8,6 @@ public class ButtonActive : MonoBehaviour
     readonly RuntimePlatform platform = Application.platform;
     Pause pause;
     SpriteRenderer spriteRenderer;
-    bool pressed = false;
 
     Color defaultColor = new Color(0.0627451f, 0.3686275f, 0.6941177f, 0.8941177f);
     Color pressedColor = new Color(0.0627451f, 0.3686275f, 0.4941177f, 0.8941177f);
@@ -22,73 +21,13 @@ public class ButtonActive : MonoBehaviour
 
     void Update()
     {
-        if(pause.IsGameRunning())
-        {
-            UpdateRunning();
-        }
-        else
-        {
-            UpdatePause();
-        }
-    }
-
-    private void UpdateRunning()
-    {
-        if (pressed) { player.Jump(); spriteRenderer.color = pressedColor; }
-        else { spriteRenderer.color = defaultColor; }
-
-
-        if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
-        {
-            bool checkPressed = false;
-            for (int i = 0; i < Input.touchCount; ++i)
-            {
-                if (Input.GetTouch(i).phase != TouchPhase.Ended && Input.GetTouch(i).phase != TouchPhase.Canceled)
-                {
-                    checkPressed = checkPressed || CheckTouch(Input.GetTouch(i).position);
-                }
-            }
-            pressed = checkPressed;
-        }
-        else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                if (CheckTouch(Input.mousePosition))
-                {
-                    pressed = true;
-                }
-            }
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (CheckTouch(Input.mousePosition))
-                {
-                    pressed = false;
-                }
-            }
-            if(Input.GetKey(KeyCode.L))
-            {
-                pressed = true;
-            }
-            if(Input.GetKeyUp(KeyCode.L))
-            {
-                pressed = false;
-            }
-        }
-    }
-
-    private void UpdatePause()
-    {
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
         {
             for (int i = 0; i < Input.touchCount; ++i)
             {
                 if (Input.GetTouch(i).phase == TouchPhase.Began)
                 {
-                    if(CheckTouch(Input.GetTouch(i).position))
-                    {
-                        ClickInPause();
-                    }
+                    CheckTouch(Input.GetTouch(i).position);
                 }
             }
         }
@@ -96,35 +35,43 @@ public class ButtonActive : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if(CheckTouch(Input.mousePosition))
-                {
-                    ClickInPause();
-                }
+                CheckTouch(Input.mousePosition);
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                ClickInPause();
+                TouchButton();
             }
         }
     }
 
-    private bool CheckTouch(Vector3 pos)
+    private void CheckTouch(Vector3 pos)
     {
         Vector3 wp = Camera.main.ScreenToWorldPoint(pos);
         Vector2 touchPos = new Vector2(wp.x, wp.y);
         Collider2D hit = Physics2D.OverlapPoint(touchPos);
-        if (hit == gameObject.GetComponent<Collider2D>())
+
+        if (hit && hit == gameObject.GetComponent<Collider2D>())
         {
-            return true;
+            TouchButton();
         }
-        return false;
     }
 
 
-
-    private void ClickInPause()
+    private void TouchButton()
     {
-        FindObjectOfType<PausePanel>().Activate();
+        Blink();
+        if (pause.IsGameRunning())
+        {
+            player.Jump();
+        }
+        else
+        {
+            FindObjectOfType<PausePanel>().Activate();
+        }
+    }
+
+    public void Blink()
+    {
         spriteRenderer.color = pressedColor;
         StartCoroutine(ResetColor());
     }

@@ -9,6 +9,7 @@ TagManager:
   - Sword
   - Enemy
   - Boots
+  - Body
   layers:
   - Default
   - TransparentFX

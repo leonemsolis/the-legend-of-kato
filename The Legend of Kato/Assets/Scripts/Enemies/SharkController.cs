@@ -80,6 +80,8 @@ public class SharkController : MonoBehaviour
             {
                 moveForce = activeMoveForce;
                 maxSpeed = activeMaxSpeed;
+                // Update timer each frame shark see player, in order to chase in current direction
+                changeDirTimer = minChangeDirTime;
             }
             else
             {
