@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿#pragma warning disable 0649
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +10,8 @@ public class SharkController : MonoBehaviour
     [SerializeField] Sprite rightSprite;
     [SerializeField] EnemyHitBox myHitBox;
 
-    Camera cam;
     Rigidbody2D rb;
     PlayerController player;
-    Collider2D boxCollider;
     SpriteRenderer spriteRenderer;
 
     const float minChangeDirTime = .4f;
@@ -36,14 +36,11 @@ public class SharkController : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main;
         player = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         myHitBox = Instantiate(myHitBox);
-        myHitBox.SetEnemy(gameObject.transform);
-        myHitBox.SetFacingRight(facingRight);
+        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, -.03f), new Vector2(1f, .93f));
 
         if(Random.Range(0f, 1f) > .5f)
         {
@@ -150,6 +147,5 @@ public class SharkController : MonoBehaviour
     {
         facingRight = !facingRight;
         spriteRenderer.sprite = facingRight ? rightSprite : leftSprite;
-        myHitBox.SetFacingRight(facingRight);
     }
 }

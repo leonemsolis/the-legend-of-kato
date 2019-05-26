@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHitBox : MonoBehaviour
+public class EnemyHitBox : MonoBehaviour 
 {
-    BoxCollider2D boxCollider;
     Transform enemyTransform;
-    bool facingRight = true;
-    bool dead = false;
-
-    private void Awake()
-    {
-        boxCollider = GetComponent<BoxCollider2D>();
-    }
+    //bool dead = false;
 
     private void FixedUpdate()
     {
@@ -22,40 +15,38 @@ public class EnemyHitBox : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(!dead)
-        {
-            if (collision.gameObject.tag == "Sword")
-            {
-                Die();
-            }
-            if (collision.gameObject.tag == "Boots")
-            {
-                Die();
-            }
-            if (collision.gameObject.tag == "Body")
-            {
-                FindObjectOfType<Health>().TakeDamage();
-            }
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(!dead)
+    //    {
+    //        if (collision.gameObject.tag == "Sword")
+    //        {
+    //            Die();
+    //        }
+    //        if (collision.gameObject.tag == "Boots")
+    //        {
+    //            Die();
+    //        }
+    //        if (collision.gameObject.tag == "Body")
+    //        {
+    //            FindObjectOfType<Health>().TakeDamage();
+    //        }
+    //    }
+    //}
 
-    private void Die()
+    public void Die()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
         FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
-        dead = true;
+        //dead = true;
         Destroy(enemyTransform.gameObject);
         Destroy(gameObject);
     }
 
-    public void SetFacingRight(bool val)
-    {
-        facingRight = val;
-    }
-
-    public void SetEnemy(Transform enemy)
+    public void SetEnemy(Transform enemy, Vector2 offset, Vector2 size)
     {
         enemyTransform = enemy;
-    }
+        GetComponent<BoxCollider2D>().offset = offset;
+        GetComponent<BoxCollider2D>().size = size;
+	}
 }

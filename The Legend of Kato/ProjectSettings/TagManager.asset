@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - Boots
   - Body
+  - EnemyHitBox
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -26,9 +28,9 @@ TagManager:
   - EnemyHitBox
   - Sword
   - Eraser
-  - 
-  - 
-  - 
+  - Projectile
+  - EnemyInvulnerable
+  - RoomStuff
   - 
   - 
   - 
