@@ -7,8 +7,10 @@ using UnityEngine;
 public class PauseButton : MonoBehaviour
 {
     readonly RuntimePlatform platform = Application.platform;
-    [SerializeField] Sprite pause;
-    [SerializeField] Sprite cont;
+    [SerializeField] Sprite pauseDown;
+    [SerializeField] Sprite pauseUp;
+    [SerializeField] Sprite contDown;
+    [SerializeField] Sprite contUp;
     SpriteRenderer spriteRenderer;
 
     void Start()
@@ -57,19 +59,21 @@ public class PauseButton : MonoBehaviour
     {
         if (GetComponent<Pause>().IsGameRunning())
         {
-            spriteRenderer.sprite = cont;
+            spriteRenderer.sprite = pauseDown;
+            StartCoroutine(ResetButton(true));
             GetComponent<Pause>().PauseGame();
         }
         else
         {
-            spriteRenderer.sprite = pause;
+            spriteRenderer.sprite = contDown;
+            StartCoroutine(ResetButton(false));
             GetComponent<Pause>().ResumeGame();
         }
     }
 
-    private IEnumerator ResetColor()
+    private IEnumerator ResetButton(bool pausePressed)
     {
-        yield return new WaitForSeconds(.1f);
-        spriteRenderer.color = new Color(1f, 1f, 1f, 0.8941177f);
+        yield return new WaitForSecondsRealtime(.1f);
+        spriteRenderer.sprite = pausePressed ? contUp : pauseUp;
     }
 }

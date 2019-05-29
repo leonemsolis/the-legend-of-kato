@@ -14,10 +14,8 @@ public class SwordController : MonoBehaviour
 
     Vector3 rightPosition = new Vector3(100f, 0f, 0f);
     Vector3 leftPosition = new Vector3(-100f, 0f, 0f);
-    Vector3 bottomPosition = new Vector3(0f, -100f, 0f);
-    Vector2 colliderRightOffset = new Vector2(-25.18227f, -15.7839f);
-    Vector2 colliderLeftOffset = new Vector2(25.18227f, -15.7839f);
-    Vector2 colliderBottomOffset = new Vector2(0f, 30f);
+    Vector2 colliderRightOffset = new Vector2(-18.90197f, -12.52582f);
+    Vector2 colliderLeftOffset = new Vector2(18.90197f, -12.52582f);
 
     PlayerController player;
     BoxCollider2D boxCollider;

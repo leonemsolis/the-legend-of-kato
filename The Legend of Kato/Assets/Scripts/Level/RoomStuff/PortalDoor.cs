@@ -14,7 +14,7 @@ public class PortalDoor : MonoBehaviour
 
     void Update()
     {
-        Vector2 origin = transform.position;
+        Vector2 origin = transform.position + new Vector3(0f, -25f, 0f);
         float distance = 30f;
         LayerMask collisionMask = 1 << LayerMask.NameToLayer("Sword");
         RaycastHit2D hitLeft = Physics2D.Raycast(origin, Vector2.left, distance, collisionMask);

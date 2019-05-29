@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Sprite rightSprite;
 	[SerializeField] Sprite leftSprite;
 
+    Animator animator;
 	Rigidbody2D rb;
 	SpriteRenderer spriteRenderer;
 	BoxCollider2D boxCollider;
@@ -25,15 +26,48 @@ public class PlayerController : MonoBehaviour
 	const float moveForce = 29200f;
 	const float maxSpeed = 80f;
 
-	private void Awake ()
+    const int ANIMATION_RIGHT_WALK = 0;
+    const int ANIMATION_LEFT_WALK = 1;
+    const int ANIMATION_LEFT_JUMP = 2;
+    const int ANIMATION_RIGHT_JUMP = 3;
+
+    private void Awake ()
 	{
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		rb = GetComponent<Rigidbody2D> ();
 		boxCollider = GetComponent<BoxCollider2D> ();
+        animator = GetComponent<Animator>();
 		//Time.timeScale = .2f;
 	}
 
-	private void FixedUpdate ()
+    private void Update()
+    {
+        bool grounded = Mathf.Abs(rb.velocity.y) < Mathf.Epsilon;
+        if(grounded)
+        {
+            if (facingRight)
+            {
+                SetAnimation(ANIMATION_RIGHT_WALK);
+            }
+            else
+            {
+                SetAnimation(ANIMATION_LEFT_WALK);
+            }
+        }
+        else
+        {
+            if(facingRight)
+            {
+                SetAnimation(ANIMATION_RIGHT_JUMP);
+            }
+            else
+            {
+                SetAnimation(ANIMATION_LEFT_JUMP);
+            }
+        }
+    }
+
+    private void FixedUpdate ()
 	{
 		if (facingRight) {
 			rb.AddForce (Vector2.right * moveForce);
@@ -104,4 +138,13 @@ public class PlayerController : MonoBehaviour
 	{
 		return facingRight;
 	}
+
+
+    private void SetAnimation(int animation_index)
+    {
+        animator.SetInteger("animation_state", animation_index);
+    }
+
+
+
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ButtonMove : MonoBehaviour
 {
+    [SerializeField] Sprite up;
+    [SerializeField] Sprite down;
+
     Pause pause;
     PlayerController player;
     readonly RuntimePlatform platform = Application.platform;
     SpriteRenderer spriteRenderer;
-
-    Color defaultColor = new Color(0.5686275f, 0.09411766f, 0.1215686f, 0.8941177f);
-    Color pressedColor = new Color(0.3686275f, 0.09411766f, 0.1215686f, 0.8941177f);
 
     private void Start()
     {
@@ -58,7 +58,7 @@ public class ButtonMove : MonoBehaviour
 
     private void TouchButton()
     {
-        Blink();
+        PressButton();
         if (pause.IsGameRunning())
         {
             player.ChangeDirection();
@@ -69,15 +69,15 @@ public class ButtonMove : MonoBehaviour
         }
     }
 
-    public void Blink()
+    public void PressButton()
     {
-        spriteRenderer.color = pressedColor;
-        StartCoroutine(ResetColor());
+        spriteRenderer.sprite = down;
+        StartCoroutine(ResetButton());
     }
 
-    private IEnumerator ResetColor()
+    private IEnumerator ResetButton()
     {
         yield return new WaitForSecondsRealtime(.1f);
-        spriteRenderer.color = defaultColor;
+        spriteRenderer.sprite = up;
     }
 }

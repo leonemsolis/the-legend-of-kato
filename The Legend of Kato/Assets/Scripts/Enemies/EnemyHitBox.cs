@@ -49,4 +49,9 @@ public class EnemyHitBox : MonoBehaviour
         GetComponent<BoxCollider2D>().offset = offset;
         GetComponent<BoxCollider2D>().size = size;
 	}
+
+    public string GetInfo()
+    {
+        return enemyTransform.position.ToString();
+    }
 }
