@@ -9,8 +9,6 @@ public class PauseButton : MonoBehaviour
     readonly RuntimePlatform platform = Application.platform;
     [SerializeField] Sprite pauseDown;
     [SerializeField] Sprite pauseUp;
-    [SerializeField] Sprite contDown;
-    [SerializeField] Sprite contUp;
     SpriteRenderer spriteRenderer;
 
     void Start()
@@ -60,20 +58,12 @@ public class PauseButton : MonoBehaviour
         if (GetComponent<Pause>().IsGameRunning())
         {
             spriteRenderer.sprite = pauseDown;
-            StartCoroutine(ResetButton(true));
             GetComponent<Pause>().PauseGame();
         }
         else
         {
-            spriteRenderer.sprite = contDown;
-            StartCoroutine(ResetButton(false));
+            spriteRenderer.sprite = pauseUp;
             GetComponent<Pause>().ResumeGame();
         }
-    }
-
-    private IEnumerator ResetButton(bool pausePressed)
-    {
-        yield return new WaitForSecondsRealtime(.1f);
-        spriteRenderer.sprite = pausePressed ? contUp : pauseUp;
     }
 }

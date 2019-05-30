@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1381242364259789214}
   - component: {fileID: 1381242364259789210}
   - component: {fileID: 1381242364259789209}
+  - component: {fileID: 1208418533607881329}
   m_Layer: 9
   m_Name: Shark
   m_TagString: Enemy
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: 6e54a3f824e104e2e80f516212068a1d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cb159e7f893f416fb5e0a53ffcf0e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,3 +136,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -3.258976}
   m_Size: {x: 79.85416, y: 93.48237}
   m_Direction: 0
+--- !u!95 &1208418533607881329
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381242364259789211}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa3c11608ca5f45fdafe0e6b13049805, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

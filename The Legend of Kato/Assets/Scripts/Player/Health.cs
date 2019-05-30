@@ -8,8 +8,8 @@ public class Health : MonoBehaviour
     int currentHealth = 3;
     bool canTakeDamage = true;
     SpriteRenderer playerSpriteRenderer;
-    Color emptyColor = new Color(0.6037736f, 0.2022072f, 0.2022072f, 0.8941177f);
-    Color fullColor = new Color(1f, 1f, 1f, 0.8941177f);
+    Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
+    Color fullColor = new Color(1f, 1f, 1f, 1f);
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
         {
             currentHealth = 3;
         }
-        transform.GetChild(currentHealth - 1).GetComponent<SpriteRenderer>().color = emptyColor;
+        transform.GetChild(currentHealth - 1).GetComponent<SpriteRenderer>().color = fullColor;
     }
 
     public void TakeDamage()
@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
         if (canTakeDamage)
         {
             currentHealth--;
-            transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = fullColor;
+            transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
             StartCoroutine(ResetInvulnerable());
