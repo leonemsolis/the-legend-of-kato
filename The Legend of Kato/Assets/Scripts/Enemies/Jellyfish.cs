@@ -41,6 +41,7 @@ public class Jellyfish : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = movingRight ? right : left;
         direction = movingRight ? Vector3.right : Vector3.left;
+        GetComponent<Animator>().SetBool("moving_right", movingRight);
     }
 
 }

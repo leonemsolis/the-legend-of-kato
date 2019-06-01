@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: 948bd54b76bbd44469e1baa6d47b5912
+guid: 7aa937c20abe14fdea312b99fe976edf
 TextureImporter:
   fileIDToRecycleName:
-    21300000: jellyfish_right_0
-    21300002: jellyfish_right_1
-    21300004: jellyfish_right_2
-    21300006: jellyfish_right_3
+    21300000: char_left_0
+    21300002: char_left_1
+    21300004: char_left_2
+    21300006: char_left_3
+    21300008: char_left_4
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -110,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jellyfish_right_0
+      name: char_left_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,13 +125,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74ca41e14f5d441e8926da68d1aae949
+      spriteID: c5f677d589b8d46ae948cf15bfe02683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jellyfish_right_1
+      name: char_left_1
       rect:
         serializedVersion: 2
         x: 16
@@ -144,13 +145,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d78bbd36ee914d1191f52aa79b701fb
+      spriteID: ac789da461f234859bc07a099c06f1fe
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jellyfish_right_2
+      name: char_left_2
       rect:
         serializedVersion: 2
         x: 32
@@ -164,13 +165,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e96f82f43806442f8af5cc2f08e5a14
+      spriteID: 0eb979383c76941c9b0732a3346d507f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jellyfish_right_3
+      name: char_left_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,7 +185,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2860d33fcd1f644cdaa27a18f2df0fe7
+      spriteID: be7231227674b48dcb87668cf46fe7ec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: char_left_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ced7d717c85f417d8964181c2e65601
       vertices: []
       indices: 
       edges: []
@@ -192,12 +213,12 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 625a58d937b0b4b9389340dae030cfb2
+    spriteID: 4e2cfecece4ea40a59d6ea3c60c93615
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: jellyfish
+  spritePackingTag: player
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
