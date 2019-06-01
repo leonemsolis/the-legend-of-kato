@@ -9,8 +9,8 @@ TagManager:
   - Boots
   - Body
   - EnemyHitBox
-  - Projectile
   - Block
+  - InvulnirableEnemyHitBox
   layers:
   - Default
   - TransparentFX

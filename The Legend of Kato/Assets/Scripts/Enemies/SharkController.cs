@@ -10,7 +10,6 @@ public class SharkController : MonoBehaviour
 
     Rigidbody2D rb;
     PlayerController player;
-    SpriteRenderer spriteRenderer;
     Animator animator;
 
     const float minChangeDirTime = .4f;
@@ -37,7 +36,6 @@ public class SharkController : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         myHitBox = Instantiate(myHitBox);
         myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, -.03f), new Vector2(1f, .93f));
         animator = GetComponent<Animator>();

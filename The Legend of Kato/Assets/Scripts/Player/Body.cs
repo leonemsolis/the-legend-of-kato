@@ -21,7 +21,7 @@ public class Body : MonoBehaviour
         {
             FindObjectOfType<Health>().TakeDamage();
         }
-        if(collision.tag == "Projectile")
+        if(collision.tag == "InvulnirableEnemyHitBox")
         {
             FindObjectOfType<Health>().TakeDamage();
         }
