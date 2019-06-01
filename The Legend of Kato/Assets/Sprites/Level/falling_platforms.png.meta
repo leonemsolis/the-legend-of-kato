@@ -1,17 +1,11 @@
 fileFormatVersion: 2
-guid: 4d36d93a26c4940f0adaf19f27625836
+guid: 9d17a76af8ca14d4eb8a3ff90a02a75d
 TextureImporter:
   fileIDToRecycleName:
-    21300000: char_animation_0
-    21300002: char_animation_1
-    21300004: char_animation_2
-    21300006: char_animation_3
-    21300008: char_animation_4
-    21300010: char_animation_5
-    21300012: char_animation_6
-    21300014: char_animation_7
-    21300016: char_animation_8
-    21300018: char_animation_9
+    21300000: falling_platforms_0
+    21300002: falling_platforms_1
+    21300004: falling_platforms_2
+    21300006: falling_platforms_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -116,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: char_animation_0
+      name: falling_platforms_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,13 +124,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f636a76426ac4f8e85bd6863d7b249f
+      spriteID: 370a501e60d4043289ff8657c451c8fc
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_animation_1
+      name: falling_platforms_1
       rect:
         serializedVersion: 2
         x: 16
@@ -150,73 +144,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce80498a5bb504ce6a027aa7208becd8
+      spriteID: 874b0efde0eef4f63ae7a2e57c99173a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_animation_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 585df1589e17a43a9bca5c2cadc371b5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_animation_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa7145955fa81457c83c0a6a5f1b2493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_animation_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78e8aa42fc7dc4811b756f3389920e64
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_animation_5
+      name: falling_platforms_2
       rect:
         serializedVersion: 2
         x: 0
@@ -230,13 +164,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa1512d17c31549c1bc84f5b34a3881f
+      spriteID: 52292a13a9a294f65981d6a9a443e95c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: char_animation_6
+      name: falling_platforms_3
       rect:
         serializedVersion: 2
         x: 16
@@ -250,67 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0530cdda5eab47ab9a5afee4bfd9a59
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_animation_7
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c10f9475a631847b6b3b258661822c16
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_animation_8
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 564e6efdc82cb4a56937476a5da9bb6c
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: char_animation_9
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d1cb15fbe0b5a46c2b6b4f6df36bfcc6
+      spriteID: e37c1a9c050d142fea7bf316bbfe740b
       vertices: []
       indices: 
       edges: []
@@ -318,12 +192,12 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: a87fb92ec5f4f47c9aa051182ed36910
+    spriteID: d84c3b3b09f3e4861a11fb19e0268562
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: char
+  spritePackingTag: falling_half_blocks
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
