@@ -6,17 +6,18 @@ public class ButtonActive : MonoBehaviour
 {
     [SerializeField] Sprite up;
     [SerializeField] Sprite down;
-
     PlayerController player;
     readonly RuntimePlatform platform = Application.platform;
     Pause pause;
     SpriteRenderer spriteRenderer;
+    ButtonClickSound clickSound;
 
     private void Start()
     {
         pause = FindObjectOfType<Pause>();
         player = FindObjectOfType<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        clickSound = GetComponent<ButtonClickSound>();
     }
 
     void Update()
@@ -72,6 +73,7 @@ public class ButtonActive : MonoBehaviour
 
     public void PressButton()
     {
+        clickSound.PlayClick();
         spriteRenderer.sprite = down;
         StartCoroutine(ResetButton());
     }

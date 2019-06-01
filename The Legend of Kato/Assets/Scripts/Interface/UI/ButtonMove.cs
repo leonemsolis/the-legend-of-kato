@@ -11,12 +11,15 @@ public class ButtonMove : MonoBehaviour
     PlayerController player;
     readonly RuntimePlatform platform = Application.platform;
     SpriteRenderer spriteRenderer;
+    ButtonClickSound clickSound;
+
 
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
         pause = FindObjectOfType<Pause>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        clickSound = GetComponent<ButtonClickSound>();
     }
 
     void Update()
@@ -71,6 +74,7 @@ public class ButtonMove : MonoBehaviour
 
     public void PressButton()
     {
+        clickSound.PlayClick();
         spriteRenderer.sprite = down;
         StartCoroutine(ResetButton());
     }

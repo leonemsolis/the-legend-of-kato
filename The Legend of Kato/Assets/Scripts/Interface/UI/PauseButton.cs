@@ -9,11 +9,14 @@ public class PauseButton : MonoBehaviour
     readonly RuntimePlatform platform = Application.platform;
     [SerializeField] Sprite pauseDown;
     [SerializeField] Sprite pauseUp;
+
     SpriteRenderer spriteRenderer;
+    ButtonClickSound clickSound;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        clickSound = GetComponent<ButtonClickSound>();
     }
     
     void Update()
@@ -55,6 +58,7 @@ public class PauseButton : MonoBehaviour
 
     private void TouchButton()
     {
+        clickSound.PlayClick();
         if (GetComponent<Pause>().IsGameRunning())
         {
             spriteRenderer.sprite = pauseDown;

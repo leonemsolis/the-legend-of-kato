@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHitBox : MonoBehaviour 
 {
     Transform enemyTransform;
+    [SerializeField] Smoke smoke;
     //bool dead = false;
 
     private void FixedUpdate()
@@ -38,6 +39,7 @@ public class EnemyHitBox : MonoBehaviour
     {
         GetComponent<BoxCollider2D>().enabled = false;
         FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
+        Instantiate(smoke, transform.position, Quaternion.identity);
         //dead = true;
         Destroy(enemyTransform.gameObject);
         Destroy(gameObject);

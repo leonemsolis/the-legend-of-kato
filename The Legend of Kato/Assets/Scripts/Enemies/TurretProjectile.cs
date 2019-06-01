@@ -27,12 +27,13 @@ public class TurretProjectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         direction = movingRight ? Vector2.right : Vector2.left;
+        GetComponent<Animator>().SetBool("moving_right", movingRight);
         moving = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Wall")
+        if(collision.tag == "Block")
         {
             Destroy(gameObject);
         }

@@ -4,14 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Platform
-  - Wall
   - Sword
   - Enemy
   - Boots
   - Body
   - EnemyHitBox
   - Projectile
+  - Block
   layers:
   - Default
   - TransparentFX
@@ -23,15 +22,15 @@ TagManager:
   - 
   - Player
   - Enemy
-  - Ground
-  - Wall
+  - 
+  - 
   - EnemyHitBox
   - Sword
   - Eraser
   - Projectile
   - EnemyInvulnerable
   - RoomStuff
-  - 
+  - Block
   - 
   - 
   - 

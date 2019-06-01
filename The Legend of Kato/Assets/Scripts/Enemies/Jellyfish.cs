@@ -15,19 +15,22 @@ public class Jellyfish : MonoBehaviour
     const float verticalAmplitude = 200f;
     const float slower = 120f;
     const float moveDistance = 1400f;
+    float startX;
+    float deltaX = 0;
 
     void Start()
     {
         startPoint = transform.position;
         yAxis = transform.position.y;
+        startX = transform.position.x;
         EnemyHitBox h = Instantiate(myHitBox, transform.position, Quaternion.identity);
         h.SetEnemy(transform, new Vector2(-0.25f, 0f), new Vector2(0.5f, .88f));
     }
 
     void Update()
     {
-        transform.position += velocityX * direction * Time.deltaTime;
-        transform.position = new Vector3(transform.position.x, yAxis + Mathf.Sin(transform.position.x / slower) * verticalAmplitude, transform.position.z);
+        deltaX += velocityX * direction.x * Time.deltaTime;
+        transform.position = new Vector3(startX + deltaX, yAxis + Mathf.Sin(deltaX / slower) * verticalAmplitude, transform.position.z);
         if(Vector3.Distance(startPoint, transform.position) > moveDistance)
         {
             Destroy(gameObject);

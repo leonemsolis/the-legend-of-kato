@@ -8,10 +8,7 @@ enum JumpType { FIRST, SECOND, NONE };
 
 public class PlayerController : MonoBehaviour 
 {
-	[SerializeField] Sprite rightSprite;
-	[SerializeField] Sprite leftSprite;
-
-    Animator animator;
+	Animator animator;
 	Rigidbody2D rb;
 	SpriteRenderer spriteRenderer;
 	BoxCollider2D boxCollider;
@@ -81,7 +78,7 @@ public class PlayerController : MonoBehaviour
 		Vector2 originLeft = new Vector2 (transform.position.x - legDistance, transform.position.y - .5f);
 		Vector2 originRight = new Vector2 (transform.position.x + legDistance, transform.position.y - .5f);
 		Vector2 direction = Vector2.down;
-		LayerMask collisionMask = 1 << LayerMask.NameToLayer ("Ground");
+		LayerMask collisionMask = 1 << LayerMask.NameToLayer ("Block");
 
 		RaycastHit2D leftHit = Physics2D.Raycast (originLeft, direction, minJumpAllowDistance, collisionMask);
 		RaycastHit2D rightHit = Physics2D.Raycast (originRight, direction, minJumpAllowDistance, collisionMask);
@@ -97,7 +94,6 @@ public class PlayerController : MonoBehaviour
 	{
 		if (facingRight) {
 			facingRight = false;
-			spriteRenderer.sprite = leftSprite;
 		}
 	}
 
@@ -105,7 +101,6 @@ public class PlayerController : MonoBehaviour
 	{
 		if (!facingRight) {
 			facingRight = true;
-			spriteRenderer.sprite = rightSprite;
 		}
 	}
 

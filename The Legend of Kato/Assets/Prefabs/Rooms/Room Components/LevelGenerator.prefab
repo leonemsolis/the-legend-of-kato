@@ -46,6 +46,7 @@ MonoBehaviour:
   v_rooms:
   - {fileID: 4252082576681226360, guid: 05db1ab9799ea4c2bb469fba97cd242a, type: 3}
   - {fileID: 4252082576681226360, guid: 0f668dd03f78849b0a6a2e19c3051e90, type: 3}
+  - {fileID: 1276046027508481570, guid: 63ec4251a2620429c84d5881b0b35a9e, type: 3}
   h_rooms:
   - {fileID: 3146606663619734917, guid: acc9cca0808154da1b3c28fdff7f70c9, type: 3}
   - {fileID: 3146606663619734917, guid: 2e4953054b7f34a078c18856de15b9bc, type: 3}
