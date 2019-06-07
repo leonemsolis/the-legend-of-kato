@@ -17,7 +17,7 @@ public class OctopusController : MonoBehaviour
     void Start()
     {
         myHitBox = Instantiate(myHitBox);
-        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, 0f), new Vector2(1f, 1f));
+        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, 0f), new Vector2(1f, 1f), true);
 
         origin = transform.position;
         destination = transform.position - new Vector3(0f, movingDistance, 0f);

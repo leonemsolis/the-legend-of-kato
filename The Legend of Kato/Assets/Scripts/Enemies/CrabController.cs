@@ -10,8 +10,8 @@ public class CrabController : MonoBehaviour
 
     bool facingRight = true;
 
-    const float moveForce = 11000f;
-    const float maxSpeed = 30f;
+    const float moveForce = 15000f;
+    const float maxSpeed = 90f;
     const float rayDistance = 70f;
 
 
@@ -19,7 +19,7 @@ public class CrabController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         myHitBox = Instantiate(myHitBox);
-        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, 0f), new Vector2(1f, 1f));
+        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, 0f), new Vector2(1f, 1f), true);
     }
 
     private void Update()

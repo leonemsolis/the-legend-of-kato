@@ -30,8 +30,8 @@ public class Health : MonoBehaviour
     {
         if (canTakeDamage)
         {
-            currentHealth--;
-            transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+            //currentHealth--;
+            //transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
             StartCoroutine(ResetInvulnerable());

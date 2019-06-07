@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1923367987875660393}
   - component: {fileID: 1923367987875660392}
-  - component: {fileID: 1923367987875660395}
   - component: {fileID: 2211496645878789262}
+  - component: {fileID: 1923367987875660395}
   m_Layer: 12
   m_Name: EnemyHitBox
   m_TagString: EnemyHitBox
@@ -59,19 +59,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6281383, y: 0.7440698}
   m_EdgeRadius: 0
---- !u!114 &1923367987875660395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923367987875660406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42aa66abf53e64257a00f8a2a1431398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smoke: {fileID: 309902000851385021, guid: 521ff17414dd7486c8ca9881432187d6, type: 3}
 --- !u!50 &2211496645878789262
 Rigidbody2D:
   serializedVersion: 4
@@ -93,3 +80,18 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1923367987875660395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923367987875660406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42aa66abf53e64257a00f8a2a1431398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoke: {fileID: 309902000851385021, guid: 521ff17414dd7486c8ca9881432187d6, type: 3}
+  coinPrefab: {fileID: 9159347304516069267, guid: 970e5184299e24ea8aaeb4544d9ed956,
+    type: 3}

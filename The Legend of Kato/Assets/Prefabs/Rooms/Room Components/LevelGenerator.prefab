@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5929588487282838298}
   - component: {fileID: 5929588487282838301}
+  - component: {fileID: 5929588487282838302}
+  - component: {fileID: 2243312082791896192}
   m_Layer: 0
   m_Name: LevelGenerator
   m_TagString: Untagged
@@ -43,16 +45,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edffa68d801164ac997dffe8e4436d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  v_rooms:
-  - {fileID: 4252082576681226360, guid: 05db1ab9799ea4c2bb469fba97cd242a, type: 3}
-  - {fileID: 4252082576681226360, guid: 0f668dd03f78849b0a6a2e19c3051e90, type: 3}
-  - {fileID: 1276046027508481570, guid: 63ec4251a2620429c84d5881b0b35a9e, type: 3}
-  h_rooms:
-  - {fileID: 3146606663619734917, guid: acc9cca0808154da1b3c28fdff7f70c9, type: 3}
-  - {fileID: 3146606663619734917, guid: 2e4953054b7f34a078c18856de15b9bc, type: 3}
-  vh_rooms:
-  - {fileID: 2248494792105872740, guid: c168d929e46024335a0bb5a236f721f9, type: 3}
-  - {fileID: 2248494792105872740, guid: 30901454c2d2b4050b040c380b952234, type: 3}
-  hv_rooms:
-  - {fileID: 1765779739197966727, guid: d7a013d7265fd412a85315a9d6384dfb, type: 3}
-  - {fileID: 1765779739197966727, guid: 3aae70761c156491883103d9ec1fd8bb, type: 3}
+  currentRoom: {fileID: 0}
+--- !u!114 &5929588487282838302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929588487282838300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a7173c766754026a5555a0ba0e2e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 7066461060806004033, guid: 86bbeb127b5c04767aaec9e5124a8df4, type: 3}
+  - {fileID: 3511895347143665746, guid: 46d0addaaed9a4243baee59af3a4813d, type: 3}
+  - {fileID: 6946728976972655337, guid: e883e1708d5a64da7a02d91f65e13a4f, type: 3}
+  - {fileID: 5074117043849059171, guid: 0a63da8e4abb24e2387379468456041d, type: 3}
+  - {fileID: 4192951019849610082, guid: 2c6467a14997141b1b004fba76726944, type: 3}
+  - {fileID: 1740922756837822295, guid: 0523abb963b29466b95245338b39552c, type: 3}
+  boss: {fileID: 5488922624524728074, guid: f7d22b6c6057b48cdb2580dcfe10c2f9, type: 3}
+  shop: {fileID: 3285425855324558450, guid: 0a1e033ee2d9a43e1904e1542820fb62, type: 3}
+--- !u!114 &2243312082791896192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5929588487282838300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cb3081ab34d4f598d45abb5b3cf756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  halfBlock: {fileID: 3430127851645439628, guid: 89b5f17d6a190479f8b779693553d8c2,
+    type: 3}
+  block: {fileID: 6781305431247829087, guid: af2c80e4fc62a45b28cd603efcc6f40b, type: 3}
+  lava: {fileID: 6346825874648231513, guid: 65fbeeebe9fb8466a9620a962cc55b97, type: 3}

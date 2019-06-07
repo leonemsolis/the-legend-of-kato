@@ -4,64 +4,91 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] public List<Room> v_rooms;
-    [SerializeField] public List<Room> h_rooms;
-    [SerializeField] public List<Room> vh_rooms;
-    [SerializeField] public List<Room> hv_rooms;
+    [SerializeField] Room currentRoom;
 
-    List<RoomType> requests = new List<RoomType>();
-    RoomType currentRequest = RoomType.NONE;
-
-    PlayerRoomDetector player;
+    PlatformGenerator platformGen;
+    RoomGenerator roomGen;
+    PlayerRoomDetector detector;
+    bool shopGenerated = false;
 
     const float unitSize = 100f;
-    const float leftWallX = -5.5f * unitSize;
-    const float rightWallX = 5.5f * unitSize;
 
-
+    int currentRoomIndex = 1;
 
     private void Start()
     {
-        player = FindObjectOfType<PlayerRoomDetector>();
-        ResetRequests();
-        GenerateNextRequest();
+        platformGen = GetComponent<PlatformGenerator>();
+        roomGen = GetComponent<RoomGenerator>();
+        detector = FindObjectOfType<PlayerRoomDetector>();
     }
 
     private void Update()
     {
-        if(player.GetCurrentRoom().GenerateNext(this, currentRequest))
+        // If it's not the 4th room(boss room)
+        if(currentRoomIndex != 5)
         {
-            GenerateNextRequest();
+            // In the room
+            if (detector.GetCurrentRoom() != null)
+            {
+                if (detector.GetCurrentRoom().RoomID == currentRoom.RoomID)
+                {
+                    Generate();
+                    currentRoomIndex++;
+                }
+            }
         }
     }
 
-    private void GenerateNextRequest()
+    private void Generate()
     {
-        if (currentRequest != RoomType.NONE)
+        Vector2 lastPlatform = platformGen.GeneratePlatforms(currentRoom.GetExitBlock());
+        switch(currentRoomIndex)
         {
-            requests.Remove(currentRequest);
-        }
-        currentRequest = requests[Random.Range(0, requests.Count)];
-        if (requests.Count == 1)
-        {
-            ResetRequests();
+            case 1:
+                if (!shopGenerated)
+                {
+                    //25% that shop will be spawned as 2nd room
+                    int x = Random.Range(0, 4);
+                    if (x == 0)
+                    {
+                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
+                        shopGenerated = true;
+                    }
+                    else
+                    {
+                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
+                    }
+                }
+                break;
+            case 2:
+                if (!shopGenerated)
+                {
+                    //30% that shop will be spawned as 2nd room
+                    int x = Random.Range(0, 3);
+                    if (x == 0)
+                    {
+                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
+                        shopGenerated = true;
+                    }
+                    else
+                    {
+                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
+                    }
+                }
+                break;
+            case 3:
+                if (!shopGenerated)
+                {
+                    currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
+                }
+                else
+                {
+                    currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
+                }
+                break;
+            case 4:
+                currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.BOSS);
+                break;
         }
     }
-
-    private void ResetRequests()
-    {
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.H);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-        requests.Add(RoomType.V);
-    }
-
 }

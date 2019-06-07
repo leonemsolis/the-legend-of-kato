@@ -6,11 +6,19 @@ public class PlayerRoomDetector : MonoBehaviour
 {
     Room currentRoom;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.GetComponent<Room>() != null)
         {
             currentRoom = collision.GetComponent<Room>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.GetComponent<Room>() != null)
+        {
+            currentRoom = null;
         }
     }
 

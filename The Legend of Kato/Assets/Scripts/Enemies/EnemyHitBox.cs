@@ -6,7 +6,9 @@ public class EnemyHitBox : MonoBehaviour
 {
     Transform enemyTransform;
     [SerializeField] Smoke smoke;
+    [SerializeField] GameObject coinPrefab;
     //bool dead = false;
+    bool coin;
 
     private void FixedUpdate()
     {
@@ -38,18 +40,22 @@ public class EnemyHitBox : MonoBehaviour
     public void Die()
     {
         GetComponent<BoxCollider2D>().enabled = false;
-        FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
         Instantiate(smoke, transform.position, Quaternion.identity);
         //dead = true;
+        if(coin)
+        {
+            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(enemyTransform.gameObject);
         Destroy(gameObject);
     }
 
-    public void SetEnemy(Transform enemy, Vector2 offset, Vector2 size)
+    public void SetEnemy(Transform enemy, Vector2 offset, Vector2 size, bool dropCoin)
     {
         enemyTransform = enemy;
         GetComponent<BoxCollider2D>().offset = offset;
         GetComponent<BoxCollider2D>().size = size;
+        coin = dropCoin;
 	}
 
     public string GetInfo()

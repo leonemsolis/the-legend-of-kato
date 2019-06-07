@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 		//Time.timeScale = .2f;
 	}
 
+
     private void Update()
     {
         bool grounded = Mathf.Abs(rb.velocity.y) < Mathf.Epsilon;
@@ -139,7 +140,5 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetInteger("animation_state", animation_index);
     }
-
-
 
 }

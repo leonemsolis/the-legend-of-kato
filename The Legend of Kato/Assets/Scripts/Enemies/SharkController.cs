@@ -37,7 +37,7 @@ public class SharkController : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         myHitBox = Instantiate(myHitBox);
-        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, -.03f), new Vector2(1f, .93f));
+        myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, -.03f), new Vector2(1f, .93f), true);
         animator = GetComponent<Animator>();
 
         if(Random.Range(0f, 1f) > .5f)

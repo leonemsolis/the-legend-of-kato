@@ -24,7 +24,7 @@ public class Jellyfish : MonoBehaviour
         yAxis = transform.position.y;
         startX = transform.position.x;
         EnemyHitBox h = Instantiate(myHitBox, transform.position, Quaternion.identity);
-        h.SetEnemy(transform, new Vector2(-0.25f, 0f), new Vector2(0.5f, .88f));
+        h.SetEnemy(transform, new Vector2(0f, 0f), new Vector2(1f, 1f), false);
     }
 
     void Update()

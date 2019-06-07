@@ -44,4 +44,12 @@ public class Boots : MonoBehaviour
         //Debug.DrawLine(originLeft, originLeft + direction * distance, Color.red);
         //Debug.DrawLine(originRight, originRight + direction * distance, Color.red);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "EnemyHitBox")
+        {
+            collision.GetComponent<EnemyHitBox>().Die();
+        }
+    }
 }

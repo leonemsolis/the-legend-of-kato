@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3160850915980780116}
   - component: {fileID: 3160850915980780115}
   - component: {fileID: 3160850915980780118}
+  - component: {fileID: 3377837119271859151}
   m_Layer: 9
   m_Name: Crab
   m_TagString: Enemy
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: b32beaf4e609f40a8aad5e3943437e82, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 1087872f933474496b393cf80356ced7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,3 +134,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHitBox: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab,
     type: 3}
+--- !u!95 &3377837119271859151
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160850915980780113}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdfb2429dad964a6f9e6ad10ae0357c4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
