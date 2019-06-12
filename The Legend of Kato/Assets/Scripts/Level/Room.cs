@@ -6,6 +6,39 @@ public class Room : MonoBehaviour
 {
     [SerializeField] int roomID;
     [SerializeField] GameObject exitBlock;
+    [SerializeField] List<GameObject> door;
+    [SerializeField] float roomHeight = 1500f;
+    const float RoomEraseLeftDistance = 600f;
+
+    public float RoomHeight
+    {
+        get
+        {
+            return roomHeight;
+        }
+    }
+
+    [SerializeField] float roomWidth = 1200f;
+
+    public float RoomWidth
+    {
+        get
+        {
+            return roomWidth;
+        }
+    }
+
+    List<string> erasable;
+
+    bool closed = false;
+
+    public bool Closed
+    {
+        get
+        {
+            return closed;
+        }
+    }
 
     public int RoomID
     {
@@ -15,11 +48,44 @@ public class Room : MonoBehaviour
         }
     }
 
-    const float roomHeight = 1500f;
-    const float roomWidth = 1200f;
+    private void Awake()
+    {
+        foreach(GameObject g in door)
+        {
+            g.SetActive(false);
+        }
+
+        erasable = new List<string>
+        {
+            C.BlockTag,
+            C.RoomTag,
+            C.InvulnirableEnemyHitBoxTag
+        };
+    }
 
     public GameObject GetExitBlock()
     {
         return exitBlock;
+    }
+
+    public void CloseDoor()
+    {
+        // Close door
+        foreach (GameObject g in door)
+        {
+            g.SetActive(true);
+            closed = true;
+        }
+        // Erase all erasable objects on the left of the room
+        foreach (string s in erasable)
+        {
+            foreach (var g in GameObject.FindGameObjectsWithTag(s))
+            {
+                if (g.transform.position.x < (transform.position.x - RoomEraseLeftDistance))
+                {
+                    Destroy(g);
+                }
+            }
+        }
     }
 }

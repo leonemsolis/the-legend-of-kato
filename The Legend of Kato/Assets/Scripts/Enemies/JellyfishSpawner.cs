@@ -17,6 +17,7 @@ public class JellyfishSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(shootDelay);
         Jellyfish j = Instantiate(jellyfish, transform.position, Quaternion.identity);
+        j.transform.parent = transform;
         j.StartMovement(shootingRight);
         StartCoroutine(Spawn());
     }

@@ -22,6 +22,7 @@ public class Turret : MonoBehaviour
     {
         yield return new WaitForSeconds(shootDelay);
         TurretProjectile p = Instantiate(projectile, transform.position + shootOffset, Quaternion.identity);
+        p.transform.parent = transform;
         p.StartMoving(shootingRight);
         StartCoroutine(Shoot());
     }

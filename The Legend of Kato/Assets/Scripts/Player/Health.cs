@@ -5,15 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+
+    [SerializeField] AudioClip hurtSound;
     int currentHealth = 3;
     bool canTakeDamage = true;
     SpriteRenderer playerSpriteRenderer;
     Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
     Color fullColor = new Color(1f, 1f, 1f, 1f);
+    AudioSource audio;
+
 
     private void Awake()
     {
         playerSpriteRenderer = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
+        audio = GetComponent<AudioSource>();
     }
 
     public void RestoreHealth()
@@ -34,6 +39,8 @@ public class Health : MonoBehaviour
             //transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
+            audio.clip = hurtSound;
+            audio.Play();
             StartCoroutine(ResetInvulnerable());
             if (currentHealth == 0)
             {

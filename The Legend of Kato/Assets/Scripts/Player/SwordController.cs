@@ -30,11 +30,11 @@ public class SwordController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (player.IsFacingRight() && !facingRight)
+        if (player.FacingRight && !facingRight)
         {
             TurnRight();
         }
-        if (!player.IsFacingRight() && facingRight)
+        if (!player.FacingRight && facingRight)
         {
             TurnLeft();
         }
@@ -66,7 +66,7 @@ public class SwordController : MonoBehaviour
     {
         if(collision.tag == "EnemyHitBox")
         {
-            collision.GetComponent<EnemyHitBox>().Die();
+            collision.GetComponent<EnemyHitBox>().Die(true);
         }
     }
 
@@ -74,7 +74,7 @@ public class SwordController : MonoBehaviour
     {
         if (collision.tag == "EnemyHitBox")
         {
-            collision.GetComponent<EnemyHitBox>().Die();
+            collision.GetComponent<EnemyHitBox>().Die(true);
         }
     }
 }

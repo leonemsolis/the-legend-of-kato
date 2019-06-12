@@ -29,15 +29,15 @@ public class Boots : MonoBehaviour
 
         if (hitEnemyCenter)
         {
-            hitEnemyCenter.collider.GetComponent<EnemyHitBox>().Die();
+            hitEnemyCenter.collider.GetComponent<EnemyHitBox>().Die(true);
         }
         else if (hitEnemyLeft)
         {
-            hitEnemyLeft.collider.GetComponent<EnemyHitBox>().Die();
+            hitEnemyLeft.collider.GetComponent<EnemyHitBox>().Die(true);
         }
         else if (hitEnemyRight)
         {
-            hitEnemyRight.collider.GetComponent<EnemyHitBox>().Die();
+            hitEnemyRight.collider.GetComponent<EnemyHitBox>().Die(true);
         }
 
         //Debug.DrawLine(originCenter, originCenter + direction * distance, Color.red);
@@ -49,7 +49,7 @@ public class Boots : MonoBehaviour
     {
         if(collision.tag == "EnemyHitBox")
         {
-            collision.GetComponent<EnemyHitBox>().Die();
+            collision.GetComponent<EnemyHitBox>().Die(true);
         }
     }
 }

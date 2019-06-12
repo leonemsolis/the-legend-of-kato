@@ -5,8 +5,9 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {   
     const float delayTime = .3f;
-    public readonly static float unitsToBottom = 1000f;
-    public readonly static float unitsToBottomInRoom = 800f;
+    const float unitsToBottom = 1000f;
+    const float unitsToBottomInRoom = 800f;
+    const float cameraShiftX = 300f;
 
     PlayerRoomDetector roomDetector;
     PlayerController player;
@@ -26,18 +27,33 @@ public class CameraFollow : MonoBehaviour
         if (roomDetector.GetCurrentRoom() != null)
         {
             posX = roomDetector.GetCurrentRoom().transform.position.x;
-            if (player.transform.position.y - roomDetector.GetCurrentRoom().transform.position.y > -350)
+
+            float roomBottomThresholdY = roomDetector.GetCurrentRoom().transform.position.y + Camera.main.orthographicSize - roomDetector.GetCurrentRoom().RoomHeight / 2f - C.ButtonPanelHeight;
+            float roomTopThresholdY = roomDetector.GetCurrentRoom().transform.position.y - Camera.main.orthographicSize + roomDetector.GetCurrentRoom().RoomHeight / 2f + C.InfoPanelHeight;
+
+            if(roomDetector.GetCurrentRoom().RoomHeight <= (Camera.main.orthographicSize * 2f - (C.ButtonPanelHeight + C.InfoPanelHeight)))
             {
-                posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottomInRoom;
+                posY = roomBottomThresholdY;
             }
             else
             {
-                posY = roomDetector.GetCurrentRoom().transform.position.y + Camera.main.orthographicSize - 750f - 400f;
+                if (player.transform.position.y > roomBottomThresholdY && player.transform.position.y < roomTopThresholdY)
+                {
+                    posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottomInRoom;
+                }
+                else if (player.transform.position.y < roomBottomThresholdY)
+                {
+                    posY = roomBottomThresholdY;
+                }
+                else
+                {
+                    posY = roomTopThresholdY;
+                }
             }
         } 
         else
         {
-            posX = player.IsFacingRight() ? player.transform.position.x + 300f : player.transform.position.x - 300f;
+            posX = player.FacingRight ? player.transform.position.x + cameraShiftX : player.transform.position.x - cameraShiftX;
             posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom;
         }
 

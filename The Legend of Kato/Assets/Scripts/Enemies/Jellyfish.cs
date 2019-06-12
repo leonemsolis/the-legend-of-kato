@@ -17,14 +17,15 @@ public class Jellyfish : MonoBehaviour
     const float moveDistance = 1400f;
     float startX;
     float deltaX = 0;
+    EnemyHitBox instantiatedHitBox;
 
     void Start()
     {
         startPoint = transform.position;
         yAxis = transform.position.y;
         startX = transform.position.x;
-        EnemyHitBox h = Instantiate(myHitBox, transform.position, Quaternion.identity);
-        h.SetEnemy(transform, new Vector2(0f, 0f), new Vector2(1f, 1f), false);
+        instantiatedHitBox = Instantiate(myHitBox, transform.position, Quaternion.identity);
+        instantiatedHitBox.SetEnemy(transform, new Vector2(0f, 0f), new Vector2(1f, 1f), false);
     }
 
     void Update()
@@ -33,7 +34,14 @@ public class Jellyfish : MonoBehaviour
         transform.position = new Vector3(startX + deltaX, yAxis + Mathf.Sin(deltaX / slower) * verticalAmplitude, transform.position.z);
         if(Vector3.Distance(startPoint, transform.position) > moveDistance)
         {
-            Destroy(gameObject);
+            if(instantiatedHitBox != null)
+            {
+                instantiatedHitBox.Die(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

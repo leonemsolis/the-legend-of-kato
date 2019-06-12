@@ -6,7 +6,9 @@ public class EnemyHitBox : MonoBehaviour
 {
     Transform enemyTransform;
     [SerializeField] Smoke smoke;
-    [SerializeField] GameObject coinPrefab;
+    [SerializeField] GameObject soulPrefab;
+    [SerializeField] AudioClip hitSound;
+    AudioSource audioSource;
     //bool dead = false;
     bool coin;
 
@@ -18,36 +20,22 @@ public class EnemyHitBox : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(!dead)
-    //    {
-    //        if (collision.gameObject.tag == "Sword")
-    //        {
-    //            Die();
-    //        }
-    //        if (collision.gameObject.tag == "Boots")
-    //        {
-    //            Die();
-    //        }
-    //        if (collision.gameObject.tag == "Body")
-    //        {
-    //            FindObjectOfType<Health>().TakeDamage();
-    //        }
-    //    }
-    //}
-
-    public void Die()
+    public void Die(bool hit)
     {
         GetComponent<BoxCollider2D>().enabled = false;
-        Instantiate(smoke, transform.position, Quaternion.identity);
         //dead = true;
         if(coin)
         {
-            Instantiate(coinPrefab, transform.position, Quaternion.identity);
+            Instantiate(soulPrefab, transform.position, Quaternion.identity);
+        }
+        if(hit)
+        {
+            audioSource.clip = hitSound;
+            audioSource.Play();
+            Instantiate(smoke, transform.position, Quaternion.identity);
         }
         Destroy(enemyTransform.gameObject);
-        Destroy(gameObject);
+        Destroy(gameObject, hitSound.length + 1f);
     }
 
     public void SetEnemy(Transform enemy, Vector2 offset, Vector2 size, bool dropCoin)
@@ -56,7 +44,8 @@ public class EnemyHitBox : MonoBehaviour
         GetComponent<BoxCollider2D>().offset = offset;
         GetComponent<BoxCollider2D>().size = size;
         coin = dropCoin;
-	}
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public string GetInfo()
     {

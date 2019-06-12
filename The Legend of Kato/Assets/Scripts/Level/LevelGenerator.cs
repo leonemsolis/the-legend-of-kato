@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] Room currentRoom;
+    [SerializeField] Room nextRoom;
 
     PlatformGenerator platformGen;
     RoomGenerator roomGen;
     PlayerRoomDetector detector;
     bool shopGenerated = false;
-
-    const float unitSize = 100f;
-
     int currentRoomIndex = 1;
 
     private void Start()
@@ -22,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
         detector = FindObjectOfType<PlayerRoomDetector>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // If it's not the 4th room(boss room)
         if(currentRoomIndex != 5)
@@ -30,7 +27,7 @@ public class LevelGenerator : MonoBehaviour
             // In the room
             if (detector.GetCurrentRoom() != null)
             {
-                if (detector.GetCurrentRoom().RoomID == currentRoom.RoomID)
+                if (detector.GetCurrentRoom().RoomID == nextRoom.RoomID)
                 {
                     Generate();
                     currentRoomIndex++;
@@ -41,8 +38,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Generate()
     {
-        Vector2 lastPlatform = platformGen.GeneratePlatforms(currentRoom.GetExitBlock());
-        switch(currentRoomIndex)
+        Vector2 lastPlatform = platformGen.GeneratePlatforms(nextRoom.GetExitBlock());
+        switch (currentRoomIndex)
         {
             case 1:
                 if (!shopGenerated)
@@ -51,12 +48,12 @@ public class LevelGenerator : MonoBehaviour
                     int x = Random.Range(0, 4);
                     if (x == 0)
                     {
-                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
+                        nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
                         shopGenerated = true;
                     }
                     else
                     {
-                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
+                        nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
                     }
                 }
                 break;
@@ -67,27 +64,31 @@ public class LevelGenerator : MonoBehaviour
                     int x = Random.Range(0, 3);
                     if (x == 0)
                     {
-                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
+                        nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
                         shopGenerated = true;
                     }
                     else
                     {
-                        currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
+                        nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
                     }
+                }
+                else
+                {
+                    nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
                 }
                 break;
             case 3:
                 if (!shopGenerated)
                 {
-                    currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
+                    nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.SHOP);
                 }
                 else
                 {
-                    currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
+                    nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.COMMON);
                 }
                 break;
             case 4:
-                currentRoom = roomGen.GenerateRoom(lastPlatform, RoomType.BOSS);
+                nextRoom = roomGen.GenerateRoom(lastPlatform, RoomType.BOSS);
                 break;
         }
     }

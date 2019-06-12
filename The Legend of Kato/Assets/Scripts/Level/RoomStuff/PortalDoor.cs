@@ -16,14 +16,14 @@ public class PortalDoor : MonoBehaviour
     {
         Vector2 origin = transform.position + new Vector3(0f, -25f, 0f);
         float distance = 30f;
-        LayerMask collisionMask = 1 << LayerMask.NameToLayer("Sword");
+        LayerMask collisionMask = 1 << LayerMask.NameToLayer("Player");
         RaycastHit2D hitLeft = Physics2D.Raycast(origin, Vector2.left, distance, collisionMask);
         RaycastHit2D hitRight = Physics2D.Raycast(origin, Vector2.right, distance, collisionMask);
 
-        if(hitLeft && player.IsFacingRight())
+        if(hitLeft && player.FacingRight)
         {
             transform.parent.gameObject.GetComponent<Portal>().Teleport(!doorA, true);
-        } else if(hitRight && !player.IsFacingRight())
+        } else if(hitRight && !player.FacingRight)
         {
             transform.parent.gameObject.GetComponent<Portal>().Teleport(!doorA, false);
         }
