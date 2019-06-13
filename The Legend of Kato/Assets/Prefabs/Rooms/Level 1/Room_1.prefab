@@ -2617,12 +2617,6 @@ PrefabInstance:
       propertyPath: shootingRight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1582663057707766012, guid: 9ef574f7ebf914631883b29dbfe3a9da,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f4ac6d475d6a1461d94e55ae226e17f0,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef574f7ebf914631883b29dbfe3a9da, type: 3}
 --- !u!4 &4533169640023480028 stripped
@@ -5265,12 +5259,6 @@ PrefabInstance:
       propertyPath: shootingRight
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1582663057707766012, guid: 9ef574f7ebf914631883b29dbfe3a9da,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f4ac6d475d6a1461d94e55ae226e17f0,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ef574f7ebf914631883b29dbfe3a9da, type: 3}
 --- !u!4 &5104686403781482803 stripped

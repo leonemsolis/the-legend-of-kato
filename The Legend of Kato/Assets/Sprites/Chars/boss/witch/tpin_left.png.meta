@@ -1,11 +1,13 @@
 fileFormatVersion: 2
-guid: 6cb159e7f893f416fb5e0a53ffcf0e20
+guid: 7b9157b635739487db97dc268ed6ee88
 TextureImporter:
   fileIDToRecycleName:
-    21300000: shark_0
-    21300002: shark_1
-    21300004: shark_2
-    21300006: shark_3
+    21300000: tpin_left_0
+    21300002: tpin_left_1
+    21300004: tpin_left_2
+    21300006: tpin_left_3
+    21300008: tpin_left_4
+    21300010: tpin_left_5
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -110,7 +112,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shark_0
+      name: tpin_left_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,13 +126,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df8ffe0e9d01549b3bb95f46406ece6a
+      spriteID: b3f45580c480c46d5802c61527e316ca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_1
+      name: tpin_left_1
       rect:
         serializedVersion: 2
         x: 16
@@ -144,13 +146,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b88679072e7042579b219e186f8ba44
+      spriteID: 9b0fd1a98612e4a819cc80972cb0b212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_2
+      name: tpin_left_2
       rect:
         serializedVersion: 2
         x: 32
@@ -164,13 +166,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59158d6e4ea1445f1a49855fc465a649
+      spriteID: d343369862afd47acacaeaa8cadfef3a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_3
+      name: tpin_left_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,7 +186,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a8ade2ad29d84acf997bf8bf1634816
+      spriteID: fa630aec1fe914803bf1bda2862e8e35
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpin_left_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fb30e4e6eaf48de85bcbb125440344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tpin_left_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab50bae582de249b3a1dfbb86d68a4aa
       vertices: []
       indices: 
       edges: []
@@ -192,12 +234,12 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8c38e789830c2489693e662879d0787f
+    spriteID: 99a80a88925f2422ca8b8663be22aeae
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: shark
+  spritePackingTag: witch
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 

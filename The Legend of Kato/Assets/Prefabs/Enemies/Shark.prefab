@@ -77,7 +77,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 100, y: 100}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -116,8 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d43912ff0774a5a9bb42f29b6119ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftSprite: {fileID: 21300000, guid: d0fd69df2f4014e69ae2c3ea94a228b7, type: 3}
-  rightSprite: {fileID: 21300000, guid: 6e54a3f824e104e2e80f516212068a1d, type: 3}
   myHitBox: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab,
     type: 3}
 --- !u!70 &1381242364259789209

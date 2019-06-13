@@ -1,11 +1,18 @@
 fileFormatVersion: 2
-guid: 6cb159e7f893f416fb5e0a53ffcf0e20
+guid: d9ccca7c7f124490b9fe6d4f3d73e2b5
 TextureImporter:
   fileIDToRecycleName:
-    21300000: shark_0
-    21300002: shark_1
-    21300004: shark_2
-    21300006: shark_3
+    21300000: death_right_0
+    21300002: death_right_1
+    21300004: death_right_2
+    21300006: death_right_3
+    21300008: death_right_4
+    21300010: death_right_5
+    21300012: death_right_6
+    21300014: death_right_7
+    21300016: death_right_8
+    21300018: death_right_9
+    21300020: death_right_10
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -110,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shark_0
+      name: death_right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,13 +131,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df8ffe0e9d01549b3bb95f46406ece6a
+      spriteID: 81f6290a06e1341029448412d1f83313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_1
+      name: death_right_1
       rect:
         serializedVersion: 2
         x: 16
@@ -144,13 +151,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b88679072e7042579b219e186f8ba44
+      spriteID: 68f3403caeebd4f449d64f38843d02f2
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_2
+      name: death_right_2
       rect:
         serializedVersion: 2
         x: 32
@@ -164,13 +171,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59158d6e4ea1445f1a49855fc465a649
+      spriteID: 76d64c41c06954f1db37b8f7fab84e49
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_3
+      name: death_right_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,7 +191,147 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a8ade2ad29d84acf997bf8bf1634816
+      spriteID: a47aae92f027e452eba19759d66a6aac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51f943ff0960452eb8fd96b80a24f81
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 002c94164c1624532b4e21dbc2aa4482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f732685046d3c459f99ba738ed6179a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0da51b5bcd5446f87fad9b2593fe1b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_8
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58dc3e06e911e48ad87d21fb8d29bb55
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_9
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f37d6670357b5474ab6379edcc63293c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death_right_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4083f53247a5a4b7bba8e315e45de37e
       vertices: []
       indices: 
       edges: []
@@ -192,12 +339,12 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8c38e789830c2489693e662879d0787f
+    spriteID: dd25c03f679b74efb8551d16999d4457
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: shark
+  spritePackingTag: witch
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 

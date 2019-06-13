@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [SerializeField] Sprite left;
-    [SerializeField] Sprite right;
     [SerializeField] bool shootingRight = false;
     [SerializeField] TurretProjectile projectile;
     const float shootDelay = 2f;
@@ -13,7 +11,11 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
-        GetComponent<SpriteRenderer>().sprite = shootingRight ? right : left;
+        // Default sprite turned left
+        if(shootingRight)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
         shootOffset = shootingRight ? new Vector3(40f, 17.5f, 0f) : new Vector3(-40f, 17.5f, 0f);
         StartCoroutine(Shoot());
     }

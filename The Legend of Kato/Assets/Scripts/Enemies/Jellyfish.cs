@@ -5,8 +5,6 @@ using UnityEngine;
 public class Jellyfish : MonoBehaviour
 {
     [SerializeField] EnemyHitBox myHitBox;
-    [SerializeField] Sprite left;
-    [SerializeField] Sprite right;
 
     Vector3 direction = Vector3.zero;
     Vector3 startPoint;
@@ -47,9 +45,12 @@ public class Jellyfish : MonoBehaviour
 
     public void StartMovement(bool movingRight)
     {
-        GetComponent<SpriteRenderer>().sprite = movingRight ? right : left;
+        // Default sprite turned left
+        if(movingRight)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
         direction = movingRight ? Vector3.right : Vector3.left;
-        GetComponent<Animator>().SetBool("moving_right", movingRight);
     }
 
 }

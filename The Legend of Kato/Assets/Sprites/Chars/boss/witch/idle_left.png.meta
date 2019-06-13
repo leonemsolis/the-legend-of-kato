@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6cb159e7f893f416fb5e0a53ffcf0e20
+guid: 9f7684e1c97964ec18bbe524116a0eee
 TextureImporter:
   fileIDToRecycleName:
-    21300000: shark_0
-    21300002: shark_1
-    21300004: shark_2
-    21300006: shark_3
+    21300000: idle_left_0
+    21300002: idle_left_1
+    21300004: idle_left_2
+    21300006: idle_left_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shark_0
+      name: idle_left_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,13 +124,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df8ffe0e9d01549b3bb95f46406ece6a
+      spriteID: b8ad0d546572445ee8458c6833f1eeb3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_1
+      name: idle_left_1
       rect:
         serializedVersion: 2
         x: 16
@@ -144,13 +144,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b88679072e7042579b219e186f8ba44
+      spriteID: 9b9d38cb05f224f81a07e1f60a986e39
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_2
+      name: idle_left_2
       rect:
         serializedVersion: 2
         x: 32
@@ -164,13 +164,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59158d6e4ea1445f1a49855fc465a649
+      spriteID: 872dbf816679a4687a7ed28413f16cae
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shark_3
+      name: idle_left_3
       rect:
         serializedVersion: 2
         x: 48
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a8ade2ad29d84acf997bf8bf1634816
+      spriteID: 7544f9b5bc3c1438b82b563ff8e0d277
       vertices: []
       indices: 
       edges: []
@@ -192,12 +192,12 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8c38e789830c2489693e662879d0787f
+    spriteID: ab363d8bb8edc4be786e7f99f5490f1b
     vertices: []
     indices: 
     edges: []
     weights: []
-  spritePackingTag: shark
+  spritePackingTag: witch
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 

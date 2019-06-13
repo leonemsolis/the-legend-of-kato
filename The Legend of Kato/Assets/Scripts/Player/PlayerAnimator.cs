@@ -8,16 +8,11 @@ public class PlayerAnimator : MonoBehaviour
     PlayerController player;
     Animator animator;
 
-    const int ANIMATION_RIGHT_WALK = 0;
-    const int ANIMATION_LEFT_WALK = 1;
-    const int ANIMATION_LEFT_JUMP = 2;
-    const int ANIMATION_RIGHT_JUMP = 3;
-    const int ANIMATION_NO_SWORD_RIGHT_WALK = 4;
-    const int ANIMATION_NO_SWORD_LEFT_WALK = 5;
-    const int ANIMATION_NO_SWORD_RIGHT_JUMP = 6;
-    const int ANIMATION_NO_SWORD_LEFT_JUMP = 7;
-    const int ANIMATION_PICKUP_RIGHT = 8;
-    const int ANIMATION_PICKUP_LEFT = 9;
+    const int ANIMATION_WALK = 0;
+    const int ANIMATION_JUMP = 1;
+    const int ANIMATION_NO_SWORD_WALK = 2;
+    const int ANIMATION_NO_SWORD_JUMP = 3;
+    const int ANIMATION_PICKUP = 4;
 
     bool hasSword = false;
 
@@ -34,56 +29,38 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
+        // Default sprites turned right;
+        if (player.FacingRight)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+
         if (player.CanMove)
         {
             if (player.Grounded)
             {
-                if (player.FacingRight)
+                if (hasSword)
                 {
-                    if (hasSword)
-                    {
-                        SetAnimation(ANIMATION_RIGHT_WALK);
-                    }
-                    else
-                    {
-                        SetAnimation(ANIMATION_NO_SWORD_RIGHT_WALK);
-                    }
+                    SetAnimation(ANIMATION_WALK);
                 }
                 else
                 {
-                    if (hasSword)
-                    {
-                        SetAnimation(ANIMATION_LEFT_WALK);
-                    }
-                    else
-                    {
-                        SetAnimation(ANIMATION_NO_SWORD_LEFT_WALK);
-                    }
+                    SetAnimation(ANIMATION_NO_SWORD_WALK);
                 }
             }
             else
             {
-                if (player.FacingRight)
+                if (hasSword)
                 {
-                    if (hasSword)
-                    {
-                        SetAnimation(ANIMATION_RIGHT_JUMP);
-                    }
-                    else
-                    {
-                        SetAnimation(ANIMATION_NO_SWORD_RIGHT_JUMP);
-                    }
+                    SetAnimation(ANIMATION_JUMP);
                 }
                 else
                 {
-                    if (hasSword)
-                    {
-                        SetAnimation(ANIMATION_LEFT_JUMP);
-                    }
-                    else
-                    {
-                        SetAnimation(ANIMATION_NO_SWORD_LEFT_JUMP);
-                    }
+                    SetAnimation(ANIMATION_NO_SWORD_JUMP);
                 }
             }
         }
@@ -93,35 +70,20 @@ public class PlayerAnimator : MonoBehaviour
     {
         switch (animation_index)
         {
-            case ANIMATION_LEFT_JUMP:
-                animator.Play("Player_left_jump");
+            case ANIMATION_JUMP:
+                animator.Play("char_jump");
                 break;
-            case ANIMATION_RIGHT_JUMP:
-                animator.Play("Player_right_jump");
+            case ANIMATION_WALK:
+                animator.Play("char_walk");
                 break;
-            case ANIMATION_LEFT_WALK:
-                animator.Play("Player_left_walk");
+            case ANIMATION_PICKUP:
+                animator.Play("char_sword_pickup");
                 break;
-            case ANIMATION_RIGHT_WALK:
-                animator.Play("Player_right_walk");
+            case ANIMATION_NO_SWORD_JUMP:
+                animator.Play("char_nosword_jump");
                 break;
-            case ANIMATION_PICKUP_LEFT:
-                animator.Play("char_sword_pickup_left");
-                break;
-            case ANIMATION_PICKUP_RIGHT:
-                animator.Play("char_sword_pickup_right");
-                break;
-            case ANIMATION_NO_SWORD_LEFT_JUMP:
-                animator.Play("char_nosword_jump_left");
-                break;
-            case ANIMATION_NO_SWORD_RIGHT_JUMP:
-                animator.Play("char_nosword_jump_right");
-                break;
-            case ANIMATION_NO_SWORD_LEFT_WALK:
-                animator.Play("char_nosword_left");
-                break;
-            case ANIMATION_NO_SWORD_RIGHT_WALK:
-                animator.Play("char_nosword_right");
+            case ANIMATION_NO_SWORD_WALK:
+                animator.Play("char_nosword_move");
                 break;
         }
     }
@@ -129,14 +91,7 @@ public class PlayerAnimator : MonoBehaviour
     public void StartPickupSword()
     {
         player.CanMove = false;
-        if (player.FacingRight)
-        {
-            SetAnimation(ANIMATION_PICKUP_RIGHT);
-        }
-        else
-        {
-            SetAnimation(ANIMATION_PICKUP_LEFT);
-        }
+        SetAnimation(ANIMATION_PICKUP);
         StartCoroutine(EndPickupSword());
     }
 

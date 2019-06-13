@@ -10,7 +10,6 @@ public class SharkController : MonoBehaviour
 
     Rigidbody2D rb;
     PlayerController player;
-    Animator animator;
 
     const float minChangeDirTime = .4f;
     const float maxChangeDirTime = 1f;
@@ -38,7 +37,6 @@ public class SharkController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         myHitBox = Instantiate(myHitBox);
         myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, -.03f), new Vector2(1f, .93f), true);
-        animator = GetComponent<Animator>();
 
         if(Random.Range(0f, 1f) > .5f)
         {
@@ -144,6 +142,15 @@ public class SharkController : MonoBehaviour
     private void ChangeDirection()
     {
         facingRight = !facingRight;
-        animator.SetBool("facing_right", facingRight);
+
+        // Default sprites turned right
+        if(facingRight)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
     }
 }
