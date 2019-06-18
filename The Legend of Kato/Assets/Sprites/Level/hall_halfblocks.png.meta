@@ -1,17 +1,25 @@
 fileFormatVersion: 2
 guid: b72ebdaca3c974883b2921d75b4f1b2d
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: hall_halfblocks_0
-    21300002: hall_halfblocks_1
-    21300004: hall_halfblocks_2
-    21300006: hall_halfblocks_3
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: hall_halfblocks_0
+  - first:
+      213: 21300002
+    second: hall_halfblocks_1
+  - first:
+      213: 21300004
+    second: hall_halfblocks_2
+  - first:
+      213: 21300006
+    second: hall_halfblocks_3
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -62,7 +70,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -73,7 +81,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -84,7 +93,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,7 +105,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,6 +117,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -125,6 +137,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1e24cca7e82994839a72987c15c9b7a3
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -145,6 +158,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 33cd0901e00f94bf2b1301c013a3921f
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -165,6 +179,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 647bb751eb22a4de189b798f646cfde0
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -185,6 +200,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5c3fe7b9fda08460db5271af04631de1
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -193,10 +209,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: cb1b2aec691e645dfb4561013a87c3e4
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: hall_halfblocks
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,17 +1,25 @@
 fileFormatVersion: 2
 guid: 335cc55703f51435ba0882759723e33c
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: lava_0
-    21300002: lava_1
-    21300004: lava_2
-    21300006: lava_3
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: lava_0
+  - first:
+      213: 21300002
+    second: lava_1
+  - first:
+      213: 21300004
+    second: lava_2
+  - first:
+      213: 21300006
+    second: lava_3
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -62,7 +70,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -73,7 +81,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -84,7 +93,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,7 +105,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,6 +117,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -125,6 +137,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 028512f03618e413db578b60c4af5d3a
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -145,6 +158,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ab8b5a7b8bba24868a72b16eab0f4b9e
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -165,6 +179,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4eb6f79bc089d40e7a5e9938b4c0ee82
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -185,6 +200,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 463eab2ce512647fdabec5397b7a8d62
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -193,10 +209,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 0cd2d69a5f1484a868b5a5bf356c0b65
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: lava
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

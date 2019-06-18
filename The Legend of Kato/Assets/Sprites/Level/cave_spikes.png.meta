@@ -1,17 +1,25 @@
 fileFormatVersion: 2
 guid: 3a7c1a16c31c34438bd0ec78652ea638
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: cave_spikes_0
-    21300002: cave_spikes_1
-    21300004: cave_spikes_2
-    21300006: cave_spikes_3
+  internalIDToNameTable:
+  - first:
+      213: 21300000
+    second: cave_spikes_0
+  - first:
+      213: 21300002
+    second: cave_spikes_1
+  - first:
+      213: 21300004
+    second: cave_spikes_2
+  - first:
+      213: 21300006
+    second: cave_spikes_3
   externalObjects: {}
-  serializedVersion: 7
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 1
+    sRGBTexture: 0
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -62,7 +70,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - serializedVersion: 2
+  - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -73,7 +81,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -84,7 +93,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -95,7 +105,8 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -106,6 +117,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -125,6 +137,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 0d551857a8a8a48c4a2a8dad64315e83
+      internalID: 21300000
       vertices: []
       indices: 
       edges: []
@@ -145,6 +158,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 97bd55036c7d846298b862c3a6ebca55
+      internalID: 21300002
       vertices: []
       indices: 
       edges: []
@@ -165,6 +179,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e813d5bb9b52242378edf50423cb0910
+      internalID: 21300004
       vertices: []
       indices: 
       edges: []
@@ -185,6 +200,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b425ac6939eea44a3a1c34e44807659d
+      internalID: 21300006
       vertices: []
       indices: 
       edges: []
@@ -193,10 +209,12 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 3c37ac632d4fb44dcbb59bc18f6fbef1
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
+    secondaryTextures: []
   spritePackingTag: cave_spikes
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
