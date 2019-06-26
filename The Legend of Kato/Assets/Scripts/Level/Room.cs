@@ -76,16 +76,5 @@ public class Room : MonoBehaviour
             g.SetActive(true);
             closed = true;
         }
-        // Erase all erasable objects on the left of the room
-        foreach (string s in erasable)
-        {
-            foreach (var g in GameObject.FindGameObjectsWithTag(s))
-            {
-                if (g.transform.position.x < (transform.position.x - RoomEraseLeftDistance))
-                {
-                    Destroy(g);
-                }
-            }
-        }
     }
 }

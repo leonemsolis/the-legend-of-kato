@@ -17,6 +17,10 @@ public class Turret : MonoBehaviour
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         shootOffset = shootingRight ? new Vector3(40f, 17.5f, 0f) : new Vector3(-40f, 17.5f, 0f);
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(Shoot());
     }
 

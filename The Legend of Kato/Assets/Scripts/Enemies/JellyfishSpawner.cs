@@ -8,7 +8,7 @@ public class JellyfishSpawner : MonoBehaviour
     [SerializeField] bool shootingRight = false;
     const float shootDelay = 1.6f;
 
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(Spawn());
     }
