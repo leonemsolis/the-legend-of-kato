@@ -33,7 +33,7 @@ public class Coin : MonoBehaviour
             if (collision.tag == "Player" || collision.tag == "Boots" || collision.tag == "Sword" || collision.tag == "Body")
             {
                 Destroy(transform.parent.gameObject);
-                FindObjectOfType<ScoreBoardText>().AddScore(Random.Range(1, 3));
+                FindObjectOfType<ScoreBoardText>().AddScore(1);
             }
         }
     }

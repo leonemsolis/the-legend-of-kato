@@ -54,7 +54,6 @@ public class LevelManager : MonoBehaviour
                         break;
                     }
                 }
-
                 lastSetIndex = currentSetIndex;
 
                 for (int i = 0; i < currentSetIndex; ++i)
@@ -71,7 +70,11 @@ public class LevelManager : MonoBehaviour
                 locked = false;
                 // Enable 1 further rooms & transitions
                 sets[lastSetIndex + 1].SetActive(true);
-                transitions[lastSetIndex + 1].SetActive(true);
+                // Number of transitions less that number of rooms
+                if (lastSetIndex + 1 < transitions.Count)
+                {
+                    transitions[lastSetIndex + 1].SetActive(true);
+                }
             }
         } 
     }

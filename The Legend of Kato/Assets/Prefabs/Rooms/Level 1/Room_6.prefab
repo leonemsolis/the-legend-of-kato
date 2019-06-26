@@ -7309,7 +7309,7 @@ PrefabInstance:
     - target: {fileID: 2088299524304712172, guid: 24a5e4aa52231430d959e60c8ce84a65,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 550
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 2088299524304712172, guid: 24a5e4aa52231430d959e60c8ce84a65,
         type: 3}
@@ -8495,7 +8495,7 @@ PrefabInstance:
     - target: {fileID: 6510709973189767430, guid: 54fe79fd59be642668669b9dea3f6d82,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -900
+      value: -1000
       objectReference: {fileID: 0}
     - target: {fileID: 6510709973189767430, guid: 54fe79fd59be642668669b9dea3f6d82,
         type: 3}
@@ -8587,16 +8587,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 30.149414
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 235.67969
-      objectReference: {fileID: 0}
     - target: {fileID: 8028893483174881395, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
         type: 3}
       propertyPath: isEnterTrigger
@@ -8607,6 +8597,16 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 1740922756837822295}
+    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 30.149414
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 235.67969
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d70a14744dcd4ca8b1c36531d66dedb, type: 3}
 --- !u!4 &7480930692845785858 stripped
