@@ -10,6 +10,11 @@ public class PauseButton : MonoBehaviour
     [SerializeField] Sprite pauseDown;
     [SerializeField] Sprite pauseUp;
 
+    PausePanel pausePanel;
+
+    ButtonMode mode;
+    Mode lastMode = Mode.DEFAULT;
+
     SpriteRenderer spriteRenderer;
     ButtonClickSound clickSound;
 
@@ -17,6 +22,10 @@ public class PauseButton : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         clickSound = GetComponent<ButtonClickSound>();
+        mode = GetComponent<ButtonMode>();
+
+        pausePanel = FindObjectOfType<PausePanel>();
+        pausePanel.gameObject.SetActive(false);
     }
     
     void Update()
@@ -59,15 +68,41 @@ public class PauseButton : MonoBehaviour
     private void TouchButton()
     {
         clickSound.PlayClick();
-        if (GetComponent<Pause>().IsGameRunning())
+        if (mode.GetMode() == Mode.PAUSE)
         {
-            spriteRenderer.sprite = pauseDown;
-            GetComponent<Pause>().PauseGame();
+            ResumeGame();
         }
         else
         {
-            spriteRenderer.sprite = pauseUp;
-            GetComponent<Pause>().ResumeGame();
+            PauseGame();
         }
+    }
+
+    public void PauseGame()
+    {
+        // Save current mode
+        lastMode = FindObjectOfType<ButtonMode>().GetMode();
+        // Change all buttons mode
+        foreach (ButtonMode b in FindObjectsOfType<ButtonMode>())
+        {
+            b.ChangeMode(Mode.PAUSE);
+        }
+        spriteRenderer.sprite = pauseDown;
+
+        Time.timeScale = 0f;
+        pausePanel.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        spriteRenderer.sprite = pauseUp;
+        // Restore last button mode
+        foreach (ButtonMode b in FindObjectsOfType<ButtonMode>())
+        {
+            b.ChangeMode(lastMode);
+        }
+
+        Time.timeScale = 1f;
+        pausePanel.gameObject.SetActive(false);
     }
 }

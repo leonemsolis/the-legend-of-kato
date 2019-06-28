@@ -161,7 +161,7 @@ public class PausePanel : MonoBehaviour
                 {
                     // RESTART LEVEL
                     case 0:
-                        FindObjectOfType<Pause>().ResumeGame();
+                        FindObjectOfType<PauseButton>().ResumeGame();
                         SceneManager.LoadScene(0);
                         break;
                     // GO BACK TO MAIN
