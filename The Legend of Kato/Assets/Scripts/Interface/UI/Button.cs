@@ -15,7 +15,6 @@ public class Button : MonoBehaviour
     ButtonMode buttonMode;
 
     PlayerController player;
-    PausePanel pausePanel;
 
     private void Start()
     {
@@ -23,7 +22,6 @@ public class Button : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         clickSound = GetComponent<ButtonClickSound>();
 
-        pausePanel = FindObjectOfType<PausePanel>();
         player = FindObjectOfType<PlayerController>();
     }
 
@@ -96,7 +94,8 @@ public class Button : MonoBehaviour
                 player.Jump();
                 break;
             case Mode.PAUSE:
-                pausePanel.Activate();
+                // Use this type of access, because pause panel is not always enabled
+                FindObjectOfType<PausePanel>().Activate();
                 break;
             case Mode.SHOP:
                 // Use this type of access, because shop is not always exits
@@ -114,7 +113,8 @@ public class Button : MonoBehaviour
                 player.ChangeDirection();
                 break;
             case Mode.PAUSE:
-                pausePanel.SelectNextElement();
+                // Use this type of access, because pause panel is not always enabled
+                FindObjectOfType<PausePanel>().SelectNextElement();
                 break;
             case Mode.SHOP:
                 // Use this type of access, because shop is not always exits

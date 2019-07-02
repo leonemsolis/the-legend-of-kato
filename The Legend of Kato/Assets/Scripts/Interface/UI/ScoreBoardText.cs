@@ -10,15 +10,26 @@ public class ScoreBoardText : MonoBehaviour
     void Start()
     {
         textField = GetComponent<Text>();
-        textField.text = "0";
+        textField.text = score.ToString();
     }
 
-    public void AddScore(int value)
+    public void IncreaseScore(int value)
     {
-        if(score + value <= 999999)
+        if(score + value <= 99)
         {
-            score+=value;
+            score += value;
             textField.text = score.ToString();
         }
+    }
+
+    public void DecreaseScore(int value)
+    {
+        score -= value;
+        textField.text = score.ToString();
+    }
+
+    public int GetCurrentScore()
+    {
+        return score;
     }
 }

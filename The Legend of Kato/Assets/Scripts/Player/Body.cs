@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Body : MonoBehaviour
 {
+    PlayerUpgrades playerUpgrades;
     Transform player;
+
     void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
+        playerUpgrades = FindObjectOfType<PlayerUpgrades>();
     }
 
     private void Update()
@@ -17,13 +20,20 @@ public class Body : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "EnemyHitBox")
+        if(collision.tag == C.EnemyHitBoxTag)
         {
             FindObjectOfType<Health>().TakeDamage();
         }
-        if(collision.tag == "InvulnirableEnemyHitBox")
+        if(collision.tag == C.InvulnirableEnemyHitBoxTag)
         {
             FindObjectOfType<Health>().TakeDamage();
+        }
+        if(collision.tag == C.SpikesTag)
+        {
+            if(playerUpgrades.GetCurrentUpgrade() != Upgrade.BOOTS)
+            {
+                FindObjectOfType<Health>().TakeDamage();
+            }
         }
     }
 }

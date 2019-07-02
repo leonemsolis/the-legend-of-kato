@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
 
     [SerializeField] AudioClip hurtSound;
     int currentHealth = 3;
+
+    int currentShields = 0;
     bool canTakeDamage = true;
     SpriteRenderer playerSpriteRenderer;
     Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
@@ -19,6 +21,14 @@ public class Health : MonoBehaviour
     {
         playerSpriteRenderer = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
         audio = GetComponent<AudioSource>();
+
+        transform.GetChild(3).GetComponent<SpriteRenderer>().color = emptyColor;
+        transform.GetChild(4).GetComponent<SpriteRenderer>().color = emptyColor;
+
+        currentHealth--;
+        transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+        currentHealth--;
+        transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
     }
 
     public void RestoreHealth()
@@ -31,12 +41,29 @@ public class Health : MonoBehaviour
         transform.GetChild(currentHealth - 1).GetComponent<SpriteRenderer>().color = fullColor;
     }
 
+    public void AddShield()
+    {
+        if(currentShields != 2)
+        {
+            currentShields++;
+            transform.GetChild(2 + currentShields).GetComponent<SpriteRenderer>().color = fullColor;
+        }
+    }
+
     public void TakeDamage()
     {
         if (canTakeDamage)
         {
-            //currentHealth--;
-            //transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+            if(currentShields > 0)
+            {
+                transform.GetChild(2 + currentShields).GetComponent<SpriteRenderer>().color = emptyColor;
+                currentShields--;
+            }
+            else
+            {
+                currentHealth--;
+                transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+            }
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
             audio.clip = hurtSound;
@@ -44,12 +71,21 @@ public class Health : MonoBehaviour
             StartCoroutine(ResetInvulnerable());
             if (currentHealth == 0)
             {
-                //Destroy(FindObjectOfType<PlayerController>().gameObject);
                 SceneManager.LoadScene(0);
             }
         } 
     }
-    
+
+    public int GetCurrentHealth()
+    {
+        return currentHealth;
+    }
+
+    public int GetCurrentShields()
+    {
+        return currentShields;
+    }
+
     private IEnumerator ResetInvulnerable()
     {
         yield return new WaitForSeconds(1f);

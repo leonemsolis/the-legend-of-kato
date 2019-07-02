@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3732238336150237915}
   m_Layer: 16
   m_Name: Spikes
-  m_TagString: InvulnirableEnemyHitBox
+  m_TagString: Spikes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

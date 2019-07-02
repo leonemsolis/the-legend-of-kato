@@ -13,5 +13,10 @@
     public const string InvulnirableEnemyHitBoxTag = "InvulnirableEnemyHitBox";
     public const string BootsTag = "Boots";
     public const string SwordTag = "Sword";
+    public const string SpikesTag = "Spikes";
+    public const string EnemyHitBoxTag = "EnemyHitBox";
 
+    // Shop
+    public const string SHOP_ITEM_SOLD_OUT_TEXT = "This Item Is Sold Out";
+    public const int SHOP_ITEM_BOOTS = 0;
 }

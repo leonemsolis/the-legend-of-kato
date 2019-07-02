@@ -12,6 +12,7 @@ TagManager:
   - Block
   - InvulnirableEnemyHitBox
   - Room
+  - Spikes
   layers:
   - Default
   - TransparentFX
