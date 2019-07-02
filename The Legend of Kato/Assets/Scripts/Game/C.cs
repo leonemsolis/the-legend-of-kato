@@ -5,6 +5,8 @@
     public const float ButtonPanelHeight = 400f;
     public const float InfoPanelHeight = 200f;
     public const int RoomIDBoss = 1000;
+    public const int MainMenuSceneIndex = 0;
+    public const int Level1SceneIndex = 1;
 
     // Tags
     public const string PlayerTag = "Player";
