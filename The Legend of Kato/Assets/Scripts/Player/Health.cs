@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
     SpriteRenderer playerSpriteRenderer;
     Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
     Color fullColor = new Color(1f, 1f, 1f, 1f);
-    AudioSource audio;
+    AudioSource audio; 
 
 
     private void Awake()
@@ -54,16 +54,16 @@ public class Health : MonoBehaviour
     {
         if (canTakeDamage)
         {
-            if(currentShields > 0)
-            {
-                transform.GetChild(2 + currentShields).GetComponent<SpriteRenderer>().color = emptyColor;
-                currentShields--;
-            }
-            else
-            {
-                currentHealth--;
-                transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
-            }
+            //if(currentShields > 0)
+            //{
+            //    transform.GetChild(2 + currentShields).GetComponent<SpriteRenderer>().color = emptyColor;
+            //    currentShields--;
+            //}
+            //else
+            //{
+            //    currentHealth--;
+            //    transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+            //}
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
             audio.clip = hurtSound;

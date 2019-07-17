@@ -5,7 +5,6 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] int roomID;
-    [SerializeField] GameObject exitBlock;
     [SerializeField] List<GameObject> door;
     [SerializeField] float roomHeight = 1500f;
     const float RoomEraseLeftDistance = 600f;
@@ -61,11 +60,6 @@ public class Room : MonoBehaviour
             C.RoomTag,
             C.InvulnirableEnemyHitBoxTag
         };
-    }
-
-    public GameObject GetExitBlock()
-    {
-        return exitBlock;
     }
 
     public void CloseDoor()

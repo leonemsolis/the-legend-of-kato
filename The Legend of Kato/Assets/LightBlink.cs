@@ -5,34 +5,34 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class LightBlink : MonoBehaviour
 {
+    SpriteRenderer spriteRenderer;
+    const float blinkTime = .5f;
+    float timer = blinkTime;
+    bool brightPhase = true;
     Light2D light2d;
-    const float blinkTime = .3f;
-    float timer = 0f;
-    bool bright = true;
     float startTimeBright = 0f;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         light2d = GetComponent<Light2D>();
     }
 
     void Update()
     {
-        Debug.Log("UPDATEEE");
         if(timer < 0)
         {
             timer = blinkTime;
             startTimeBright = Time.time;
-            bright = !bright;
+            brightPhase = !brightPhase;
         }
         else
         {
             timer -= Time.deltaTime;
         }
 
-        if (bright)
+        if (brightPhase)
         {
-
             light2d.intensity = Mathf.SmoothStep(1f, .3f, (Time.time - startTimeBright) / .5f);
         }
         else

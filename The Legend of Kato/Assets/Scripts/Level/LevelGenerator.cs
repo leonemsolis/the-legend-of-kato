@@ -38,7 +38,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Generate()
     {
-        Vector2 lastPlatform = platformGen.GeneratePlatforms(nextRoom.GetExitBlock());
+        //Vector2 lastPlatform = platformGen.GeneratePlatforms(nextRoom.GetExitBlock());
+        Vector2 lastPlatform = new Vector2();
         switch (currentRoomIndex)
         {
             case 1:

@@ -8,7 +8,7 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Sword" || collision.tag == "Player")
+        if(collision.tag == C.SwordTag || collision.tag == C.PlayerTag)
         {
             // Create door silhouette on the door object (1st child of the current parent)
             var dS = Instantiate(doorSilhouette, transform.parent.GetChild(0).transform.position, Quaternion.identity);

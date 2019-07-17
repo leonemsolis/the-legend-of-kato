@@ -24,6 +24,11 @@ public class PlayerAnimator : MonoBehaviour
         {
             sword.gameObject.SetActive(false);
         }
+
+
+        //TODO: REMOVE
+        hasSword = true;
+        sword.gameObject.SetActive(true);
     }
 
 

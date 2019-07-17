@@ -46,7 +46,6 @@ public class MainMenu : MonoBehaviour
         switch(currentElementIndex)
         {
             case 0:
-                Destroy(selectors.gameObject);
                 SceneManager.LoadScene(C.Level1SceneIndex);
                 break;
             case 1:

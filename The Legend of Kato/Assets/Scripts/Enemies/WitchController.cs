@@ -10,6 +10,7 @@ public class WitchController : MonoBehaviour
     // TODO: start shooting when player enters the room;
     // TODO: decreace animation
     [SerializeField] WitchProjectile projectile;
+    [SerializeField] BossKey bossKey;
     List<Vector3> tpPoints;
     PlayerRoomDetector roomDetector;
     Animator animator;
@@ -42,6 +43,7 @@ public class WitchController : MonoBehaviour
 
     void Start()
     {
+        bossKey.gameObject.SetActive(false);
         roomDetector = FindObjectOfType<PlayerRoomDetector>();
         tpPoints = new List<Vector3>();
         for(int i = 0; i < tpPointsNumber; ++i)
@@ -201,6 +203,8 @@ public class WitchController : MonoBehaviour
 
     private void Die()
     {
+        bossKey.transform.position = transform.position;
+        bossKey.gameObject.SetActive(true);
         Destroy(gameObject);
     }
 

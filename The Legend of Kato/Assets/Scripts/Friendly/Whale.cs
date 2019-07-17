@@ -18,7 +18,7 @@ public class Whale : MonoBehaviour
         if(collision.tag == C.PlayerTag)
         {
             player.CanMove = false;
-            instantiatedShop = Instantiate(shop, transform.position + new Vector3(0f, 250f, 0f), Quaternion.identity);
+            instantiatedShop = Instantiate(shop, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
 
             // Change all buttons mode
             foreach(ButtonMode b in FindObjectsOfType<ButtonMode>())

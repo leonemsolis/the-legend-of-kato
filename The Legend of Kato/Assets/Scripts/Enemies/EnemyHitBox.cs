@@ -47,6 +47,12 @@ public class EnemyHitBox : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    public void ChangeBox(Vector2 offset, Vector2 size)
+    {
+        GetComponent<BoxCollider2D>().offset = offset;
+        GetComponent<BoxCollider2D>().size = size;
+    }
+
     public string GetInfo()
     {
         return enemyTransform.position.ToString();

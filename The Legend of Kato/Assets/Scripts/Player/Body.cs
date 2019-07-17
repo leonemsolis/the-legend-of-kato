@@ -28,7 +28,11 @@ public class Body : MonoBehaviour
         {
             FindObjectOfType<Health>().TakeDamage();
         }
-        if(collision.tag == C.SpikesTag)
+        if(collision.tag == C.EnemyTag)
+        {
+            FindObjectOfType<Health>().TakeDamage();
+        }
+        if (collision.tag == C.SpikesTag)
         {
             if(playerUpgrades.GetCurrentUpgrade() != Upgrade.BOOTS)
             {
