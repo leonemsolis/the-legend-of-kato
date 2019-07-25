@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-enum State {INTRO, IDLE, ATTACK, DAMAGE, DEATH, TPOUT, TPIN};
-
 public class WitchController : MonoBehaviour
 {
+    enum State { INTRO, IDLE, ATTACK, DAMAGE, DEATH, TPOUT, TPIN };
     // TODO: start shooting when player enters the room;
     // TODO: decreace animation
     [SerializeField] WitchProjectile projectile;
