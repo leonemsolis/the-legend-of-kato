@@ -15,8 +15,7 @@ public class BlinkBlock : MonoBehaviour
     Color gray = new Color(0.7921569f, 0.7921569f, 0.7921569f);
     Color black = new Color(0.3529412f, 0.3529412f, 0.3529412f);
 
-
-    void Start()
+    private void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();

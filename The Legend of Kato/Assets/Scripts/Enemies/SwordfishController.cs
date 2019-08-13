@@ -5,7 +5,8 @@ using UnityEngine;
 public class SwordfishController : MonoBehaviour
 {
 
-    [SerializeField] EnemyHitBox myHitBox;
+    [SerializeField] EnemyHitBox hitBox;
+    [SerializeField] EnemyHitBox swordHitBox;
     Rigidbody2D rb;
     Animator animator;
 
@@ -28,8 +29,11 @@ public class SwordfishController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        myHitBox = Instantiate(myHitBox);
-        myHitBox.SetEnemy(gameObject.transform, new Vector2(.75f, 0f), new Vector2(.5f, 1f), true);
+        hitBox = Instantiate(hitBox);
+        hitBox.SetEnemy(gameObject.transform, new Vector2(.75f, 0f), new Vector2(.5f, 1f), true);
+         
+        swordHitBox = Instantiate(swordHitBox);
+        swordHitBox.SetEnemy(gameObject.transform, new Vector2(-.25f, 0f), new Vector2(1.5f, 1f), false);
     }
 
     void Update()
@@ -46,6 +50,19 @@ public class SwordfishController : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+    //TODO: ERROR
+    //Destroying assets is not permitted to avoid data loss.
+    //If you really want to remove an asset use DestroyImmediate(theObject, true);
+    //UnityEngine.Object:Destroy(Object)
+    //SwordfishController: OnDestroy()
+    //MissingReferenceException: The object of type 'EnemyHitBox' has been destroyed but you are still trying to access it.
+    //Your script should either check if it is null or you should not destroy the object.
+    //SwordfishController.OnDestroy()
+        Destroy(swordHitBox.transform.gameObject); 
+    }
+
     private void ChangeDirection()
     {
         facingRight = !facingRight;
@@ -54,7 +71,8 @@ public class SwordfishController : MonoBehaviour
         waitForCharge = true;
         chargeAnimationTimer = 0f;
         animator.Play(ChargeAnimationName);
-        myHitBox.ChangeBox(new Vector2(facingRight ? -.75f : .75f, 0f), new Vector2(.5f, 1f));
+        hitBox.ChangeBox(new Vector2(facingRight ? -.75f : .75f, 0f), new Vector2(.5f, 1f));
+        swordHitBox.ChangeBox(new Vector2(facingRight ? .25f : -.25f, 0f), new Vector2(1.5f, 1f));
     }
 
     private void FixedUpdate()

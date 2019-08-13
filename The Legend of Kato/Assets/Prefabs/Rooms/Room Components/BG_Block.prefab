@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5493114461794341809}
-  - component: {fileID: 8480780405061397649}
   - component: {fileID: 6326113301208729548}
   m_Layer: 0
   m_Name: BG_Block
@@ -32,24 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8480780405061397649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5605311477015321039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1f53d1312b7b4fbf9a35d2151688d67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 143f14d5aaae0445d9862219cb046cab, type: 3}
-  - {fileID: 21300002, guid: 143f14d5aaae0445d9862219cb046cab, type: 3}
-  - {fileID: 21300004, guid: 143f14d5aaae0445d9862219cb046cab, type: 3}
-  - {fileID: 21300006, guid: 143f14d5aaae0445d9862219cb046cab, type: 3}
-  - {fileID: 21300008, guid: 143f14d5aaae0445d9862219cb046cab, type: 3}
 --- !u!212 &6326113301208729548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -67,7 +48,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 143f14d5aaae0445d9862219cb046cab, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75c342d9febce4424906e395627d0f2a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5570722881587927094}
   - component: {fileID: 5570722881587927097}
   - component: {fileID: 5570722881587927096}
-  - component: {fileID: 5570722881587927099}
   - component: {fileID: 5570722881587927098}
   - component: {fileID: 5570722881587927101}
   m_Layer: 9
@@ -97,34 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e842fa8035847289d88f1612a3a432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myHitBox: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab,
+  hitBox: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab, type: 3}
+  swordHitBox: {fileID: 1923367987875660395, guid: c920fd0b561604cc8b98262da447b4c4,
     type: 3}
---- !u!61 &5570722881587927099
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5570722881587927095}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 43d5970fccb4a497d8f5bd78f9bed3ad, type: 2}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -25, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 200, y: 100}
-    newSize: {x: 200, y: 100}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 150, y: 100}
-  m_EdgeRadius: 0
 --- !u!50 &5570722881587927098
 Rigidbody2D:
   serializedVersion: 4

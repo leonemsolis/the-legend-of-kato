@@ -70,8 +70,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: ddd471c6057344be49a36e24e899517d, type: 3}
-  m_Color: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
+  m_Sprite: {fileID: -7783943934334390154, guid: 76be39520477e4b479b0a4f9f987fe2e,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,7 +95,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 21300000, guid: ddd471c6057344be49a36e24e899517d, type: 3}
-  - {fileID: 21300002, guid: ddd471c6057344be49a36e24e899517d, type: 3}
-  - {fileID: 21300004, guid: ddd471c6057344be49a36e24e899517d, type: 3}
-  - {fileID: 21300006, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  - {fileID: -7783943934334390154, guid: 76be39520477e4b479b0a4f9f987fe2e, type: 3}
+  - {fileID: -5478552196057568349, guid: 76be39520477e4b479b0a4f9f987fe2e, type: 3}
+  - {fileID: 86779648715289037, guid: 76be39520477e4b479b0a4f9f987fe2e, type: 3}
+  - {fileID: -2555100465345647057, guid: 76be39520477e4b479b0a4f9f987fe2e, type: 3}
+  isWallSprite: 1
