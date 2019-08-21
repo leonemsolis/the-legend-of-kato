@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdcaf12653e064ab5a8496408c6018d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomID: -1
+  roomID: 3
   door:
   - {fileID: 1104827084854282289}
   - {fileID: 4614794441896480492}
@@ -561,16 +561,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 39.73767
-      objectReference: {fileID: 0}
-    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 179.47534
-      objectReference: {fileID: 0}
     - target: {fileID: 8028893483174881395, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
         type: 3}
       propertyPath: isEnterTrigger
@@ -581,6 +571,16 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 8805262002881866693}
+    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 39.73767
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050415566782679142, guid: 4d70a14744dcd4ca8b1c36531d66dedb,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 179.47534
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d70a14744dcd4ca8b1c36531d66dedb, type: 3}
 --- !u!4 &3475603332992043865 stripped

@@ -34,7 +34,10 @@ public class EnemyHitBox : MonoBehaviour
             audioSource.Play();
             Instantiate(smoke, transform.position, Quaternion.identity);
         }
-        Destroy(enemyTransform.gameObject);
+        if(enemyTransform.gameObject != null)
+        {
+            Destroy(enemyTransform.gameObject);
+        }
         Destroy(gameObject, hitSound.length + 1f);
     }
 

@@ -96,8 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e842fa8035847289d88f1612a3a432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitBox: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab, type: 3}
-  swordHitBox: {fileID: 1923367987875660395, guid: c920fd0b561604cc8b98262da447b4c4,
+  hitBoxPrefab: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab,
+    type: 3}
+  swordHitBoxPrefab: {fileID: 1923367987875660395, guid: c920fd0b561604cc8b98262da447b4c4,
     type: 3}
 --- !u!50 &5570722881587927098
 Rigidbody2D:

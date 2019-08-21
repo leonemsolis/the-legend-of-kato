@@ -5,8 +5,10 @@ using UnityEngine;
 public class SwordfishController : MonoBehaviour
 {
 
-    [SerializeField] EnemyHitBox hitBox;
-    [SerializeField] EnemyHitBox swordHitBox;
+    [SerializeField] EnemyHitBox hitBoxPrefab;
+    [SerializeField] EnemyHitBox swordHitBoxPrefab;
+    EnemyHitBox swordHitBox;
+    EnemyHitBox hitBox;
     Rigidbody2D rb;
     Animator animator;
 
@@ -29,10 +31,10 @@ public class SwordfishController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        hitBox = Instantiate(hitBox);
+        hitBox = Instantiate(hitBoxPrefab);
         hitBox.SetEnemy(gameObject.transform, new Vector2(.75f, 0f), new Vector2(.5f, 1f), true);
          
-        swordHitBox = Instantiate(swordHitBox);
+        swordHitBox = Instantiate(swordHitBoxPrefab);
         swordHitBox.SetEnemy(gameObject.transform, new Vector2(-.25f, 0f), new Vector2(1.5f, 1f), false);
     }
 
@@ -52,15 +54,10 @@ public class SwordfishController : MonoBehaviour
 
     private void OnDestroy()
     {
-    //TODO: ERROR
-    //Destroying assets is not permitted to avoid data loss.
-    //If you really want to remove an asset use DestroyImmediate(theObject, true);
-    //UnityEngine.Object:Destroy(Object)
-    //SwordfishController: OnDestroy()
-    //MissingReferenceException: The object of type 'EnemyHitBox' has been destroyed but you are still trying to access it.
-    //Your script should either check if it is null or you should not destroy the object.
-    //SwordfishController.OnDestroy()
-        Destroy(swordHitBox.transform.gameObject); 
+        if(swordHitBox != null)
+        {
+            Destroy(swordHitBox.transform.gameObject);
+        }
     }
 
     private void ChangeDirection()

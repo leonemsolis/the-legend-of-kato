@@ -26,9 +26,9 @@ public class PlayerAnimator : MonoBehaviour
         }
 
 
-        ////TODO: REMOVE
-        //hasSword = true;
-        //sword.gameObject.SetActive(true);
+        //TODO: REMOVE
+        hasSword = true;
+        sword.gameObject.SetActive(true);
     }
 
 
