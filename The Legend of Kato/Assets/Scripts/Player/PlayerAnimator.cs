@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -14,21 +15,22 @@ public class PlayerAnimator : MonoBehaviour
     const int ANIMATION_NO_SWORD_JUMP = 3;
     const int ANIMATION_PICKUP = 4;
 
-    bool hasSword = false;
+    bool hasSword = true;
 
     private void Awake()
     {
         player = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
+
+        if(SceneManager.GetActiveScene().buildIndex < 2)
+        {
+            hasSword = false;
+        }
+
         if (!hasSword)
         {
             sword.gameObject.SetActive(false);
         }
-
-
-        //TODO: REMOVE
-        hasSword = true;
-        sword.gameObject.SetActive(true);
     }
 
 

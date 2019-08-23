@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyHitBox : MonoBehaviour 
 {
-    Transform enemyTransform;
+    protected Transform enemyTransform;
     [SerializeField] Smoke smoke;
     [SerializeField] GameObject soulPrefab;
-    [SerializeField] AudioClip hitSound;
-    AudioSource audioSource;
+    [SerializeField] protected AudioClip hitSound;
+    protected AudioSource audioSource;
     //bool dead = false;
-    bool coin;
+    protected bool coin;
 
     private void FixedUpdate()
     {
@@ -20,7 +20,7 @@ public class EnemyHitBox : MonoBehaviour
         }
     }
 
-    public void Die(bool hit)
+    public virtual void Die(bool hit)
     {
         GetComponent<BoxCollider2D>().enabled = false;
         //dead = true;
