@@ -12,6 +12,7 @@
     // Tags
     public const string PlayerTag = "Player";
     public const string BlockTag = "Block";
+    public const string CaveBlockTag = "CaveBlock";
     public const string RoomTag = "Room";
     public const string InvulnirableEnemyHitBoxTag = "InvulnirableEnemyHitBox";
     public const string BootsTag = "Boots";

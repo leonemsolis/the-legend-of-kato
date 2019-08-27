@@ -54,7 +54,47 @@ public class CameraFollow : MonoBehaviour
         else
         {
             posX = player.FacingRight ? player.transform.position.x + cameraShiftX : player.transform.position.x - cameraShiftX;
+
+
+            float topBlockY = -10000000000f;
+            float botBlockY = 10000000000f;
+
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag(C.CaveBlockTag))
+            {
+                if(go.transform.position.x > transform.position.x - 500f 
+                && go.transform.position.x < transform.position.x + 500f)
+                {
+                    if(go.transform.position.y > topBlockY)
+                    {
+                        topBlockY = go.transform.position.y;
+                    }
+                    if(go.transform.position.y < botBlockY)
+                    {
+                        botBlockY = go.transform.position.y;
+                    }
+                }
+            }
+
+
+
             posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom;
+
+            if(Mathf.Abs(topBlockY + 10000000000f) > Mathf.Epsilon)
+            {
+                if (posY + Camera.main.orthographicSize - C.InfoPanelHeight > topBlockY)
+                {
+                    posY = topBlockY - Camera.main.orthographicSize + C.InfoPanelHeight;
+                }
+            }
+
+            if(Mathf.Abs(botBlockY - 10000000000f) > Mathf.Epsilon)
+            {
+                if (posY - Camera.main.orthographicSize + C.ButtonPanelHeight < botBlockY)
+                {
+                    posY = botBlockY + Camera.main.orthographicSize - C.ButtonPanelHeight;
+                }
+            }
+
         }
 
 
