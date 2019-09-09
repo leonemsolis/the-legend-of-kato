@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyHitBox : MonoBehaviour 
 {
     protected Transform enemyTransform;
-    [SerializeField] Smoke smoke;
-    [SerializeField] GameObject soulPrefab;
+    [SerializeField] protected Smoke smoke;
+    [SerializeField] protected  GameObject soulPrefab;
     [SerializeField] protected AudioClip hitSound;
     protected AudioSource audioSource;
     //bool dead = false;

@@ -13,11 +13,12 @@ public class MovingBlock : MonoBehaviour
     Vector3 origin;
     bool movingTowards = true;
     Vector3 destination;
-    private void Start()
+
+    private void OnEnable()
     {
         origin = transform.position;
 
-        if(horizontal)
+        if (horizontal)
         {
             destination = new Vector3(origin.x - moveDistance, origin.y, origin.z);
         }
@@ -56,7 +57,7 @@ public class MovingBlock : MonoBehaviour
             }
             else
             {
-                if (Vector3.Distance(origin, transform.position) < 5f)
+                if (Vector3.Distance(origin, transform.position) < 10f)
                 {
                     movingTowards = true;
                     transform.position = origin;

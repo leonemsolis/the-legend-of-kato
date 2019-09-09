@@ -14,7 +14,7 @@ public class RandomSprite : MonoBehaviour
         {
             if(transform.localPosition.x > 0)
             {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
+                transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
             }
         }
         else
@@ -22,7 +22,7 @@ public class RandomSprite : MonoBehaviour
             // Randomize side
             if (Random.Range(0, 2) == 0)
             {
-                transform.localScale = new Vector3(-1f, 1f, 1f);
+                transform.localScale = new Vector3(-1f, transform.localScale.y, transform.localScale.z);
             }
         }
     }

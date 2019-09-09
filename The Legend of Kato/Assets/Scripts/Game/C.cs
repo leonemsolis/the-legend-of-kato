@@ -8,6 +8,7 @@
     public const int MainMenuSceneIndex = 0;
     public const int Level1SceneIndex = 1;
     public const int Level2SceneIndex = 2;
+    public const int Level3SceneIndex = 3;
 
     // Tags
     public const string PlayerTag = "Player";
@@ -16,6 +17,7 @@
     public const string RoomTag = "Room";
     public const string InvulnirableEnemyHitBoxTag = "InvulnirableEnemyHitBox";
     public const string BootsTag = "Boots";
+    public const string BodyTag = "Body";
     public const string SwordTag = "Sword";
     public const string SpikesTag = "Spikes";
     public const string EnemyHitBoxTag = "EnemyHitBox";

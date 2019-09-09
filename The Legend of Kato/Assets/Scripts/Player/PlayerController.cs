@@ -144,4 +144,9 @@ public class PlayerController : MonoBehaviour
             }
         }
 	}
+
+    public void Push(float pushForce)
+    {
+        rb.AddForce(new Vector2(0f, pushForce), ForceMode2D.Impulse);
+    }
 }
