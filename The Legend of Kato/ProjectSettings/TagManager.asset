@@ -14,6 +14,11 @@ TagManager:
   - Room
   - Spikes
   - CaveBlock
+  - ButtonA
+  - ButtonB
+  - ButtonPause
+  - LevelSelectionMask3
+  - LevelSelectionMask2
   layers:
   - Default
   - TransparentFX

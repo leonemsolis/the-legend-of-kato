@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Body : MonoBehaviour
 {
-    PlayerUpgrades playerUpgrades;
     Transform player;
 
     void Start()
     {
         player = FindObjectOfType<PlayerController>().transform;
-        playerUpgrades = FindObjectOfType<PlayerUpgrades>();
     }
 
     private void Update()
@@ -34,10 +32,7 @@ public class Body : MonoBehaviour
         }
         if (collision.tag == C.SpikesTag)
         {
-            if(playerUpgrades.GetCurrentUpgrade() != Upgrade.BOOTS)
-            {
-                FindObjectOfType<Health>().TakeDamage();
-            }
+            FindObjectOfType<Health>().TakeDamage();
         }
     }
 }

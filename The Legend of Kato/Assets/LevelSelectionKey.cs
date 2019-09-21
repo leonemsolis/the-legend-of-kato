@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class LevelSelectionKey : MonoBehaviour
 {
+    [SerializeField] Sprite[] sprites;
 
     Vector2 origin;
     bool dragging = false;
 
+    public int keyPrefIndex = 0;
+    int tier = 1;
+
     private void Start()
     {
         origin = transform.position;
+    }
+
+    public void SetTier(int t)
+    {
+        tier = t;
+        GetComponent<SpriteRenderer>().sprite = sprites[t - 1];
+    }
+
+    public int GetTier()
+    {
+        return tier;
     }
 
     void Update()
@@ -29,6 +44,10 @@ public class LevelSelectionKey : MonoBehaviour
         if(dragging)
         {
             transform.position = GetMousePos();
+        }
+        else
+        {
+            origin = transform.position;
         }
     }
 

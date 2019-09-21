@@ -291,6 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openGate: {fileID: 4456625509452935546, guid: b45a1d500ae014baf8e8f82c4525a3d9,
     type: 3}
+  sceneLoader: {fileID: 1340499572485737253, guid: 91010d0ceb2ea4496a9dd5bf68b5fcc3,
+    type: 3}
 --- !u!61 &5322189282262920423
 BoxCollider2D:
   m_ObjectHideFlags: 0

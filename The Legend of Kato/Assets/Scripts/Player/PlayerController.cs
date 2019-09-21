@@ -47,9 +47,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake ()
     {
-        spriteRenderer = GetComponent<SpriteRenderer> ();
-        rb = GetComponent<Rigidbody2D> ();
-        boxCollider = GetComponent<BoxCollider2D> ();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
     }
 

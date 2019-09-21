@@ -7,7 +7,9 @@ using UnityEngine.Experimental.Rendering.LWRP;
 public class BossGate : MonoBehaviour
 {
     [SerializeField] Sprite openGate;
+    [SerializeField] GameObject sceneLoader;
     BoxCollider2D boxCollider;
+    LoadingBarMask loadingBarMask;
 
     private void Start()
     {
@@ -26,7 +28,32 @@ public class BossGate : MonoBehaviour
     {
         if (collision.tag == C.PlayerTag)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            // Stop Player movement
+            FindObjectOfType<PlayerController>().CanMove = false;
+            // Stop Camera movement
+            if(Camera.main.gameObject.GetComponent<CameraFollow>() != null)
+            {
+                Camera.main.gameObject.GetComponent<CameraFollow>().enabled = false;
+            }
+
+            GameObject g = Instantiate(sceneLoader, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 1f), Quaternion.identity);
+            loadingBarMask = FindObjectOfType<LoadingBarMask>();
+            StartCoroutine(LoadAsynchronously());
+        }
+    }
+
+    public bool IsOpened()
+    {
+        return boxCollider.enabled;
+    }
+
+    IEnumerator LoadAsynchronously()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        while (!operation.isDone)
+        {
+            loadingBarMask.SetPercentage(operation.progress);
+            yield return null;
         }
     }
 }

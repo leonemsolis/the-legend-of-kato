@@ -8,7 +8,7 @@ public class Portal : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();    
+        player = FindObjectOfType<PlayerController>();
     }
 
     public void Teleport(bool toA, bool right)

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FunctionStartButton : FunctionUI
 {
-    float awaitTime = 2f;
+    float awaitTime = 1.1f;
 
     public override void Function()
     {

@@ -19,10 +19,10 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Awake()
     {
-        player = GetComponent<PlayerController>();
+        player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
 
-        if(SceneManager.GetActiveScene().buildIndex < 2)
+        if(SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex)
         {
             hasSword = false;
         }
@@ -32,7 +32,6 @@ public class PlayerAnimator : MonoBehaviour
             sword.gameObject.SetActive(false);
         }
     }
-
 
     private void Update()
     {

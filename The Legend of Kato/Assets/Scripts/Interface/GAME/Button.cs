@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngineInternal.Input;
 
 public class Button : MonoBehaviour
 {
@@ -29,12 +30,9 @@ public class Button : MonoBehaviour
     {
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
         {
-            for (int i = 0; i < Input.touchCount; ++i)
+            for(int i = 0; i < Input.touchCount; ++i)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Began)
-                {
-                    CheckTouch(Input.GetTouch(i).position);
-                }
+                CheckTouch(Input.GetTouch(i).position);
             }
         }
         else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)
@@ -100,6 +98,7 @@ public class Button : MonoBehaviour
             case Mode.SHOP:
                 // Use this type of access, because shop is not always exits
                 FindObjectOfType<Shop>().BuyItem();
+                FindObjectOfType<FunctionBuy>().ActivateRemotely();
                 break;
            
         }

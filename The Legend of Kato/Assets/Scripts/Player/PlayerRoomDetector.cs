@@ -17,8 +17,6 @@ public class PlayerRoomDetector : MonoBehaviour
     }
 
 
-
-
     public void EnteredRoom(Room r)
     {
         currentRoom = r;

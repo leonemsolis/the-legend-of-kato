@@ -7,9 +7,9 @@ public class Health : MonoBehaviour
 {
 
     [SerializeField] AudioClip hurtSound;
-    int currentHealth = 3;
+    public const int MAX_HEALTH = 5;
+    int currentHealth;
 
-    int currentShields = 0;
     bool canTakeDamage = true;
     SpriteRenderer playerSpriteRenderer;
     Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
@@ -19,51 +19,38 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
+        currentHealth = PlayerPrefs.GetInt(C.PREFS_CURRENT_HEALTH, 5);
+
         playerSpriteRenderer = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
         audio = GetComponent<AudioSource>();
 
-        transform.GetChild(3).GetComponent<SpriteRenderer>().color = emptyColor;
-        transform.GetChild(4).GetComponent<SpriteRenderer>().color = emptyColor;
 
-        currentHealth--;
-        transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
-        currentHealth--;
-        transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+        for(int i = 0; i < MAX_HEALTH - currentHealth; ++i)
+        {
+            transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().color = emptyColor;
+        }
     }
 
     public void RestoreHealth()
     {
         currentHealth++;
-        if(currentHealth > 3)
+        if(currentHealth > 5)
         {
-            currentHealth = 3;
+            currentHealth = 5;
         }
         transform.GetChild(currentHealth - 1).GetComponent<SpriteRenderer>().color = fullColor;
-    }
-
-    public void AddShield()
-    {
-        if(currentShields != 2)
-        {
-            currentShields++;
-            transform.GetChild(2 + currentShields).GetComponent<SpriteRenderer>().color = fullColor;
-        }
     }
 
     public void TakeDamage()
     {
         if (canTakeDamage)
         {
-            //if(currentShields > 0)
+            //if (currentHealth > 1)
             //{
-            //    transform.GetChild(2 + currentShields).GetComponent<SpriteRenderer>().color = emptyColor;
-            //    currentShields--;
+                currentHealth--;
+                transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
             //}
-            //else
-            //{
-            //    currentHealth--;
-            //    transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
-            //}
+
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
             audio.clip = hurtSound;
@@ -81,9 +68,10 @@ public class Health : MonoBehaviour
         return currentHealth;
     }
 
-    public int GetCurrentShields()
+    private void OnDestroy()
     {
-        return currentShields;
+        PlayerPrefs.SetInt(C.PREFS_CURRENT_HEALTH, currentHealth);
+        PlayerPrefs.Save();
     }
 
     private IEnumerator ResetInvulnerable()

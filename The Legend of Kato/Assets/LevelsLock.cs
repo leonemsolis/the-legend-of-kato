@@ -6,7 +6,7 @@ public class LevelsLock : MonoBehaviour
 {
     enum State {OPENED, UNLOCKED, LOCKED};
 
-    [SerializeField] int LockID;
+    [SerializeField] public int LockID;
 
     [SerializeField] Sprite locked;
     [SerializeField] Sprite unlocked;
@@ -33,10 +33,26 @@ public class LevelsLock : MonoBehaviour
                 state = State.OPENED;
                 break;
             case 2:
-                state = State.UNLOCKED;
+                int stage_2_state = PlayerPrefs.GetInt(C.PREFS_STAGE_2_OPENED, 0);
+                if(stage_2_state == 0)
+                {
+                    state = State.LOCKED;
+                }
+                else
+                {
+                    state = State.UNLOCKED;
+                }
                 break;
             case 3:
-                state = State.LOCKED;
+                int stage_3_state = PlayerPrefs.GetInt(C.PREFS_STAGE_3_OPENED, 0);
+                if (stage_3_state == 0)
+                {
+                    state = State.LOCKED;
+                }
+                else
+                {
+                    state = State.UNLOCKED;
+                }
                 break;
         }
 
@@ -54,6 +70,14 @@ public class LevelsLock : MonoBehaviour
                 buttonUI.enabled = true;
                 break;
             case State.UNLOCKED:
+                if(LockID == 2)
+                {
+                    GameObject.FindWithTag("LevelSelectionMask2").SetActive(false);
+                }
+                if(LockID == 3)
+                {
+                    GameObject.FindWithTag("LevelSelectionMask3").SetActive(false);
+                }
                 spriteRender.sprite = locked;
                 buttonUI.enabled = false;
                 boxCollider.enabled = false;
@@ -74,6 +98,8 @@ public class LevelsLock : MonoBehaviour
             if(collision.gameObject.GetComponent<LevelSelectionKey>() != null)
             {
                 Open();
+                GetComponent<FunctionLoadLevel>().keyTier = collision.gameObject.GetComponent<LevelSelectionKey>().GetTier();
+                GetComponent<FunctionLoadLevel>().keyIndex = collision.gameObject.GetComponent<LevelSelectionKey>().keyPrefIndex;
                 Destroy(collision.gameObject);
             }
         }
