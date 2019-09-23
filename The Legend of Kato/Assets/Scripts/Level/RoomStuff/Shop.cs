@@ -16,6 +16,7 @@ public class Shop : MonoBehaviour
     ScoreBoardText money;
 
     const float selectorDeltaX = 150f * 1.4f;
+    float selectorOriginX;
     int selectorCurrentIndex = 0;
 
     string[] descriptions = new string[4];
@@ -25,7 +26,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         transform.localScale = new Vector3(1.4f, 1.4f, 1f);
-
+        selectorOriginX = selector.transform.position.x;
         health = FindObjectOfType<Health>();
         itemHolders = new List<SpriteRenderer>();
         for(int i = 1; i <= 4; ++i)
@@ -198,6 +199,12 @@ public class Shop : MonoBehaviour
         UpdateText();
     }
 
+    public void SelectCertainItem(int index)
+    {
+        selector.position = new Vector3(selectorOriginX + index * selectorDeltaX ,selector.position.y, 0f);
+        selectorCurrentIndex = index;
+        UpdateText();
+    }
 
     public void BuyItem()
     {

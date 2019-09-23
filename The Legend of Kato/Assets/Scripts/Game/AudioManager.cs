@@ -5,8 +5,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance = null;
-    public static bool music = true;
-    public static bool sounds = true;
+    public static int music = 1;
+    public static int sounds = 1;
 
     private void Start()
     {
@@ -23,22 +23,31 @@ public class AudioManager : MonoBehaviour
         // Do not destroy object when switching scene
         DontDestroyOnLoad(gameObject);
 
-        // Start inirialization
-        InitializeManager();
+        LoadSettings();
     }
 
     // Load settings
-    private void InitializeManager()
+    public void LoadSettings()
     {
-        music = System.Convert.ToBoolean(PlayerPrefs.GetString("music", "true"));
-        sounds = System.Convert.ToBoolean(PlayerPrefs.GetString("sounds", "true"));
-    }
+        music = PlayerPrefs.GetInt(C.PREFS_MUSIC, 1);
+        sounds = PlayerPrefs.GetInt(C.PREFS_SOUNDS, 1);
 
-    // Save settings
-    public static void saveSettings()
-    {
-        PlayerPrefs.SetString("music", music.ToString());
-        PlayerPrefs.SetString("sounds", sounds.ToString());
-        PlayerPrefs.Save();
+        if(music == 0)
+        {
+            FindObjectOfType<MusicPlayer>().Mute();
+        }
+        else
+        {
+            FindObjectOfType<MusicPlayer>().Unmute();
+        }
+
+        if(sounds == 0)
+        {
+            // TODO: sounds volume
+        }
+        else
+        {
+            // TODO: sounds volume
+        }
     }
 }

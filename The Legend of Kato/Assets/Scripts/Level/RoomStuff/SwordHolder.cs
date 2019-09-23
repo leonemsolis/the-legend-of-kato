@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class SwordHolder : MonoBehaviour
 {
@@ -17,5 +18,11 @@ public class SwordHolder : MonoBehaviour
                 FindObjectOfType<PlayerAnimator>().StartPickupSword();
             }
         }
+    }
+
+    public void LightOff()
+    {
+        GetComponent<LightBlink>().enabled = false;
+        GetComponent<Light2D>().enabled = false;
     }
 }

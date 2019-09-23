@@ -9,7 +9,6 @@ public class ButtonUI : MonoBehaviour
 
     bool pressed = false;
 
-    readonly RuntimePlatform platform = Application.platform;
     SpriteRenderer spriteRenderer;
 
     private void Start()

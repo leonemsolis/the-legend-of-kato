@@ -32,7 +32,10 @@ public class Button : MonoBehaviour
         {
             for(int i = 0; i < Input.touchCount; ++i)
             {
-                CheckTouch(Input.GetTouch(i).position);
+                if(Input.GetTouch(i).phase == TouchPhase.Began)
+                {
+                    CheckTouch(Input.GetTouch(i).position);
+                }
             }
         }
         else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)

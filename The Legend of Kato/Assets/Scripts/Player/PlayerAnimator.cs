@@ -104,6 +104,7 @@ public class PlayerAnimator : MonoBehaviour
     private IEnumerator EndPickupSword()
     {
         yield return new WaitForSeconds(2.3f);
+        FindObjectOfType<SwordHolder>().LightOff();
         player.CanMove = true;
         hasSword = true;
         sword.gameObject.SetActive(true);

@@ -6,8 +6,8 @@ using UnityEngine.Experimental.Rendering.LWRP;
 public class LightBlink : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
-    const float blinkTime = .5f;
-    float timer = blinkTime;
+    [SerializeField] float blinkTime = 1f;
+    float timer;
     bool brightPhase = true;
     Light2D light2d;
     float startTimeBright = 0f;
@@ -16,6 +16,7 @@ public class LightBlink : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         light2d = GetComponent<Light2D>();
+        timer = blinkTime;
     }
 
     void Update()
@@ -33,11 +34,11 @@ public class LightBlink : MonoBehaviour
 
         if (brightPhase)
         {
-            light2d.intensity = Mathf.SmoothStep(1f, .3f, (Time.time - startTimeBright) / .5f);
+            light2d.intensity = Mathf.SmoothStep(.7f, .5f, (Time.time - startTimeBright) / .5f);
         }
         else
         {
-            light2d.intensity = Mathf.SmoothStep(.3f, 1f, (Time.time - startTimeBright) / .5f);
+            light2d.intensity = Mathf.SmoothStep(.5f, .7f, (Time.time - startTimeBright) / .5f);
         }
     }
 }

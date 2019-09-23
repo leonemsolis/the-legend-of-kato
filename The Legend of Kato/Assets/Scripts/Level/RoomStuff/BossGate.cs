@@ -19,6 +19,16 @@ public class BossGate : MonoBehaviour
 
     public void Open()
     {
+        if(SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex)
+        {
+            PlayerPrefs.SetInt(C.PREFS_STAGE_2_OPENED, 1);
+            PlayerPrefs.Save();
+        } else if(SceneManager.GetActiveScene().buildIndex == C.Level2SceneIndex)
+        {
+            PlayerPrefs.SetInt(C.PREFS_STAGE_3_OPENED, 1);
+            PlayerPrefs.Save();
+        }
+
         GetComponent<Light2D>().intensity = 1.6f;
         GetComponent<SpriteRenderer>().sprite = openGate;
         boxCollider.enabled = true;

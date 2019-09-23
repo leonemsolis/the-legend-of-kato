@@ -95,6 +95,16 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
+    public void Mute()
+    {
+        _as.volume = 0f;
+    }
+
+    public void Unmute()
+    {
+        _as.volume = 1f;
+    }
+
     private void Fade()
     {
         if(fadeOut)
