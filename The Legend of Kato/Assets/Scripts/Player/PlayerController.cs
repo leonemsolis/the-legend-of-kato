@@ -96,15 +96,20 @@ public class PlayerController : MonoBehaviour
 	{
 		if (facingRight) {
 			facingRight = false;
-		}
+            //rb.AddForce(Vector2.left * moveForce * 2f);
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+        }
 	}
 
 	private void MoveRight ()
 	{
 		if (!facingRight) {
 			facingRight = true;
-		}
+            //rb.AddForce(Vector2.right * moveForce * 2f);
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+        }
 	}
+    
 
 	public void ChangeDirection ()
 	{

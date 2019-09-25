@@ -121,8 +121,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 28
+        width: 129
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +130,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4446f3a656f654ba6b4a286551f5d420
+      spriteID: 96bbe92c5d0374be89ddea6cf95136d6
       internalID: 1370884366713005951
       vertices: []
       indices: 
@@ -140,10 +140,10 @@ TextureImporter:
       name: reset_button_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 129
         y: 0
-        width: 128
-        height: 28
+        width: 129
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cc28cbc6cda1470f80e4d5ef24a40a6
+      spriteID: f52179f1cd46c4986bd9f74d560ef88d
       internalID: 697467630744587302
       vertices: []
       indices: 

@@ -11,9 +11,4 @@ public class MainMenuButtonsPosition : MonoBehaviour
     {
         transform.position = new Vector3(0f, -Camera.main.orthographicSize + bottomGap, 0f);
     }
-
-    private void Update()
-    {
-        transform.position = new Vector3(0f, -Camera.main.orthographicSize + bottomGap, 0f);
-    }
 }

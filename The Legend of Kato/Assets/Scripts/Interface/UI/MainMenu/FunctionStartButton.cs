@@ -18,6 +18,6 @@ public class FunctionStartButton : FunctionUI
     private IEnumerator StartGame()
     {
         yield return new WaitForSeconds(awaitTime);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(C.LevelSelectionSceneIndex);
     }
 }

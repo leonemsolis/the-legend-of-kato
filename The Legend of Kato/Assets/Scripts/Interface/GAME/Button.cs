@@ -30,11 +30,11 @@ public class Button : MonoBehaviour
     {
         if (platform == RuntimePlatform.Android || platform == RuntimePlatform.IPhonePlayer)
         {
-            for(int i = 0; i < Input.touchCount; ++i)
+            foreach(Touch touch in Input.touches)
             {
-                if(Input.GetTouch(i).phase == TouchPhase.Began)
+                if (touch.phase == TouchPhase.Began)
                 {
-                    CheckTouch(Input.GetTouch(i).position);
+                    CheckTouch(touch.position);
                 }
             }
         }
@@ -60,6 +60,8 @@ public class Button : MonoBehaviour
             }
         }
     }
+
+
 
     private void CheckTouch(Vector3 pos)
     {
