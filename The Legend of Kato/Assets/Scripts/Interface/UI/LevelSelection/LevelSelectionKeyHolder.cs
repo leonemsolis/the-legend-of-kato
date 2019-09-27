@@ -78,7 +78,8 @@ public class LevelSelectionKeyHolder : MonoBehaviour
         for (int i = 0; i < numberOfKeys; ++i)
         {
             float gap = 87f * scaleFactor;
-            LevelSelectionKey key = Instantiate(keyPrefab, transform.position + new Vector3(gap * i - gap, 0f, 0f), Quaternion.identity);
+            float origin = gap + .4f;
+            LevelSelectionKey key = Instantiate(keyPrefab, transform.position + new Vector3(origin * i - gap, 3.2f * scaleFactor, 0f), Quaternion.identity);
             key.SetTier(keys[i]);
             key.keyPrefIndex = i;
             key.transform.localScale = new Vector3(scaleFactor, scaleFactor, 0f);

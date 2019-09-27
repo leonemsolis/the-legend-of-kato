@@ -18,6 +18,14 @@ public class FunctionStartButton : FunctionUI
     private IEnumerator StartGame()
     {
         yield return new WaitForSeconds(awaitTime);
-        SceneManager.LoadScene(C.LevelSelectionSceneIndex);
+        if(PlayerPrefs.GetInt(C.PREFS_FIRST_LAUNCH, 1) == 1)
+        {
+            SceneManager.LoadScene(C.IntroSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(C.LevelSelectionSceneIndex);
+        }
+
     }
 }

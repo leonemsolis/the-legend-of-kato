@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FunctionLoadLevel : FunctionUI
 {
-    [SerializeField] int SceneID;
+    [SerializeField] SceneEnum sceneEnum;
     [SerializeField] GameObject sceneLoader;
 
     public int keyTier = 1;
@@ -15,13 +15,14 @@ public class FunctionLoadLevel : FunctionUI
 
     public override void Function()
     {
-        switch(SceneID)
+        switch(sceneEnum)
         {
-            case C.Level1SceneIndex:
+            case SceneEnum.STAGE0:
+            case SceneEnum.STAGE1:
                 PlayerPrefs.SetInt(C.PREFS_CURRENT_HEALTH, 5);
                 break;
-            case C.Level2SceneIndex:
-            case C.Level3SceneIndex:
+            case SceneEnum.STAGE2:
+            case SceneEnum.STAGE3:
                 PlayerPrefs.SetInt(C.PREFS_CURRENT_HEALTH, keyTier + 2);
                 switch(keyIndex)
                 {
@@ -47,7 +48,24 @@ public class FunctionLoadLevel : FunctionUI
 
     IEnumerator LoadAsynchronously()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneID);
+        int sceneID = C.Level1SceneIndex;
+        switch(sceneEnum)
+        {
+            case SceneEnum.STAGE0:
+                sceneID = C.Level0SceneIndex;
+                break;
+            case SceneEnum.STAGE1:
+                sceneID = C.Level1SceneIndex;
+                break;
+            case SceneEnum.STAGE2:
+                sceneID = C.Level2SceneIndex;
+                break;
+            case SceneEnum.STAGE3:
+                sceneID = C.Level3SceneIndex;
+                break;
+        }
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneID);
         while(!operation.isDone)
         {
             loadingBarMask.SetPercentage(operation.progress);

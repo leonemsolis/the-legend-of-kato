@@ -28,10 +28,16 @@ public class MusicPlayer : MonoBehaviour
     bool fadeOut = true;
     float timer = fadeOutTime;
 
+    bool muted = false;
+
     void Start()
     {
         _as = GetComponent<AudioSource>();
         _as.loop = true;
+        if(PlayerPrefs.GetInt(C.PREFS_MUSIC, 1) == 0)
+        {
+            Mute();
+        }
     }
 
     private void Update()
@@ -45,8 +51,11 @@ public class MusicPlayer : MonoBehaviour
         {
             case C.MainMenuSceneIndex:
             case C.LevelSelectionSceneIndex:
+            case C.SettingsSceneIndex:
+            case C.IntroSceneIndex:
                 currentState = MusicState.MENU;
                 break;
+            case C.Level0SceneIndex:
             case C.Level1SceneIndex:
             case C.Level2SceneIndex:
             case C.Level3SceneIndex:
@@ -97,46 +106,57 @@ public class MusicPlayer : MonoBehaviour
 
     public void Mute()
     {
+        muted = true;
         _as.volume = 0f;
     }
 
     public void Unmute()
     {
+        muted = false;
         _as.volume = 1f;
     }
 
     private void Fade()
     {
-        if(fadeOut)
+        if(muted)
         {
-            if(timer > 0)
-            {
-                timer -= Time.deltaTime;
-                _as.volume -= Time.deltaTime * deltaOutVolume;
-            }
-            else
-            {
-                _as.volume = lowVolume;
-                fadeOut = false;
-                timer = fadeInTime;
-                _as.clip = fadeInClip;
-                _as.Play();
-            }
+            fade = false;
+            _as.clip = fadeInClip;
+            _as.Play();
         }
         else
         {
-            if(timer > 0)
+            if (fadeOut)
             {
-                timer -= Time.deltaTime;
-                _as.volume += Time.deltaTime * deltaInVolume;
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                    _as.volume -= Time.deltaTime * deltaOutVolume;
+                }
+                else
+                {
+                    _as.volume = lowVolume;
+                    fadeOut = false;
+                    timer = fadeInTime;
+                    _as.clip = fadeInClip;
+                    _as.Play();
+                }
             }
             else
             {
-                _as.volume = highVolume;
-                fadeOut = true;
-                timer = fadeOutTime;
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                    _as.volume += Time.deltaTime * deltaInVolume;
+                }
+                else
+                {
+                    _as.volume = highVolume;
+                    fadeOut = true;
+                    timer = fadeOutTime;
 
-                fade = false;
+                    fade = false;
+                }
             }
         }
     }

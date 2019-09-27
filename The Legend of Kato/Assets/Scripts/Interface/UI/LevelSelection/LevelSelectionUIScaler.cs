@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LevelSelectionUIScaler : MonoBehaviour
 {
-    const float height = 862.5f;
+    const float height = 725f;
+    const float width = 693.75f;
 
     void Start()
     {
-        float screenHeight = Camera.main.orthographicSize * 2f;
-        float scaleFactor = screenHeight / height;
+        float screenWidth = 1000f;
+        float scaleFactor = screenWidth / width;
 
         // To leave a little free space
         scaleFactor -= .1f;

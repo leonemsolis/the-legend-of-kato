@@ -22,7 +22,7 @@ public class PlayerAnimator : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
 
-        if(SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex)
+        if(SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex || SceneManager.GetActiveScene().buildIndex == C.Level0SceneIndex)
         {
             hasSword = false;
         }

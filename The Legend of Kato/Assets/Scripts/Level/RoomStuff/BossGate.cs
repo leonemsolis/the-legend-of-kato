@@ -8,6 +8,7 @@ public class BossGate : MonoBehaviour
 {
     [SerializeField] Sprite openGate;
     [SerializeField] GameObject sceneLoader;
+    [SerializeField] bool tutorialLevel;
     BoxCollider2D boxCollider;
     LoadingBarMask loadingBarMask;
 
@@ -59,7 +60,15 @@ public class BossGate : MonoBehaviour
 
     IEnumerator LoadAsynchronously()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation operation;
+        if (tutorialLevel)
+        {
+            operation = SceneManager.LoadSceneAsync(C.LevelSelectionSceneIndex);
+        }
+        else
+        {
+            operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        }
         while (!operation.isDone)
         {
             loadingBarMask.SetPercentage(operation.progress);

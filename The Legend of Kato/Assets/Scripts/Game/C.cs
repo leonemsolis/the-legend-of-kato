@@ -10,11 +10,14 @@ public class C: MonoBehaviour
     public const float InfoPanelHeight = 200f;
     public const int RoomIDBoss = 1000;
     public const int MainMenuSceneIndex = 1;
-    public const int SettingsSceneIndex = 6;
     public const int LevelSelectionSceneIndex = 2;
     public const int Level1SceneIndex = 3;
     public const int Level2SceneIndex = 4;
     public const int Level3SceneIndex = 5;
+    public const int SettingsSceneIndex = 6;
+    public const int IntroSceneIndex = 7;
+    public const int Level0SceneIndex = 8;
+    public const int SplashSceneIndex = 0;
 
     // Tags
     public const string PlayerTag = "Player";
@@ -49,7 +52,8 @@ public class C: MonoBehaviour
     public const string PREFS_STAGE_3_OPENED = "STAGE_3";               // int
     // PlayerPrefs Settings
     public const string PREFS_MUSIC = "MUSIC";                          // int
-    public const string PREFS_SOUNDS = "SOUNDS";                          // int
+    public const string PREFS_SOUNDS = "SOUNDS";                        // int
+    public const string PREFS_FIRST_LAUNCH = "FIRST_LAUNCH";            // int
 }
 
 

@@ -46,5 +46,7 @@ public class FunctionAudioToggle : FunctionUI
                 PlayerPrefs.SetInt(C.PREFS_SOUNDS, 0);
             }
         }
+        PlayerPrefs.Save();
+        FindObjectOfType<AudioManager>().LoadSettings();
     }
 }

@@ -29,6 +29,7 @@ public class LevelsLock : MonoBehaviour
 
         switch(LockID)
         {
+            case 0:
             case 1:
                 state = State.OPENED;
                 break;
