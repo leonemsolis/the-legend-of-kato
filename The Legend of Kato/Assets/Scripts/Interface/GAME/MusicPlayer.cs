@@ -54,6 +54,7 @@ public class MusicPlayer : MonoBehaviour
             case C.LevelSelectionSceneIndex:
             case C.SettingsSceneIndex:
             case C.IntroSceneIndex:
+            case C.DeathSceneIndex:
                 currentState = MusicState.MENU;
                 break;
             case C.Level0SceneIndex:
@@ -65,7 +66,7 @@ public class MusicPlayer : MonoBehaviour
                 {
                     if(FindObjectOfType<PlayerRoomDetector>().GetCurrentRoom() != null && FindObjectOfType<PlayerRoomDetector>().GetCurrentRoom().RoomID == C.RoomIDBoss)
                     {
-                        if(FindObjectOfType<BossGate>().IsOpened() || FindObjectOfType<BossKey>() != null)
+                        if(FindObjectOfType<BossGate>() != null && FindObjectOfType<BossGate>().IsOpened())
                         {
                             currentState = MusicState.LEVEL;
                         }

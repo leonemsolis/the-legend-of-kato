@@ -9,6 +9,7 @@ public class C: MonoBehaviour
     public const float ButtonPanelHeight = 400f;
     public const float InfoPanelHeight = 200f;
     public const int RoomIDBoss = 1000;
+    public const int SplashSceneIndex = 0;
     public const int MainMenuSceneIndex = 1;
     public const int LevelSelectionSceneIndex = 2;
     public const int Level1SceneIndex = 3;
@@ -17,7 +18,8 @@ public class C: MonoBehaviour
     public const int SettingsSceneIndex = 6;
     public const int IntroSceneIndex = 7;
     public const int Level0SceneIndex = 8;
-    public const int SplashSceneIndex = 0;
+    public const int DeathSceneIndex = 9;
+
 
     // Tags
     public const string PlayerTag = "Player";

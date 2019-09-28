@@ -47,9 +47,16 @@ public class BossGate : MonoBehaviour
                 Camera.main.gameObject.GetComponent<CameraFollow>().enabled = false;
             }
 
-            GameObject g = Instantiate(sceneLoader, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 1f), Quaternion.identity);
-            loadingBarMask = FindObjectOfType<LoadingBarMask>();
-            StartCoroutine(LoadAsynchronously());
+            if(FindObjectOfType<Blackout>() != null)
+            {
+                FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                GameObject g = Instantiate(sceneLoader, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 1f), Quaternion.identity);
+                loadingBarMask = FindObjectOfType<LoadingBarMask>();
+                StartCoroutine(LoadAsynchronously());
+            }
         }
     }
 

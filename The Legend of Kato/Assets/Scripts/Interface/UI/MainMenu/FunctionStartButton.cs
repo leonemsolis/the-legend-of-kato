@@ -18,13 +18,14 @@ public class FunctionStartButton : FunctionUI
     private IEnumerator StartGame()
     {
         yield return new WaitForSeconds(awaitTime);
-        if(PlayerPrefs.GetInt(C.PREFS_FIRST_LAUNCH, 1) == 1)
+
+        if (PlayerPrefs.GetInt(C.PREFS_FIRST_LAUNCH, 1) == 1)
         {
-            SceneManager.LoadScene(C.IntroSceneIndex);
+            FindObjectOfType<Blackout>().LoadScene(C.IntroSceneIndex);
         }
         else
         {
-            SceneManager.LoadScene(C.LevelSelectionSceneIndex);
+            FindObjectOfType<Blackout>().LoadScene(C.LevelSelectionSceneIndex);
         }
 
     }

@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
             StartCoroutine(ResetInvulnerable());
             if (currentHealth == 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(C.DeathSceneIndex);
             }
         } 
     }
