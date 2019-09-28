@@ -20,7 +20,7 @@ public class ProgressIndicator : MonoBehaviour
 
     private IEnumerator Blink()
     {
-        yield return new WaitForSeconds(period);
+        yield return new WaitForSecondsRealtime(period);
         spriteRenderer.enabled = active;
         if(active)
         {

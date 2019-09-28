@@ -12,8 +12,8 @@ public class IntroSlider : MonoBehaviour
 
     int[] slidesInPage = {3, 4, 3, 4, 3};
 
-    const float slideNormalTime = 3.5f;
-    const float slideNextPageTime = .3f;
+    const float slideNormalTime = 1.5f;
+    const float slideNextPageTime = .1f;
     const float removeTime = .2f;
     float timer = 1f;
 

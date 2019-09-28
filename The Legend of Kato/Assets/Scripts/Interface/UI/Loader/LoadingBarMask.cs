@@ -12,7 +12,7 @@ public class LoadingBarMask : MonoBehaviour
 
     public void SetPercentage(float percent)
     {
-        transform.localPosition = new Vector3(initialX + percent * 600f, 0f, 0f);
+        transform.localPosition = new Vector3(initialX + percent * 600f, transform.localPosition.y, 0f);
     }
 
 }

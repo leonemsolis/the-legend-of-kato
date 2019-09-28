@@ -31,6 +31,7 @@ public class C: MonoBehaviour
     public const string SpikesTag = "Spikes";
     public const string EnemyHitBoxTag = "EnemyHitBox";
     public const string EnemyTag = "Enemy";
+    public const string ButtonUITag = "ButtonUI";
 
     // Layers
     public const string BlockLayer = "Block";

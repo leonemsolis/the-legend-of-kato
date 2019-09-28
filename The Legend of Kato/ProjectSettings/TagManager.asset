@@ -19,6 +19,7 @@ TagManager:
   - ButtonPause
   - LevelSelectionMask3
   - LevelSelectionMask2
+  - ButtonUI
   layers:
   - Default
   - TransparentFX

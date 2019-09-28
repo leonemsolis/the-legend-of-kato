@@ -98,7 +98,7 @@ public class Button : MonoBehaviour
                 break;
             case Mode.PAUSE:
                 // Use this type of access, because pause panel is not always enabled
-                FindObjectOfType<PausePanel>().Activate();
+                //FindObjectOfType<PausePanel>().Activate();
                 break;
             case Mode.SHOP:
                 // Use this type of access, because shop is not always exits
@@ -118,7 +118,7 @@ public class Button : MonoBehaviour
                 break;
             case Mode.PAUSE:
                 // Use this type of access, because pause panel is not always enabled
-                FindObjectOfType<PausePanel>().SelectNextElement();
+                //FindObjectOfType<PausePanel>().SelectNextElement();
                 break;
             case Mode.SHOP:
                 // Use this type of access, because shop is not always exits

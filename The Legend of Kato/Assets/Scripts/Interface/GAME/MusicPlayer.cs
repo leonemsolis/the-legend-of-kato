@@ -40,6 +40,7 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         if(fade)
@@ -130,8 +131,12 @@ public class MusicPlayer : MonoBehaviour
             {
                 if (timer > 0)
                 {
-                    timer -= Time.deltaTime;
-                    _as.volume -= Time.deltaTime * deltaOutVolume;
+                    timer -= Time.unscaledTime;
+                    _as.volume -= Time.unscaledTime * deltaOutVolume;
+                    if (_as.volume < lowVolume)
+                    {
+                        _as.volume = lowVolume;
+                    }
                 }
                 else
                 {
@@ -146,8 +151,12 @@ public class MusicPlayer : MonoBehaviour
             {
                 if (timer > 0)
                 {
-                    timer -= Time.deltaTime;
-                    _as.volume += Time.deltaTime * deltaInVolume;
+                    timer -= Time.unscaledTime;
+                    _as.volume += Time.unscaledTime * deltaInVolume;
+                    if(_as.volume > highVolume)
+                    {
+                        _as.volume = highVolume;
+                    }
                 }
                 else
                 {

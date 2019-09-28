@@ -6,6 +6,9 @@ public class CameraScaler : MonoBehaviour
 {
     void Awake()
     {
+        // Emergent resume
+        Time.timeScale = 1f;
+
         float unitPhysicPixelSize = Screen.width / 1000f;
         float cameraHeight = Screen.height / unitPhysicPixelSize;
         float cameraSize = cameraHeight / 2f;

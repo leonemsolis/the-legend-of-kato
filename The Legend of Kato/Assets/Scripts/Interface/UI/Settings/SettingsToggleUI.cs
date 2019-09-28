@@ -17,7 +17,7 @@ public class SettingsToggleUI : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
 
-    private void Start()
+    private void OnEnable()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
