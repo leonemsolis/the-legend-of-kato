@@ -11,10 +11,8 @@ public class FunctionRestartGame : FunctionUI
 
     public override void Function()
     {
-        PlayerPrefs.SetInt(C.PREFS_CURRENT_HEALTH, 5);
-        PlayerPrefs.SetInt(C.PREFS_MONEY, 0);
-        PlayerPrefs.Save();
-
+        FindObjectOfType<Health>().Restart();
+        FindObjectOfType<ScoreBoardText>().DecreaseScore(FindObjectOfType<ScoreBoardText>().GetCurrentScore());
         Instantiate(sceneLoader, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 0f), Quaternion.identity);
         loadingBarMask = FindObjectOfType<LoadingBarMask>();
 

@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc40a085da414c9f96b46f338d34588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flip: {fileID: 8300000, guid: 9521674aecb52405c931248ec3da6571, type: 3}
   slideSprites:
   - {fileID: 3432022239008491496, guid: 8c23fce73af0f44b8b5475722d361581, type: 3}
   - {fileID: 7244610748993108863, guid: 8c23fce73af0f44b8b5475722d361581, type: 3}

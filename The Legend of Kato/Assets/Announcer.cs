@@ -11,6 +11,8 @@ public class Announcer : MonoBehaviour
     [SerializeField] Sprite depthsText;
     [SerializeField] Sprite oceanBedText;
 
+    [SerializeField] AudioClip sound;
+
     const string animationName = "Go";
 
     Animator animator;
@@ -47,6 +49,11 @@ public class Announcer : MonoBehaviour
 
         pauseButton = FindObjectOfType<PauseButton>();
         pauseButton.gameObject.GetComponent<Collider2D>().enabled = false;
+    }
+
+    public void PlaySound()
+    {
+        FindObjectOfType<SoundPlayer>().PlaySound(sound);
     }
 
     private void Update()

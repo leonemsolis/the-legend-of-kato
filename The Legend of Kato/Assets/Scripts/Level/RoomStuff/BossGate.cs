@@ -49,7 +49,14 @@ public class BossGate : MonoBehaviour
 
             if(FindObjectOfType<Blackout>() != null)
             {
-                FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
+                if (tutorialLevel)
+                {
+                    FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
+                }
+                else
+                {
+                    FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             else
             {

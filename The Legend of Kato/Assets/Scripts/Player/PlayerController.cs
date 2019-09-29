@@ -9,7 +9,6 @@ enum JumpType { FIRST, SECOND, NONE };
 public class PlayerController : MonoBehaviour 
 {
     [SerializeField] AudioClip jumpSound;
-    AudioSource audioSource;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
@@ -50,7 +49,6 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate ()
@@ -133,14 +131,12 @@ public class PlayerController : MonoBehaviour
             switch (jumpType)
             {
                 case JumpType.SECOND:
-                    audioSource.clip = jumpSound;
-                    audioSource.Play();
+                    FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
                     jumpType = JumpType.NONE;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                     break;
                 case JumpType.FIRST:
-                    audioSource.clip = jumpSound;
-                    audioSource.Play();
+                    FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
                     jumpType = JumpType.SECOND;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                     break;

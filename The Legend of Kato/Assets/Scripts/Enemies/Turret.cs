@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    [SerializeField] AudioClip shootSound;
     [SerializeField] bool shootingRight = false;
     [SerializeField] TurretProjectile projectile;
     const float shootDelay = 2f;
@@ -27,6 +28,7 @@ public class Turret : MonoBehaviour
     private IEnumerator Shoot()
     {
         yield return new WaitForSeconds(shootDelay);
+        FindObjectOfType<SoundPlayer>().PlaySound(shootSound, transform.position);
         TurretProjectile p = Instantiate(projectile, transform.position + shootOffset, Quaternion.identity);
         p.transform.parent = transform;
         p.StartMoving(shootingRight);

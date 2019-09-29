@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb528ecf3178c442a9543f1f2744ba84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: b934df297732946289885e24ea649e9f, type: 3}
   doorSilhouette: {fileID: 84282119911883089, guid: 93f04bb49ac7a418db2f3bb81e8743e0,
     type: 3}
 --- !u!212 &7634789126228385458

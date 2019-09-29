@@ -73,6 +73,10 @@ public class SettingsToggleUI : MonoBehaviour
 
     void ButtonPressed()
     {
+        if(GetComponent<ButtonClickSound>() != null)
+        {
+            GetComponent<ButtonClickSound>().PlayClick();
+        }
         spriteRenderer.sprite = on ? onDown : offDown;
         pressed = true;
     }

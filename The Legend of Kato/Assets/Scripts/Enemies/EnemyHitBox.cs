@@ -8,7 +8,6 @@ public class EnemyHitBox : MonoBehaviour
     [SerializeField] protected Smoke smoke;
     [SerializeField] protected  GameObject soulPrefab;
     [SerializeField] protected AudioClip hitSound;
-    protected AudioSource audioSource;
     //bool dead = false;
     protected bool coin;
 
@@ -30,8 +29,7 @@ public class EnemyHitBox : MonoBehaviour
         }
         if(hit)
         {
-            audioSource.clip = hitSound;
-            audioSource.Play();
+            FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
             Instantiate(smoke, transform.position, Quaternion.identity);
         }
         if(enemyTransform.gameObject != null)
@@ -47,7 +45,6 @@ public class EnemyHitBox : MonoBehaviour
         GetComponent<BoxCollider2D>().offset = offset;
         GetComponent<BoxCollider2D>().size = size;
         coin = dropCoin;
-        audioSource = GetComponent<AudioSource>();
     }
 
     public void ChangeBox(Vector2 offset, Vector2 size)

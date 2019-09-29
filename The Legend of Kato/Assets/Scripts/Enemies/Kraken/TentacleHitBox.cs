@@ -13,8 +13,7 @@ public class TentacleHitBox : EnemyHitBox
 
         if (hit)
         {
-            audioSource.clip = hitSound;
-            audioSource.Play();
+            FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
         }
         if (enemyTransform.gameObject != null)
         {
@@ -40,6 +39,5 @@ public class TentacleHitBox : EnemyHitBox
         GetComponent<BoxCollider2D>().offset = offset;
         GetComponent<BoxCollider2D>().size = size;
         coin = false;
-        audioSource = GetComponent<AudioSource>();
     }
 }

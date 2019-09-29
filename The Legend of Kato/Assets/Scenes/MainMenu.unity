@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fe15b489af14663ada5e7dcaa46e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sword: {fileID: 8300000, guid: d29d02c4a8baa40469f97a3fccc88f8d, type: 3}
 --- !u!1 &479382881
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +408,7 @@ GameObject:
   - component: {fileID: 507686406}
   - component: {fileID: 507686407}
   - component: {fileID: 507686408}
+  - component: {fileID: 507686409}
   m_Layer: 5
   m_Name: AchievementsButton
   m_TagString: Untagged
@@ -530,6 +532,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 181.25, y: 175}
   m_EdgeRadius: 0
+--- !u!114 &507686409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507686403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &895629448
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +789,7 @@ GameObject:
   - component: {fileID: 1368387961}
   - component: {fileID: 1368387960}
   - component: {fileID: 1368387962}
+  - component: {fileID: 1368387963}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -893,6 +913,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 181.25, y: 175}
   m_EdgeRadius: 0
+--- !u!114 &1368387963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368387957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!4 &1383414724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5459358122256354612, guid: d911b192f74b04a2b9f2747e047ae41a,
@@ -1311,6 +1348,7 @@ GameObject:
   - component: {fileID: 1709011928}
   - component: {fileID: 1709011927}
   - component: {fileID: 1709011929}
+  - component: {fileID: 1709011930}
   m_Layer: 5
   m_Name: LSButton
   m_TagString: Untagged
@@ -1434,6 +1472,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de7ec72cdd3b407aba40b9b7154d2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1709011930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709011924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &1840289408
 GameObject:
   m_ObjectHideFlags: 0

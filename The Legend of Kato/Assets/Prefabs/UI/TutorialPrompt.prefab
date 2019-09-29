@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 3444416688924208257}
   - component: {fileID: 5934548805145455439}
   - component: {fileID: 1223749786252798927}
+  - component: {fileID: 5854219478053298277}
   m_Layer: 0
   m_Name: ButtonX
   m_TagString: Untagged
@@ -217,6 +218,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneEnum: 1
+--- !u!114 &5854219478053298277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444416688924208258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &3444416690104147211
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +248,7 @@ GameObject:
   - component: {fileID: 3444416690104147214}
   - component: {fileID: 3056165041723879870}
   - component: {fileID: 3823227016521787900}
+  - component: {fileID: 790852386997460994}
   m_Layer: 0
   m_Name: ButtonV
   m_TagString: Untagged
@@ -358,6 +377,23 @@ MonoBehaviour:
     type: 3}
   keyTier: 0
   keyIndex: 0
+--- !u!114 &790852386997460994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3444416690104147211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &3444416690214380006
 GameObject:
   m_ObjectHideFlags: 0

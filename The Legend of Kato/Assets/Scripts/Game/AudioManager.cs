@@ -26,6 +26,14 @@ public class AudioManager : MonoBehaviour
         LoadSettings();
     }
 
+    private void Update()
+    {
+        if(Camera.main != null)
+        {
+            transform.position = Camera.main.transform.position;
+        }
+    }
+
     // Load settings
     public void LoadSettings()
     {
@@ -43,11 +51,11 @@ public class AudioManager : MonoBehaviour
 
         if(sounds == 0)
         {
-            // TODO: sounds volume
+            FindObjectOfType<SoundPlayer>().Mute();
         }
         else
         {
-            // TODO: sounds volume
+            FindObjectOfType<SoundPlayer>().Unmute();
         }
     }
 }

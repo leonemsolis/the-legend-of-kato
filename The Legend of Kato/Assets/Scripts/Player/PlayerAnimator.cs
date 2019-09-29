@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    [SerializeField] AudioClip swordPickUp;
     [SerializeField] SwordController sword;
     PlayerController player;
     Animator animator;
@@ -99,6 +100,13 @@ public class PlayerAnimator : MonoBehaviour
         player.CanMove = false;
         SetAnimation(ANIMATION_PICKUP);
         StartCoroutine(EndPickupSword());
+        StartCoroutine(PlayPickUpSound());
+    }
+
+    private IEnumerator PlayPickUpSound()
+    {
+        yield return new WaitForSeconds(1.4f);
+        FindObjectOfType<SoundPlayer>().PlaySound(swordPickUp, transform.position);
     }
 
     private IEnumerator EndPickupSword()

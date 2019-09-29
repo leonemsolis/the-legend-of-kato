@@ -8,6 +8,8 @@ public class Coin : MonoBehaviour
     bool active = false;
     float activeDelay = .1f;
 
+    [SerializeField] AudioClip pickUpSound;
+
     private void Start()
     {
         rb = transform.parent.gameObject.GetComponent<Rigidbody2D>();
@@ -33,6 +35,7 @@ public class Coin : MonoBehaviour
             if (collision.tag == "Player" || collision.tag == "Boots" || collision.tag == "Sword" || collision.tag == "Body")
             {
                 Destroy(transform.parent.gameObject);
+                FindObjectOfType<SoundPlayer>().PlaySound(pickUpSound, transform.position);
                 FindObjectOfType<ScoreBoardText>().IncreaseScore(1);
             }
         }

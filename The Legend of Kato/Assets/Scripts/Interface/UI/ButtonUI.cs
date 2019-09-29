@@ -54,6 +54,10 @@ public class ButtonUI : MonoBehaviour
 
     void ButtonPressed()
     {
+        if(GetComponent<ButtonClickSound>() != null)
+        {
+            GetComponent<ButtonClickSound>().PlayClick();
+        }
         spriteRenderer.sprite = down;
         pressed = true;
     }

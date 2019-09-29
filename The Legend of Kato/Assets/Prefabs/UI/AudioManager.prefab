@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7917187859957610249}
   - component: {fileID: 7917187859957610251}
   - component: {fileID: 7917187859957610248}
+  - component: {fileID: 817029879444230541}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -156,3 +157,18 @@ MonoBehaviour:
   MainMenuMusic: {fileID: 8300000, guid: 2abe7d4d4816f4b37865a191185fb0e4, type: 3}
   LevelBaseMusic: {fileID: 8300000, guid: a4803d8e9a60a470abb30129df022aa9, type: 3}
   LevelBossMusic: {fileID: 8300000, guid: e90acaeda329a41b4b45ce21e7c430bd, type: 3}
+--- !u!114 &817029879444230541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7917187859957610255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55b301bd89767479f99eb0632818561e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundClipPrefab: {fileID: 2956821355905219151, guid: 8a1443c49752444bf93cc3d1ba6c6893,
+    type: 3}
+  MainMenuMusic: {fileID: 0}

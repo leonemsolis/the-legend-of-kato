@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0284d68238c4a48808cc3fef3ab64c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: b934df297732946289885e24ea649e9f, type: 3}
 --- !u!1 &7816435741657355377
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +294,7 @@ MonoBehaviour:
     type: 3}
   sceneLoader: {fileID: 1340499572485737253, guid: 91010d0ceb2ea4496a9dd5bf68b5fcc3,
     type: 3}
+  tutorialLevel: 0
 --- !u!61 &5322189282262920423
 BoxCollider2D:
   m_ObjectHideFlags: 0

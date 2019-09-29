@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroSlider : MonoBehaviour
 {
+    [SerializeField] AudioClip flip;
     [SerializeField] List<Sprite> slideSprites;
     [SerializeField] GameObject slidePrefab;
     [SerializeField] GameObject tutorialPromptPrefab;
@@ -77,7 +78,7 @@ public class IntroSlider : MonoBehaviour
                         }
                         else
                         {
-                            SceneManager.LoadScene(C.SettingsSceneIndex);
+                            SceneManager.LoadScene(C.LevelSelectionSceneIndex);
                         }
                     }
                     else
@@ -101,6 +102,7 @@ public class IntroSlider : MonoBehaviour
     private IEnumerator WaitToRemove()
     {
         yield return new WaitForSeconds(removeTime);
+        FindObjectOfType<SoundPlayer>().PlaySound(flip);
         for (int i = 0; i < transform.childCount; ++i)
         {
             Destroy(transform.GetChild(i).gameObject);

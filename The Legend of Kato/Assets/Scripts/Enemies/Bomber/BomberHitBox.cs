@@ -17,8 +17,7 @@ public class BomberHitBox : EnemyHitBox
         }
         if (hit)
         {
-            audioSource.clip = hitSound;
-            audioSource.Play();
+            FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
         }
         if (enemyTransform.gameObject != null)
         {
@@ -44,6 +43,5 @@ public class BomberHitBox : EnemyHitBox
         GetComponent<BoxCollider2D>().offset = offset;
         GetComponent<BoxCollider2D>().size = size;
         coin = true;
-        audioSource = GetComponent<AudioSource>();
     }
 }

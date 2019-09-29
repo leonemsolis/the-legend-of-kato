@@ -14,7 +14,6 @@ public class Health : MonoBehaviour
     SpriteRenderer playerSpriteRenderer;
     Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
     Color fullColor = new Color(1f, 1f, 1f, 1f);
-    AudioSource audio; 
 
 
     private void Awake()
@@ -22,10 +21,27 @@ public class Health : MonoBehaviour
         currentHealth = PlayerPrefs.GetInt(C.PREFS_CURRENT_HEALTH, 5);
 
         playerSpriteRenderer = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
-        audio = GetComponent<AudioSource>();
 
 
         for(int i = 0; i < MAX_HEALTH - currentHealth; ++i)
+        {
+            transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().color = emptyColor;
+        }
+    }
+
+    public void Restart()
+    {
+        for (int i = 0; i < 5; ++i)
+        {
+            currentHealth++;
+            if (currentHealth > 5)
+            {
+                currentHealth = 5;
+            }
+            transform.GetChild(currentHealth - 1).GetComponent<SpriteRenderer>().color = fullColor;
+        }
+
+        for (int i = 0; i < MAX_HEALTH - currentHealth; ++i)
         {
             transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().color = emptyColor;
         }
@@ -53,8 +69,7 @@ public class Health : MonoBehaviour
 
             canTakeDamage = false;
             playerSpriteRenderer.color = Color.red;
-            audio.clip = hurtSound;
-            audio.Play();
+            FindObjectOfType<SoundPlayer>().PlaySound(hurtSound);
             StartCoroutine(ResetInvulnerable());
             if (currentHealth == 0)
             {
