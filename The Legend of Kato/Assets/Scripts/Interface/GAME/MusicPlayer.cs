@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MusicPlayer : MonoBehaviour
 {
-    enum MusicState { NONE, MENU, LEVEL, BOSS};
+    enum MusicState { NONE,INTRO, MENU, LEVEL, BOSS};
 
     [SerializeField] AudioClip MainMenuMusic;
     [SerializeField] AudioClip LevelBaseMusic;
     [SerializeField] AudioClip LevelBossMusic;
+    [SerializeField] AudioClip IntroMusic;
 
     AudioSource _as;
 
@@ -20,7 +21,7 @@ public class MusicPlayer : MonoBehaviour
     AudioClip fadeInClip;
     const float fadeOutTime = .2f;
     const float fadeInTime = 1f;
-    const float highVolume = 1f;
+    const float highVolume = .7f;
     const float lowVolume = 0f;
     const float deltaOutVolume = (highVolume - lowVolume) / fadeOutTime;
     const float deltaInVolume = (highVolume - lowVolume) / fadeInTime;
@@ -33,6 +34,7 @@ public class MusicPlayer : MonoBehaviour
     void Start()
     {
         _as = GetComponent<AudioSource>();
+        _as.volume = highVolume;
         _as.loop = true;
         if(PlayerPrefs.GetInt(C.PREFS_MUSIC, 1) == 0)
         {
@@ -53,9 +55,11 @@ public class MusicPlayer : MonoBehaviour
             case C.MainMenuSceneIndex:
             case C.LevelSelectionSceneIndex:
             case C.SettingsSceneIndex:
-            case C.IntroSceneIndex:
-            case C.DeathSceneIndex:
                 currentState = MusicState.MENU;
+                break;
+            case C.DeathSceneIndex:
+            case C.IntroSceneIndex:
+                currentState = MusicState.INTRO;
                 break;
             case C.Level0SceneIndex:
             case C.Level1SceneIndex:
@@ -69,6 +73,10 @@ public class MusicPlayer : MonoBehaviour
                         if(FindObjectOfType<BossGate>() != null && FindObjectOfType<BossGate>().IsOpened())
                         {
                             currentState = MusicState.LEVEL;
+                        }
+                        else if(FindObjectOfType<PlayerAnimator>().Won())
+                        {
+                            currentState = MusicState.INTRO;
                         }
                         else
                         {
@@ -99,6 +107,9 @@ public class MusicPlayer : MonoBehaviour
                     //_as.clip = LevelBossMusic;
                     fadeInClip = LevelBossMusic;
                     break;
+                case MusicState.INTRO:
+                    fadeInClip = IntroMusic;
+                    break;
             }
             lastState = currentState;
             fade = true;
@@ -109,13 +120,13 @@ public class MusicPlayer : MonoBehaviour
     public void Mute()
     {
         muted = true;
-        _as.volume = 0f;
+        _as.volume = lowVolume;
     }
 
     public void Unmute()
     {
         muted = false;
-        _as.volume = 1f;
+        _as.volume = highVolume;
     }
 
     private void Fade()

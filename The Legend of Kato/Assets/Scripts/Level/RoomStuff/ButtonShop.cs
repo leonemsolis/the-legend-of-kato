@@ -14,10 +14,11 @@ public class ButtonShop : MonoBehaviour
    
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if (CheckTouch(Input.mousePosition))
             {
+                GetComponent<ButtonClickSound>().PlayClick();
                 GetComponent<FunctionUI>().Function();
             }
         }

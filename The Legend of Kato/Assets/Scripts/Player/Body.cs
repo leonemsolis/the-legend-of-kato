@@ -16,17 +16,18 @@ public class Body : MonoBehaviour
         transform.position = player.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == C.EnemyHitBoxTag)
+        if (collision.tag == C.EnemyHitBoxTag)
         {
             FindObjectOfType<Health>().TakeDamage();
         }
-        if(collision.tag == C.InvulnirableEnemyHitBoxTag)
+        if (collision.tag == C.InvulnirableEnemyHitBoxTag)
         {
             FindObjectOfType<Health>().TakeDamage();
         }
-        if(collision.tag == C.EnemyTag)
+        if (collision.tag == C.EnemyTag)
         {
             FindObjectOfType<Health>().TakeDamage();
         }
@@ -34,5 +35,9 @@ public class Body : MonoBehaviour
         {
             FindObjectOfType<Health>().TakeDamage();
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
     }
 }

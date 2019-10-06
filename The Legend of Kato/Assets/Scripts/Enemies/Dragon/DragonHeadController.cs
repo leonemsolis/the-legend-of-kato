@@ -1,32 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class DragonHeadController : MonoBehaviour
 {
-    enum MainState {AWAIT, SLEEP, AWAKE, ATTACK, PAUSE};
-    enum AttackState { STATE_1, STATE_2, STATE_3 };
+    enum MainState {AWAIT, SLEEP, AWAKE, ATTACK_START, ATTACK, PAUSE, DEAD};
+    enum AttackState { STATE_1, STATE_2};
 
 
     [SerializeField] Sprite eyesClosed;
     [SerializeField] Sprite eyesOpenNoPupils;
+    [SerializeField] Sprite fireHead;
+    [SerializeField] DragonPaw dragonPawPrefab;
+    [SerializeField] DragonFire dragonFirePrefab;
 
     DragonEyes dragonEyes;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    DragonSigns dragonSigns;
     const string ANIMATION_EYES_OPENING = "DragonEyesOpening";
+    const string ANIMATION_EYES_DEAD = "Dead";
 
-    float sleepTime = 3f;
+    float sleepTime = 1.5f;
     float eyesOpeningTime = .85f;
 
     float timer = 0f;
-    const float bigPauseTime = 4f;
-    const float littlePauseTime = 2f;
+    const float pauseTime = 1f;
 
     PlayerRoomDetector PRD;
     MainState mainState;
     AttackState attackState;
 
+
+    int health = 3;
+    int fireCount = 3;
 
     void OnEnable()
     {
@@ -37,6 +45,7 @@ public class DragonHeadController : MonoBehaviour
         animator = GetComponent<Animator>();
         mainState = MainState.AWAIT;
         attackState = AttackState.STATE_1;
+        dragonSigns = FindObjectOfType<DragonSigns>();
     }
 
 
@@ -45,7 +54,7 @@ public class DragonHeadController : MonoBehaviour
         switch(mainState)
         {
             case MainState.AWAIT:
-                if (PRD.GetCurrentRoom().RoomID == C.RoomIDBoss)
+                if (PRD.GetCurrentRoom() != null && PRD.GetCurrentRoom().RoomID == C.RoomIDBoss)
                 {
                     mainState = MainState.SLEEP;
                 }
@@ -72,7 +81,7 @@ public class DragonHeadController : MonoBehaviour
                     dragonEyes.gameObject.SetActive(true);
                     spriteRenderer.sprite = eyesOpenNoPupils;
                     mainState = MainState.PAUSE;
-                    timer = littlePauseTime;
+                    timer = pauseTime;
                 }
                 break;
             case MainState.PAUSE:
@@ -82,23 +91,116 @@ public class DragonHeadController : MonoBehaviour
                 }
                 else
                 {
-                    mainState = MainState.ATTACK;
+                    mainState = MainState.ATTACK_START;
                 }
                 break;
-            case MainState.ATTACK:
+            case MainState.ATTACK_START:
                 switch(attackState)
                 {
                     case AttackState.STATE_1:
-                        //mainState = MainState.PAUSE;
-                        //timer = bigPauseTime;
-                        //attackState = AttackState.STATE_2;
+                        mainState = MainState.ATTACK;
+                        fireCount--;
+                        timer = pauseTime;
+                        StartCoroutine(FireBreath());
                         break;
                     case AttackState.STATE_2:
-                        break;
-                    case AttackState.STATE_3:
+                        mainState = MainState.ATTACK;
+                        timer = pauseTime;
+                        DragonPaw dragonPaw = Instantiate(dragonPawPrefab, transform.position, Quaternion.identity);
+                        dragonPaw.transform.parent = transform;
+                        dragonPaw.Setup(Random.Range(0, 2) == 0 ? true : false);
                         break;
                 }
                 break;
+            case MainState.DEAD:
+                if(!FindObjectOfType<PlayerAnimator>().Won())
+                {
+                    dragonEyes.gameObject.SetActive(false);
+                    animator.enabled = true;
+                    animator.Play(ANIMATION_EYES_DEAD);
+                    FindObjectOfType<PlayerAnimator>().Win();
+                }
+                break;
+        }
+    }
+
+    public IEnumerator FireBreath()
+    {
+        float rotationZ = 0f;
+        switch (Random.Range(0, 4))
+        {
+            case 0:
+                dragonSigns.Enable(0);
+                dragonSigns.Enable(1);
+                rotationZ = -159.418f;
+                break;
+            case 1:
+                dragonSigns.Enable(1);
+                dragonSigns.Enable(2);
+                rotationZ = -129.405f;
+                break;
+            case 2:
+                dragonSigns.Enable(2);
+                dragonSigns.Enable(3);
+                rotationZ = -91.39001f;
+                break;
+            case 3:
+                dragonSigns.Enable(3);
+                dragonSigns.Enable(4);
+                rotationZ = -56.917f;
+                break;
+        }
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(LightUpDown(true));
+        DragonFire dragonFire = Instantiate(dragonFirePrefab, transform.position, Quaternion.identity);
+        dragonFire.Setup(rotationZ);
+    }
+
+    public void AttackDone()
+    {
+        if(attackState == AttackState.STATE_1)
+        {
+            StartCoroutine(LightUpDown(false));
+            if (fireCount == 0)
+            {
+                attackState = AttackState.STATE_2;
+            }
+        }
+        if(mainState != MainState.DEAD)
+        {
+            mainState = MainState.PAUSE;
+        }
+    }
+
+    public void TakeDamage()
+    {
+        health--;
+        if(health == 0)
+        {
+            mainState = MainState.DEAD;
+        }
+    }
+
+    private IEnumerator LightUpDown(bool up)
+    {
+        if(up)
+        {
+            spriteRenderer.sprite = fireHead;
+        }
+        float elapsed = 0.0f;
+        float i_start = up ? .2f : 1f;
+        float i_end = up ? 1f : .2f;
+        float duration = .5f;
+        while (elapsed < duration)
+        {
+            GetComponent<Light2D>().intensity = Mathf.Lerp(i_start, i_end, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        GetComponent<Light2D>().intensity = i_end;
+        if (!up)
+        {
+            spriteRenderer.sprite = eyesOpenNoPupils;
         }
     }
 }

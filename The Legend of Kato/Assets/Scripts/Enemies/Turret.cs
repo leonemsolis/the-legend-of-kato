@@ -7,11 +7,20 @@ public class Turret : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] bool shootingRight = false;
     [SerializeField] TurretProjectile projectile;
+
+    Animator animator;
+
+    const string IDLE_ANIM = "idle";
+    const string ATTACK_ANIM = "attack";
     const float shootDelay = 2f;
+    const float shootAnimTime = .5f;
+    const float shootAnimDelay = shootDelay - shootAnimTime;
+
     Vector3 shootOffset;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         // Default sprite turned left
         if(shootingRight)
         {
@@ -25,8 +34,23 @@ public class Turret : MonoBehaviour
         StartCoroutine(Shoot());
     }
 
+    private IEnumerator PreShootAnimStart()
+    {
+        yield return new WaitForSeconds(shootAnimDelay);
+        animator.Play(ATTACK_ANIM);
+        StartCoroutine(StopShootAnim());
+
+    }
+
+    private IEnumerator StopShootAnim()
+    {
+        yield return new WaitForSeconds(shootAnimTime);
+        animator.Play(IDLE_ANIM);
+    }
+
     private IEnumerator Shoot()
     {
+        StartCoroutine(PreShootAnimStart());
         yield return new WaitForSeconds(shootDelay);
         FindObjectOfType<SoundPlayer>().PlaySound(shootSound, transform.position);
         TurretProjectile p = Instantiate(projectile, transform.position + shootOffset, Quaternion.identity);

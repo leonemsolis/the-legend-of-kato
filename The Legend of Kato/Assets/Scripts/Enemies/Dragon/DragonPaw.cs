@@ -5,8 +5,8 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class DragonPaw : MonoBehaviour
 {
-    enum State { APPEAR, ATTACK, AWAIT, DISAPPEAR};
-    State state = State.APPEAR;
+    enum State { SPAWN, APPEAR, ATTACK, AWAIT, DISAPPEAR};
+    State state = State.SPAWN;
 
     [SerializeField] DragonPawHitbox pawHitboxPrefab;
     DragonPawHitbox pawHitbox;
@@ -20,18 +20,41 @@ public class DragonPaw : MonoBehaviour
     float attackTimer = .5f;
     float awaitTimer = 2f;
 
-    const float destinationX = -200f;
-    const float originX = -900f;
+    float destinationX = -200f;
+    float originX = -900f;
 
     private CircleCollider2D pawAttackHitbox;
 
-    void Start()
+    bool left = true;
+
+    public void Setup(bool l)
     {
+        left = l;
+        if(!left)
+        {
+            destinationX = 200f;
+            originX = 900f;
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+
+            FindObjectOfType<DragonSigns>().Enable(0);
+            FindObjectOfType<DragonSigns>().Enable(1);
+            FindObjectOfType<DragonSigns>().Enable(2);
+        }
+        else
+        {
+            FindObjectOfType<DragonSigns>().Enable(2);
+            FindObjectOfType<DragonSigns>().Enable(3);
+            FindObjectOfType<DragonSigns>().Enable(4);
+        }
+
+        transform.localPosition = new Vector3(originX, -314f, 0f);
+
         animator = GetComponent<Animator>();
         pawAttackHitbox = GetComponent<CircleCollider2D>();
         pawAttackHitbox.enabled = false;
         hitboxHighlight = transform.GetChild(0).gameObject;
         hitboxHighlight.SetActive(false);
+        state = State.APPEAR;
     }
 
     void Update()
@@ -41,7 +64,14 @@ public class DragonPaw : MonoBehaviour
             case State.APPEAR:
                 if (Mathf.Abs(destinationX - transform.localPosition.x) > 20)
                 {
-                    transform.position += new Vector3(10f, 0f, 0f);
+                    if(left)
+                    {
+                        transform.position += new Vector3(10f, 0f, 0f);
+                    }
+                    else
+                    {
+                        transform.position -= new Vector3(10f, 0f, 0f);
+                    }
                 }
                 else
                 {
@@ -76,10 +106,18 @@ public class DragonPaw : MonoBehaviour
             case State.DISAPPEAR:
                 if (Mathf.Abs(originX - transform.localPosition.x) > 20)
                 {
-                    transform.position -= new Vector3(30f, 0f, 0f);
+                    if(left)
+                    {
+                        transform.position -= new Vector3(30f, 0f, 0f);
+                    }
+                    else
+                    {
+                        transform.position += new Vector3(30f, 0f, 0f);
+                    }
                 }
                 else
                 {
+                    FindObjectOfType<DragonHeadController>().AttackDone();
                     Destroy(gameObject);
                 }
                 break;
@@ -99,7 +137,7 @@ public class DragonPaw : MonoBehaviour
         if(state == State.AWAIT)
         {
             Disappear();
-            // HEALTH -= 1;
+            FindObjectOfType<DragonHeadController>().TakeDamage();
         }
     }
 }

@@ -38,7 +38,7 @@ public class Button : MonoBehaviour
                 }
             }
         }
-        else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)
+        else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor || platform == RuntimePlatform.WebGLPlayer)
         {
             if (Input.GetMouseButtonDown(0))
             {

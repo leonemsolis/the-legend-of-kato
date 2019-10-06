@@ -11,6 +11,10 @@ public class Shop : MonoBehaviour
     [SerializeField] Sprite soldOutSprite;
     [SerializeField] Sprite enchantItem;
 
+    [SerializeField] AudioClip healthSound;
+    [SerializeField] AudioClip keySound;
+    [SerializeField] AudioClip shopSound;
+
     List<SpriteRenderer> itemHolders;
     Health health;
     ScoreBoardText money;
@@ -25,6 +29,7 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<SoundPlayer>().PlaySound(shopSound);
         transform.localScale = new Vector3(1.4f, 1.4f, 1f);
         selectorOriginX = selector.transform.position.x;
         health = FindObjectOfType<Health>();
@@ -216,6 +221,7 @@ public class Shop : MonoBehaviour
                 {
                     if(health.GetCurrentHealth() < Health.MAX_HEALTH)
                     {
+                        FindObjectOfType<SoundPlayer>().PlaySound(healthSound);
                         money.DecreaseScore(prices[0]);
                         health.RestoreHealth();
                         UpdateInfo();
@@ -228,6 +234,7 @@ public class Shop : MonoBehaviour
                 {
                     if(!MaxKeysBought())
                     {
+                        FindObjectOfType<SoundPlayer>().PlaySound(keySound);
                         money.DecreaseScore(prices[1]);
                         BuyKey();
                         UpdateInfo();
@@ -240,6 +247,7 @@ public class Shop : MonoBehaviour
                 {
                     if(!NoKeysAvailableForEnchant())
                     {
+                        FindObjectOfType<SoundPlayer>().PlaySound(keySound);
                         money.DecreaseScore(prices[2]);
                         EnchantKey();
                         UpdateInfo();
@@ -248,6 +256,7 @@ public class Shop : MonoBehaviour
                 break;
             // LEAVE
             case 3:
+                FindObjectOfType<SoundPlayer>().PlaySound(shopSound);
                 FindObjectOfType<Whale>().LeaveWhale();
                 break;
         }

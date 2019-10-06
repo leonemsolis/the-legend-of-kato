@@ -4,12 +4,49 @@ using UnityEngine;
 
 public class HealPack : MonoBehaviour
 {
+    Rigidbody2D rb;
+    bool active = false;
+    float activeDelay = .05f;
+
+    [SerializeField] AudioClip pickUpSound;
+    Health health;
+    Collider2D _collider;
+
+    private void Start()
+    {
+        health = FindObjectOfType<Health>();
+        _collider = GetComponent<Collider2D>();
+        rb = transform.parent.gameObject.GetComponent<Rigidbody2D>();
+        rb.AddForce(new Vector2(0f, Random.Range(10f, 17f)));
+    }
+
+    private void Update()
+    {
+        _collider.enabled = health.GetCurrentHealth() != Health.MAX_HEALTH;
+
+
+        if (activeDelay > 0)
+        {
+            activeDelay -= Time.deltaTime;
+        }
+        else if (!active)
+        {
+            active = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (active)
         {
-            FindObjectOfType<Health>().RestoreHealth();
-            Destroy(gameObject);
+            if (collision.tag == "Player" || collision.tag == "Boots" || collision.tag == "Sword" || collision.tag == "Body")
+            {
+                if(FindObjectOfType<Health>().RestoreHealth())
+                {
+                    FindObjectOfType<SoundPlayer>().PlaySound(pickUpSound, transform.position);
+                    Destroy(transform.parent.gameObject);
+                }
+            }
         }
     }
 }

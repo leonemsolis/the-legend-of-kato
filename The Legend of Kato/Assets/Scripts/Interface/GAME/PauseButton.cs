@@ -40,15 +40,18 @@ public class PauseButton : MonoBehaviour
                 }
             }
         }
-        else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor)
+        else if (platform == RuntimePlatform.WindowsEditor || platform == RuntimePlatform.OSXEditor || platform == RuntimePlatform.WebGLPlayer)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 CheckTouch(Input.mousePosition);
             }
-            if(Input.GetKeyDown(KeyCode.Space))
+            if(gameObject.GetComponent<Collider2D>().enabled)
             {
-                TouchButton();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    TouchButton();
+                }
             }
         }
     }

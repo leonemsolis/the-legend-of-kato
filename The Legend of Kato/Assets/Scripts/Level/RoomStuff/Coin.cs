@@ -6,14 +6,14 @@ public class Coin : MonoBehaviour
 {
     Rigidbody2D rb;
     bool active = false;
-    float activeDelay = .1f;
+    float activeDelay = .05f;
 
     [SerializeField] AudioClip pickUpSound;
 
     private void Start()
     {
         rb = transform.parent.gameObject.GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(0f, 25f));
+        rb.AddForce(new Vector2(0f, Random.Range(10f, 17f)));
     }
 
     private void Update()

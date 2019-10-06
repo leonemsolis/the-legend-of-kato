@@ -20,10 +20,11 @@ public class BossGate : MonoBehaviour
 
     public void Open()
     {
+        // TODO: REMOVE
         if(SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex)
         {
-            PlayerPrefs.SetInt(C.PREFS_STAGE_2_OPENED, 1);
-            PlayerPrefs.Save();
+            //PlayerPrefs.SetInt(C.PREFS_STAGE_2_OPENED, 1);
+            //PlayerPrefs.Save();
         } else if(SceneManager.GetActiveScene().buildIndex == C.Level2SceneIndex)
         {
             PlayerPrefs.SetInt(C.PREFS_STAGE_3_OPENED, 1);
@@ -49,14 +50,15 @@ public class BossGate : MonoBehaviour
 
             if(FindObjectOfType<Blackout>() != null)
             {
-                if (tutorialLevel)
-                {
-                    FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
-                }
-                else
-                {
-                    FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
-                }
+                //if (tutorialLevel)
+                //{
+                //    FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
+                //}
+                //else
+                //{
+                //    FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
+                //}
+                FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
             }
             else
             {

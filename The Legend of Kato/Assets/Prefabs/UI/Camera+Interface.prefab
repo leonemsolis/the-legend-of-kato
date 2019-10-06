@@ -532,6 +532,7 @@ MonoBehaviour:
   entranceText: {fileID: 21300000, guid: 1c7c8cb52cebb42e6ba246d9765f334d, type: 3}
   depthsText: {fileID: 21300000, guid: 45807db5a168a49be9e3e7383e6893b6, type: 3}
   oceanBedText: {fileID: 21300000, guid: 2c1491bc23e9845cba55e363b4f78d38, type: 3}
+  sound: {fileID: 8300000, guid: f2e9ceee58912420b8d5c06e3d6ecf27, type: 3}
 --- !u!95 &665195725375512049
 Animator:
   serializedVersion: 3
@@ -589,7 +590,7 @@ SpriteRenderer:
   m_SortingLayerID: 131631297
   m_SortingLayer: 1
   m_SortingOrder: 1000
-  m_Sprite: {fileID: 21300000, guid: 1c7c8cb52cebb42e6ba246d9765f334d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -597,7 +598,7 @@ SpriteRenderer:
   m_Size: {x: 612.5, y: 87.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1623831942202252248
@@ -2735,7 +2736,7 @@ PrefabInstance:
     - target: {fileID: 5459358122256354612, guid: d911b192f74b04a2b9f2747e047ae41a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5459358122256354612, guid: d911b192f74b04a2b9f2747e047ae41a,
         type: 3}

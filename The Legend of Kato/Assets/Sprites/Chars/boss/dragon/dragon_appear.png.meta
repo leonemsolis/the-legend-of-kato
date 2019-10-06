@@ -62,7 +62,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 0.16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -121,6 +121,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -130,8 +142,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 28
-        height: 10
+        width: 67
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,7 +151,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 939260225990a4a7e874855d8fc755b5
+      spriteID: 79d17e4f724024b7b8fa1e3d159d24cf
       internalID: 2807897757578085255
       vertices: []
       indices: 
@@ -149,10 +161,10 @@ TextureImporter:
       name: dragon_appear_1
       rect:
         serializedVersion: 2
-        x: 28
+        x: 67
         y: 0
-        width: 28
-        height: 10
+        width: 67
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,7 +172,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4291a0bfea99c46a0b76d9d63ed3e61b
+      spriteID: cffa2410f846c414092b046afffb802d
       internalID: -8012631148791764388
       vertices: []
       indices: 
@@ -170,10 +182,10 @@ TextureImporter:
       name: dragon_appear_2
       rect:
         serializedVersion: 2
-        x: 56
+        x: 134
         y: 0
-        width: 28
-        height: 10
+        width: 67
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,7 +193,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42b011a9de1a049729f0e58156958e5c
+      spriteID: 437aa4650e8d94e17b6b15c1e84ceeb1
       internalID: -7796841697318837404
       vertices: []
       indices: 
@@ -191,10 +203,10 @@ TextureImporter:
       name: dragon_appear_3
       rect:
         serializedVersion: 2
-        x: 84
+        x: 201
         y: 0
-        width: 28
-        height: 10
+        width: 67
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,7 +214,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43c1c1a3e74bc4a398ccf2e47ecd4109
+      spriteID: b3487bb2bc6d741bfbed4ef172ab2bc5
       internalID: 4962101723051156976
       vertices: []
       indices: 
@@ -212,10 +224,10 @@ TextureImporter:
       name: dragon_appear_4
       rect:
         serializedVersion: 2
-        x: 112
+        x: 268
         y: 0
-        width: 28
-        height: 10
+        width: 67
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,7 +235,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79343686feea14070be4f4671d1ee6d2
+      spriteID: ca0e2462038684be09e219ec0e0a8592
       internalID: -6467806118320488554
       vertices: []
       indices: 

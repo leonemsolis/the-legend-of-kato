@@ -157,6 +157,7 @@ MonoBehaviour:
   MainMenuMusic: {fileID: 8300000, guid: 2abe7d4d4816f4b37865a191185fb0e4, type: 3}
   LevelBaseMusic: {fileID: 8300000, guid: a4803d8e9a60a470abb30129df022aa9, type: 3}
   LevelBossMusic: {fileID: 8300000, guid: e90acaeda329a41b4b45ce21e7c430bd, type: 3}
+  IntroMusic: {fileID: 8300000, guid: 07ce352d592c74701afcd4f0f6a14e60, type: 3}
 --- !u!114 &817029879444230541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,4 +172,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundClipPrefab: {fileID: 2956821355905219151, guid: 8a1443c49752444bf93cc3d1ba6c6893,
     type: 3}
-  MainMenuMusic: {fileID: 0}

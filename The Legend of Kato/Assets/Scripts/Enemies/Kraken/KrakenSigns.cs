@@ -5,16 +5,16 @@ using UnityEngine;
 public class KrakenSigns : MonoBehaviour
 {
 
-    List<GameObject> signs;
+    List<KrakenSign> signs;
     float warnTime = 2f;
 
     private void OnEnable()
     {
-        signs = new List<GameObject>();
+        signs = new List<KrakenSign>();
         for (int i = 0; i < 5; ++i)
         {
-            signs.Add(transform.GetChild(i).gameObject);
-            signs[i].SetActive(false);
+            signs.Add(transform.GetChild(i).gameObject.GetComponent<KrakenSign>());
+            signs[i].Deactivate();
         }
     }
 
@@ -74,9 +74,9 @@ public class KrakenSigns : MonoBehaviour
 
     private IEnumerator StartWarn(int index)
     {
-        signs[index].SetActive(true);
+        signs[index].Activate();
         yield return new WaitForSeconds(warnTime);
-        signs[index].SetActive(false);
+        signs[index].Deactivate();
     }
 
 }

@@ -33,7 +33,7 @@ public class LevelSelectionKeyHolder : MonoBehaviour
     {
         int[] keys = new int[3];
 
-        // TODO: REMOVE!
+        //TODO: REMOVE
         //keys[0] = PlayerPrefs.GetInt(C.PREFS_KEY_1_STATE, 0);
         keys[0] = 3;
         keys[1] = PlayerPrefs.GetInt(C.PREFS_KEY_2_STATE, 0);

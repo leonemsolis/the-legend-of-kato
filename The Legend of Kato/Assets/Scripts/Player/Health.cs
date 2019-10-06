@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -47,35 +46,41 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void RestoreHealth()
+    public bool RestoreHealth()
     {
         currentHealth++;
         if(currentHealth > 5)
         {
             currentHealth = 5;
+            return false;
         }
         transform.GetChild(currentHealth - 1).GetComponent<SpriteRenderer>().color = fullColor;
+        return true;
     }
 
     public void TakeDamage()
     {
-        if (canTakeDamage)
+        if(currentHealth != 0)
         {
-            //if (currentHealth > 1)
-            //{
-                currentHealth--;
-                transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
-            //}
-
-            canTakeDamage = false;
-            playerSpriteRenderer.color = Color.red;
-            FindObjectOfType<SoundPlayer>().PlaySound(hurtSound);
-            StartCoroutine(ResetInvulnerable());
-            if (currentHealth == 0)
+            if (canTakeDamage)
             {
-                SceneManager.LoadScene(C.DeathSceneIndex);
+                //TODO: REMOVE!
+                if (currentHealth > 1)
+                {
+                    currentHealth--;
+                    transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+                }
+
+                canTakeDamage = false;
+                playerSpriteRenderer.color = Color.red;
+                FindObjectOfType<SoundPlayer>().PlaySound(hurtSound);
+                StartCoroutine(ResetInvulnerable());
             }
-        } 
+        }
+        else
+        {
+            FindObjectOfType<PlayerAnimator>().Die();
+        }
     }
 
     public int GetCurrentHealth()
@@ -91,7 +96,7 @@ public class Health : MonoBehaviour
 
     private IEnumerator ResetInvulnerable()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         canTakeDamage = true;
         playerSpriteRenderer.color = Color.white;
     }

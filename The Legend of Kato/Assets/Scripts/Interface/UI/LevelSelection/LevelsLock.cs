@@ -34,9 +34,7 @@ public class LevelsLock : MonoBehaviour
                 state = State.OPENED;
                 break;
             case 2:
-                //int stage_2_state = PlayerPrefs.GetInt(C.PREFS_STAGE_2_OPENED, 0);
-                // TODO: REMOVE!
-                int stage_2_state = 1;
+                int stage_2_state = PlayerPrefs.GetInt(C.PREFS_STAGE_2_OPENED, 0);
                 if (stage_2_state == 0)
                 {
                     state = State.LOCKED;
@@ -47,7 +45,9 @@ public class LevelsLock : MonoBehaviour
                 }
                 break;
             case 3:
-                int stage_3_state = PlayerPrefs.GetInt(C.PREFS_STAGE_3_OPENED, 0);
+                //TODO:REMOVE
+                //int stage_3_state = PlayerPrefs.GetInt(C.PREFS_STAGE_3_OPENED, 0);
+                int stage_3_state = 1;
                 if (stage_3_state == 0)
                 {
                     state = State.LOCKED;

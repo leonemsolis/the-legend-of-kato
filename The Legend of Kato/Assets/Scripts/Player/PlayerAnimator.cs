@@ -10,13 +10,21 @@ public class PlayerAnimator : MonoBehaviour
     PlayerController player;
     Animator animator;
 
-    const int ANIMATION_WALK = 0;
-    const int ANIMATION_JUMP = 1;
-    const int ANIMATION_NO_SWORD_WALK = 2;
-    const int ANIMATION_NO_SWORD_JUMP = 3;
-    const int ANIMATION_PICKUP = 4;
+    const string ANIMATION_WALK = "char_walk";
+    const string ANIMATION_JUMP = "char_jump";
+    const string ANIMATION_NO_SWORD_WALK = "char_nosword_move";
+    const string ANIMATION_NO_SWORD_JUMP = "char_nosword_jump";
+    const string ANIMATION_PICKUP = "char_sword_pickup";
+    const string ANIMATION_DEATH = "char_death";
+    const string ANIMATION_WIN = "char_win";
+
+    Health health;
+
+    bool dead = false;
 
     bool hasSword = true;
+
+    bool win = false;
 
     private void Awake()
     {
@@ -32,6 +40,7 @@ public class PlayerAnimator : MonoBehaviour
         {
             sword.gameObject.SetActive(false);
         }
+        health = FindObjectOfType<Health>();
     }
 
     private void Update()
@@ -52,53 +61,87 @@ public class PlayerAnimator : MonoBehaviour
             {
                 if (hasSword)
                 {
-                    SetAnimation(ANIMATION_WALK);
+                    animator.Play(ANIMATION_WALK);
                 }
                 else
                 {
-                    SetAnimation(ANIMATION_NO_SWORD_WALK);
+                    animator.Play(ANIMATION_NO_SWORD_WALK);
                 }
             }
             else
             {
                 if (hasSword)
                 {
-                    SetAnimation(ANIMATION_JUMP);
+                    animator.Play(ANIMATION_JUMP);
                 }
                 else
                 {
-                    SetAnimation(ANIMATION_NO_SWORD_JUMP);
+                    animator.Play(ANIMATION_NO_SWORD_JUMP);
                 }
             }
         }
     }
 
-    private void SetAnimation(int animation_index)
+    public void Die()
     {
-        switch (animation_index)
+        if(!dead)
         {
-            case ANIMATION_JUMP:
-                animator.Play("char_jump");
-                break;
-            case ANIMATION_WALK:
-                animator.Play("char_walk");
-                break;
-            case ANIMATION_PICKUP:
-                animator.Play("char_sword_pickup");
-                break;
-            case ANIMATION_NO_SWORD_JUMP:
-                animator.Play("char_nosword_jump");
-                break;
-            case ANIMATION_NO_SWORD_WALK:
-                animator.Play("char_nosword_move");
-                break;
+            animator.Play(ANIMATION_DEATH);
+            player.GetComponent<SpriteRenderer>().color = Color.white;
+            FindObjectOfType<PauseButton>().gameObject.SetActive(false);
+            player.CanMove = false;
+            sword.gameObject.SetActive(false);
+            dead = true;
         }
     }
 
+    public void Win()
+    {
+        win = true;
+        animator.Play(ANIMATION_WIN);
+        sword.gameObject.SetActive(false);
+        player.CanMove = false;
+        player.GetComponent<SpriteRenderer>().color = Color.white;
+        FindObjectOfType<PauseButton>().gameObject.SetActive(false);
+        StartCoroutine(CountdownWin());
+    }
+
+    public bool Won()
+    {
+        return win;
+    }
+
+
+    private IEnumerator CountdownWin()
+    {
+        yield return new WaitForSeconds(6f);
+        if (FindObjectOfType<Blackout>() != null)
+        {
+            FindObjectOfType<Blackout>().LoadScene(C.MainMenuSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(C.MainMenuSceneIndex);
+        }
+    }
+
+
+    // Called from animation
+    public void EndGame()
+    {
+        if(FindObjectOfType<Blackout>() != null)
+        {
+            FindObjectOfType<Blackout>().LoadScene(C.DeathSceneIndex);
+        }
+        else
+        {
+            SceneManager.LoadScene(C.DeathSceneIndex);
+        }
+    }
     public void StartPickupSword()
     {
         player.CanMove = false;
-        SetAnimation(ANIMATION_PICKUP);
+        animator.Play(ANIMATION_PICKUP);
         StartCoroutine(EndPickupSword());
         StartCoroutine(PlayPickUpSound());
     }

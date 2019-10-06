@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6176195851764840091}
   - component: {fileID: 5820287591455438001}
   - component: {fileID: 167401945934136496}
+  - component: {fileID: 4699191275505401333}
   m_Layer: 0
   m_Name: ItemSlot (1)
   m_TagString: Untagged
@@ -134,6 +135,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1a338d79a5248f795666efded5463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4699191275505401333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804990183196458033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &1385968549087566341
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +165,7 @@ GameObject:
   - component: {fileID: 1819017963983426376}
   - component: {fileID: 2292706900284736383}
   - component: {fileID: 3471660727284764285}
+  - component: {fileID: 5844026912069195459}
   m_Layer: 0
   m_Name: BuyButton
   m_TagString: Untagged
@@ -272,6 +291,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 162.5, y: 162.5}
   m_EdgeRadius: 0
+--- !u!114 &5844026912069195459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385968549087566341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &2273466302558834741
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,6 +852,9 @@ MonoBehaviour:
   selector: {fileID: 984583392696115982}
   soldOutSprite: {fileID: 21300000, guid: ef3b35de4d5bd41279874a277c371482, type: 3}
   enchantItem: {fileID: 21300000, guid: c3a6a32e5543a478488f6da88e880ae9, type: 3}
+  healthSound: {fileID: 8300000, guid: b374954854ba046e69a89ffb77ac95c2, type: 3}
+  keySound: {fileID: 8300000, guid: b934df297732946289885e24ea649e9f, type: 3}
+  shopSound: {fileID: 8300000, guid: 441aae636933b477ca675f9c52825de6, type: 3}
 --- !u!1 &4926111668386628792
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +868,7 @@ GameObject:
   - component: {fileID: 9000110533738761488}
   - component: {fileID: 3040770365990711362}
   - component: {fileID: 3070955673118484383}
+  - component: {fileID: 4741247896659645274}
   m_Layer: 0
   m_Name: ItemSlot (2)
   m_TagString: Untagged
@@ -950,6 +990,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1a338d79a5248f795666efded5463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4741247896659645274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4926111668386628792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &6399772624960832657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1113,7 @@ GameObject:
   - component: {fileID: 3255359983004642448}
   - component: {fileID: 6253361225806152236}
   - component: {fileID: 8621689226061953951}
+  - component: {fileID: 7549441730417943168}
   m_Layer: 0
   m_Name: ItemSlot (4)
   m_TagString: Untagged
@@ -1177,6 +1235,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1a338d79a5248f795666efded5463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7549441730417943168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633324530185841552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &8262213010413661788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1265,7 @@ GameObject:
   - component: {fileID: 7033173282975588496}
   - component: {fileID: 8308368618864481334}
   - component: {fileID: 1598469302974695853}
+  - component: {fileID: 8519421452287764747}
   m_Layer: 0
   m_Name: ItemSlot (3)
   m_TagString: Untagged
@@ -1311,6 +1387,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f1a338d79a5248f795666efded5463d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8519421452287764747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262213010413661788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab8c4acc62734adf9429ef4cff0b55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: 60992850f2b8d443187c001434f76aae, type: 3}
+  - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
+  - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
+  - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
 --- !u!1 &8329401462661504608
 GameObject:
   m_ObjectHideFlags: 0
