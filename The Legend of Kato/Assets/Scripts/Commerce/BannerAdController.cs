@@ -2,68 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Monetization;
-using UnityEngine.Advertisements;
 
 public class BannerAdController : MonoBehaviour
 {
-
-    readonly RuntimePlatform platform = Application.platform;
-
-    private string gameID;
-
     private const string banner_placement_id = "bannedAd";
-    private const string video_placement_id = "rewardedVideo";
-
-    private const bool test = true;
-
-    //void Start()
-    //{
-    //    store_id = (platform == RuntimePlatform.Android) ? "3315936" : "3315937";
-
-    //    //Monetization.Initialize(store_id, test);
-    //    Advertisement.Initialize(store_id, test);
-    //}
-
-    //void Update()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.V))
-    //    {
-    //        if(Monetization.IsReady(video_placement_id))
-    //        {
-    //            ShowAdPlacementContent ad = null;
-    //            ad = Monetization.GetPlacementContent(video_placement_id) as ShowAdPlacementContent;
-
-    //            if(ad != null)
-    //            {
-    //                ad.Show();
-    //            }
-    //        }
-    //    }
-
-    //    if (Input.GetKeyDown(KeyCode.B))
-    //    {
-    //        if (Advertisement.IsReady(banner_placement_id))
-    //        {
-    //            Advertisement.Banner.Show(banner_placement_id);
-    //        }
-    //    }
-    //}
+    private const string rewarderd_video_placement_id = "rewardedVideo";
 
     void Start()
     {
-        gameID = (platform == RuntimePlatform.Android) ? "3315936" : "3315937";
-        Advertisement.Initialize(gameID, test);
-        StartCoroutine(ShowBannerWhenReady());
+        StartCoroutine(ShowRewardedAd());
     }
 
-    IEnumerator ShowBannerWhenReady()
+    IEnumerator ShowRewardedAd()
     {
-        while (!Advertisement.IsReady(banner_placement_id))
+        while (!Monetization.IsReady(rewarderd_video_placement_id))
         {
-            Debug.Log(Advertisement.IsReady(banner_placement_id));
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
-        Advertisement.Banner.SetPosition(BannerPosition.TOP_CENTER);
-        Advertisement.Banner.Show(banner_placement_id);
+
+        ShowAd();
+    }
+
+    void ShowAd()
+    {
+        ShowAdCallbacks options = new ShowAdCallbacks();
+        options.finishCallback = HandleShowResult;
+        ShowAdPlacementContent ad = Monetization.GetPlacementContent(rewarderd_video_placement_id) as ShowAdPlacementContent;
+        ad.Show(options);
+    }
+
+    void HandleShowResult(ShowResult result)
+    {
+        if (result == UnityEngine.Monetization.ShowResult.Finished)
+        {
+            FindObjectOfType<ScoreBoardText>().IncreaseScore(40);
+        }
+        else if (result == ShowResult.Skipped)
+        {
+            Debug.LogWarning("The player skipped the video - DO NOT REWARD!");
+            FindObjectOfType<ScoreBoardText>().IncreaseScore(20);
+        }
+        else if (result == ShowResult.Failed)
+        {
+            FindObjectOfType<ScoreBoardText>().IncreaseScore(30);
+        }
     }
 }

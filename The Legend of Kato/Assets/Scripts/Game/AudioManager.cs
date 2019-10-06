@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Monetization;
 
 public class AudioManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class AudioManager : MonoBehaviour
         // Check if instance exists
         if (instance == null) // Instance was found
         {
+            //TODO: REMOVE?
+            Monetization.Initialize((Application.platform == RuntimePlatform.Android) ? "3315936" : "3315937", false);
             instance = this; // Set reference to intance of this object
         }
         else // Instance already exists
