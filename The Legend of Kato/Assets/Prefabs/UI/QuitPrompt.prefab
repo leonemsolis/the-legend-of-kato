@@ -246,8 +246,8 @@ GameObject:
   - component: {fileID: 4632721829405968536}
   - component: {fileID: 4632721829405968543}
   - component: {fileID: 5038983339668562991}
-  - component: {fileID: 2698470196546455743}
   - component: {fileID: 1408589285004139507}
+  - component: {fileID: 2831048659606338930}
   m_Layer: 0
   m_Name: ButtonV
   m_TagString: Untagged
@@ -359,18 +359,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 193.75, y: 187.5}
   m_EdgeRadius: 0
---- !u!114 &2698470196546455743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4632721829405968538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7887e7fdcd084414fb52529bf6c5288e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1408589285004139507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,6 +376,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
+--- !u!114 &2831048659606338930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4632721829405968538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71436d720ed841a4b925f6c759136ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneEnum: 0
 --- !u!1 &4632721829495239799
 GameObject:
   m_ObjectHideFlags: 0

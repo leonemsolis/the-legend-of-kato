@@ -66,7 +66,7 @@ public class Shop : MonoBehaviour
         else
         {
             descriptions[1] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
-            prices[1] = 5;
+            prices[1] = 6;
         }
 
         if(NoKeysAvailableForEnchant())
@@ -78,7 +78,7 @@ public class Shop : MonoBehaviour
         else
         {
             descriptions[2] = enchantDesctiption + "\n" + GetKeyInformation();
-            prices[2] = 5;
+            prices[2] = 2;
             itemHolders[2].sprite = enchantItem;
         }
 

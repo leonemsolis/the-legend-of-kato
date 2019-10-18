@@ -134,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myHitBox: {fileID: 1923367987875660395, guid: f92eaee01c9f142ed8776302a71e55ab,
     type: 3}
+  teleportSound: {fileID: 8300000, guid: 4e3870acd02654cada99a98033100008, type: 3}
 --- !u!50 &5511073588417462025
 Rigidbody2D:
   serializedVersion: 4

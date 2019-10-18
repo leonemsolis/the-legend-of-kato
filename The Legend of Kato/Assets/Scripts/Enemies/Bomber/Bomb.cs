@@ -7,7 +7,6 @@ public class Bomb : MonoBehaviour
     string ANIMATION_EXPLODE = "Bomb_explode";
     [SerializeField] EnemyHitBox hitBoxPrefab;
     [SerializeField] AudioClip hitSound;
-    AudioSource audioSource;
     Animator animator;
     Rigidbody2D rb;
     EnemyHitBox hitBox;
@@ -20,7 +19,6 @@ public class Bomb : MonoBehaviour
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         settedUp = true;
@@ -70,8 +68,7 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        audioSource.clip = hitSound;
-        audioSource.Play();
+        FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
         collided = true;
         animator.Play(ANIMATION_EXPLODE);
         rb.isKinematic = true;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KrakenController : MonoBehaviour
 {
-
+    [SerializeField] AudioClip dissapearSound;
     Animator animator;
     bool defeated = false;
     float defeatTimer = 4.7f;
@@ -22,6 +22,14 @@ public class KrakenController : MonoBehaviour
     {
         animator.Play("KrakenDefeat");
         defeated = true;
+        StartCoroutine(disappearSoundPlayer());
+    }
+
+    IEnumerator disappearSoundPlayer()
+    {
+        yield return new WaitForSeconds(1f);
+        FindObjectOfType<SoundPlayer>().PlaySound(dissapearSound);
+        StartCoroutine(disappearSoundPlayer());
     }
 
     private void Update()

@@ -8,18 +8,20 @@ public class TentacleHitBox : EnemyHitBox
 
     public override void Die(bool hit)
     {
-        GetComponent<BoxCollider2D>().enabled = false;
-        //dead = true;
-
-        if (hit)
+        if(!dead)
         {
-            FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
+            dead = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            if (hit)
+            {
+                FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
+            }
+            if (enemyTransform.gameObject != null)
+            {
+                tentacleController.TakeDamage();
+            }
+            Destroy(gameObject, hitSound.length + 1f);
         }
-        if (enemyTransform.gameObject != null)
-        {
-            tentacleController.TakeDamage();
-        }
-        Destroy(gameObject, hitSound.length + 1f);
     }
 
     public void Disable()

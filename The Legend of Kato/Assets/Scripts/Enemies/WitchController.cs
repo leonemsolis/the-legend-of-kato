@@ -9,6 +9,10 @@ public class WitchController : MonoBehaviour
     // TODO: start shooting when player enters the room;
     // TODO: decreace animation
     [SerializeField] WitchProjectile projectile;
+    [SerializeField] AudioClip teleportSound;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip shootSound;
     [SerializeField] BossKey bossKey;
     List<Vector3> tpPoints;
     PlayerRoomDetector roomDetector;
@@ -71,6 +75,7 @@ public class WitchController : MonoBehaviour
                     {
                         animator.Play(TPOUT_ANIMATION);
                         state = State.TPOUT;
+                        FindObjectOfType<SoundPlayer>().PlaySound(teleportSound);
                         timer = 0;
                     }
                     else
@@ -108,6 +113,7 @@ public class WitchController : MonoBehaviour
                     {
                         animator.Play(TPOUT_ANIMATION);
                         state = State.TPOUT;
+                        FindObjectOfType<SoundPlayer>().PlaySound(teleportSound);
                         timer = 0;
                     }
                     else
@@ -120,6 +126,7 @@ public class WitchController : MonoBehaviour
                     {
                         animator.Play(TPIN_ANIMATION);
                         state = State.TPIN;
+                        FindObjectOfType<SoundPlayer>().PlaySound(teleportSound);
                         timer = 0;
                         Teleport();
                     }
@@ -162,6 +169,7 @@ public class WitchController : MonoBehaviour
             {
                 if(lives > 0)
                 {
+                    FindObjectOfType<SoundPlayer>().PlaySound(damageSound);
                     animator.Play(DAMAGE_ANIMATION);
                     state = State.DAMAGE;
                     timer = 0;
@@ -169,6 +177,7 @@ public class WitchController : MonoBehaviour
                 }
                 else
                 {
+                    FindObjectOfType<SoundPlayer>().PlaySound(deathSound);
                     animator.Play(DEATH_ANIMATION);
                     state = State.DEATH;
                     timer = 0;
@@ -209,6 +218,7 @@ public class WitchController : MonoBehaviour
 
     private void Shoot()
     {
+        FindObjectOfType<SoundPlayer>().PlaySound(shootSound);
         float xPos = transform.localScale.x > 0 ? -37f : 37f;
         Instantiate(projectile, transform.position + new Vector3(xPos, -32f, 0f), Quaternion.identity);
     }

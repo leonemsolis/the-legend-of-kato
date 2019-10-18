@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BubbleSpawner : MonoBehaviour
 {
-    [SerializeField] Bubble bubble;
-    [SerializeField] float maxSpawnDelay = 3f;
-    [SerializeField] float minSpawnDelay = 1f;
+    [SerializeField] ParticleSystem bubble;
+    const float maxSpawnDelay = 3f;
+    const float minSpawnDelay = 1f;
     const float maxY = 600f;
     const float minY = -300f;
     const float maxXDelta = 450f;

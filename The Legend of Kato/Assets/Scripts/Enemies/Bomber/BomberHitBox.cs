@@ -8,22 +8,45 @@ public class BomberHitBox : EnemyHitBox
 
     public override void Die(bool hit)
     {
-        GetComponent<BoxCollider2D>().enabled = false;
-        //dead = true;
+        if(!dead)
+        {
+            dead = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            if (coin)
+            {
+                Instantiate(soulPrefab, transform.position, Quaternion.identity);
+            }
+            if (hit)
+            {
+                FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
+            }
 
-        if (coin)
-        {
-            Instantiate(soulPrefab, transform.position, Quaternion.identity);
+            if (PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1 && enemyTransform.gameObject.GetComponent<Respawnable>() != null)
+            {
+                bomber.TakeHit(true);
+                enemyTransform.gameObject.GetComponent<Respawnable>().Die();
+                enemyTransform.gameObject.GetComponent<SpriteRenderer>().color = new Color(enemyTransform.gameObject.GetComponent<SpriteRenderer>().color.r, enemyTransform.gameObject.GetComponent<SpriteRenderer>().color.g, enemyTransform.gameObject.GetComponent<SpriteRenderer>().color.b, .5f);
+                StartCoroutine(Respawn());
+            }
+            else
+            {
+                if (enemyTransform.gameObject != null)
+                {
+                    bomber.TakeHit(false);
+                }
+                FindObjectOfType<RecordTracker>().MonsterKill();
+                Destroy(gameObject, hitSound.length + 1f);
+            }
         }
-        if (hit)
-        {
-            FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
-        }
-        if (enemyTransform.gameObject != null)
-        {
-            bomber.TakeHit();
-        }
-        Destroy(gameObject, hitSound.length + 1f);
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(2f);
+        enemyTransform.gameObject.GetComponent<SpriteRenderer>().color = new Color(enemyTransform.gameObject.GetComponent<SpriteRenderer>().color.r, enemyTransform.gameObject.GetComponent<SpriteRenderer>().color.g, enemyTransform.gameObject.GetComponent<SpriteRenderer>().color.b, 1f);
+        enemyTransform.gameObject.GetComponent<Respawnable>().Respawn();
+        dead = false;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public void Disable()

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordfishController : MonoBehaviour
+public class SwordfishController : Respawnable
 {
 
     [SerializeField] EnemyHitBox hitBoxPrefab;
@@ -38,17 +38,25 @@ public class SwordfishController : MonoBehaviour
         swordHitBox.SetEnemy(gameObject.transform, new Vector2(-.25f, 0f), new Vector2(1.5f, 1f), false);
     }
 
+
     void Update()
     {
-        Vector2 origin = transform.position;
-        Vector2 direction = facingRight ? Vector2.right : Vector2.left;
-        float distance = rayDistance;
-        LayerMask collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
-        RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
-
-        if (hitWall)
+        if(running)
         {
-            ChangeDirection();
+            Vector2 origin = transform.position;
+            Vector2 direction = facingRight ? Vector2.right : Vector2.left;
+            float distance = rayDistance;
+            LayerMask collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
+            RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
+
+            if (hitWall)
+            {
+                ChangeDirection();
+            }
+        }
+        else
+        {
+            swordHitBox.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 
@@ -58,6 +66,12 @@ public class SwordfishController : MonoBehaviour
         {
             Destroy(swordHitBox.transform.gameObject);
         }
+    }
+
+    public override void Respawn()
+    {
+        base.Respawn();
+        swordHitBox.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     private void ChangeDirection()
@@ -74,36 +88,43 @@ public class SwordfishController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!waitForCharge)
+        if(running)
         {
-            if (facingRight)
+            if (!waitForCharge)
             {
-                rb.AddForce(Vector2.right * currentAcceleration);
+                if (facingRight)
+                {
+                    rb.AddForce(Vector2.right * currentAcceleration);
+                }
+                else
+                {
+                    rb.AddForce(Vector2.left * currentAcceleration);
+                }
+                if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+                {
+                    rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+                }
+                if (currentAcceleration > speedDeceleration)
+                {
+                    currentAcceleration -= speedDeceleration * Time.deltaTime;
+                }
             }
             else
             {
-                rb.AddForce(Vector2.left * currentAcceleration);
-            }
-            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
-            {
-                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
-            }
-            if (currentAcceleration > speedDeceleration)
-            {
-                currentAcceleration -= speedDeceleration * Time.deltaTime;
+                rb.velocity = new Vector2(0f, rb.velocity.y);
+                if (chargeAnimationTimer > chargeAnimationTime)
+                {
+                    waitForCharge = false;
+                }
+                else
+                {
+                    chargeAnimationTimer += Time.deltaTime;
+                }
             }
         }
         else
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
-            if(chargeAnimationTimer > chargeAnimationTime)
-            {
-                waitForCharge = false;
-            }
-            else
-            {
-                chargeAnimationTimer += Time.deltaTime;
-            }
         }
     }
 }

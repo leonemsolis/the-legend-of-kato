@@ -35,27 +35,25 @@ public class SettingsToggleUI : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (CheckTouch(Input.mousePosition))
+        {
+            ButtonPressed();
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        if (pressed)
         {
             if (CheckTouch(Input.mousePosition))
             {
-                ButtonPressed();
+                Activate();
             }
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            if (pressed)
+            else
             {
-                if (CheckTouch(Input.mousePosition))
-                {
-                    Activate();
-                }
-                else
-                {
-                    ButtonReleased(false);
-                }
+                ButtonReleased(false);
             }
         }
     }

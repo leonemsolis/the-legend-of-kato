@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pawHitboxPrefab: {fileID: 7748709451964586520, guid: c680ebc7be0234d6c84fe629d9a8c304,
     type: 3}
+  appearSound: {fileID: 8300000, guid: fbcf77ac6408146579c6cdb4d952b66d, type: 3}
+  downSound: {fileID: 8300000, guid: d01299b7da8f14ac2b05f51b0a472ca1, type: 3}
 --- !u!95 &9003979012189702812
 Animator:
   serializedVersion: 3

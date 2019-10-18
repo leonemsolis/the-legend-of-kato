@@ -86,6 +86,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         if(!dead)
         {
+            FindObjectOfType<RecordTracker>().Dead();
             animator.Play(ANIMATION_DEATH);
             player.GetComponent<SpriteRenderer>().color = Color.white;
             FindObjectOfType<PauseButton>().gameObject.SetActive(false);
@@ -115,28 +116,23 @@ public class PlayerAnimator : MonoBehaviour
     private IEnumerator CountdownWin()
     {
         yield return new WaitForSeconds(6f);
-        if (FindObjectOfType<Blackout>() != null)
+        if(PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1)
         {
-            FindObjectOfType<Blackout>().LoadScene(C.MainMenuSceneIndex);
+            FindObjectOfType<Blackout>().LoadScene(C.LevelSelectionSceneIndex);
         }
         else
         {
-            SceneManager.LoadScene(C.MainMenuSceneIndex);
+            FindObjectOfType<Blackout>().LoadScene(C.OutroSceneIndex);
         }
+
     }
 
 
     // Called from animation
     public void EndGame()
     {
-        if(FindObjectOfType<Blackout>() != null)
-        {
-            FindObjectOfType<Blackout>().LoadScene(C.DeathSceneIndex);
-        }
-        else
-        {
-            SceneManager.LoadScene(C.DeathSceneIndex);
-        }
+        GetComponent<AdVideoController>().ShowAdIfNotUnlocked();
+        FindObjectOfType<Blackout>().LoadScene(C.DeathSceneIndex);
     }
     public void StartPickupSword()
     {

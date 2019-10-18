@@ -10,7 +10,7 @@ public class Boots : MonoBehaviour
         player = FindObjectOfType<PlayerController>().transform;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         transform.position = player.position;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomber_controller : MonoBehaviour
+public class Bomber_controller : Respawnable
 {
     enum State { IDLE, ATTACK, DEATH};
 
@@ -40,56 +40,69 @@ public class Bomber_controller : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
-        switch (state)
+        if(running)
         {
-            case State.IDLE:
-                if (timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    timer = ATTACK_TIME;
-                    animator.Play(ANIMATION_ATTACK);
-                    state = State.ATTACK;
-                }
-                break;
-            case State.ATTACK:
-                if (timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    timer = ATTACK_PERIOD;
-                    state = State.IDLE;
-                    animator.Play(ANIMATION_IDLE);
-                    Bomb b = Instantiate(bombPrefab, transform.position + new Vector3(turnedLeft ? -15f : 15f, 30f, 0f), Quaternion.identity);
-                    b.transform.SetParent(transform);
-                }
-                break;
-            case State.DEATH:
-                if(timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-                break;
+            switch (state)
+            {
+                case State.IDLE:
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        timer = ATTACK_TIME;
+                        animator.Play(ANIMATION_ATTACK);
+                        state = State.ATTACK;
+                    }
+                    break;
+                case State.ATTACK:
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        timer = ATTACK_PERIOD;
+                        state = State.IDLE;
+                        animator.Play(ANIMATION_IDLE);
+                        Bomb b = Instantiate(bombPrefab, transform.position + new Vector3(turnedLeft ? -15f : 15f, 30f, 0f), Quaternion.identity);
+                        b.transform.SetParent(transform);
+                    }
+                    break;
+                case State.DEATH:
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+            }
         }
     }
 
-    public void TakeHit()
+    public void TakeHit(bool respawn)
     {
         // Push Player
         FindObjectOfType<PlayerController>().Push(4000f);
-        timer = DEATH_TIME;
-        state = State.DEATH;
-        animator.Play(ANIMATION_DEATH);
+
+        if(!respawn)
+        {
+            timer = DEATH_TIME;
+            state = State.DEATH;
+            animator.Play(ANIMATION_DEATH);
+        }
+        else
+        {
+            timer = ATTACK_PERIOD;
+            state = State.IDLE;
+            animator.Play(ANIMATION_IDLE);
+        }
     }
 
     public bool IsTurnedLeft()

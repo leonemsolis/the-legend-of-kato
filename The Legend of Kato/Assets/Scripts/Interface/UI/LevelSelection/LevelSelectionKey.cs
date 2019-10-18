@@ -30,17 +30,6 @@ public class LevelSelectionKey : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && CheckTouch())
-        {
-            dragging = true;
-        } 
-        if(Input.GetMouseButtonUp(0) && dragging)
-        {
-            dragging = false;
-            transform.position = origin;
-        }
-
-
         if(dragging)
         {
             transform.position = GetMousePos();
@@ -48,6 +37,34 @@ public class LevelSelectionKey : MonoBehaviour
         else
         {
             origin = transform.position;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision is CircleCollider2D)
+        {
+            if(collision.GetComponent<LevelsLock>().Open(this))
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        if(dragging)
+        {
+            dragging = false;
+            transform.position = origin;
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (CheckTouch())
+        {
+            dragging = true;
         }
     }
 

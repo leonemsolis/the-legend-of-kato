@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
-public enum SceneEnum { MAIN, LEVELS, STAGE1, STAGE2, STAGE3, STAGE0, SETTINGS };
+public enum SceneEnum { MAIN, LEVELS, STAGE1, STAGE2, STAGE3, STAGE0, SETTINGS, RECORDS, MODE_SELECTION };
 public class FunctionLoadScene : FunctionUI
 {
 
@@ -36,7 +35,14 @@ public class FunctionLoadScene : FunctionUI
             case SceneEnum.SETTINGS:
                 sceneIndex = C.SettingsSceneIndex;
                 break;
+            case SceneEnum.RECORDS:
+                sceneIndex = C.RecordsSceneIndex;
+                break;
+            case SceneEnum.MODE_SELECTION:
+                sceneIndex = C.LevelModeSceneIndex;
+                break;
         }
-        SceneManager.LoadScene(sceneIndex);
+
+        FindObjectOfType<Blackout>().LoadScene(sceneIndex);
     }
 }

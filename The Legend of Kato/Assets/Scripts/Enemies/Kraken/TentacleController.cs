@@ -6,6 +6,9 @@ public class TentacleController : MonoBehaviour
 {
 
     [SerializeField] TentacleHitBox hitBoxPrefab;
+    [SerializeField] AudioClip appearSound;
+    [SerializeField] AudioClip disappearSound;
+    [SerializeField] AudioClip swingSound;
 
     enum State { APPEAR, ATTACK, AWAIT, DAMAGED, DISAPPEAR};
     private const string IDLE_ANIM = "appear";
@@ -38,6 +41,7 @@ public class TentacleController : MonoBehaviour
 
     void Start()
     {
+        FindObjectOfType<SoundPlayer>().PlaySound(appearSound);
         state = State.APPEAR;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -91,6 +95,7 @@ public class TentacleController : MonoBehaviour
                 }
                 else
                 {
+                    FindObjectOfType<SoundPlayer>().PlaySound(disappearSound);
                     state = State.DISAPPEAR;
                 }
                 break;
@@ -103,6 +108,7 @@ public class TentacleController : MonoBehaviour
                 {
                     StopCoroutine(flickCourutine);
                     spriteRenderer.color = colorDefault;
+                    FindObjectOfType<SoundPlayer>().PlaySound(disappearSound);
                     state = State.DISAPPEAR;
                 }
                 break;
@@ -119,7 +125,10 @@ public class TentacleController : MonoBehaviour
         }
     }
 
-
+    public void PlaySwingSound()
+    {
+        FindObjectOfType<SoundPlayer>().PlaySound(swingSound);
+    }
 
     public void TakeDamage()
     {

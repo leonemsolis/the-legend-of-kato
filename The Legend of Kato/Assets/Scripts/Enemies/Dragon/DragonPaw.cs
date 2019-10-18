@@ -9,6 +9,8 @@ public class DragonPaw : MonoBehaviour
     State state = State.SPAWN;
 
     [SerializeField] DragonPawHitbox pawHitboxPrefab;
+    [SerializeField] AudioClip appearSound;
+    [SerializeField] AudioClip downSound;
     DragonPawHitbox pawHitbox;
 
     Animator animator;
@@ -55,6 +57,7 @@ public class DragonPaw : MonoBehaviour
         hitboxHighlight = transform.GetChild(0).gameObject;
         hitboxHighlight.SetActive(false);
         state = State.APPEAR;
+        FindObjectOfType<SoundPlayer>().PlaySound(appearSound);
     }
 
     void Update()
@@ -87,10 +90,12 @@ public class DragonPaw : MonoBehaviour
                 }
                 else
                 {
+                    FindObjectOfType<SoundPlayer>().PlaySound(downSound);
                     state = State.AWAIT;
                     pawHitbox = Instantiate(pawHitboxPrefab);
+                    pawHitbox.SetEnemy(this, new Vector2(1.7f, -1f), new Vector2(.5f, 2f), left);
+                    pawHitbox.transform.parent = transform;
                     hitboxHighlight.SetActive(true);
-                    pawHitbox.SetEnemy(this, new Vector2(1.7f, -1f), new Vector2(.5f, 2f));
                 }
                 break;
             case State.AWAIT:
@@ -101,9 +106,14 @@ public class DragonPaw : MonoBehaviour
                 else
                 {
                     Disappear();
+                    FindObjectOfType<SoundPlayer>().PlaySound(appearSound);
                 }
                 break;
             case State.DISAPPEAR:
+                if(pawHitbox != null)
+                {
+                    Destroy(pawHitbox.gameObject);
+                }
                 if (Mathf.Abs(originX - transform.localPosition.x) > 20)
                 {
                     if(left)

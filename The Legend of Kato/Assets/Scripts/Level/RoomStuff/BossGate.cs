@@ -12,23 +12,31 @@ public class BossGate : MonoBehaviour
     BoxCollider2D boxCollider;
     LoadingBarMask loadingBarMask;
 
+    bool practice = false;
+    bool full_game_unlocked = false;
+
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.enabled = false;
+        practice = PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1;
+        full_game_unlocked = PlayerPrefs.GetInt(C.PREFS_GAME_UNLOCKED, 0) == 1;
     }
 
     public void Open()
     {
-        // TODO: REMOVE
-        if(SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex)
+        if(!practice)
         {
-            //PlayerPrefs.SetInt(C.PREFS_STAGE_2_OPENED, 1);
-            //PlayerPrefs.Save();
-        } else if(SceneManager.GetActiveScene().buildIndex == C.Level2SceneIndex)
-        {
-            PlayerPrefs.SetInt(C.PREFS_STAGE_3_OPENED, 1);
-            PlayerPrefs.Save();
+            if (SceneManager.GetActiveScene().buildIndex == C.Level1SceneIndex)
+            {
+                PlayerPrefs.SetInt(C.PREFS_STAGE_2_OPENED, 1);
+                PlayerPrefs.Save();
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == C.Level2SceneIndex)
+            {
+                PlayerPrefs.SetInt(C.PREFS_STAGE_3_OPENED, 1);
+                PlayerPrefs.Save();
+            }
         }
 
         GetComponent<Light2D>().intensity = 1.6f;
@@ -48,23 +56,15 @@ public class BossGate : MonoBehaviour
                 Camera.main.gameObject.GetComponent<CameraFollow>().enabled = false;
             }
 
-            if(FindObjectOfType<Blackout>() != null)
+            FindObjectOfType<RecordTracker>().CompleteLevel();
+
+            if (practice || tutorialLevel || !full_game_unlocked)
             {
-                //if (tutorialLevel)
-                //{
-                //    FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
-                //}
-                //else
-                //{
-                //    FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
-                //}
                 FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
             }
             else
             {
-                GameObject g = Instantiate(sceneLoader, new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, 1f), Quaternion.identity);
-                loadingBarMask = FindObjectOfType<LoadingBarMask>();
-                StartCoroutine(LoadAsynchronously());
+                FindObjectOfType<Blackout>().LoadSceneAsynchronously(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }
@@ -72,23 +72,5 @@ public class BossGate : MonoBehaviour
     public bool IsOpened()
     {
         return boxCollider.enabled;
-    }
-
-    IEnumerator LoadAsynchronously()
-    {
-        AsyncOperation operation;
-        if (tutorialLevel)
-        {
-            operation = SceneManager.LoadSceneAsync(C.LevelSelectionSceneIndex);
-        }
-        else
-        {
-            operation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        while (!operation.isDone)
-        {
-            loadingBarMask.SetPercentage(operation.progress);
-            yield return null;
-        }
     }
 }

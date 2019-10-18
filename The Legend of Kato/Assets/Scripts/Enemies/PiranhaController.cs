@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PiranhaController : MonoBehaviour
+public class PiranhaController : Respawnable
 {
     enum State { WALK, WALK_STRAIGHT, TP_OUT, TP_IN };
     [SerializeField] EnemyHitBox myHitBox;
+    [SerializeField] AudioClip teleportSound;
 
     Rigidbody2D rb;
     PlayerController player;
@@ -34,8 +35,11 @@ public class PiranhaController : MonoBehaviour
     // Timer used to disable spinning
     float walkStraightTime = 1f;
 
+    Vector3 originLocalPosition;
+
     void Start()
     {
+        originLocalPosition = transform.localPosition;
         player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -43,71 +47,83 @@ public class PiranhaController : MonoBehaviour
         myHitBox.SetEnemy(gameObject.transform, new Vector2(0f, -.03f), new Vector2(.8f, .93f), true);
     }
 
+    public override void Respawn()
+    {
+        base.Respawn();
+        transform.localPosition = originLocalPosition;
+        state = State.WALK;
+        usedTP = false;
+    }
+
     void Update()
     {
-        Vector2 origin = transform.position;
-        Vector2 direction = facingRight ? Vector2.right : Vector2.left;
-        float distance = rayDistance;
-        LayerMask collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
-        RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
-
-        Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (rayDistance) : (-rayDistance)), transform.position.y);
-        direction = Vector2.down;
-        collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
-        RaycastHit2D hitGround = Physics2D.Raycast(forwardEdge, direction, distance, collisionMask);
-        distance = rayDistance;
-
-        switch(state)
+        if(running)
         {
-            case State.WALK:
-                if (hitWall || !hitGround)
-                {
-                    ChangeDirection();
-                }
-                break;
-            case State.WALK_STRAIGHT:
-                if (timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    state = State.WALK;
-                }
-                break;
-            case State.TP_OUT:
-                if(timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    timer = tpTime;
-                    state = State.TP_IN;
-                    animator.Play(TPIN_ANIMATION);
-                    Teleport();
-                }
-                break;
-            case State.TP_IN:
-                if (timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    state = State.WALK_STRAIGHT;
-                    timer = walkStraightTime;
-                    animator.Play(WALK_ANIMATION);
-                }
-                break;
-        }
+            Vector2 origin = transform.position;
+            Vector2 direction = facingRight ? Vector2.right : Vector2.left;
+            float distance = rayDistance;
+            LayerMask collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
+            RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
 
+            Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (rayDistance) : (-rayDistance)), transform.position.y);
+            direction = Vector2.down;
+            collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
+            RaycastHit2D hitGround = Physics2D.Raycast(forwardEdge, direction, distance, collisionMask);
+            distance = rayDistance;
 
-        if (!usedTP)
-        {
-            if (SeeingPlayer())
+            switch (state)
             {
-                StartTeleporting();
+                case State.WALK:
+                    if (hitWall || !hitGround)
+                    {
+                        ChangeDirection();
+                    }
+                    break;
+                case State.WALK_STRAIGHT:
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        state = State.WALK;
+                    }
+                    break;
+                case State.TP_OUT:
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        timer = tpTime;
+                        state = State.TP_IN;
+                        FindObjectOfType<SoundPlayer>().PlaySound(teleportSound);
+                        animator.Play(TPIN_ANIMATION);
+                        Teleport();
+                    }
+                    break;
+                case State.TP_IN:
+                    if (timer > 0)
+                    {
+                        timer -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        state = State.WALK_STRAIGHT;
+                        timer = walkStraightTime;
+                        animator.Play(WALK_ANIMATION);
+                    }
+                    break;
+            }
+
+
+            if (!usedTP)
+            {
+                if (SeeingPlayer())
+                {
+                    StartTeleporting();
+                }
             }
         }
     }
@@ -139,6 +155,7 @@ public class PiranhaController : MonoBehaviour
         usedTP = true;
         timer = tpTime;
         animator.Play(TPOUT_ANIMATION);
+        FindObjectOfType<SoundPlayer>().PlaySound(teleportSound);
         state = State.TP_OUT;
     }
 
@@ -157,27 +174,34 @@ public class PiranhaController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch(state)
+        if(running)
         {
-            case State.WALK:
-            case State.WALK_STRAIGHT:
-                if (facingRight)
-                {
-                    rb.AddForce(Vector2.right * moveForce);
-                }
-                else
-                {
-                    rb.AddForce(Vector2.left * moveForce);
-                }
-                if (Mathf.Abs(rb.velocity.x) > maxSpeed)
-                {
-                    rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
-                }
-                break;
-            case State.TP_IN:
-            case State.TP_OUT:
-                rb.velocity = new Vector2(0f, rb.velocity.y);
-                break;
+            switch (state)
+            {
+                case State.WALK:
+                case State.WALK_STRAIGHT:
+                    if (facingRight)
+                    {
+                        rb.AddForce(Vector2.right * moveForce);
+                    }
+                    else
+                    {
+                        rb.AddForce(Vector2.left * moveForce);
+                    }
+                    if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+                    {
+                        rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+                    }
+                    break;
+                case State.TP_IN:
+                case State.TP_OUT:
+                    rb.velocity = new Vector2(0f, rb.velocity.y);
+                    break;
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
         }
     }
 

@@ -14,15 +14,10 @@ public class LevelsLock : MonoBehaviour
 
     SpriteRenderer spriteRender;
     State state;
-
-    CircleCollider2D circleCollider;
-    BoxCollider2D boxCollider;
     ButtonUI buttonUI;
 
     void Start()
     {
-        circleCollider = GetComponent<CircleCollider2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
         buttonUI = GetComponent<ButtonUI>();
 
         spriteRender = GetComponent<SpriteRenderer>();
@@ -41,20 +36,46 @@ public class LevelsLock : MonoBehaviour
                 }
                 else
                 {
-                    state = State.UNLOCKED;
+                    if(PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1)
+                    {
+                        state = State.OPENED;
+                    }
+                    else
+                    {
+                        if(PlayerPrefs.GetInt(C.PREFS_GAME_UNLOCKED, 0) == 1)
+                        {
+                            state = State.UNLOCKED;
+                        }
+                        else
+                        {
+                            state = State.LOCKED;
+                        }
+                    }
                 }
                 break;
             case 3:
-                //TODO:REMOVE
-                //int stage_3_state = PlayerPrefs.GetInt(C.PREFS_STAGE_3_OPENED, 0);
-                int stage_3_state = 1;
+                int stage_3_state = PlayerPrefs.GetInt(C.PREFS_STAGE_3_OPENED, 0);
                 if (stage_3_state == 0)
                 {
                     state = State.LOCKED;
                 }
                 else
                 {
-                    state = State.UNLOCKED;
+                    if (PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1)
+                    {
+                        state = State.OPENED;
+                    }
+                    else
+                    {
+                        if (PlayerPrefs.GetInt(C.PREFS_GAME_UNLOCKED, 0) == 1)
+                        {
+                            state = State.UNLOCKED;
+                        }
+                        else
+                        {
+                            state = State.LOCKED;
+                        }
+                    }
                 }
                 break;
         }
@@ -67,10 +88,23 @@ public class LevelsLock : MonoBehaviour
         switch (state)
         {
             case State.OPENED:
+                if (LockID == 2)
+                {
+                    if(GameObject.FindWithTag("LevelSelectionMask2") != null)
+                    {
+                        GameObject.FindWithTag("LevelSelectionMask2").SetActive(false);
+                    }
+                }
+                if (LockID == 3)
+                {
+                    if (GameObject.FindWithTag("LevelSelectionMask3") != null)
+                    {
+                        GameObject.FindWithTag("LevelSelectionMask3").SetActive(false);
+                    }
+                }
                 spriteRender.sprite = buttonUp;
-                circleCollider.enabled = false;
-                boxCollider.enabled = true;
                 buttonUI.enabled = true;
+                GetComponent<CircleCollider2D>().enabled = false;
                 break;
             case State.UNLOCKED:
                 if(LockID == 2)
@@ -83,35 +117,25 @@ public class LevelsLock : MonoBehaviour
                 }
                 spriteRender.sprite = locked;
                 buttonUI.enabled = false;
-                boxCollider.enabled = false;
                 break;
             case State.LOCKED:
                 spriteRender.sprite = locked;
                 buttonUI.enabled = false;
-                boxCollider.enabled = false;
-                circleCollider.enabled = false;
                 break;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (state == State.UNLOCKED)
-        {
-            if(collision.gameObject.GetComponent<LevelSelectionKey>() != null)
-            {
-                Open();
-                GetComponent<FunctionLoadLevel>().keyTier = collision.gameObject.GetComponent<LevelSelectionKey>().GetTier();
-                GetComponent<FunctionLoadLevel>().keyIndex = collision.gameObject.GetComponent<LevelSelectionKey>().keyPrefIndex;
-                Destroy(collision.gameObject);
-            }
-        }
-    }
 
-    private void Open()
+    public bool Open(LevelSelectionKey key)
     {
-        state = State.OPENED;
-        spriteRender.sprite = buttonUp;
-        SetLocker();
+        if(state == State.UNLOCKED)
+        {
+            GetComponent<FunctionLoadLevel>().keyTier = key.GetTier();
+            GetComponent<FunctionLoadLevel>().keyIndex = key.keyPrefIndex;
+            state = State.OPENED;
+            SetLocker();
+            return true;
+        }
+        return false;
     }
 }

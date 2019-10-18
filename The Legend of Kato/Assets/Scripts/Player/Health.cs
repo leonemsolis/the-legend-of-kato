@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
-
+    [SerializeField] GameObject tmp;
     [SerializeField] AudioClip hurtSound;
     public const int MAX_HEALTH = 5;
     int currentHealth;
@@ -14,17 +15,33 @@ public class Health : MonoBehaviour
     Color emptyColor = new Color(0.2f, 0.2f, 0.2f, 1f);
     Color fullColor = new Color(1f, 1f, 1f, 1f);
 
+    bool practice;
 
     private void Awake()
     {
-        currentHealth = PlayerPrefs.GetInt(C.PREFS_CURRENT_HEALTH, 5);
-
         playerSpriteRenderer = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
 
+        practice = PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1;
 
-        for(int i = 0; i < MAX_HEALTH - currentHealth; ++i)
+        if (practice)
         {
-            transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().color = emptyColor;
+            for (int i = 0; i < MAX_HEALTH - currentHealth; ++i)
+            {
+                transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().enabled = false;
+            }
+            currentHealth = MAX_HEALTH;
+        }
+        else
+        {
+            tmp.SetActive(false);
+
+            currentHealth = PlayerPrefs.GetInt(C.PREFS_CURRENT_HEALTH, 5);
+
+
+            for (int i = 0; i < MAX_HEALTH - currentHealth; ++i)
+            {
+                transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().color = emptyColor;
+            }
         }
     }
 
@@ -64,8 +81,7 @@ public class Health : MonoBehaviour
         {
             if (canTakeDamage)
             {
-                //TODO: REMOVE!
-                if (currentHealth > 1)
+                if(!practice)
                 {
                     currentHealth--;
                     transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;

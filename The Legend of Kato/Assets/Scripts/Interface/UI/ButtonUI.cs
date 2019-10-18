@@ -58,6 +58,10 @@ public class ButtonUI : MonoBehaviour
         {
             GetComponent<ButtonClickSound>().PlayClick();
         }
+        if(GetComponent<Animator>() != null)
+        {
+            GetComponent<Animator>().enabled = false;
+        }
         spriteRenderer.sprite = down;
         pressed = true;
     }
@@ -66,6 +70,10 @@ public class ButtonUI : MonoBehaviour
     {
         spriteRenderer.sprite = up;
         pressed = false;
+        if (GetComponent<Animator>() != null)
+        {
+            GetComponent<Animator>().enabled = true;
+        }
     }
 
     void Activate()

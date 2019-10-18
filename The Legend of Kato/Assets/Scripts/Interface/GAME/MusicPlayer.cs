@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MusicPlayer : MonoBehaviour
 {
-    enum MusicState { NONE,INTRO, MENU, LEVEL, BOSS};
+    enum MusicState { NONE, INTRO, MENU, LEVEL, BOSS};
 
     [SerializeField] AudioClip MainMenuMusic;
     [SerializeField] AudioClip LevelBaseMusic;
@@ -55,10 +55,13 @@ public class MusicPlayer : MonoBehaviour
             case C.MainMenuSceneIndex:
             case C.LevelSelectionSceneIndex:
             case C.SettingsSceneIndex:
+            case C.LevelModeSceneIndex:
+            case C.RecordsSceneIndex:
                 currentState = MusicState.MENU;
                 break;
             case C.DeathSceneIndex:
             case C.IntroSceneIndex:
+            case C.OutroSceneIndex:
                 currentState = MusicState.INTRO;
                 break;
             case C.Level0SceneIndex:
@@ -96,15 +99,12 @@ public class MusicPlayer : MonoBehaviour
             switch (currentState)
             {
                 case MusicState.MENU:
-                    //_as.clip = MainMenuMusic;
                     fadeInClip = MainMenuMusic;
                     break;
                 case MusicState.LEVEL:
-                    //_as.clip = LevelBaseMusic;
                     fadeInClip = LevelBaseMusic;
                     break;
                 case MusicState.BOSS:
-                    //_as.clip = LevelBossMusic;
                     fadeInClip = LevelBossMusic;
                     break;
                 case MusicState.INTRO:
@@ -113,7 +113,6 @@ public class MusicPlayer : MonoBehaviour
             }
             lastState = currentState;
             fade = true;
-            //_as.Play();
         }
     }
 

@@ -6,6 +6,6 @@ public class FunctionLSUI : FunctionUI
 {
     public override void Function()
     {
-        Debug.Log("<Opens Leonemsolis page>");
+        Application.OpenURL("https://www.instagram.com/leonemsolis/");
     }
 }

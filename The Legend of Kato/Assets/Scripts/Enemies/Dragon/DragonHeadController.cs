@@ -8,6 +8,7 @@ public class DragonHeadController : MonoBehaviour
     enum MainState {AWAIT, SLEEP, AWAKE, ATTACK_START, ATTACK, PAUSE, DEAD};
     enum AttackState { STATE_1, STATE_2};
 
+    [SerializeField] AudioClip dragonFire;
 
     [SerializeField] Sprite eyesClosed;
     [SerializeField] Sprite eyesOpenNoPupils;
@@ -34,12 +35,12 @@ public class DragonHeadController : MonoBehaviour
 
 
     int health = 3;
-    int fireCount = 3;
+    int fireCount = 1;
 
-    void OnEnable()
+    private void Start()
     {
         PRD = FindObjectOfType<PlayerRoomDetector>();
-        spriteRenderer = GetComponent<SpriteRenderer>();        
+        spriteRenderer = GetComponent<SpriteRenderer>();
         dragonEyes = FindObjectOfType<DragonEyes>();
         dragonEyes.gameObject.SetActive(false);
         animator = GetComponent<Animator>();
@@ -47,7 +48,6 @@ public class DragonHeadController : MonoBehaviour
         attackState = AttackState.STATE_1;
         dragonSigns = FindObjectOfType<DragonSigns>();
     }
-
 
     void Update()
     {
@@ -118,6 +118,7 @@ public class DragonHeadController : MonoBehaviour
                     dragonEyes.gameObject.SetActive(false);
                     animator.enabled = true;
                     animator.Play(ANIMATION_EYES_DEAD);
+                    FindObjectOfType<RecordTracker>().CompleteLevel();
                     FindObjectOfType<PlayerAnimator>().Win();
                 }
                 break;
@@ -151,9 +152,9 @@ public class DragonHeadController : MonoBehaviour
                 break;
         }
         yield return new WaitForSeconds(1f);
+        FindObjectOfType<SoundPlayer>().PlaySound(dragonFire);
         StartCoroutine(LightUpDown(true));
-        DragonFire dragonFire = Instantiate(dragonFirePrefab, transform.position, Quaternion.identity);
-        dragonFire.Setup(rotationZ);
+        Instantiate(dragonFirePrefab, transform.position, Quaternion.identity).Setup(rotationZ);
     }
 
     public void AttackDone()

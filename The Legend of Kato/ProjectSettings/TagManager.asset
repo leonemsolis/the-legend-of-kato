@@ -54,6 +54,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BACKGROUND
+    uniqueID: 4223203395
+    locked: 0
   - name: DragonHead
     uniqueID: 754080109
     locked: 0

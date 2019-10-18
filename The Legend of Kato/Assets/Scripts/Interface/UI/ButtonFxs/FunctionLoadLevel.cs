@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class FunctionLoadLevel : FunctionUI
 {
     [SerializeField] SceneEnum sceneEnum;
-    [SerializeField] GameObject sceneLoader;
 
     public int keyTier = 1;
     public int keyIndex = 0;
@@ -62,26 +60,6 @@ public class FunctionLoadLevel : FunctionUI
         PlayerPrefs.SetInt(C.PREFS_MONEY, 0);
         PlayerPrefs.Save();
 
-        if (FindObjectOfType<Blackout>() != null)
-        {
-            FindObjectOfType<Blackout>().LoadSceneAsynchronously(loadingSceneID);
-        }
-        else
-        {
-            Instantiate(sceneLoader, new Vector3(0f, 0f, 0f), Quaternion.identity);
-            loadingBarMask = FindObjectOfType<LoadingBarMask>();
-            StartCoroutine(LoadAsynchronously(loadingSceneID));
-        }
-    }
-
-    IEnumerator LoadAsynchronously(int sceneID)
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneID);
-
-        while (!operation.isDone)
-        {
-            loadingBarMask.SetPercentage(operation.progress);
-            yield return null;
-        }
+        FindObjectOfType<Blackout>().LoadSceneAsynchronously(loadingSceneID);
     }
 }

@@ -119,6 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBoxPrefab: {fileID: 142651154889661235, guid: d9849e7a67d0d40139c70fac28aae393,
     type: 3}
+  appearSound: {fileID: 8300000, guid: e3d40d844d3b6421aa23db12226bb37e, type: 3}
+  disappearSound: {fileID: 8300000, guid: f77f9bf073e694765b3b2b32c91a38f4, type: 3}
+  swingSound: {fileID: 8300000, guid: f66feb1b62e3546dfa787529505375e4, type: 3}
 --- !u!70 &3057425082240653661
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

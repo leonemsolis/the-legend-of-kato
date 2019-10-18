@@ -99,7 +99,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e68429bd54b904bcd9637557929bcaa8, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -113,7 +113,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6781305431247829087}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e68429bd54b904bcd9637557929bcaa8, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -143,7 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
+  - {fileID: -971113765415606467, guid: be0e763fa01cd43389d4c13c23d4c602, type: 3}
+  - {fileID: -9013647107926178429, guid: be0e763fa01cd43389d4c13c23d4c602, type: 3}
   - {fileID: 21300000, guid: ddd471c6057344be49a36e24e899517d, type: 3}
   - {fileID: 21300002, guid: ddd471c6057344be49a36e24e899517d, type: 3}
   - {fileID: 21300004, guid: ddd471c6057344be49a36e24e899517d, type: 3}
   - {fileID: 21300006, guid: ddd471c6057344be49a36e24e899517d, type: 3}
+  isWallSprite: 0

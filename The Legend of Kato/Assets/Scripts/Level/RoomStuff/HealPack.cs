@@ -11,6 +11,7 @@ public class HealPack : MonoBehaviour
     [SerializeField] AudioClip pickUpSound;
     Health health;
     Collider2D _collider;
+    bool pickedup = false;
 
     private void Start()
     {
@@ -41,10 +42,14 @@ public class HealPack : MonoBehaviour
         {
             if (collision.tag == "Player" || collision.tag == "Boots" || collision.tag == "Sword" || collision.tag == "Body")
             {
-                if(FindObjectOfType<Health>().RestoreHealth())
+                if(!pickedup)
                 {
-                    FindObjectOfType<SoundPlayer>().PlaySound(pickUpSound, transform.position);
-                    Destroy(transform.parent.gameObject);
+                    if (FindObjectOfType<Health>().RestoreHealth())
+                    {
+                        FindObjectOfType<SoundPlayer>().PlaySound(pickUpSound, transform.position);
+                        Destroy(transform.parent.gameObject);
+                        pickedup = true;
+                    }
                 }
             }
         }

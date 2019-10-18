@@ -8,18 +8,20 @@ public class DragonPawHitbox : EnemyHitBox
 
     public override void Die(bool hit)
     {
-        GetComponent<BoxCollider2D>().enabled = false;
-        //dead = true;
-
-        if (hit)
+        if(!dead)
         {
-            FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
+            dead = true;
+            GetComponent<BoxCollider2D>().enabled = false;
+            if (hit)
+            {
+                FindObjectOfType<SoundPlayer>().PlaySound(hitSound, transform.position);
+            }
+            if (enemyTransform.gameObject != null)
+            {
+                dragonPaw.TakeDamage();
+            }
+            Destroy(gameObject, hitSound.length + 1f);
         }
-        if (enemyTransform.gameObject != null)
-        {
-            dragonPaw.TakeDamage();
-        }
-        Destroy(gameObject, hitSound.length + 1f);
     }
 
     public void Disable()
@@ -32,8 +34,13 @@ public class DragonPawHitbox : EnemyHitBox
         GetComponent<BoxCollider2D>().enabled = true;
     }
 
-    public void SetEnemy(DragonPaw dp, Vector2 offset, Vector2 size)
+    public void SetEnemy(DragonPaw dp, Vector2 offset, Vector2 size, bool left)
     {
+        Debug.Log("SETTED UP!");
+        if(!left)
+        {
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        }
         dragonPaw = dp;
         enemyTransform = dragonPaw.gameObject.transform;
         GetComponent<BoxCollider2D>().offset = offset;

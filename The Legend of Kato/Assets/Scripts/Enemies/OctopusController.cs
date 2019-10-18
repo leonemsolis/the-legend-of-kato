@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OctopusController : MonoBehaviour
+public class OctopusController : Respawnable
 {
     [Header("Octupus is moving down then up")]
 
@@ -25,34 +25,37 @@ public class OctopusController : MonoBehaviour
 
     void Update()
     {
-        if(firstTimeDelay > 0)
+        if(running)
         {
-            firstTimeDelay -= Time.deltaTime;
-        }
-        else
-        {
-            if (movingDown)
+            if (firstTimeDelay > 0)
             {
-                if (Vector3.Distance(origin, transform.position) > movingDistance)
-                {
-                    movingDown = false;
-                    transform.position = destination;
-                }
-                else
-                {
-                    transform.position = new Vector3(transform.position.x, transform.position.y - movingSpeed * Time.deltaTime, transform.position.z);
-                }
+                firstTimeDelay -= Time.deltaTime;
             }
             else
             {
-                if (Vector3.Distance(origin, transform.position) < 5f)
+                if (movingDown)
                 {
-                    movingDown = true;
-                    transform.position = origin;
+                    if (Vector3.Distance(origin, transform.position) > movingDistance)
+                    {
+                        movingDown = false;
+                        transform.position = destination;
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y - movingSpeed * Time.deltaTime, transform.position.z);
+                    }
                 }
                 else
                 {
-                    transform.position = new Vector3(transform.position.x, transform.position.y + movingSpeed * Time.deltaTime, transform.position.z);
+                    if (Vector3.Distance(origin, transform.position) < 5f)
+                    {
+                        movingDown = true;
+                        transform.position = origin;
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(transform.position.x, transform.position.y + movingSpeed * Time.deltaTime, transform.position.z);
+                    }
                 }
             }
         }

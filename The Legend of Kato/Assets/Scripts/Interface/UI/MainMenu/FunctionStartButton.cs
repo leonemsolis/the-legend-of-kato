@@ -25,7 +25,7 @@ public class FunctionStartButton : FunctionUI
         }
         else
         {
-            FindObjectOfType<Blackout>().LoadScene(C.LevelSelectionSceneIndex);
+            FindObjectOfType<Blackout>().LoadScene(C.LevelModeSceneIndex);
         }
 
     }

@@ -19,6 +19,9 @@ public class C: MonoBehaviour
     public const int IntroSceneIndex = 7;
     public const int Level0SceneIndex = 8;
     public const int DeathSceneIndex = 9;
+    public const int LevelModeSceneIndex = 10;
+    public const int RecordsSceneIndex = 11;
+    public const int OutroSceneIndex = 12;
 
 
     // Tags
@@ -43,6 +46,9 @@ public class C: MonoBehaviour
 
 
 
+    // META
+    public const string PREFS_PRACTICE_MODE = "PRACTICE";               // int
+    public const string PREFS_GAME_UNLOCKED = "GAME_UNLOCKED";          // int
     // PlayerPrefs
     public const string PREFS_CURRENT_HEALTH = "CURRENT_HEALTH";        // int
     public const string PREFS_MONEY = "MONEY";                          // int
@@ -57,6 +63,17 @@ public class C: MonoBehaviour
     public const string PREFS_MUSIC = "MUSIC";                          // int
     public const string PREFS_SOUNDS = "SOUNDS";                        // int
     public const string PREFS_FIRST_LAUNCH = "FIRST_LAUNCH";            // int
+
+    // PlayerPrefs Records
+    public const string PREFS_TUTORIAL_BEST_TIME = "TUTORIAL_BEST_TIME";        //float
+    public const string PREFS_ENTRANCE_BEST_TIME = "ENTRANCE_BEST_TIME";        //float
+    public const string PREFS_DEPTHS_BEST_TIME = "DEPTHS_BEST_TIME";            //float
+    public const string PREFS_OCEAN_BED_BEST_TIME = "OCEAN_BED_BEST_TIME";      //float
+    public const string PREFS_TOTAL_TIME = "TOTAL_TIME";                        //float
+    public const string PREFS_DEATH_COUNT = "DEATH_COUNT";                  //int
+    public const string PREFS_SOULS_COLLECTED = "SOULS_COLLECTED";              //int
+    public const string PREFS_MONSTERS_KILLED = "MONSTERS_KILLED";              //int
+
 }
 
 

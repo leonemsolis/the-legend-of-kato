@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SharkController : MonoBehaviour
+public class SharkController : Respawnable
 {
     [SerializeField] EnemyHitBox myHitBox;
 
@@ -46,40 +46,43 @@ public class SharkController : MonoBehaviour
 
     private void Update()
     {
-        if(rb.simulated && Mathf.Abs(rb.velocity.y) < Mathf.Epsilon)
+        if(running)
         {
-            TickTimer();
-
-            Vector2 origin = transform.position;
-            Vector2 direction = facingRight ? Vector2.right : Vector2.left;
-            float distance = rayDistance;
-            LayerMask collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
-            RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
-
-            Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (rayDistance) : (-rayDistance)), transform.position.y);
-            direction = Vector2.down;
-            collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
-            RaycastHit2D hitGround = Physics2D.Raycast(forwardEdge, direction, distance, collisionMask);
-            distance = rayDistance;
-
-            if (hitWall || !hitGround)
+            if (rb.simulated && Mathf.Abs(rb.velocity.y) < Mathf.Epsilon)
             {
-                ChangeDirection();
-            }
+                TickTimer();
 
-            // boost speed when shark sees player
+                Vector2 origin = transform.position;
+                Vector2 direction = facingRight ? Vector2.right : Vector2.left;
+                float distance = rayDistance;
+                LayerMask collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
+                RaycastHit2D hitWall = Physics2D.Raycast(origin, direction, distance, collisionMask);
 
-            if(SeeingPlayer())
-            {
-                moveForce = activeMoveForce;
-                maxSpeed = activeMaxSpeed;
-                // Update timer each frame shark see player, in order to chase in current direction
-                changeDirTimer = minChangeDirTime;
-            }
-            else
-            {
-                moveForce = passiveMoveForce;
-                maxSpeed = passiveMaxSpeed;
+                Vector2 forwardEdge = new Vector2(transform.position.x + (facingRight ? (rayDistance) : (-rayDistance)), transform.position.y);
+                direction = Vector2.down;
+                collisionMask = 1 << LayerMask.NameToLayer(C.BlockLayer);
+                RaycastHit2D hitGround = Physics2D.Raycast(forwardEdge, direction, distance, collisionMask);
+                distance = rayDistance;
+
+                if (hitWall || !hitGround)
+                {
+                    ChangeDirection();
+                }
+
+                // boost speed when shark sees player
+
+                if (SeeingPlayer())
+                {
+                    moveForce = activeMoveForce;
+                    maxSpeed = activeMaxSpeed;
+                    // Update timer each frame shark see player, in order to chase in current direction
+                    changeDirTimer = minChangeDirTime;
+                }
+                else
+                {
+                    moveForce = passiveMoveForce;
+                    maxSpeed = passiveMaxSpeed;
+                }
             }
         }
     }
@@ -110,17 +113,24 @@ public class SharkController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (facingRight)
+        if(running)
         {
-            rb.AddForce(Vector2.right * moveForce);
+            if (facingRight)
+            {
+                rb.AddForce(Vector2.right * moveForce);
+            }
+            else
+            {
+                rb.AddForce(Vector2.left * moveForce);
+            }
+            if (Mathf.Abs(rb.velocity.x) > maxSpeed)
+            {
+                rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            }
         }
         else
         {
-            rb.AddForce(Vector2.left * moveForce);
-        }
-        if (Mathf.Abs(rb.velocity.x) > maxSpeed)
-        {
-            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxSpeed, rb.velocity.y);
+            rb.velocity = new Vector2(0f, rb.velocity.y);
         }
     }
 
