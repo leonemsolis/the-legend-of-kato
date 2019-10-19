@@ -36,7 +36,6 @@ public class DragonPawHitbox : EnemyHitBox
 
     public void SetEnemy(DragonPaw dp, Vector2 offset, Vector2 size, bool left)
     {
-        Debug.Log("SETTED UP!");
         if(!left)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);

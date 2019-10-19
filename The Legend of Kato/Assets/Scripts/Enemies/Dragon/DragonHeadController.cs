@@ -35,7 +35,7 @@ public class DragonHeadController : MonoBehaviour
 
 
     int health = 3;
-    int fireCount = 1;
+    int fireCount = 3;
 
     private void Start()
     {

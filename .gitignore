@@ -8,6 +8,7 @@
 [Ll]ogs/
 [Mm]emoryCaptures/
 **/test_build/
+**/build_ios/
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
