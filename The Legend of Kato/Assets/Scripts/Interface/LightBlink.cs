@@ -9,13 +9,13 @@ public class LightBlink : MonoBehaviour
     [SerializeField] float blinkTime = 1f;
     float timer;
     bool brightPhase = true;
-    Light2D light2d;
+    UnityEngine.Experimental.Rendering.Universal.Light2D light2d;
     float startTimeBright = 0f;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        light2d = GetComponent<Light2D>();
+        light2d = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
         timer = blinkTime;
     }
 

@@ -8,7 +8,7 @@ public class GlobalLight : MonoBehaviour
 
     enum ParameterType {G, B, INTENSITY};
 
-    Light2D _light;
+    UnityEngine.Experimental.Rendering.Universal.Light2D _light;
 
     [SerializeField] float minG = .44f;
     [SerializeField] float maxG = .85f;
@@ -24,7 +24,7 @@ public class GlobalLight : MonoBehaviour
 
     void Start()
     {
-        _light = GetComponent<Light2D>();
+        _light = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
 
         StartCoroutine(Gradient(ParameterType.G));
         StartCoroutine(Gradient(ParameterType.B));

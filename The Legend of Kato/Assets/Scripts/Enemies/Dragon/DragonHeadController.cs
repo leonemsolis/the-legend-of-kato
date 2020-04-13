@@ -232,11 +232,11 @@ public class DragonHeadController : MonoBehaviour
         float duration = .5f;
         while (elapsed < duration)
         {
-            GetComponent<Light2D>().intensity = Mathf.Lerp(i_start, i_end, elapsed / duration);
+            GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>().intensity = Mathf.Lerp(i_start, i_end, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
-        GetComponent<Light2D>().intensity = i_end;
+        GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>().intensity = i_end;
         if (!up)
         {
             spriteRenderer.sprite = eyesOpenNoPupils;
