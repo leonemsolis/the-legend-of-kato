@@ -9,8 +9,18 @@ public class TitleImageScaler : MonoBehaviour
     const float botPartHeight = 100f;
     const float buttonsPanelHeight = 250f;
 
+    float safeAreaTopShiftValue, safeAreaBotShiftValue;
+
     void Start()
     {
+        #if UNITY_EDITOR_OSX
+            safeAreaTopShiftValue = 100f;
+            safeAreaBotShiftValue = 100f;
+        #else
+            safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
+            safeAreaBotShiftValue = Screen.safeArea.yMin;
+        #endif
+
         top = transform.GetChild(0);
         bot = transform.GetChild(1);
 

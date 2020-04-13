@@ -9,6 +9,7 @@
 [Mm]emoryCaptures/
 **/test_build/
 **/build_ios/
+/\[a\]legendof-kato
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta

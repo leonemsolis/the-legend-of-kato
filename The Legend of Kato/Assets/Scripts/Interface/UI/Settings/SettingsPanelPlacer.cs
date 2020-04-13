@@ -21,14 +21,15 @@ public class SettingsPanelPlacer : MonoBehaviour
         title = transform.GetChild(0);
         music = transform.GetChild(1);
         sound = transform.GetChild(2);
-        restore = transform.GetChild(3);
 
 
 
         title.localPosition = new Vector3(0f, Camera.main.orthographicSize - topPartHeight - titleHeight / 2f, 0f);
-        restore.localPosition = new Vector3(0f, -Camera.main.orthographicSize + bottomGap + restoreHeight / 2f, 0f);
 
-        music.localPosition = new Vector3(music.localPosition.x, restore.localPosition.y + restoreToTogglesGap, 0f);
-        sound.localPosition = new Vector3(sound.localPosition.x, restore.localPosition.y + restoreToTogglesGap, 0f);
+        //Restore button was deleted...
+        float restoreY = -Camera.main.orthographicSize + bottomGap + restoreHeight / 2f;
+
+        music.localPosition = new Vector3(music.localPosition.x, restoreY + restoreToTogglesGap, 0f);
+        sound.localPosition = new Vector3(sound.localPosition.x, restoreY + restoreToTogglesGap, 0f);
     }
 }
