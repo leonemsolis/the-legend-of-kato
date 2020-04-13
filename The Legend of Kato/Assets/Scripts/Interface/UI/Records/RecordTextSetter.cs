@@ -26,7 +26,7 @@ public class RecordTextSetter : MonoBehaviour
                 tmp.SetText("BEST TIME:\n" + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_OCEAN_BED_BEST_TIME, 0f)));
                 break;
             case TextBoxType.TOTALTIME:
-                tmp.SetText(convertToHMS(PlayerPrefs.GetFloat(C.PREFS_TOTAL_TIME, 0f)));
+                tmp.SetText(roomsUnlocked());
                 break;
             case TextBoxType.DEATH:
                 tmp.SetText(""+PlayerPrefs.GetInt(C.PREFS_DEATH_COUNT, 0));
@@ -42,6 +42,10 @@ public class RecordTextSetter : MonoBehaviour
 
     private string convertToMSMS(float time)
     {
+        if(time == 0f)
+        {
+            return "-";
+        }
         int m = (int)(time / 60f);
         time -= m * 60f;
         int s = (int)time;
@@ -58,5 +62,19 @@ public class RecordTextSetter : MonoBehaviour
         time -= m * 60f;
         int s = (int)time;
         return h + "H : " + m + "M: " + s + "S";
+    }
+
+    public string roomsUnlocked()
+    {
+        int count = 0;
+        for(int i = 1; i <= 15; ++i)
+        {
+            if(PlayerPrefs.GetInt(C.PREFS_ROOM_UNLOCKED + i, 0) == 1)
+            {
+                count++;
+            }
+        }
+
+        return count + " / " + 15;
     }
 }

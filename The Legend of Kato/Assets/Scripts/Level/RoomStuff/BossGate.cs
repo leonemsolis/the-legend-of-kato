@@ -20,7 +20,6 @@ public class BossGate : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.enabled = false;
         practice = PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1;
-        full_game_unlocked = PlayerPrefs.GetInt(C.PREFS_GAME_UNLOCKED, 0) == 1;
     }
 
     public void Open()
@@ -58,7 +57,7 @@ public class BossGate : MonoBehaviour
 
             FindObjectOfType<RecordTracker>().CompleteLevel();
 
-            if (practice || tutorialLevel || !full_game_unlocked)
+            if (practice || tutorialLevel)
             {
                 FindObjectOfType<Blackout>().LoadSceneAsynchronously(C.LevelSelectionSceneIndex);
             }

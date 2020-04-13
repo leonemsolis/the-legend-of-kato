@@ -201,6 +201,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room_start
       objectReference: {fileID: 0}
+    - target: {fileID: 1587539045635037163, guid: 5576064fafe93462f8e72ae8bdf00551,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1587539045635037164, guid: 5576064fafe93462f8e72ae8bdf00551,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,12 +274,12 @@ PrefabInstance:
     - target: {fileID: 4587941738465246082, guid: 5576064fafe93462f8e72ae8bdf00551,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 101
+      value: 91
       objectReference: {fileID: 0}
     - target: {fileID: 4587941738465246082, guid: 5576064fafe93462f8e72ae8bdf00551,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -594
+      value: -1348
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5576064fafe93462f8e72ae8bdf00551, type: 3}
@@ -500,12 +505,12 @@ PrefabInstance:
     - target: {fileID: 3366929853095267209, guid: 986c9e4d1540e4306afa6fa7026ff920,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 346
+      value: 406
       objectReference: {fileID: 0}
     - target: {fileID: 3366929853095267209, guid: 986c9e4d1540e4306afa6fa7026ff920,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 635
+      value: 1373
       objectReference: {fileID: 0}
     - target: {fileID: 3366929853095267209, guid: 986c9e4d1540e4306afa6fa7026ff920,
         type: 3}

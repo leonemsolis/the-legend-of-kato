@@ -22,7 +22,7 @@ public class C: MonoBehaviour
     public const int LevelModeSceneIndex = 10;
     public const int RecordsSceneIndex = 11;
     public const int OutroSceneIndex = 12;
-
+    public const float DefaulTimeScale = 1f;
 
     // Tags
     public const string PlayerTag = "Player";
@@ -37,6 +37,7 @@ public class C: MonoBehaviour
     public const string EnemyHitBoxTag = "EnemyHitBox";
     public const string EnemyTag = "Enemy";
     public const string ButtonUITag = "ButtonUI";
+    public const string DragonTag = "Dragon";
 
     // Layers
     public const string BlockLayer = "Block";
@@ -48,7 +49,7 @@ public class C: MonoBehaviour
 
     // META
     public const string PREFS_PRACTICE_MODE = "PRACTICE";               // int
-    public const string PREFS_GAME_UNLOCKED = "GAME_UNLOCKED";          // int
+
     // PlayerPrefs
     public const string PREFS_CURRENT_HEALTH = "CURRENT_HEALTH";        // int
     public const string PREFS_MONEY = "MONEY";                          // int
@@ -59,6 +60,7 @@ public class C: MonoBehaviour
     // PlayerPrefs Stages
     public const string PREFS_STAGE_2_OPENED = "STAGE_2";               // int
     public const string PREFS_STAGE_3_OPENED = "STAGE_3";               // int
+    public const string PREFS_GAME_COMPLETED = "GAME_COMPLETED";        // int
     // PlayerPrefs Settings
     public const string PREFS_MUSIC = "MUSIC";                          // int
     public const string PREFS_SOUNDS = "SOUNDS";                        // int
@@ -69,10 +71,12 @@ public class C: MonoBehaviour
     public const string PREFS_ENTRANCE_BEST_TIME = "ENTRANCE_BEST_TIME";        //float
     public const string PREFS_DEPTHS_BEST_TIME = "DEPTHS_BEST_TIME";            //float
     public const string PREFS_OCEAN_BED_BEST_TIME = "OCEAN_BED_BEST_TIME";      //float
-    public const string PREFS_TOTAL_TIME = "TOTAL_TIME";                        //float
-    public const string PREFS_DEATH_COUNT = "DEATH_COUNT";                  //int
+    public const string PREFS_DEATH_COUNT = "DEATH_COUNT";                      //int
     public const string PREFS_SOULS_COLLECTED = "SOULS_COLLECTED";              //int
     public const string PREFS_MONSTERS_KILLED = "MONSTERS_KILLED";              //int
+
+    public const string PREFS_ROOM_UNLOCKED = "ROOM_UNLOCKED";                //int
+
 
 }
 

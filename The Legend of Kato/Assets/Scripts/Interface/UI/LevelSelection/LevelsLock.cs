@@ -42,14 +42,7 @@ public class LevelsLock : MonoBehaviour
                     }
                     else
                     {
-                        if(PlayerPrefs.GetInt(C.PREFS_GAME_UNLOCKED, 0) == 1)
-                        {
-                            state = State.UNLOCKED;
-                        }
-                        else
-                        {
-                            state = State.LOCKED;
-                        }
+                        state = State.UNLOCKED;
                     }
                 }
                 break;
@@ -67,14 +60,7 @@ public class LevelsLock : MonoBehaviour
                     }
                     else
                     {
-                        if (PlayerPrefs.GetInt(C.PREFS_GAME_UNLOCKED, 0) == 1)
-                        {
-                            state = State.UNLOCKED;
-                        }
-                        else
-                        {
-                            state = State.LOCKED;
-                        }
+                        state = State.UNLOCKED;
                     }
                 }
                 break;

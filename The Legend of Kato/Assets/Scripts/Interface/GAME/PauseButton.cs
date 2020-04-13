@@ -105,7 +105,7 @@ public class PauseButton : MonoBehaviour
             b.ChangeMode(lastMode);
         }
 
-        Time.timeScale = 1f;
+        Time.timeScale = C.DefaulTimeScale;
         pausePanel.gameObject.SetActive(false);
     }
 }

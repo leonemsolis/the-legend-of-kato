@@ -28,14 +28,6 @@ public class FunctionPromptSpawn : FunctionUI
 
 
         FindObjectOfType<FunctionCancelPrompt>().SetPromptSpawner(this);
-
-
-        // Special for [UNLOCK FULL GAME] prompt
-        if(FindObjectOfType<FunctionUnlockFullGame>() != null)
-        {
-            FindObjectOfType<FunctionUnlockFullGame>().SetPromptSpawner(this);
-        }
-
     }
 
     public void ResetUIColliders()

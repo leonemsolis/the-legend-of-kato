@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1831240191039821147}
   - component: {fileID: 1831240191039821146}
   - component: {fileID: 1831240191039821149}
-  - component: {fileID: 991657554}
   - component: {fileID: 991657555}
+  - component: {fileID: 2926997404089918386}
   m_Layer: 5
   m_Name: InfoButton
   m_TagString: Untagged
@@ -128,20 +128,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
---- !u!114 &991657554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831240191039821145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84512971776aa48c4a5b9b9c35bc23ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  up: {fileID: -1409781336132366217, guid: 69df7dd94f15842fd8cec546395d4d9e, type: 3}
-  down: {fileID: -5436154231406698392, guid: 69df7dd94f15842fd8cec546395d4d9e, type: 3}
 --- !u!114 &991657555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,3 +141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 7735336417692414610, guid: a0603acdaa60444659fa4a90c6efec36, type: 3}
+--- !u!114 &2926997404089918386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831240191039821145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: -1409781336132366217, guid: 69df7dd94f15842fd8cec546395d4d9e, type: 3}
+  down: {fileID: -5436154231406698392, guid: 69df7dd94f15842fd8cec546395d4d9e, type: 3}

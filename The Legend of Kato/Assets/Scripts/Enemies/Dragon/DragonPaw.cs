@@ -36,7 +36,7 @@ public class DragonPaw : MonoBehaviour
         {
             destinationX = 200f;
             originX = 900f;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
             FindObjectOfType<DragonSigns>().Enable(0);
             FindObjectOfType<DragonSigns>().Enable(1);
@@ -49,7 +49,7 @@ public class DragonPaw : MonoBehaviour
             FindObjectOfType<DragonSigns>().Enable(4);
         }
 
-        transform.localPosition = new Vector3(originX, -314f, 0f);
+        transform.localPosition = new Vector3(originX, -628f, 0f);
 
         animator = GetComponent<Animator>();
         pawAttackHitbox = GetComponent<CircleCollider2D>();

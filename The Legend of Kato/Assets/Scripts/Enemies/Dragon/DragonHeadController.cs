@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.LWRP;
 public class DragonHeadController : MonoBehaviour
 {
     enum MainState {AWAIT, SLEEP, AWAKE, ATTACK_START, ATTACK, PAUSE, DEAD};
-    enum AttackState { STATE_1, STATE_2};
+    enum AttackState { STATE_1, STATE_2, STATE_3};
 
     [SerializeField] AudioClip dragonFire;
 
@@ -15,6 +15,7 @@ public class DragonHeadController : MonoBehaviour
     [SerializeField] Sprite fireHead;
     [SerializeField] DragonPaw dragonPawPrefab;
     [SerializeField] DragonFire dragonFirePrefab;
+    [SerializeField] DragonBall dragonBallPrefab;
 
     DragonEyes dragonEyes;
     Animator animator;
@@ -34,8 +35,9 @@ public class DragonHeadController : MonoBehaviour
     AttackState attackState;
 
 
-    int health = 3;
+    int health = 9;
     int fireCount = 3;
+    int currentBallCount = 0;
 
     private void Start()
     {
@@ -99,16 +101,32 @@ public class DragonHeadController : MonoBehaviour
                 {
                     case AttackState.STATE_1:
                         mainState = MainState.ATTACK;
+                        timer = pauseTime;
+                        DragonPaw dragonPaw = Instantiate(dragonPawPrefab, transform.position, Quaternion.identity);
+                        dragonPaw.transform.parent = transform;
+                        dragonPaw.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                        dragonPaw.Setup(Random.Range(0, 2) == 0 ? true : false);
+                        break;
+                    case AttackState.STATE_2:
+                        mainState = MainState.ATTACK;
                         fireCount--;
                         timer = pauseTime;
                         StartCoroutine(FireBreath());
                         break;
-                    case AttackState.STATE_2:
+                    case AttackState.STATE_3:
+                        StartCoroutine(LightUpDown(true));
                         mainState = MainState.ATTACK;
                         timer = pauseTime;
-                        DragonPaw dragonPaw = Instantiate(dragonPawPrefab, transform.position, Quaternion.identity);
-                        dragonPaw.transform.parent = transform;
-                        dragonPaw.Setup(Random.Range(0, 2) == 0 ? true : false);
+                        DragonBall d = Instantiate(dragonBallPrefab, transform.position + new Vector3(-100f, -220f, 0f), Quaternion.identity);
+                        d.transform.parent = transform;
+                        d.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                        d = Instantiate(dragonBallPrefab, transform.position + new Vector3(0f, -220f, 0f), Quaternion.identity);
+                        d.transform.parent = transform;
+                        d.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                        d = Instantiate(dragonBallPrefab, transform.position + new Vector3(100f, -220f, 0f), Quaternion.identity);
+                        d.transform.parent = transform;
+                        d.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                        currentBallCount = 3;
                         break;
                 }
                 break;
@@ -159,24 +177,44 @@ public class DragonHeadController : MonoBehaviour
 
     public void AttackDone()
     {
-        if(attackState == AttackState.STATE_1)
+        if (attackState == AttackState.STATE_2)
         {
             StartCoroutine(LightUpDown(false));
             if (fireCount == 0)
             {
-                attackState = AttackState.STATE_2;
+                attackState = AttackState.STATE_3;
             }
         }
-        if(mainState != MainState.DEAD)
+
+        if (mainState != MainState.DEAD)
         {
             mainState = MainState.PAUSE;
+        }
+    }
+
+    public void BallReturned()
+    {
+        StartCoroutine(LightUpDown(false));
+        currentBallCount--;
+        if(currentBallCount == 0)
+        {
+            if (mainState != MainState.DEAD)
+            {
+                mainState = MainState.PAUSE;
+            }
         }
     }
 
     public void TakeDamage()
     {
         health--;
-        if(health == 0)
+        if(health == 6)
+        {
+            timer = pauseTime * 2f;
+            mainState = MainState.PAUSE;
+            attackState = AttackState.STATE_2;
+        }
+        else if(health == 0)
         {
             mainState = MainState.DEAD;
         }

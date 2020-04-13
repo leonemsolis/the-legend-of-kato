@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum SceneEnum { MAIN, LEVELS, STAGE1, STAGE2, STAGE3, STAGE0, SETTINGS, RECORDS, MODE_SELECTION };
+public enum SceneEnum { MAIN, LEVELS, STAGE1, STAGE2, STAGE3, STAGE0, SETTINGS, RECORDS, MODE_SELECTION, INTRO, OUTRO };
 public class FunctionLoadScene : FunctionUI
 {
 
@@ -40,6 +40,12 @@ public class FunctionLoadScene : FunctionUI
                 break;
             case SceneEnum.MODE_SELECTION:
                 sceneIndex = C.LevelModeSceneIndex;
+                break;
+            case SceneEnum.INTRO:
+                sceneIndex = C.IntroSceneIndex;
+                break;
+            case SceneEnum.OUTRO:
+                sceneIndex = C.OutroSceneIndex;
                 break;
         }
 

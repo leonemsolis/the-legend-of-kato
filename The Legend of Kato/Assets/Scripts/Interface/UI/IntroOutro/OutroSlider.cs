@@ -29,7 +29,7 @@ public class OutroSlider : MonoBehaviour
     State state;
 
     const string DisappearAnimationName = "SlideDisappear";
-    const string AppearAnimationName = "SlideAppear";
+    const string AppearAnimationName = "SliderAppear";
 
     private void Start()
     {

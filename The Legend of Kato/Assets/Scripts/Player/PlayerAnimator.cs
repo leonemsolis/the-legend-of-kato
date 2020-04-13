@@ -105,6 +105,8 @@ public class PlayerAnimator : MonoBehaviour
         player.GetComponent<SpriteRenderer>().color = Color.white;
         FindObjectOfType<PauseButton>().gameObject.SetActive(false);
         StartCoroutine(CountdownWin());
+        PlayerPrefs.SetInt(C.PREFS_GAME_COMPLETED, 1);
+        PlayerPrefs.Save();
     }
 
     public bool Won()
@@ -116,7 +118,7 @@ public class PlayerAnimator : MonoBehaviour
     private IEnumerator CountdownWin()
     {
         yield return new WaitForSeconds(6f);
-        if(PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1)
+        if(PlayerPrefs.GetInt(C.PREFS_PRACTICE_MODE, 0) == 1 || PlayerPrefs.GetInt(C.PREFS_GAME_COMPLETED, 0) == 1)
         {
             FindObjectOfType<Blackout>().LoadScene(C.LevelSelectionSceneIndex);
         }
@@ -131,7 +133,6 @@ public class PlayerAnimator : MonoBehaviour
     // Called from animation
     public void EndGame()
     {
-        GetComponent<AdVideoController>().ShowAdIfNotUnlocked();
         FindObjectOfType<Blackout>().LoadScene(C.DeathSceneIndex);
     }
     public void StartPickupSword()

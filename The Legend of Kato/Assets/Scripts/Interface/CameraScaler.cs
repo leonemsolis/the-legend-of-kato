@@ -7,7 +7,7 @@ public class CameraScaler : MonoBehaviour
     void Awake()
     {
         // Emergent resume
-        Time.timeScale = 1f;
+        Time.timeScale = C.DefaulTimeScale;
 
         float unitPhysicPixelSize = Screen.width / 1000f;
         float cameraHeight = Screen.height / unitPhysicPixelSize;

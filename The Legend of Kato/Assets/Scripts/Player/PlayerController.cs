@@ -9,6 +9,8 @@ enum JumpType { FIRST, SECOND, NONE };
 public class PlayerController : MonoBehaviour 
 {
     [SerializeField] AudioClip jumpSound;
+    [SerializeField] GameObject movingDust;
+    [SerializeField] GameObject jumpingDust;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
@@ -116,10 +118,12 @@ public class PlayerController : MonoBehaviour
             if (facingRight)
             {
                 MoveLeft();
+                Instantiate(movingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(.7f, .7f, .7f);
             }
             else
             {
                 MoveRight();
+                Instantiate(movingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(-.7f, .7f, .7f);
             }
         }
 	}
@@ -132,11 +136,13 @@ public class PlayerController : MonoBehaviour
             {
                 case JumpType.SECOND:
                     FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
+                    Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
                     jumpType = JumpType.NONE;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                     break;
                 case JumpType.FIRST:
                     FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
+                    Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
                     jumpType = JumpType.SECOND;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                     break;

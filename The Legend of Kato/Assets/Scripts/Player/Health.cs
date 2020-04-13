@@ -77,25 +77,29 @@ public class Health : MonoBehaviour
 
     public void TakeDamage()
     {
-        if(currentHealth != 0)
+        if (FindObjectOfType<PlayerController>().CanMove)
         {
-            if (canTakeDamage)
+            if (currentHealth != 0)
             {
-                if(!practice)
+                if (canTakeDamage)
                 {
-                    currentHealth--;
-                    transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
-                }
+                    if (!practice)
+                    {
+                        currentHealth--;
+                        transform.GetChild(currentHealth).GetComponent<SpriteRenderer>().color = emptyColor;
+                    }
 
-                canTakeDamage = false;
-                playerSpriteRenderer.color = Color.red;
-                FindObjectOfType<SoundPlayer>().PlaySound(hurtSound);
-                StartCoroutine(ResetInvulnerable());
+                    canTakeDamage = false;
+                    playerSpriteRenderer.color = Color.red;
+                    FindObjectOfType<SoundPlayer>().PlaySound(hurtSound);
+                    StartCoroutine(ResetInvulnerable());
+                }
             }
-        }
-        else
-        {
-            FindObjectOfType<PlayerAnimator>().Die();
+            else
+            {
+
+                FindObjectOfType<PlayerAnimator>().Die();
+            }
         }
     }
 

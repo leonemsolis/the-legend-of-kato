@@ -20,6 +20,7 @@ TagManager:
   - LevelSelectionMask3
   - LevelSelectionMask2
   - ButtonUI
+  - Dragon
   layers:
   - Default
   - TransparentFX
@@ -41,8 +42,8 @@ TagManager:
   - RoomStuff
   - Block
   - Pickup
-  - 
-  - 
+  - DragonBall
+  - Dragon
   - 
   - 
   - 

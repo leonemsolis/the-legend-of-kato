@@ -52,7 +52,7 @@ public class Turret : MonoBehaviour
     {
         StartCoroutine(PreShootAnimStart());
         yield return new WaitForSeconds(shootDelay);
-        FindObjectOfType<SoundPlayer>().PlaySound(shootSound, transform.position);
+        FindObjectOfType<SoundPlayer>().PlaySimultaniousSound(shootSound, transform.position);
         TurretProjectile p = Instantiate(projectile, transform.position + shootOffset, Quaternion.identity);
         p.transform.parent = transform;
         p.StartMoving(shootingRight);

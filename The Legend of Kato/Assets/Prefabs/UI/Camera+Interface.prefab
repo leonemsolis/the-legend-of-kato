@@ -701,7 +701,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 6.1430054}
+  m_margin: {x: 0, y: 0, z: 0, w: 18.739624}
   m_textInfo:
     textComponent: {fileID: 1694795888}
     characterCount: 8
@@ -2139,6 +2139,7 @@ GameObject:
   - component: {fileID: 4818900989351183087}
   - component: {fileID: 3315029487308233183}
   - component: {fileID: 995314655507118347}
+  - component: {fileID: 3395400764404014655}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: ButtonUI
@@ -2292,6 +2293,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
+--- !u!114 &3395400764404014655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5210825260649686756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: -2309140473733893308, guid: 8181b7bdb0929452190a73c9d2bf3ebd, type: 3}
+  down: {fileID: -2744936525771321308, guid: 8181b7bdb0929452190a73c9d2bf3ebd, type: 3}
 --- !u!1 &5634392032739639329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,6 +2321,7 @@ GameObject:
   - component: {fileID: 5634392032739639330}
   - component: {fileID: 2923625296066918583}
   - component: {fileID: 1627081361022098874}
+  - component: {fileID: 3474474205304851651}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: ButtonUI
@@ -2447,6 +2463,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
+--- !u!114 &3474474205304851651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5634392032739639329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: 6758296883349348567, guid: 6ee987966497c4ca088f8d5f0e541161, type: 3}
+  down: {fileID: 5286329455138033018, guid: 6ee987966497c4ca088f8d5f0e541161, type: 3}
 --- !u!1 &6429750618970736970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2742,9 +2772,9 @@ GameObject:
   - component: {fileID: 7326337754786198588}
   - component: {fileID: 7326337754786198591}
   - component: {fileID: 7326337754786198577}
-  - component: {fileID: 7326337754786198590}
   - component: {fileID: 7652871136425246674}
   - component: {fileID: 2675236689290283728}
+  - component: {fileID: 6983210829643846961}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: ButtonUI
@@ -2842,20 +2872,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 181.25, y: 175}
   m_EdgeRadius: 0
---- !u!114 &7326337754786198590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7326337754786198589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84512971776aa48c4a5b9b9c35bc23ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  up: {fileID: -2223469670846381807, guid: 8181b7bdb0929452190a73c9d2bf3ebd, type: 3}
-  down: {fileID: 2251743167115157590, guid: 8181b7bdb0929452190a73c9d2bf3ebd, type: 3}
 --- !u!114 &7652871136425246674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2901,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
+--- !u!114 &6983210829643846961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326337754786198589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  up: {fileID: -2223469670846381807, guid: 8181b7bdb0929452190a73c9d2bf3ebd, type: 3}
+  down: {fileID: 2251743167115157590, guid: 8181b7bdb0929452190a73c9d2bf3ebd, type: 3}
 --- !u!1 &7691926778772975148
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3267,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6686257400245534696}
     m_Modifications:
+    - target: {fileID: 5459358122256354611, guid: d911b192f74b04a2b9f2747e047ae41a,
+        type: 3}
+      propertyPath: m_Name
+      value: Blackout
+      objectReference: {fileID: 0}
     - target: {fileID: 5459358122256354612, guid: d911b192f74b04a2b9f2747e047ae41a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3291,11 +3326,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5459358122256354611, guid: d911b192f74b04a2b9f2747e047ae41a,
-        type: 3}
-      propertyPath: m_Name
-      value: Blackout
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911b192f74b04a2b9f2747e047ae41a, type: 3}

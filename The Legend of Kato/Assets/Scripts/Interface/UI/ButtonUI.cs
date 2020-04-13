@@ -8,6 +8,7 @@ public class ButtonUI : MonoBehaviour
     [SerializeField] Sprite down;
 
     bool pressed = false;
+    bool activated = false;
 
     SpriteRenderer spriteRenderer;
 
@@ -18,24 +19,27 @@ public class ButtonUI : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(!activated)
         {
-            if(CheckTouch(Input.mousePosition))
+            if (Input.GetMouseButtonDown(0))
             {
-                ButtonPressed();
-            }
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            if(pressed)
-            {
-                if(CheckTouch(Input.mousePosition))
+                if (CheckTouch(Input.mousePosition))
                 {
-                    Activate();
+                    ButtonPressed();
                 }
-                else
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if (pressed)
                 {
-                    ButtonReleased();
+                    if (CheckTouch(Input.mousePosition))
+                    {
+                        Activate();
+                    }
+                    else
+                    {
+                        ButtonReleased();
+                    }
                 }
             }
         }
@@ -78,6 +82,7 @@ public class ButtonUI : MonoBehaviour
 
     void Activate()
     {
+        activated = true;
         ButtonReleased();
         GetComponent<FunctionUI>().Function();
     }

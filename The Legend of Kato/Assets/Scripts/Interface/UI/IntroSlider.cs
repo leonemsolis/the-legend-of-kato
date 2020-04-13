@@ -31,7 +31,7 @@ public class IntroSlider : MonoBehaviour
     State state;
 
     const string DisappearAnimationName = "SlideDisappear";
-    const string AppearAnimationName = "SlideAppear";
+    const string AppearAnimationName = "SliderAppear";
 
 
     private void Start()
@@ -48,6 +48,27 @@ public class IntroSlider : MonoBehaviour
 
     private void Update()
     {
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (state == State.AWAIT || state == State.AWAIT_END)
+            {
+                if (!pressed)
+                {
+                    pressed = true;
+                }
+            }
+            if (state == State.FLIP_SLIDE)
+            {
+                if (timer > .5f)
+                {
+                    if (!pressed)
+                    {
+                        pressed = true;
+                    }
+                }
+            }
+        }
         switch (state)
         {
             case State.FLIP_SLIDE:
@@ -190,4 +211,6 @@ public class IntroSlider : MonoBehaviour
             }
         }
     }
+
+    
 }

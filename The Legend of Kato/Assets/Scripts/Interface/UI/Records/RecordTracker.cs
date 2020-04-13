@@ -9,6 +9,7 @@ public class RecordTracker : MonoBehaviour
     int monstersKilled = 0;
     int soulsCollected = 0;
 
+
     void Start()
     {
         startTime = Time.time;
@@ -46,23 +47,12 @@ public class RecordTracker : MonoBehaviour
                 }
                 break;
         }
-
-        AddTotalTime(time);
     }
 
     public void Dead()
     {
         float time = Time.time - startTime;
         PlayerPrefs.SetInt(C.PREFS_DEATH_COUNT, PlayerPrefs.GetInt(C.PREFS_DEATH_COUNT, 0) + 1);
-        AddTotalTime(time);
-    }
-
-    private void AddTotalTime(float time)
-    {
-        float totalTime = PlayerPrefs.GetFloat(C.PREFS_TOTAL_TIME, 0f);
-        totalTime += time;
-        PlayerPrefs.SetFloat(C.PREFS_TOTAL_TIME, totalTime);
-        Save();
     }
 
     public void MonsterKill()

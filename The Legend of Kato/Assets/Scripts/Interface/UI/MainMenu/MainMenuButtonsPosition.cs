@@ -11,4 +11,12 @@ public class MainMenuButtonsPosition : MonoBehaviour
     {
         transform.position = new Vector3(0f, -Camera.main.orthographicSize + bottomGap, 0f);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && Application.platform == RuntimePlatform.Android)
+        {
+            Application.Quit();
+        }
+    }
 }
