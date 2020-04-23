@@ -9,7 +9,7 @@ public class ButtonPanel : MonoBehaviour
         float safeAreaBotShiftValue = 0f;
 
         #if UNITY_EDITOR_OSX
-            safeAreaBotShiftValue = 100f;
+            safeAreaBotShiftValue = C.SafeAreaBotShiftValue;
         #else
             safeAreaBotShiftValue = Screen.safeArea.yMin;
         #endif

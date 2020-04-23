@@ -9,7 +9,7 @@ public class InfoPanel : MonoBehaviour
         float safeAreaTopShiftValue = 0f;
 
         #if UNITY_EDITOR_OSX
-            safeAreaTopShiftValue = 100f;
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
         #else
             safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
         #endif

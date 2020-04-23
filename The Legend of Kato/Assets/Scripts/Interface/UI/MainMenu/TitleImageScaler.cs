@@ -14,8 +14,8 @@ public class TitleImageScaler : MonoBehaviour
     void Start()
     {
         #if UNITY_EDITOR_OSX
-            safeAreaTopShiftValue = 100f;
-            safeAreaBotShiftValue = 100f;
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
+            safeAreaBotShiftValue = C.SafeAreaBotShiftValue;
         #else
             safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
             safeAreaBotShiftValue = Screen.safeArea.yMin;

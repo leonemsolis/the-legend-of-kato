@@ -15,10 +15,17 @@ public class TitleTextPlacer : MonoBehaviour
     float awaitTimer = awaitTime;
 
     bool running = true;
+    float safeAreaTopShiftValue;
 
     private void Start()
     {
-        float topGap = ((Camera.main.orthographicSize * 2f - buttonsPanelHeight) / 2f - topPartHeight / 2f) / 2f;
+        #if UNITY_EDITOR_OSX
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
+        #else
+            safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
+        #endif
+
+        float topGap = ((Camera.main.orthographicSize * 2f - buttonsPanelHeight) / 2f - topPartHeight / 2f) / 2f + safeAreaTopShiftValue;
         transform.localPosition = new Vector3(0f, Camera.main.orthographicSize - topGap, 0f);
     }
 

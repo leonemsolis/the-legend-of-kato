@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class C: MonoBehaviour
 {
+    public const float SafeAreaTopShiftValue = 100f;
+    public const float SafeAreaBotShiftValue = 100f;
     public const float Unit = 100f;
     public const float HalfUnit = 50f;
     public const float ButtonPanelHeight = 400f;

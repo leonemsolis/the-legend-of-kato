@@ -8,6 +8,13 @@ public class SettingsBgTop : MonoBehaviour
 
     void Start()
     {
-        transform.localPosition = new Vector3(0f, Camera.main.orthographicSize - topPartHeight / 2f, 0f);
+        float safeAreaTopShiftValue = 0f;
+        #if UNITY_EDITOR_OSX
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
+        #else
+            safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
+        #endif
+
+        transform.localPosition = new Vector3(0f, Camera.main.orthographicSize - topPartHeight / 2f - safeAreaTopShiftValue, 0f);
     }
 }

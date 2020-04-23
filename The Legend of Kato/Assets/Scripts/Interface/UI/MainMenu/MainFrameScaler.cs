@@ -14,8 +14,8 @@ public class MainFrameScaler : MonoBehaviour
     void Start()
     {
         #if UNITY_EDITOR_OSX
-            safeAreaTopShiftValue = 100f;
-            safeAreaBotShiftValue = 100f;
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
+            safeAreaBotShiftValue = C.SafeAreaBotShiftValue;
         #else
             safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
             safeAreaBotShiftValue = Screen.safeArea.yMin;
@@ -35,7 +35,7 @@ public class MainFrameScaler : MonoBehaviour
         bot.localPosition = new Vector3(0f, CalculateBotY(), 0f);
 
         mid.localScale = new Vector3(1f, CalculateMidScaleY(), 0f);
-        mid.localPosition = new Vector3(0f, 0f, 0f);
+        mid.localPosition = new Vector3(0f, CalculateMidY(), 0f);
     }
 
     float CaculateSATopY() {
@@ -51,6 +51,11 @@ public class MainFrameScaler : MonoBehaviour
         float freeScreenHeight = Camera.main.orthographicSize * 2f - onePartHeight * 2f - (safeAreaBotShiftValue + safeAreaTopShiftValue);
 
         return freeScreenHeight / onePartHeight;
+    }
+
+    float CalculateMidY() {
+        float freeScreenHeight = Camera.main.orthographicSize * 2f - onePartHeight * 2f - (safeAreaBotShiftValue + safeAreaTopShiftValue);
+        return CalculateTopY() - onePartHeight / 2f - freeScreenHeight / 2f;
     }
 
     float CalculateBotY()

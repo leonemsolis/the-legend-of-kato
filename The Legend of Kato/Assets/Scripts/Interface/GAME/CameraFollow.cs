@@ -18,8 +18,8 @@ public class CameraFollow : MonoBehaviour
     private void Awake()
     {
         #if UNITY_EDITOR_OSX
-            safeAreaBotShiftValue = 100f;
-            safeAreaTopShiftValue = 100f;
+            safeAreaBotShiftValue = C.SafeAreaBotShiftValue;
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
         #else
             safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
             safeAreaBotShiftValue = Screen.safeArea.yMin;
@@ -34,6 +34,7 @@ public class CameraFollow : MonoBehaviour
         float posX = 0;
         float posY = 0;
 
+        // In the room
         if (roomDetector.GetCurrentRoom() != null)
         {
             posX = roomDetector.GetCurrentRoom().transform.position.x;
@@ -43,9 +44,10 @@ public class CameraFollow : MonoBehaviour
             float roomTopThresholdY = roomDetector.GetCurrentRoom().transform.position.y - Camera.main.orthographicSize + roomDetector.GetCurrentRoom().RoomHeight / 2f + C.InfoPanelHeight;
 
             // Room smaller that camera 
-            if(roomDetector.GetCurrentRoom().RoomHeight <= (Camera.main.orthographicSize * 2f - (C.ButtonPanelHeight + C.InfoPanelHeight)))
+            if(roomDetector.GetCurrentRoom().RoomHeight <= (Camera.main.orthographicSize * 2f - (C.ButtonPanelHeight + C.InfoPanelHeight) - (safeAreaBotShiftValue + safeAreaTopShiftValue)))
             {
-                posY = roomBottomThresholdY - safeAreaTopShiftValue;
+                posY = roomBottomThresholdY - safeAreaBotShiftValue;
+                // print("SMALL ROOM");
             }
             // Room larger that camera
             else
@@ -53,24 +55,29 @@ public class CameraFollow : MonoBehaviour
                 // Player in center of the room
                 if (player.transform.position.y > roomBottomThresholdY && player.transform.position.y < roomTopThresholdY)
                 {
-                    posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottomInRoom - safeAreaTopShiftValue;
+                    // print("CENTER");
+                    posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottomInRoom - safeAreaBotShiftValue;
                 }
                 // Player in bottom part
                 else if (player.transform.position.y < roomBottomThresholdY)
                 {
-                    posY = roomBottomThresholdY - safeAreaTopShiftValue;
+                    // print("BOTTOM");
+                    posY = roomBottomThresholdY - safeAreaBotShiftValue;
                 }
                 // Player in top part
                 else
                 {
+                    // print("TOP");
                     posY = roomTopThresholdY + safeAreaTopShiftValue;
                 }
             }
         } 
+        // Outside the room
         else
         {
+            // print("OUTSIDE");
             posX = player.FacingRight ? player.transform.position.x + cameraShiftX : player.transform.position.x - cameraShiftX;
-            posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom - safeAreaTopShiftValue;
+            posY = player.transform.position.y + Camera.main.orthographicSize - unitsToBottom - safeAreaBotShiftValue;
         }
 
         Vector3 destination = new Vector3(posX, posY, transform.position.z);

@@ -12,7 +12,7 @@ public class MainMenuButtonsPosition : MonoBehaviour
     private void Start()
     {
         #if UNITY_EDITOR_OSX
-            safeAreaBotShiftValue = 100f;
+            safeAreaBotShiftValue = C.SafeAreaBotShiftValue;
         #else
             safeAreaBotShiftValue = Screen.safeArea.yMin;
         #endif

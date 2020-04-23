@@ -350,7 +350,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -3
   m_Sprite: {fileID: -2483944689350014297, guid: 8afc712bf854e49b39d724e19a64a9b5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -504,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507686403}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 159, y: 0, z: 0}
+  m_LocalPosition: {x: -370.4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1629808642}
@@ -1439,7 +1439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1709011925
 Transform:
   m_ObjectHideFlags: 0
@@ -1775,11 +1775,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6686257401495302599}
     m_Modifications:
-    - target: {fileID: 5459358122256354611, guid: d911b192f74b04a2b9f2747e047ae41a,
-        type: 3}
-      propertyPath: m_Name
-      value: Blackout
-      objectReference: {fileID: 0}
     - target: {fileID: 5459358122256354612, guid: d911b192f74b04a2b9f2747e047ae41a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1834,6 +1829,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5459358122256354611, guid: d911b192f74b04a2b9f2747e047ae41a,
+        type: 3}
+      propertyPath: m_Name
+      value: Blackout
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911b192f74b04a2b9f2747e047ae41a, type: 3}
