@@ -23,6 +23,6 @@ public class SwordHolder : MonoBehaviour
     public void LightOff()
     {
         GetComponent<LightBlink>().enabled = false;
-        GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>().enabled = false;
+        GetComponent<Light2D>().enabled = false;
     }
 }

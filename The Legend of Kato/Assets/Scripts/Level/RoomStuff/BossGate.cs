@@ -38,7 +38,7 @@ public class BossGate : MonoBehaviour
             }
         }
 
-        GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>().intensity = 1.6f;
+        GetComponent<Light2D>().intensity = 1.6f;
         GetComponent<SpriteRenderer>().sprite = openGate;
         boxCollider.enabled = true;
     }

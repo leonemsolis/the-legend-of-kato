@@ -8,14 +8,14 @@ public class Glowstone : MonoBehaviour
     const string shineAnimationName = "Shine";
     Animator animator;
     float shineTimer = 0;
-    UnityEngine.Experimental.Rendering.Universal.Light2D light2d;
+    Light2D light2d;
     bool shining = false;
     bool bright = false;
     float startTimeBright = 0f;
 
     void Start()
     {
-        light2d = GetComponent<UnityEngine.Experimental.Rendering.Universal.Light2D>();
+        light2d = GetComponent<Light2D>();
         animator = GetComponent<Animator>();
         ResetBlinkTimer();
     }
