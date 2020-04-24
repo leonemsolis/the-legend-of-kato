@@ -19,6 +19,7 @@ public class Announcer : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     bool ended = false;
+    bool running = false;
 
     PauseButton pauseButton;
 
@@ -49,6 +50,13 @@ public class Announcer : MonoBehaviour
 
         pauseButton = FindObjectOfType<PauseButton>();
         pauseButton.gameObject.GetComponent<Collider2D>().enabled = false;
+
+        animator.speed = 0f;
+    }
+
+    public void StartAnnounce() {
+        animator.speed = 1f;
+        running = true;
     }
 
     public void PlaySound()
@@ -58,21 +66,23 @@ public class Announcer : MonoBehaviour
 
     private void Update()
     {
-        if(!ended)
-        {
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        if(running) {
+            if(!ended)
             {
-                spriteRenderer.sprite = goText;
-                animator.Play(animationName);
-                ended = true;
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    spriteRenderer.sprite = goText;
+                    animator.Play(animationName);
+                    ended = true;
+                }
             }
-        }
-        else
-        {
-            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            else
             {
-                pauseButton.gameObject.GetComponent<Collider2D>().enabled = true;
-                Destroy(gameObject);
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    pauseButton.gameObject.GetComponent<Collider2D>().enabled = true;
+                    Destroy(gameObject);
+                }
             }
         }
     }

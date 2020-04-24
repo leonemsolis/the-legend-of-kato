@@ -14,80 +14,87 @@ public class Shop : MonoBehaviour
     [SerializeField] AudioClip healthSound;
     [SerializeField] AudioClip keySound;
     [SerializeField] AudioClip shopSound;
+    [SerializeField] List<GameObject> items;
 
-    List<SpriteRenderer> itemHolders;
     Health health;
     ScoreBoardText money;
 
     const float selectorDeltaX = 150f * 1.4f;
-    float selectorOriginX;
     int selectorCurrentIndex = 0;
 
-    string[] descriptions = new string[4];
-    int[] prices = new int[4];
+    string[] descriptions = new string[8];
+    int[] prices = new int[8];
     const string enchantDesctiption = "ENCHANT (!)ONE KEY'S TIER\nMAX TIER IS 3";
 
     void Start()
     {
         FindObjectOfType<SoundPlayer>().PlaySound(shopSound);
         transform.localScale = new Vector3(1.4f, 1.4f, 1f);
-        selectorOriginX = selector.transform.position.x;
         health = FindObjectOfType<Health>();
-        itemHolders = new List<SpriteRenderer>();
-        for(int i = 1; i <= 4; ++i)
-        {
-            itemHolders.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
-        }
-
         money = FindObjectOfType<ScoreBoardText>();
         UpdateInfo();
     }
 
     private void UpdateInfo()
     {
+        descriptions[0] = "GIVES TRIPLE JUMP. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        prices[0] = 4;
+
+        descriptions[1] = "DEPOSIT 1 SOUL TO THE WIZARD WHALE. YOU CAN SPEND DEPOSITED SOULS LATER. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0);
+        prices[1] = 1;
+
+        descriptions[2] = "GIVES IMMUNITY TO PROJECTILES. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        prices[2] = 4;
+
+        descriptions[3] = "GIVES SLOW MOTION JUMP. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        prices[3] = 4;
+
+        descriptions[7] = "LEAVE WIZARD WHALE";
+        prices[7] = 0;
+
         if (health.GetCurrentHealth() == Health.MAX_HEALTH)
         {
-            descriptions[0] = C.SHOP_ITEM_SOLD_OUT_TEXT;
-            prices[0] = 0;
-            itemHolders[0].sprite = soldOutSprite;
+            descriptions[4] = C.SHOP_ITEM_SOLD_OUT_TEXT;
+            prices[4] = 0;
+            SetCustomItemSprite(4, soldOutSprite);
         }
         else
         {
-            descriptions[0] = "RESTORES 1 HP";
-            prices[0] = 2;
+            descriptions[4] = "RESTORES 1 HP";
+            prices[4] = 2;
         }
 
         if (MaxKeysBought())
         {
-            descriptions[1] = C.SHOP_ITEM_SOLD_OUT_TEXT + "\n" + GetKeyInformation();
-            prices[1] = 0;
-            itemHolders[1].sprite = soldOutSprite;
+            descriptions[5] = C.SHOP_ITEM_SOLD_OUT_TEXT + "\n" + GetKeyInformation();
+            prices[5] = 0;
+            SetCustomItemSprite(5, soldOutSprite);
         }
         else
         {
-            descriptions[1] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
-            prices[1] = 6;
+            descriptions[5] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
+            prices[5] = 6;
         }
 
         if(NoKeysAvailableForEnchant())
         {
-            descriptions[2] = C.SHOP_ITEM_SOLD_OUT_TEXT +"\n"+ GetKeyInformation();
-            prices[2] = 0;
-            itemHolders[2].sprite = soldOutSprite;
+            descriptions[6] = C.SHOP_ITEM_SOLD_OUT_TEXT +"\n"+ GetKeyInformation();
+            prices[6] = 0;
+            SetCustomItemSprite(6, soldOutSprite);
         }
         else
         {
-            descriptions[2] = enchantDesctiption + "\n" + GetKeyInformation();
-            prices[2] = 2;
-            itemHolders[2].sprite = enchantItem;
+            descriptions[6] = enchantDesctiption + "\n" + GetKeyInformation();
+            prices[6] = 2;
+            SetCustomItemSprite(6, enchantItem);
         }
 
 
-        descriptions[3] = "LEAVE WIZARD WHALE";
-        prices[3] = 0;
-
-
         UpdateText();
+    }
+
+    private void SetCustomItemSprite(int itemIndex, Sprite sprite) {
+        items[itemIndex].GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
     public bool NoKeysAvailableForEnchant()
@@ -192,73 +199,87 @@ public class Shop : MonoBehaviour
     public void SelectNextItem()
     {
         selectorCurrentIndex++;
-        if(selectorCurrentIndex == 4)
+        if(selectorCurrentIndex == 8)
         {
-            selector.position += new Vector3(-selectorDeltaX * 3, 0f, 0f);
             selectorCurrentIndex = 0;
         }
-        else
-        {
-            selector.position += new Vector3(selectorDeltaX, 0f, 0f);
-        }
+        selector.localPosition = items[selectorCurrentIndex].transform.localPosition + new Vector3(0f, 111f, 0f);
         UpdateText();
     }
 
     public void SelectCertainItem(int index)
     {
-        selector.position = new Vector3(selectorOriginX + index * selectorDeltaX ,selector.position.y, 0f);
         selectorCurrentIndex = index;
+        selector.localPosition = items[selectorCurrentIndex].transform.localPosition + new Vector3(0f, 111f, 0f);
         UpdateText();
     }
 
     public void BuyItem()
     {
-        switch(selectorCurrentIndex)
-        {
-            // HEALTH
-            case 0:
-                if (money.GetCurrentScore() >= prices[0])
-                {
-                    if(health.GetCurrentHealth() < Health.MAX_HEALTH)
-                    {
+        if(selectorCurrentIndex == 7) {
+            FindObjectOfType<SoundPlayer>().PlaySound(shopSound);
+            FindObjectOfType<Whale>().LeaveWhale();
+        } else {
+            if(money.GetCurrentScore() >= prices[selectorCurrentIndex]) {
+                switch(selectorCurrentIndex) {
+                    // Boot
+                    case 0:
+                        PlayerPrefs.SetInt(C.PREFS_BOOTS_COUNT, PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0) + 1);
+                        PlayerPrefs.Save();
                         FindObjectOfType<SoundPlayer>().PlaySound(healthSound);
-                        money.DecreaseScore(prices[0]);
-                        health.RestoreHealth();
-                        UpdateInfo();
-                    }
-                }
-                break;
-            // KEY
-            case 1:
-                if(money.GetCurrentScore() >= prices[1])
-                {
-                    if(!MaxKeysBought())
-                    {
+                        money.DecreaseScore(prices[selectorCurrentIndex]);
+                        break;
+                    // Deposit
+                    case 1:
+                        PlayerPrefs.SetInt(C.PREFS_DEPOSIT_COUNT, PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0) + 1);
+                        PlayerPrefs.Save();
                         FindObjectOfType<SoundPlayer>().PlaySound(keySound);
-                        money.DecreaseScore(prices[1]);
-                        BuyKey();
-                        UpdateInfo();
-                    }
+                        money.DecreaseScore(prices[selectorCurrentIndex]);
+                        break;
+                    // Slowmo
+                    case 2:
+                        PlayerPrefs.SetInt(C.PREFS_SLOWMOS_COUNT, PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0) + 1);
+                        PlayerPrefs.Save();
+                        FindObjectOfType<SoundPlayer>().PlaySound(healthSound);
+                        money.DecreaseScore(prices[selectorCurrentIndex]);
+                        break;
+                    // Shield
+                    case 3:
+                        PlayerPrefs.SetInt(C.PREFS_SHIELDS_COUNT, PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0) + 1);
+                        PlayerPrefs.Save();
+                        FindObjectOfType<SoundPlayer>().PlaySound(healthSound);
+                        money.DecreaseScore(prices[selectorCurrentIndex]);
+                        break;
+                    // Heart
+                    case 4:
+                        if(health.GetCurrentHealth() < Health.MAX_HEALTH)
+                        {
+                            FindObjectOfType<SoundPlayer>().PlaySound(healthSound);
+                            money.DecreaseScore(prices[selectorCurrentIndex]);
+                            health.RestoreHealth();
+                        }
+                        break;
+                    // Key
+                    case 5:
+                        if(!MaxKeysBought())
+                        {
+                            FindObjectOfType<SoundPlayer>().PlaySound(keySound);
+                            money.DecreaseScore(prices[selectorCurrentIndex]);
+                            BuyKey();
+                        }
+                        break;
+                    // Enchant
+                    case 6:
+                        if(!NoKeysAvailableForEnchant())
+                        {
+                            FindObjectOfType<SoundPlayer>().PlaySound(keySound);
+                            money.DecreaseScore(prices[selectorCurrentIndex]);
+                            EnchantKey();
+                        }
+                        break;
                 }
-                break;
-            // ENCHANT
-            case 2:
-                if (money.GetCurrentScore() >= prices[2])
-                {
-                    if(!NoKeysAvailableForEnchant())
-                    {
-                        FindObjectOfType<SoundPlayer>().PlaySound(keySound);
-                        money.DecreaseScore(prices[2]);
-                        EnchantKey();
-                        UpdateInfo();
-                    }
-                }
-                break;
-            // LEAVE
-            case 3:
-                FindObjectOfType<SoundPlayer>().PlaySound(shopSound);
-                FindObjectOfType<Whale>().LeaveWhale();
-                break;
+                UpdateInfo();
+            }
         }
     }
 

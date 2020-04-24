@@ -24,6 +24,7 @@ public class C: MonoBehaviour
     public const int LevelModeSceneIndex = 10;
     public const int RecordsSceneIndex = 11;
     public const int OutroSceneIndex = 12;
+    public const int StoreSceneIndex = 13;
     public const float DefaulTimeScale = 1f;
 
     // Tags
@@ -59,6 +60,11 @@ public class C: MonoBehaviour
     public const string PREFS_KEY_1_STATE = "KEY_1";                    // int
     public const string PREFS_KEY_2_STATE = "KEY_2";                    // int
     public const string PREFS_KEY_3_STATE = "KEY_3";                    // int
+    // PlayerPrefs Items
+    public const string PREFS_BOOTS_COUNT = "BOOTS_COUNT";              // int
+    public const string PREFS_DEPOSIT_COUNT = "DEPOSIT_COUNT";          // int
+    public const string PREFS_SLOWMOS_COUNT = "SLOWMOS_COUNT";          // int
+    public const string PREFS_SHIELDS_COUNT = "SHIELDS_COUNT";          // int
     // PlayerPrefs Stages
     public const string PREFS_STAGE_2_OPENED = "STAGE_2";               // int
     public const string PREFS_STAGE_3_OPENED = "STAGE_3";               // int

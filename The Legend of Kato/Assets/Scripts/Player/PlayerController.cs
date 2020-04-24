@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
             if ((leftHit || rightHit) && rb.velocity.y <= 0)
             {
                 jumpType = JumpType.FIRST;
+                // Time.timeScale = 1f;
             }
         }
         else
@@ -139,12 +140,14 @@ public class PlayerController : MonoBehaviour
                     Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
                     jumpType = JumpType.NONE;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    // Time.timeScale = .2f;
                     break;
                 case JumpType.FIRST:
                     FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
                     Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
                     jumpType = JumpType.SECOND;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    // Time.timeScale = .2f;
                     break;
                 case JumpType.NONE:
                     break;
