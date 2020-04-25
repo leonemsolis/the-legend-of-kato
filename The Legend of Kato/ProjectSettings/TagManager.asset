@@ -21,6 +21,7 @@ TagManager:
   - LevelSelectionMask2
   - ButtonUI
   - Dragon
+  - Projectile
   layers:
   - Default
   - TransparentFX

@@ -97,7 +97,7 @@ public class Health : MonoBehaviour
             }
             else
             {
-
+                
                 FindObjectOfType<PlayerAnimator>().Die();
             }
         }

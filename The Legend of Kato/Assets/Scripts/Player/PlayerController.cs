@@ -3,8 +3,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-enum JumpType { FIRST, SECOND, NONE };
+enum JumpType { FIRST, SECOND, NONE, THIRD };
 
 public class PlayerController : MonoBehaviour 
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
+    private bool tutorialLevel = false;
 
     JumpType jumpType = JumpType.FIRST; 
     const float jumpForce = 1600f;
@@ -30,6 +32,11 @@ public class PlayerController : MonoBehaviour
 
     bool canMove = true;
     bool grounded = false;
+
+    // Items
+    public bool bootsActivated = false;
+    public bool slowActivated = false;
+    public bool shieldActivated = false;
 
     public bool Grounded
     {
@@ -48,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake ()
     {
+        tutorialLevel = SceneManager.GetActiveScene().buildIndex == C.Level0SceneIndex;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -84,7 +92,9 @@ public class PlayerController : MonoBehaviour
             if ((leftHit || rightHit) && rb.velocity.y <= 0)
             {
                 jumpType = JumpType.FIRST;
-                // Time.timeScale = 1f;
+                if(slowActivated || tutorialLevel) {
+                    Time.timeScale = C.DefaulTimeScale;
+                }
             }
         }
         else
@@ -135,19 +145,36 @@ public class PlayerController : MonoBehaviour
         {
             switch (jumpType)
             {
-                case JumpType.SECOND:
+                case JumpType.THIRD:
                     FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
                     Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
                     jumpType = JumpType.NONE;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                    // Time.timeScale = .2f;
+                    if(slowActivated || tutorialLevel) {
+                        Time.timeScale = C.SlowMotionTimeScale;
+                    }
+                    break;
+                case JumpType.SECOND:
+                    FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
+                    Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
+                    if(bootsActivated) {
+                        jumpType = JumpType.THIRD;
+                    } else {
+                        jumpType = JumpType.NONE;
+                    }
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    if(slowActivated || tutorialLevel) {
+                        Time.timeScale = C.SlowMotionTimeScale;
+                    }
                     break;
                 case JumpType.FIRST:
                     FindObjectOfType<SoundPlayer>().PlaySound(jumpSound, transform.position);
                     Instantiate(jumpingDust, transform.position, Quaternion.identity).transform.localScale = new Vector3(facingRight ? 1f : -1f, 1f, 1f);
                     jumpType = JumpType.SECOND;
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                    // Time.timeScale = .2f;
+                    if(slowActivated || tutorialLevel) {
+                        Time.timeScale = C.SlowMotionTimeScale;
+                    }
                     break;
                 case JumpType.NONE:
                     break;

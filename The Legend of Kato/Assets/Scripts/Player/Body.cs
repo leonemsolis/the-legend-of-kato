@@ -27,6 +27,11 @@ public class Body : MonoBehaviour
         {
             FindObjectOfType<Health>().TakeDamage();
         }
+        if(collision.tag == C.ProjectileTag) {
+            if(!player.gameObject.GetComponent<PlayerController>().shieldActivated) {
+                FindObjectOfType<Health>().TakeDamage();
+            }
+        } 
         if (collision.tag == C.EnemyTag)
         {
             FindObjectOfType<Health>().TakeDamage();

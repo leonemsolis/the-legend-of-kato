@@ -26,6 +26,7 @@ public class C: MonoBehaviour
     public const int OutroSceneIndex = 12;
     public const int StoreSceneIndex = 13;
     public const float DefaulTimeScale = 1f;
+    public const float SlowMotionTimeScale = .5f;
 
     // Tags
     public const string PlayerTag = "Player";
@@ -41,6 +42,7 @@ public class C: MonoBehaviour
     public const string EnemyTag = "Enemy";
     public const string ButtonUITag = "ButtonUI";
     public const string DragonTag = "Dragon";
+    public const string ProjectileTag = "Projectile";
 
     // Layers
     public const string BlockLayer = "Block";
