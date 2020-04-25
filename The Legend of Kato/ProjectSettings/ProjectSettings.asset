@@ -75,7 +75,7 @@ PlayerSettings:
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
   deferSystemGesturesMode: 4
-  hideHomeButton: 0
+  hideHomeButton: 1
   submitAnalytics: 1
   usePlayerLog: 1
   bakeCollisionMeshes: 0
@@ -166,7 +166,7 @@ PlayerSettings:
     Standalone: com.Company.ProductName
     iPhone: game.leonemsolis.thelegendofkato
   buildNumber:
-    iPhone: 1.0.4
+    iPhone: 1.1.0
   AndroidBundleVersionCode: 9
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 28
@@ -236,8 +236,8 @@ PlayerSettings:
   iOSLaunchScreeniPadFillPct: 100
   iOSLaunchScreeniPadSize: 100
   iOSLaunchScreeniPadCustomXibPath: 
-  iOSUseLaunchScreenStoryboard: 0
-  iOSLaunchScreenCustomStoryboardPath: 
+  iOSUseLaunchScreenStoryboard: 1
+  iOSLaunchScreenCustomStoryboardPath: Assets/LaunchScreen.storyboard
   iOSDeviceRequirements: []
   iOSURLSchemes: []
   iOSBackgroundModes: 0
