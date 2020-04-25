@@ -15,8 +15,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="story.png" translatesAutoresizingMaskIntoConstraints="NO" id="HzV-37-YA0">
-                                <rect key="frame" x="-115" y="244" width="645" height="330"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="story.png" translatesAutoresizingMaskIntoConstraints="NO" id="sya-uy-BMx">
+                                <rect key="frame" x="0.0" y="307" width="414" height="282"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -30,6 +30,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="story.png" width="1134" height="1008"/>
+        <image name="story.png" width="2205" height="1008"/>
     </resources>
 </document>
