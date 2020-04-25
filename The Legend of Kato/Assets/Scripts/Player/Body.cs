@@ -38,7 +38,9 @@ public class Body : MonoBehaviour
         }
         if (collision.tag == C.SpikesTag)
         {
-            FindObjectOfType<Health>().TakeDamage();
+            if(!player.gameObject.GetComponent<PlayerController>().shieldActivated) {
+                FindObjectOfType<Health>().TakeDamage();
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

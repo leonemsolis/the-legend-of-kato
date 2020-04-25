@@ -37,17 +37,17 @@ public class Shop : MonoBehaviour
 
     private void UpdateInfo()
     {
-        descriptions[0] = "GIVES TRIPLE JUMP. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
-        prices[0] = 4;
+        descriptions[0] = "GIVES TRIPLE JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        prices[0] = C.SHOP_BOOT_COST;
 
         descriptions[1] = "DEPOSIT 1 SOUL TO THE WIZARD WHALE. YOU CAN SPEND DEPOSITED SOULS LATER. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0);
         prices[1] = 1;
 
-        descriptions[2] = "GIVES IMMUNITY TO PROJECTILES. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
-        prices[2] = 4;
+        descriptions[2] = "GIVES SLOW MOTION JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        prices[2] = C.SHOP_SLOW_COST;
 
-        descriptions[3] = "GIVES SLOW MOTION JUMP. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
-        prices[3] = 4;
+        descriptions[3] = "GIVES IMMUNITY TO PROJECTILES AND SPIKES. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        prices[3] = C.SHOP_SHIELD_COST;
 
         descriptions[7] = "LEAVE WIZARD WHALE";
         prices[7] = 0;
@@ -61,7 +61,7 @@ public class Shop : MonoBehaviour
         else
         {
             descriptions[4] = "RESTORES 1 HP";
-            prices[4] = 2;
+            prices[4] = C.SHOP_HEART_COST;
         }
 
         if (MaxKeysBought())
@@ -73,7 +73,7 @@ public class Shop : MonoBehaviour
         else
         {
             descriptions[5] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
-            prices[5] = 6;
+            prices[5] = C.SHOP_KEY_COST;
         }
 
         if(NoKeysAvailableForEnchant())
@@ -85,7 +85,7 @@ public class Shop : MonoBehaviour
         else
         {
             descriptions[6] = enchantDesctiption + "\n" + GetKeyInformation();
-            prices[6] = 2;
+            prices[6] = C.SHOP_ENCHANT_COST;
             SetCustomItemSprite(6, enchantItem);
         }
 

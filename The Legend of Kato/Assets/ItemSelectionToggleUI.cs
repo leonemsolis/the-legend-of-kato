@@ -85,7 +85,7 @@ public class ItemSelectionToggleUI : MonoBehaviour
                     descrption.SetText("GIVES SLOW MOTION JUMP");
                     break;
                 case ItemType.SHIELD:
-                    descrption.SetText("GIVES IMMUNITY TO PROJECTILES");
+                    descrption.SetText("GIVES IMMUNITY TO PROJECTILES AND SPIKES");
                     break;
             }
         } else {

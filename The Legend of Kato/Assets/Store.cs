@@ -55,7 +55,7 @@ public class Store : MonoBehaviour
         else
         {
             descriptions[0] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
-            prices[0] = 6;
+            prices[0] = C.SHOP_KEY_COST;
         }
 
         if(NoKeysAvailableForEnchant())
@@ -67,18 +67,18 @@ public class Store : MonoBehaviour
         else
         {
             descriptions[1] = enchantDesctiption + "\n" + GetKeyInformation();
-            prices[1] = 2;
+            prices[1] = C.SHOP_ENCHANT_COST;
             SetCustomItemSprite(1, enchantItem);
         }
 
-        descriptions[2] = "GIVES TRIPLE JUMP. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
-        prices[2] = 4;
+        descriptions[2] = "GIVES TRIPLE JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        prices[2] = C.SHOP_BOOT_COST;
 
-        descriptions[3] = "GIVES SLOW MOTION JUMP. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
-        prices[3] = 4;
+        descriptions[3] = "GIVES SLOW MOTION JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        prices[3] = C.SHOP_SLOW_COST;
 
-        descriptions[4] = "GIVES IMMUNITY TO PROJECTILES. CAN BE USED ONCE, DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
-        prices[4] = 4;
+        descriptions[4] = "GIVES IMMUNITY TO PROJECTILES AND SPIKES. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        prices[4] = C.SHOP_SHIELD_COST;
 
         UpdateText();
     }

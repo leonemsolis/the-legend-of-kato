@@ -29,6 +29,14 @@ public class C: MonoBehaviour
     public const float SlowMotionTimeScale = .5f;
     public const int RevivePrice = 20;
 
+    // Shop prices
+    public const int SHOP_BOOT_COST = 8;
+    public const int SHOP_SLOW_COST = 5;
+    public const int SHOP_SHIELD_COST = 7;
+    public const int SHOP_HEART_COST = 2;
+    public const int SHOP_KEY_COST = 6;
+    public const int SHOP_ENCHANT_COST = 2;
+
     // Tags
     public const string PlayerTag = "Player";
     public const string BlockTag = "Block";
