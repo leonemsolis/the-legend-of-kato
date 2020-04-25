@@ -7,6 +7,7 @@ public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] AudioClip swordPickUp;
     [SerializeField] SwordController sword;
+    [SerializeField] Revive revivePrefab;
     PlayerController player;
     Animator animator;
 
@@ -86,14 +87,27 @@ public class PlayerAnimator : MonoBehaviour
     {
         if(!dead)
         {
-            FindObjectOfType<RecordTracker>().Dead();
-            animator.Play(ANIMATION_DEATH);
-            player.GetComponent<SpriteRenderer>().color = Color.white;
-            FindObjectOfType<PauseButton>().gameObject.SetActive(false);
-            player.CanMove = false;
-            sword.gameObject.SetActive(false);
             dead = true;
+            if(PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT) >= C.RevivePrice) {
+                Instantiate(revivePrefab, Camera.main.transform);
+            } else {
+                DieConfirm();
+            }
         }
+    }
+
+    public void Revive() {
+        health.Restart();
+        dead = false;
+    }
+
+    public void DieConfirm() {
+        FindObjectOfType<RecordTracker>().Dead();
+        animator.Play(ANIMATION_DEATH);
+        player.GetComponent<SpriteRenderer>().color = Color.white;
+        FindObjectOfType<PauseButton>().gameObject.SetActive(false);
+        player.CanMove = false;
+        sword.gameObject.SetActive(false);
     }
 
     public void Win()

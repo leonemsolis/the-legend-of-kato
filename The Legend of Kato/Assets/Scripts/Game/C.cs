@@ -27,6 +27,7 @@ public class C: MonoBehaviour
     public const int StoreSceneIndex = 13;
     public const float DefaulTimeScale = 1f;
     public const float SlowMotionTimeScale = .5f;
+    public const int RevivePrice = 20;
 
     // Tags
     public const string PlayerTag = "Player";

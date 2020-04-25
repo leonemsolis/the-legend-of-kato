@@ -86,7 +86,8 @@ AnimationClip:
   - time: 1
     functionName: EndGame
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 3366929853095267215, guid: 986c9e4d1540e4306afa6fa7026ff920,
+      type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

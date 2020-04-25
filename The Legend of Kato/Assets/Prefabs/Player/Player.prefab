@@ -452,6 +452,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swordPickUp: {fileID: 8300000, guid: effdbd33fbb2848e2b71ac798e5da4bb, type: 3}
   sword: {fileID: 1934939272947190987}
+  revivePrefab: {fileID: 3801276677632917506, guid: dd22be82993ee4177b66ee47a5695aba,
+    type: 3}
 --- !u!1 &4920076695335872753
 GameObject:
   m_ObjectHideFlags: 0

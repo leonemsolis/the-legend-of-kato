@@ -61,6 +61,8 @@ public class Health : MonoBehaviour
         {
             transform.GetChild(MAX_HEALTH - i - 1).GetComponent<SpriteRenderer>().color = emptyColor;
         }
+        canTakeDamage = false;
+        StartCoroutine(ResetInvulnerable());
     }
 
     public bool RestoreHealth()
