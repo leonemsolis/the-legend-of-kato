@@ -14,7 +14,7 @@ public class OutroSlider : MonoBehaviour
     int[] slidesInPage = { 4, 4, 3, 8, 7};
     int[] hasText = {0,  1, 0,  1, 0,  1, 0,     0,  1, 0,  1, 0,  1, 0,     1, 0,  1, 0,  1,0,     0, 0, 0, 0, 0,   1, 0  , 0,   1, 0,      0, 0, 0, 0, 0, 1, 0  , 1, 0   };
 
-    const float flipSlideTime = 2f;
+    const float flipSlideTime = 5f;
     const float flipFirstSlideTime = .5f;
     const float flipPageTime = .4f;
     const float removeTime = .2f;
