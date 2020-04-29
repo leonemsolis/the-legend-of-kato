@@ -18,16 +18,24 @@ public class SettingsPanelPlacer : MonoBehaviour
 
     void Start()
     {
+        float safeAreaTopShiftValue, safeAreaBotShiftValue;
+
+        #if UNITY_EDITOR_OSX
+            safeAreaTopShiftValue = C.SafeAreaTopShiftValue;
+            safeAreaBotShiftValue = C.SafeAreaBotShiftValue;
+        #else
+            safeAreaTopShiftValue = Screen.height - Screen.safeArea.yMax;
+            safeAreaBotShiftValue = Screen.safeArea.yMin;
+        #endif
+
         title = transform.GetChild(0);
         music = transform.GetChild(1);
         sound = transform.GetChild(2);
 
-
-
-        title.localPosition = new Vector3(0f, Camera.main.orthographicSize - topPartHeight - titleHeight / 2f, 0f);
+        title.localPosition = new Vector3(0f, Camera.main.orthographicSize - topPartHeight - titleHeight / 2f - safeAreaTopShiftValue, 0f);
 
         //Restore button was deleted...
-        float restoreY = -Camera.main.orthographicSize + bottomGap + restoreHeight / 2f;
+        float restoreY = -Camera.main.orthographicSize + bottomGap + restoreHeight / 2f + safeAreaBotShiftValue;
 
         music.localPosition = new Vector3(music.localPosition.x, restoreY + restoreToTogglesGap, 0f);
         sound.localPosition = new Vector3(sound.localPosition.x, restoreY + restoreToTogglesGap, 0f);

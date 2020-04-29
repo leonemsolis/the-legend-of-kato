@@ -13,7 +13,7 @@ public class Translator : MonoBehaviour
 
     public enum Language {English, Korean};
 
-    private Language language = Language.Korean;
+    private Language language = Language.English;
 
     private Dictionary<string, string> translatedEN;
     private Dictionary<string, string> translatedKR;
