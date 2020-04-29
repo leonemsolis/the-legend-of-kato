@@ -10,20 +10,22 @@ public class RecordTextSetter : MonoBehaviour
 
     void Start()
     {
+        string bestTime = FindObjectOfType<Translator>().GetTranslation("best_time") + "\n";
         TextMeshProUGUI tmp = GetComponent<TextMeshProUGUI>();       
+        FindObjectOfType<Translator>().SetFont(FontType.WHITE_BLACK, tmp);
         switch(type)
         {
             case TextBoxType.TUTORIAL:
-                tmp.SetText("BEST TIME:\n" + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_TUTORIAL_BEST_TIME, 0f)));
+                tmp.SetText(bestTime + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_TUTORIAL_BEST_TIME, 0f)));
                 break;
             case TextBoxType.ENTRANCE:
-                tmp.SetText("BEST TIME:\n" + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_ENTRANCE_BEST_TIME, 0f)));
+                tmp.SetText(bestTime + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_ENTRANCE_BEST_TIME, 0f)));
                 break;
             case TextBoxType.DEPTHS:
-                tmp.SetText("BEST TIME:\n" + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_DEPTHS_BEST_TIME, 0f)));
+                tmp.SetText(bestTime + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_DEPTHS_BEST_TIME, 0f)));
                 break;
             case TextBoxType.OCEANBED:
-                tmp.SetText("BEST TIME:\n" + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_OCEAN_BED_BEST_TIME, 0f)));
+                tmp.SetText(bestTime + convertToMSMS(PlayerPrefs.GetFloat(C.PREFS_OCEAN_BED_BEST_TIME, 0f)));
                 break;
             case TextBoxType.TOTALTIME:
                 tmp.SetText(roomsUnlocked());

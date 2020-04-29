@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 9172735414602986181}
   - component: {fileID: 730796372291273324}
   - component: {fileID: 2454815386397087563}
+  - component: {fileID: 7510057210577460476}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -733,3 +734,17 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7510057210577460476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7527942451411935178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4216a7af2e3144da831499cd4e0181e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fontType: 2
+  key: tutorial_prompt
