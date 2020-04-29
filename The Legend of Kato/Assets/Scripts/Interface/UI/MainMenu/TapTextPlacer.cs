@@ -23,6 +23,6 @@ public class TapTextPlacer : MonoBehaviour
     public void Hide()
     {
         GetComponent<Animator>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Canvas>().enabled = false;
     }
 }
