@@ -44,7 +44,7 @@ public class CSVLoader
 
                 if(dictionary.ContainsKey(key)) { continue; }
 
-                var value = fields[attributeIndex];
+                var value = fields[attributeIndex].Replace("$", "\n");
 
                 dictionary.Add(key, value);
             }

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] Text description;
+    [SerializeField] TextMeshProUGUI description;
     [SerializeField] Text price;
     [SerializeField] Transform selector;
     [SerializeField] Sprite soldOutSprite;
@@ -24,10 +25,15 @@ public class Shop : MonoBehaviour
 
     string[] descriptions = new string[8];
     int[] prices = new int[8];
-    const string enchantDesctiption = "ENCHANT (!)ONE KEY'S TIER\nMAX TIER IS 3";
+
+    private string enchantDesctiption;
+    Translator translator;
 
     void Start()
     {
+        translator = FindObjectOfType<Translator>();
+        translator.SetFont(FontType.WHITE_BLACK, description);
+        enchantDesctiption = translator.GetTranslation("store_1");
         FindObjectOfType<SoundPlayer>().PlaySound(shopSound);
         transform.localScale = new Vector3(1.4f, 1.4f, 1f);
         health = FindObjectOfType<Health>();
@@ -37,24 +43,24 @@ public class Shop : MonoBehaviour
 
     private void UpdateInfo()
     {
-        descriptions[0] = "GIVES TRIPLE JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        descriptions[0] = translator.GetTranslation("store_7")+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
         prices[0] = C.SHOP_BOOT_COST;
 
-        descriptions[1] = "DEPOSIT 1 SOUL TO THE WIZARD WHALE. YOU CAN SPEND DEPOSITED SOULS LATER. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0);
+        descriptions[1] = translator.GetTranslation("store_10")+PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0);
         prices[1] = 1;
 
-        descriptions[2] = "GIVES SLOW MOTION JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        descriptions[2] = translator.GetTranslation("store_8")+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
         prices[2] = C.SHOP_SLOW_COST;
 
-        descriptions[3] = "GIVES IMMUNITY TO PROJECTILES AND SPIKES. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        descriptions[3] = translator.GetTranslation("store_9")+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
         prices[3] = C.SHOP_SHIELD_COST;
 
-        descriptions[7] = "LEAVE WIZARD WHALE";
+        descriptions[7] = translator.GetTranslation("store_11");
         prices[7] = 0;
 
         if (health.GetCurrentHealth() == Health.MAX_HEALTH)
         {
-            descriptions[4] = C.SHOP_ITEM_SOLD_OUT_TEXT;
+            descriptions[4] = translator.GetTranslation("store_3");
             prices[4] = 0;
             SetCustomItemSprite(4, soldOutSprite);
         }
@@ -66,19 +72,19 @@ public class Shop : MonoBehaviour
 
         if (MaxKeysBought())
         {
-            descriptions[5] = C.SHOP_ITEM_SOLD_OUT_TEXT + "\n" + GetKeyInformation();
+            descriptions[5] = translator.GetTranslation("store_3") + "\n" + GetKeyInformation();
             prices[5] = 0;
             SetCustomItemSprite(5, soldOutSprite);
         }
         else
         {
-            descriptions[5] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
+            descriptions[5] = translator.GetTranslation("store_2") + "\n" + GetKeyInformation();
             prices[5] = C.SHOP_KEY_COST;
         }
 
         if(NoKeysAvailableForEnchant())
         {
-            descriptions[6] = C.SHOP_ITEM_SOLD_OUT_TEXT +"\n"+ GetKeyInformation();
+            descriptions[6] = translator.GetTranslation("store_3") +"\n"+ GetKeyInformation();
             prices[6] = 0;
             SetCustomItemSprite(6, soldOutSprite);
         }
@@ -188,12 +194,12 @@ public class Shop : MonoBehaviour
         int k1 = PlayerPrefs.GetInt(C.PREFS_KEY_1_STATE, 0);
         int k2 = PlayerPrefs.GetInt(C.PREFS_KEY_2_STATE, 0);
         int k3 = PlayerPrefs.GetInt(C.PREFS_KEY_3_STATE, 0);
-        string availableKeys = ((k1 == 0) ? "" : "TIER-" + k1 + "  ") + ((k2 == 0) ? "" : "TIER-" + k2 + "  ") + ((k3 == 0) ? "" : "TIER-" + k3);
+        string availableKeys = ((k1 == 0) ? "" : k1 + translator.GetTranslation("store_4") + " ") + ((k2 == 0) ? "" : k2+translator.GetTranslation("store_4") + " ") + ((k3 == 0) ? "" : k3 + translator.GetTranslation("store_4"));
         if(availableKeys.Length == 0)
         {
-            availableKeys = "NONE";
+            availableKeys = translator.GetTranslation("store_5");
         }
-        return "KEYS AVAILABLE:"+"\n"+ availableKeys;
+        return translator.GetTranslation("store_6")+"\n"+ availableKeys;
     }
 
     public void SelectNextItem()
@@ -285,7 +291,7 @@ public class Shop : MonoBehaviour
 
     private void UpdateText()
     {
-        description.text = descriptions[selectorCurrentIndex];
+        description.SetText(descriptions[selectorCurrentIndex]);
         price.text = prices[selectorCurrentIndex].ToString();
     }
 }

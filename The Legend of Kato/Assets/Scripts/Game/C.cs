@@ -59,7 +59,7 @@ public class C: MonoBehaviour
     // Shop
     public const string SHOP_ITEM_SOLD_OUT_TEXT = "THIS ITEM IS NOT AVAILABLE";
 
-
+    public const string PREFS_LAST_DAILY = "DAILY";                     // string
 
     // META
     public const string PREFS_PRACTICE_MODE = "PRACTICE";               // int

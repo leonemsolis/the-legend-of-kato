@@ -9,7 +9,7 @@ public class Store : MonoBehaviour
     [SerializeField] List<GameObject> items;
     [SerializeField] Transform selector;
 
-    [SerializeField] Text description;
+    [SerializeField] TextMeshProUGUI description;
     [SerializeField] Text price;
     [SerializeField] TextMeshProUGUI moneyText;
 
@@ -24,11 +24,14 @@ public class Store : MonoBehaviour
 
     private int selectorCurrentIndex = 0;
     private int money = 0;
-
-    const string enchantDesctiption = "ENCHANT (!)ONE KEY'S TIER\nMAX TIER IS 3";
+    private string enchantDesctiption;
+    Translator translator;
 
     private void Start()
     {
+        translator = FindObjectOfType<Translator>();
+        translator.SetFont(FontType.BLACK_WHITE, description);
+        enchantDesctiption = translator.GetTranslation("store_1");
         money = PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0);
         moneyText.text = money.ToString();
         UpdateInfo();   
@@ -48,19 +51,19 @@ public class Store : MonoBehaviour
     private void UpdateInfo() {
         if (MaxKeysBought())
         {
-            descriptions[0] = C.SHOP_ITEM_SOLD_OUT_TEXT + "\n" + GetKeyInformation();
+            descriptions[0] = translator.GetTranslation("store_3") + "\n" + GetKeyInformation();
             prices[0] = 0;
             SetCustomItemSprite(0, soldOutSprite);
         }
         else
         {
-            descriptions[0] = "BUY TIER-1 KEY" + "\n" + GetKeyInformation();
+            descriptions[0] = translator.GetTranslation("store_2") + "\n" + GetKeyInformation();
             prices[0] = C.SHOP_KEY_COST;
         }
 
         if(NoKeysAvailableForEnchant())
         {
-            descriptions[1] = C.SHOP_ITEM_SOLD_OUT_TEXT +"\n"+ GetKeyInformation();
+            descriptions[1] = translator.GetTranslation("store_3") +"\n"+ GetKeyInformation();
             prices[1] = 0;
             SetCustomItemSprite(1, soldOutSprite);
         }
@@ -71,20 +74,20 @@ public class Store : MonoBehaviour
             SetCustomItemSprite(1, enchantItem);
         }
 
-        descriptions[2] = "GIVES TRIPLE JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        descriptions[2] = translator.GetTranslation("store_7")+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
         prices[2] = C.SHOP_BOOT_COST;
 
-        descriptions[3] = "GIVES SLOW MOTION JUMP. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        descriptions[3] = translator.GetTranslation("store_8")+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
         prices[3] = C.SHOP_SLOW_COST;
 
-        descriptions[4] = "GIVES IMMUNITY TO PROJECTILES AND SPIKES. DURATION - 1 LEVEL. YOU HAVE "+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        descriptions[4] = translator.GetTranslation("store_9")+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
         prices[4] = C.SHOP_SHIELD_COST;
 
         UpdateText();
     }
 
     private void UpdateText() {
-        description.text = descriptions[selectorCurrentIndex];
+        description.SetText(descriptions[selectorCurrentIndex]);
         price.text = prices[selectorCurrentIndex].ToString();
     }
 
@@ -179,12 +182,12 @@ public class Store : MonoBehaviour
         int k1 = PlayerPrefs.GetInt(C.PREFS_KEY_1_STATE, 0);
         int k2 = PlayerPrefs.GetInt(C.PREFS_KEY_2_STATE, 0);
         int k3 = PlayerPrefs.GetInt(C.PREFS_KEY_3_STATE, 0);
-        string availableKeys = ((k1 == 0) ? "" : "TIER-" + k1 + "  ") + ((k2 == 0) ? "" : "TIER-" + k2 + "  ") + ((k3 == 0) ? "" : "TIER-" + k3);
+        string availableKeys = ((k1 == 0) ? "" : k1 + translator.GetTranslation("store_4") + " ") + ((k2 == 0) ? "" : k2+translator.GetTranslation("store_4") + " ") + ((k3 == 0) ? "" : k3 + translator.GetTranslation("store_4"));
         if(availableKeys.Length == 0)
         {
-            availableKeys = "NONE";
+            availableKeys = translator.GetTranslation("store_5");
         }
-        return "KEYS AVAILABLE:"+"\n"+ availableKeys;
+        return translator.GetTranslation("store_6")+"\n"+ availableKeys;
     }
 
     public void SelectCertainItem(int index) {
