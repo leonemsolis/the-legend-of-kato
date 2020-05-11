@@ -79,17 +79,17 @@ public class ItemSelectionToggleUI : MonoBehaviour
         if(hasItem) {
             switch(itemType) {
                 case ItemType.BOOT:
-                    descrption.SetText("GIVES TRIPLE JUMP");
+                    descrption.SetText(FindObjectOfType<Translator>().GetTranslation("selector_boots"));
                     break;
                 case ItemType.SLOW:
-                    descrption.SetText("GIVES SLOW MOTION JUMP");
+                    descrption.SetText(FindObjectOfType<Translator>().GetTranslation("selector_slow"));
                     break;
                 case ItemType.SHIELD:
-                    descrption.SetText("GIVES IMMUNITY TO PROJECTILES AND SPIKES");
+                    descrption.SetText(FindObjectOfType<Translator>().GetTranslation("selector_shield"));
                     break;
             }
         } else {
-            descrption.SetText("You don't have this item!");
+            descrption.SetText(FindObjectOfType<Translator>().GetTranslation("selector_no_item"));
         }
     }
 }
