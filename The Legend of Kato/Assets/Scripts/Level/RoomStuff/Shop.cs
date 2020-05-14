@@ -43,16 +43,16 @@ public class Shop : MonoBehaviour
 
     private void UpdateInfo()
     {
-        descriptions[0] = translator.GetTranslation("store_7")+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        descriptions[0] = translator.GetTranslation("store_7").Replace("#", PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0).ToString());
         prices[0] = C.SHOP_BOOT_COST;
 
-        descriptions[1] = translator.GetTranslation("store_10")+PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0);
+        descriptions[1] = translator.GetTranslation("store_10").Replace("#", PlayerPrefs.GetInt(C.PREFS_DEPOSIT_COUNT, 0).ToString());
         prices[1] = 1;
 
-        descriptions[2] = translator.GetTranslation("store_8")+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        descriptions[2] = translator.GetTranslation("store_8").Replace("#", PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0).ToString());
         prices[2] = C.SHOP_SLOW_COST;
 
-        descriptions[3] = translator.GetTranslation("store_9")+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        descriptions[3] = translator.GetTranslation("store_9").Replace("#", PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0).ToString());
         prices[3] = C.SHOP_SHIELD_COST;
 
         descriptions[7] = translator.GetTranslation("store_11");
@@ -66,7 +66,7 @@ public class Shop : MonoBehaviour
         }
         else
         {
-            descriptions[4] = "RESTORES 1 HP";
+            descriptions[4] = translator.GetTranslation("store_12");
             prices[4] = C.SHOP_HEART_COST;
         }
 

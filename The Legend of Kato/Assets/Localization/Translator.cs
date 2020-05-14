@@ -41,10 +41,33 @@ public class Translator : MonoBehaviour
 
         translatedEN = csvLoader.GetDictionaryValues("en");
         translatedKR = csvLoader.GetDictionaryValues("kr");
+
+        int l = PlayerPrefs.GetInt(C.PREFS_LANGUAGE, 0);
+        switch(l) {
+            case 0:
+                SetLanguage(Language.English);
+                break;
+            case 1:
+                SetLanguage(Language.Korean);
+                break;
+        }
+    }
+
+    public Language GetLanguage() {
+        return language;
     }
     
     public void SetLanguage(Language lang) {
         language = lang;
+        switch(language) {
+            case Language.English:
+                PlayerPrefs.SetInt(C.PREFS_LANGUAGE, 0);
+                break;
+            case Language.Korean:
+                PlayerPrefs.SetInt(C.PREFS_LANGUAGE, 1);
+                break;
+        }
+        PlayerPrefs.Save();
     }
 
     public void TranslateStaticTMP(string key, FontType fontType, TextMeshProUGUI tmp) {

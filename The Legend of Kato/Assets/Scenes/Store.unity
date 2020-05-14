@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 1144232059}
   - component: {fileID: 1144232057}
   - component: {fileID: 1144232056}
-  - component: {fileID: 1144232061}
+  - component: {fileID: 1144232058}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: ButtonUI
@@ -1465,6 +1465,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
+--- !u!114 &1144232058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144232054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51223ead2c9e1483d87dd2c573fbccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableRepeat: 0
+  up: {fileID: 8876194837373113112, guid: 9cd99b16a7e4c4b57ab0580b4c942f21, type: 3}
+  down: {fileID: 6261907671021162698, guid: 9cd99b16a7e4c4b57ab0580b4c942f21, type: 3}
+  upID: 11
+  downID: 12
 --- !u!61 &1144232059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1541,20 +1558,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1144232061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1144232054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  up: {fileID: 8876194837373113112, guid: 9cd99b16a7e4c4b57ab0580b4c942f21, type: 3}
-  down: {fileID: 6261907671021162698, guid: 9cd99b16a7e4c4b57ab0580b4c942f21, type: 3}
 --- !u!1 &1441848254
 GameObject:
   m_ObjectHideFlags: 0

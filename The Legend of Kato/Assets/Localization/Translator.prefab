@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4440650618908816242}
   - component: {fileID: 4440650618908816241}
+  - component: {fileID: 4266721188788027659}
   m_Layer: 0
   m_Name: Translator
   m_TagString: Untagged
@@ -46,3 +47,59 @@ MonoBehaviour:
   korean_white_black: {fileID: 11400000, guid: b10f32bc6649c468e8ffc1cde300605b, type: 2}
   korean_black_white: {fileID: 11400000, guid: cff585f2ee7c14edcb07b1e255382fe7, type: 2}
   korean_red_white: {fileID: 11400000, guid: aca06a81852b145eabb737d386c8b486, type: 2}
+--- !u!114 &4266721188788027659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4440650618908816240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e83ec147f9249ee916e52d8c89f3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpKr: {fileID: -964842796402222927, guid: d69660d9343824b32bcdacc23fda2282, type: 3}
+  onDownKr: {fileID: -8747401852255631580, guid: d69660d9343824b32bcdacc23fda2282,
+    type: 3}
+  offUpKr: {fileID: -7439204881760644367, guid: d69660d9343824b32bcdacc23fda2282,
+    type: 3}
+  offDownKr: {fileID: 4955601236011184296, guid: d69660d9343824b32bcdacc23fda2282,
+    type: 3}
+  backButtonUp: {fileID: 1105172647998278337, guid: e29557097ead4427bbd82bbd88e06322,
+    type: 3}
+  backButtonDown: {fileID: 4618433898373918415, guid: e29557097ead4427bbd82bbd88e06322,
+    type: 3}
+  announcer_go: {fileID: 3296241922584150010, guid: 80b1e377baabd45a6b540dc71a27503e,
+    type: 3}
+  announcer_tutorial: {fileID: -1463985180868884364, guid: 80b1e377baabd45a6b540dc71a27503e,
+    type: 3}
+  announcer_entrance: {fileID: -7019597079866316575, guid: 80b1e377baabd45a6b540dc71a27503e,
+    type: 3}
+  announcer_depth: {fileID: -3515366355994905576, guid: 80b1e377baabd45a6b540dc71a27503e,
+    type: 3}
+  announcer_ocean_bed: {fileID: 3786691675308442461, guid: 80b1e377baabd45a6b540dc71a27503e,
+    type: 3}
+  shopBuyUp: {fileID: 8876194837373113112, guid: e9ef26ec2918f4e18aeb66a38a086cce,
+    type: 3}
+  shopBuyDown: {fileID: 6261907671021162698, guid: e9ef26ec2918f4e18aeb66a38a086cce,
+    type: 3}
+  modeSelection: {fileID: 21300000, guid: 0a10995191b9748e78915e2105bfa8f3, type: 3}
+  goButtonUp: {fileID: -2216875222996012661, guid: 4636b6fff0b164a6f8790ea635f1c155,
+    type: 3}
+  goButtonDown: {fileID: 7029930665467751619, guid: 4636b6fff0b164a6f8790ea635f1c155,
+    type: 3}
+  quitButtonUp: {fileID: 6303554112431145048, guid: 23971b87895374a2f8ec8ee6d8090386,
+    type: 3}
+  quitButtonDown: {fileID: 3267265746615443790, guid: 23971b87895374a2f8ec8ee6d8090386,
+    type: 3}
+  level_selection: {fileID: 21300000, guid: e0032cf83f2c54e7da7e60fce783e67a, type: 3}
+  store_button_up: {fileID: -5956337967687580381, guid: f83877d7447b74d8f8e41571a6b827c9,
+    type: 3}
+  store_button_down: {fileID: 8241852180743507756, guid: f83877d7447b74d8f8e41571a6b827c9,
+    type: 3}
+  small_go_up: {fileID: 2665444107680238056, guid: b1a40a0ce22554e0784e755048cbdd50,
+    type: 3}
+  small_go_down: {fileID: -4108338748391249223, guid: b1a40a0ce22554e0784e755048cbdd50,
+    type: 3}
+  kr_loading: {fileID: 21300000, guid: c7d0e6cae1e574269a163730dbe91086, type: 3}

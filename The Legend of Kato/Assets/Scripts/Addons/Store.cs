@@ -74,13 +74,13 @@ public class Store : MonoBehaviour
             SetCustomItemSprite(1, enchantItem);
         }
 
-        descriptions[2] = translator.GetTranslation("store_7")+PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0);
+        descriptions[2] = translator.GetTranslation("store_7").Replace("#", PlayerPrefs.GetInt(C.PREFS_BOOTS_COUNT, 0).ToString());
         prices[2] = C.SHOP_BOOT_COST;
 
-        descriptions[3] = translator.GetTranslation("store_8")+PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0);
+        descriptions[3] = translator.GetTranslation("store_8").Replace("#", PlayerPrefs.GetInt(C.PREFS_SLOWMOS_COUNT, 0).ToString());
         prices[3] = C.SHOP_SLOW_COST;
 
-        descriptions[4] = translator.GetTranslation("store_9")+PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0);
+        descriptions[4] = translator.GetTranslation("store_9").Replace("#", PlayerPrefs.GetInt(C.PREFS_SHIELDS_COUNT, 0).ToString());
         prices[4] = C.SHOP_SHIELD_COST;
 
         UpdateText();

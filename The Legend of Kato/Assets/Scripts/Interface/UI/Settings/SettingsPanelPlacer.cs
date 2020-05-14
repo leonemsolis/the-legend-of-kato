@@ -5,14 +5,14 @@ using UnityEngine;
 public class SettingsPanelPlacer : MonoBehaviour
 {
 
-    Transform title, music, sound, restore;
+    Transform title, music, sound, language;
 
     const float titleHeight = 75f;
     const float topPartHeight = 375f;
 
 
-    const float restoreToTogglesGap = 400f;
-    const float restoreHeight = 262.5f;
+    const float languageToTogglesGap = 400f;
+    const float languageHeight = 312.5f;
     const float bottomGap = 300f;
     const float buttonHeight = 181.25f;
 
@@ -31,13 +31,13 @@ public class SettingsPanelPlacer : MonoBehaviour
         title = transform.GetChild(0);
         music = transform.GetChild(1);
         sound = transform.GetChild(2);
+        language = transform.GetChild(3);
 
         title.localPosition = new Vector3(0f, Camera.main.orthographicSize - topPartHeight - titleHeight / 2f - safeAreaTopShiftValue, 0f);
 
-        //Restore button was deleted...
-        float restoreY = -Camera.main.orthographicSize + bottomGap + restoreHeight / 2f + safeAreaBotShiftValue;
-
-        music.localPosition = new Vector3(music.localPosition.x, restoreY + restoreToTogglesGap, 0f);
-        sound.localPosition = new Vector3(sound.localPosition.x, restoreY + restoreToTogglesGap, 0f);
+        float languageY = -Camera.main.orthographicSize + bottomGap + languageHeight / 2f + safeAreaBotShiftValue;
+        language.localPosition = new Vector3(language.localPosition.x, languageY, 0f);
+        music.localPosition = new Vector3(music.localPosition.x, languageY + languageToTogglesGap, 0f);
+        sound.localPosition = new Vector3(sound.localPosition.x, languageY + languageToTogglesGap, 0f);
     }
 }

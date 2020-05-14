@@ -269,8 +269,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -506,7 +506,7 @@ SpriteRenderer:
   m_SortingLayerID: 131631297
   m_SortingLayer: 1
   m_SortingOrder: 301
-  m_Sprite: {fileID: 1947167705202849744, guid: b87f157fbf1424ebdaaf00415c9d124a,
+  m_Sprite: {fileID: -8832684953255419415, guid: f402218dc9d8e42c1bac4b6402b7dd71,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -587,8 +587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 1947167705202849744, guid: b87f157fbf1424ebdaaf00415c9d124a, type: 3}
-  down: {fileID: -3314726661960402231, guid: b87f157fbf1424ebdaaf00415c9d124a, type: 3}
+  up: {fileID: -8832684953255419415, guid: f402218dc9d8e42c1bac4b6402b7dd71, type: 3}
+  down: {fileID: -7829429494848242375, guid: f402218dc9d8e42c1bac4b6402b7dd71, type: 3}
 --- !u!1 &7477201238619178761
 GameObject:
   m_ObjectHideFlags: 0

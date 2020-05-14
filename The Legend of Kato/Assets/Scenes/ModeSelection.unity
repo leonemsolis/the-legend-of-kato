@@ -201,9 +201,9 @@ GameObject:
   - component: {fileID: 729193454}
   - component: {fileID: 729193452}
   - component: {fileID: 729193451}
-  - component: {fileID: 729193450}
   - component: {fileID: 729193455}
   - component: {fileID: 729193448}
+  - component: {fileID: 729193449}
   m_Layer: 5
   m_Name: ButtonNormal
   m_TagString: ButtonUI
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   practiceMode: 0
---- !u!114 &729193450
+--- !u!114 &729193449
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 729193446}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84512971776aa48c4a5b9b9c35bc23ad, type: 3}
+  m_Script: {fileID: 11500000, guid: b01a576655720472886be8444a0690b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   up: {fileID: -3771640498999973431, guid: 851a412526bb44b4eaa76e13fd224234, type: 3}
@@ -378,9 +378,9 @@ GameObject:
   - component: {fileID: 848818202}
   - component: {fileID: 848818201}
   - component: {fileID: 848818200}
-  - component: {fileID: 848818199}
   - component: {fileID: 848818196}
   - component: {fileID: 848818197}
+  - component: {fileID: 848818198}
   m_Layer: 5
   m_Name: ButtonPractice
   m_TagString: ButtonUI
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   practiceMode: 1
---- !u!114 &848818199
+--- !u!114 &848818198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 848818194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84512971776aa48c4a5b9b9c35bc23ad, type: 3}
+  m_Script: {fileID: 11500000, guid: b01a576655720472886be8444a0690b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   up: {fileID: -3771640498999973431, guid: 851a412526bb44b4eaa76e13fd224234, type: 3}
@@ -769,6 +769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1950665928}
   - component: {fileID: 1950665929}
+  - component: {fileID: 1950665930}
   m_Layer: 5
   m_Name: MainFrame
   m_TagString: Untagged
@@ -839,20 +840,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1586314361147166148
+--- !u!114 &1950665930
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586314361147166151}
+  m_GameObject: {fileID: 1950665927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84512971776aa48c4a5b9b9c35bc23ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 272f910924f314a26a0cb5973f1eb989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 909454856004693264, guid: fac187a594f304f8e841f72ba15a2a16, type: 3}
-  down: {fileID: -4399668622466187505, guid: fac187a594f304f8e841f72ba15a2a16, type: 3}
+  id: 13
 --- !u!212 &1586314361147166149
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -927,9 +927,9 @@ GameObject:
   - component: {fileID: 1586314361147166150}
   - component: {fileID: 1586314361147166149}
   - component: {fileID: 1586314361147166155}
-  - component: {fileID: 1586314361147166148}
   - component: {fileID: 8732068365513442500}
   - component: {fileID: 1586314361147166154}
+  - component: {fileID: 1586314361147166152}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: ButtonUI
@@ -937,6 +937,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1586314361147166152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586314361147166151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51223ead2c9e1483d87dd2c573fbccc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableRepeat: 1
+  up: {fileID: 909454856004693264, guid: fac187a594f304f8e841f72ba15a2a16, type: 3}
+  down: {fileID: -4399668622466187505, guid: fac187a594f304f8e841f72ba15a2a16, type: 3}
+  upID: 16
+  downID: 17
 --- !u!114 &1586314361147166154
 MonoBehaviour:
   m_ObjectHideFlags: 0

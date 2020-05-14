@@ -29,6 +29,8 @@ public class C: MonoBehaviour
     public const float SlowMotionTimeScale = .5f;
     public const int RevivePrice = 20;
 
+    
+
     // Shop prices
     public const int SHOP_BOOT_COST = 8;
     public const int SHOP_SLOW_COST = 5;
@@ -84,6 +86,8 @@ public class C: MonoBehaviour
     public const string PREFS_MUSIC = "MUSIC";                          // int
     public const string PREFS_SOUNDS = "SOUNDS";                        // int
     public const string PREFS_FIRST_LAUNCH = "FIRST_LAUNCH";            // int
+    // 0 - english, 1 - korean
+    public const string PREFS_LANGUAGE = "LANGUAGE";                    // int
 
     // PlayerPrefs Records
     public const string PREFS_TUTORIAL_BEST_TIME = "TUTORIAL_BEST_TIME";        //float

@@ -3286,10 +3286,9 @@ GameObject:
   - component: {fileID: 5634392032739639328}
   - component: {fileID: 5634392032739639331}
   - component: {fileID: 5634392032739639341}
-  - component: {fileID: 5634392032739639330}
   - component: {fileID: 2923625296066918583}
   - component: {fileID: 1627081361022098874}
-  - component: {fileID: 3474474205304851651}
+  - component: {fileID: 7829956598815516927}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: ButtonUI
@@ -3387,20 +3386,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 400, y: 175}
   m_EdgeRadius: 0
---- !u!114 &5634392032739639330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5634392032739639329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84512971776aa48c4a5b9b9c35bc23ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  up: {fileID: 6758296883349348567, guid: 6ee987966497c4ca088f8d5f0e541161, type: 3}
-  down: {fileID: 5286329455138033018, guid: 6ee987966497c4ca088f8d5f0e541161, type: 3}
 --- !u!114 &2923625296066918583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3431,7 +3416,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: da4a28561843b4350a247b1ecac97a27, type: 3}
   - {fileID: 8300000, guid: 4059e30c608f44ef89cd9639476aa13e, type: 3}
   - {fileID: 8300000, guid: 224781bde0bdf4bf9b7b9b1c49d0650c, type: 3}
---- !u!114 &3474474205304851651
+--- !u!114 &7829956598815516927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3440,11 +3425,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5634392032739639329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 839414e5954824244862c06d18e1cae1, type: 3}
+  m_Script: {fileID: 11500000, guid: 51223ead2c9e1483d87dd2c573fbccc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   up: {fileID: 6758296883349348567, guid: 6ee987966497c4ca088f8d5f0e541161, type: 3}
   down: {fileID: 5286329455138033018, guid: 6ee987966497c4ca088f8d5f0e541161, type: 3}
+  upID: 4
+  downID: 5
 --- !u!1 &5962774903738972885
 GameObject:
   m_ObjectHideFlags: 0

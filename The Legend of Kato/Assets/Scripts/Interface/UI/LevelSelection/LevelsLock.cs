@@ -14,11 +14,12 @@ public class LevelsLock : MonoBehaviour
 
     SpriteRenderer spriteRender;
     State state;
-    ButtonUI buttonUI;
+    ButtonGameQuit buttonUI;
 
     void Start()
     {
-        buttonUI = GetComponent<ButtonUI>();
+        buttonUp = FindObjectOfType<SpriteTranslator>().GetSprite(buttonUp, 21);
+        buttonUI = GetComponent<ButtonGameQuit>();
 
         spriteRender = GetComponent<SpriteRenderer>();
 

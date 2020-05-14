@@ -25,6 +25,12 @@ public class Announcer : MonoBehaviour
 
     void Start()
     {
+        goText = FindObjectOfType<SpriteTranslator>().GetSprite(goText, 6);
+        tutorialText = FindObjectOfType<SpriteTranslator>().GetSprite(tutorialText, 7);
+        entranceText = FindObjectOfType<SpriteTranslator>().GetSprite(entranceText, 8);
+        depthsText = FindObjectOfType<SpriteTranslator>().GetSprite(depthsText, 9);
+        oceanBedText = FindObjectOfType<SpriteTranslator>().GetSprite(oceanBedText, 10);
+
         float freeSpace = Camera.main.orthographicSize * 2f - C.ButtonPanelHeight - C.InfoPanelHeight;
         transform.localPosition = new Vector3(0f, Camera.main.orthographicSize - C.InfoPanelHeight - freeSpace / 2f, 0f);
 

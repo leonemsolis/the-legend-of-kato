@@ -16,9 +16,15 @@ public class SettingsToggleUI : MonoBehaviour
     bool on = true;
 
     SpriteRenderer spriteRenderer;
+    Translator.Language language;
 
     private void OnEnable()
     {
+        onUp = FindObjectOfType<SpriteTranslator>().GetSprite(onUp, 0);
+        onDown = FindObjectOfType<SpriteTranslator>().GetSprite(onDown, 1);
+        offUp = FindObjectOfType<SpriteTranslator>().GetSprite(offUp, 2);
+        offDown = FindObjectOfType<SpriteTranslator>().GetSprite(offDown, 3);
+
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if(isMusic)
@@ -29,8 +35,10 @@ public class SettingsToggleUI : MonoBehaviour
         {
             on = PlayerPrefs.GetInt(C.PREFS_SOUNDS, 1) == 1;
         }
-        if (!on)
+        if (on)
         {
+            spriteRenderer.sprite = onUp;
+        } else {
             spriteRenderer.sprite = offUp;
         }
     }
