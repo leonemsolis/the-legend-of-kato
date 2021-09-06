@@ -1,18 +1,16 @@
 # The Legend of Kato
-<br/><br/><br/><br/>
 ## Scenario
-##### *Като это обычный мальчик. Он как обычно спал в своей кровати. Как внезапно странное морское существо явилось к нему в комнату. Разбудив, оно сказало: "Привет Като! Я явился из подводного мира. Я волшебник, народ моего мира поручил мне найти того, о ком писалось в пророчестве. Дело в том что наш мир разрушается. Злой подводный дракон терроризирует наш мир. Он разрушает и убивает все живое". Также он расссказал о том, что была подводная армия, которая пыталась убить дракона, но после того как они спустились к нему в пещеру, их никто не видел. После своего рассказа, волшебник открывает портал прямо в окне, который ведет в подводный мир. Като следует за ним и попадает туда, игра начинается... Потом после завершения игры, Като просыпается, но ничего странного не обнаружает. Он видит, что окно открыто и поднимается чтобы закрыть его. Последний кадр - это с наружи дома видно как Като закрывает окно.*
-<br/><br/><br/><br/>
+Kato is an ordinary boy. 
+<br/>
+He slept in his bed as usual. How suddenly a strange sea creature appeared in his room. 
+<br/>
+Waking it up, it said: "_Hello Kato! I came from the underwater world. I am a magician, the people of my world instructed me to find the one about whom it was written in the prophecy. The fact is that our world is being destroyed. An evil underwater dragon is terrorizing our world. It is destroying and kills all living things._" 
+<br/>
+He also talked about the fact that there was an underwater army that tried to kill the dragon, but after they went down to his cave, no one saw them. 
+<br/>
+After his story, the wizard opens a portal right in the window, which leads to the underwater world. **Adventure beggins!**
 #### Game features
-1. Platformer Action game
-2. Non-stop movement
-3. Boss fights included
-
-#### To Implement:
-• Character's voice using ROLI(string sound)<br/>
-• Bone animation or pixel art<br/>
-
-
-
-#### Level Mockup
-![Alt Text](https://github.com/zzxnnz/the-legend-of-kato/blob/master/other/level_mockup.png)
+- Only 2 buttons
+- Platformer action game
+- Non-stop movement
+- Boss fights
